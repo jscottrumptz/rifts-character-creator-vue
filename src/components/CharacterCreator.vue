@@ -1,6 +1,6 @@
 <template>
   <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
-    Character Creator
+    Create a New Character
   </h2>
 </template>
 
