@@ -12,7 +12,7 @@
             Character Creator <span class="text-xl">v1.0</span>
           </h2>
         </div>
-        <div class="mr-6 w-full max-w-xs">
+        <div class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
           <!-- Character Selector -->
           <label for="selectCharacter" class="block text-base font-medium text-gray-300">Your Characters</label>
           <div class="mt-1.5 relative">
@@ -36,7 +36,7 @@
     <!-- Character Creator -->
     <CharacterCreator v-if="toggle==='character-creator'"/>
     <!-- Character Viewer -->
-    <CharacterViewer v-if="toggle==='character-viewer'" :character="character"/>
+    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData"/>
 
   </div>
 </template>
