@@ -4,16 +4,16 @@
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+            <thead class="bg-gray-800">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
 
               </th>
-              <th scope="col" class="px-5 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
-                Orig
+              <th scope="col" class="px-1 py-3 text-left text-xs font-medium text-white tracking-wider">
+                Original
               </th>
-              <th scope="col" class="px-5 py-3 text-left text-xs font-medium text-gray-500  tracking-wider">
-                Bonus
+              <th scope="col" class="px-2 py-3 text-left text-xs font-medium text-white tracking-wider">
+                Bonuses
               </th>
             </tr>
             </thead>
