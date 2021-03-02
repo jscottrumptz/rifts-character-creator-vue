@@ -18,109 +18,19 @@
             </tr>
             </thead>
             <tbody>
-            <!-- IQ odd -->
-            <tr class="bg-white">
+            <!-- V-For Attribute Loop -->
+            <tr v-for="(attributes,index) in attributes" v-bind:key="index" class="bg-white border-t border-gray-200">
               <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                IQ
+                {{attributes.name}}
               </td>
               <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.iq.raceTotal + attributes.iq.feebleBonus}}
+                {{attributes.raceTotal + attributes.feebleBonus}}
               </td>
               <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.iq.occBonus + attributes.iq.skillsBonus + attributes.iq.cyberneticBonus}}
+                +{{attributes.occBonus + attributes.skillsBonus + attributes.cyberneticBonus}}
               </td>
             </tr>
-
-            <!-- ME even -->
-            <tr class="bg-gray-100">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                ME
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.me.raceTotal + attributes.me.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.me.occBonus + attributes.me.skillsBonus + attributes.me.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- MA odd -->
-            <tr class="bg-white">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                MA
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.ma.raceTotal + attributes.ma.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.ma.occBonus + attributes.ma.skillsBonus + attributes.ma.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- PS even -->
-            <tr class="bg-gray-100">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                PS
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.ps.raceTotal + attributes.ps.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.ps.occBonus + attributes.ps.skillsBonus + attributes.ps.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- PP odd -->
-            <tr class="bg-white">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                PP
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.pp.raceTotal + attributes.pp.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.pp.occBonus + attributes.pp.skillsBonus + attributes.pp.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- PE even -->
-            <tr class="bg-gray-100">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                PE
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.pe.raceTotal + attributes.pe.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.pe.occBonus + attributes.pe.skillsBonus + attributes.pe.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- PB odd -->
-            <tr class="bg-white">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                PB
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.pb.raceTotal + attributes.pb.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.pb.occBonus + attributes.pb.skillsBonus + attributes.pb.cyberneticBonus}}
-              </td>
-            </tr>
-
-            <!-- SPD even -->
-            <tr class="bg-gray-100">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                SPD
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                {{attributes.spd.raceTotal + attributes.spd.feebleBonus}}
-              </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                +{{attributes.spd.occBonus + attributes.spd.skillsBonus + attributes.spd.cyberneticBonus}}
-              </td>
-            </tr>
+            <!-- End V-For Attribute Loop-->
             </tbody>
           </table>
         </div>
@@ -139,5 +49,7 @@ export default {
 </script>
 
 <style scoped>
-
+tbody tr:nth-child(odd) {
+  background-color: rgba(243,244,246,var(--tw-bg-opacity));
+}
 </style>

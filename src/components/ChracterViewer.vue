@@ -28,8 +28,45 @@
             <div class="h-full py-6 px-4 sm:px-6 lg:px-8">
               <!-- Start main area-->
               <div class="relative h-full" style="min-height: 36rem;">
-                <div class="absolute inset-0 rounded-lg"></div>
-                <Abilities :abilities="character.abilities"/>
+                <div class="absolute inset-0 rounded-lg">
+                  <!-- TABS Start-->
+                  <div>
+                    <div class="sm:hidden">
+                      <label for="tabs" class="sr-only">Select a tab</label>
+                      <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                        <option selected>abilities</option>
+                        <option>psionics</option>
+                        <option>magic</option>
+                        <option>cybernetics</option>
+                        <option>skills</option>
+                      </select>
+                    </div>
+                    <div class="hidden sm:block">
+                      <nav class="flex space-x-4" aria-label="Tabs">
+                        <a v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                          Abilities
+                        </a>
+                        <a v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                          Psionics
+                        </a>
+                        <!-- Current: "bg-gray-100 text-gray-700", Default: "text-gray-500 hover:text-gray-700" -->
+                        <a v-on:click="toggle='magic'" class="bg-gray-100 text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                          Magic
+                        </a>
+                        <a v-on:click="toggle='cybernetics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                          Cybernetics
+                        </a>
+                        <a v-on:click="toggle='skills'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                          Skills
+                        </a>
+                      </nav>
+                    </div>
+                  </div>
+                  <!-- TABS End-->
+                  <Abilities :abilities="character.abilities" v-if="toggle==='abilities'"/>
+                  <Psionics :psionics="character.psionics" v-if="toggle==='psionics'"/>
+                  <Magic :magic="character.spells" v-if="toggle==='magic'"/>
+                </div>
               </div>
               <!-- End main area -->
             </div>
@@ -57,12 +94,19 @@
 import Attributes from "@/components/sections/Attributes";
 import Abilities from "@/components/sections/Abilities";
 import Inventory from "@/components/sections/Inventory";
+import Psionics from "@/components/sections/Psionics";
+import Magic from "@/components/sections/Magic";
 
 export default {
   name: 'CharacterViewer',
-  components: {Inventory, Abilities, Attributes},
+  components: {Magic, Psionics, Inventory, Abilities, Attributes},
   props: {
     character: Array
+  },
+  data: function(){
+    return {
+      toggle: "abilities"
+    }
   },
 }
 </script>

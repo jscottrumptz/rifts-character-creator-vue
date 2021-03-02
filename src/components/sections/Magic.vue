@@ -2,10 +2,10 @@
   <div class="bg-gray-800 mt-5 shadow overflow-hidden sm:rounded-lg">
     <div class="px-4 py-3 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-white">
-        Abilities
+        Magic
       </h3>
       <p class="mt-1 max-w-2xl text-sm text-gray-300">
-        Racial, OCC, Cybernetic, and Other
+        Racial, OCC, and Other
       </p>
     </div>
     <div class="bg-white border-t border-gray-200 px-4 py-5 sm:p-0">
@@ -41,9 +41,9 @@
 
 <script>
 export default {
-  name: "Abilities",
+name: "Magic",
   props: {
-    abilities: Array
+    magic: Array
   }
 }
 </script>
