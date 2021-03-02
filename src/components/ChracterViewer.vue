@@ -43,20 +43,24 @@
                     </div>
                     <div class="hidden sm:block">
                       <nav class="flex space-x-4" aria-label="Tabs">
-                        <a v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                        <a v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">
                           Abilities
                         </a>
-                        <a v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                        <a v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'psionics', 'bg-gray-100 text-gray-700': toggle === 'psionics'}" href="#" onclick="return false;">
                           Psionics
                         </a>
-                        <!-- Current: "bg-gray-100 text-gray-700", Default: "text-gray-500 hover:text-gray-700" -->
-                        <a v-on:click="toggle='magic'" class="bg-gray-100 text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                        <a v-on:click="toggle='magic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'magic', 'bg-gray-100 text-gray-700': toggle === 'magic'}" href="#" onclick="return false;">
                           Magic
                         </a>
-                        <a v-on:click="toggle='cybernetics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                        <a v-on:click="toggle='cybernetics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'cybernetics', 'bg-gray-100 text-gray-700': toggle === 'cybernetics'}" href="#" onclick="return false;">
                           Cybernetics
                         </a>
-                        <a v-on:click="toggle='skills'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md">
+                        <a v-on:click="toggle='skills'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'skills', 'bg-gray-100 text-gray-700': toggle === 'skills'}" href="#" onclick="return false;">
                           Skills
                         </a>
                       </nav>
@@ -105,7 +109,7 @@ export default {
   },
   data: function(){
     return {
-      toggle: "abilities"
+      toggle: "abilities",
     }
   },
 }
