@@ -3,7 +3,7 @@
     <!-- begin main area -->
     <div class="relative min-h-screen flex flex-col border-t border-indigo-300">
       <!-- 3 column wrapper -->
-      <div class="flex-grow w-full max-w-7xl mx-auto  lg:flex">
+      <div class="flex-grow w-full max-w-7xl mx-auto xl:px-8 lg:flex">
         <!-- Left sidebar & main wrapper -->
         <div class="flex-1 min-w-0 xl:flex">
           <div class="border-b xl:border-b-0 xl:flex-shrink-0 xl:w-64 border-indigo-300 xl:border-r ">
@@ -13,6 +13,9 @@
                 <div class="absolute inset-0 rounded-lg"></div>
                 <!-- Attributes -->
                 <Attributes :attributes="character.attributes"/>
+                <SecondaryStats :secondaryStats="character.secondaryStats"/>
+                <Chances :chances="character.chances"/>
+                <Saves :saves="character.saves"/>
               </div>
               <!-- End left column area -->
             </div>
@@ -72,19 +75,19 @@
           </div>
         </div>
 
-        <div class="pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-indigo-300 xl:pr-0">
-          <div class="h-full pl-6 py-6 lg:w-80">
-            <!-- Start RIGHT COLUMN area -->
-            <div class="h-full relative" style="min-height: 16rem;">
-              <div class="absolute inset-0 rounded-lg"></div>
+      <div class="pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-indigo-300 xl:pr-0">
+        <div class="h-full pl-6 py-6 lg:w-80">
+          <!-- Start RIGHT COLUMN area -->
+          <div class="h-full relative" style="min-height: 16rem;">
+            <div class="absolute inset-0 rounded-lg"></div>
               <Inventory :inventory="character.inventory"/>
             </div>
-            <!-- End right column area -->
+          <!-- End right column area -->
           </div>
         </div>
       </div>
     </div>
-    <!-- end main area -->
+  <!-- end main area -->
   </div>
 </template>
 
@@ -96,10 +99,13 @@ import Inventory from "@/components/sections/Inventory";
 import Psionics from "@/components/sections/Psionics";
 import Magic from "@/components/sections/Magic";
 import Info from "@/components/sections/Info";
+import SecondaryStats from "@/components/sections/SecondaryStats";
+import Chances from "@/components/sections/Chances";
+import Saves from "@/components/sections/Saves";
 
 export default {
   name: 'CharacterViewer',
-  components: {Info, Magic, Psionics, Inventory, Abilities, Attributes},
+  components: {Saves, Chances, SecondaryStats, Info, Magic, Psionics, Inventory, Abilities, Attributes},
   props: {
     character: Array
   },
