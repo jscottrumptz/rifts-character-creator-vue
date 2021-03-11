@@ -43,7 +43,7 @@
               </td>
             </tr>
             <!-- MDC -->
-            <tr class="bg-white border-t border-gray-200">
+            <tr v-if="secondaryStats.mdc.initialValue + secondaryStats.mdc.attributeBonus + secondaryStats.mdc.occBonus + secondaryStats.mdc.raceBonus + secondaryStats.mdc.skillsBonus + secondaryStats.mdc.cyberneticBonus + secondaryStats.mdc.otherBonus != 0" class="bg-white border-t border-gray-200">
               <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 MDC
               </td>
@@ -55,7 +55,7 @@
               </td>
             </tr>
             <!-- PPE -->
-            <tr class="bg-white border-t border-gray-200">
+            <tr v-if="secondaryStats.ppe.initialValue + secondaryStats.ppe.attributeBonus + secondaryStats.ppe.occBonus + secondaryStats.ppe.raceBonus + secondaryStats.ppe.skillsBonus + secondaryStats.ppe.cyberneticBonus + secondaryStats.ppe.otherBonus != 0" class="bg-white border-t border-gray-200">
               <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 PPE
               </td>
@@ -67,7 +67,7 @@
               </td>
             </tr>
             <!-- ISP -->
-            <tr class="bg-white border-t border-gray-200">
+            <tr v-if="secondaryStats.isp.initialValue + secondaryStats.isp.attributeBonus + secondaryStats.isp.occBonus + secondaryStats.isp.raceBonus + secondaryStats.isp.skillsBonus + secondaryStats.isp.cyberneticBonus  + secondaryStats.isp.otherBonus != 0" class="bg-white border-t border-gray-200">
               <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 ISP
               </td>
@@ -79,7 +79,7 @@
               </td>
             </tr>
             <!-- Horror Factor -->
-            <tr class="bg-white border-t border-gray-200">
+            <tr v-if="secondaryStats.horror.initialValue + secondaryStats.horror.attributeBonus + secondaryStats.horror.occBonus + secondaryStats.horror.raceBonus + secondaryStats.horror.skillsBonus + secondaryStats.horror.cyberneticBonus != 0" class="bg-white border-t border-gray-200">
               <td colspan="2" class="px-6 py-2 whitespace-nowrap text-right text-sm font-medium text-gray-900">
                 Horror Factor
               </td>

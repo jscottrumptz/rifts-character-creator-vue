@@ -7,21 +7,21 @@
             <thead class="bg-gray-800">
             <tr>
               <th colspan="2" scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">
-                Save vs
+                Save
               </th>
               <th scope="col" class="px-2 py-3 text-center text-xs font-medium text-white tracking-wider">
-                %
+                Bonus
               </th>
             </tr>
             </thead>
             <tbody>
             <!-- V-For Chances Loop -->
-            <tr v-for="(saves,index) in saves" v-bind:key="index" class="bg-white border-t border-gray-200">
-              <td colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                {{saves.name}}
+            <tr v-for="(saves,index) in saves" v-bind:key="index" class="bg-white border-t border-gray-200" >
+              <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus != 0" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                vs. {{saves.name}}
               </td>
-              <td class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
-                {{saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus}}%
+              <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus != 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
+                +{{saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus}} <span v-if="saves.name === 'Coma'  || saves.name === 'Death'">%</span>
               </td>
             </tr>
             <!-- End V-For Attribute Loop-->
