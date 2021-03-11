@@ -7,10 +7,10 @@
             <thead class="bg-gray-800">
             <tr>
               <th colspan="2" scope="col" class="px-6 py-3 text-left text-xs font-medium text-white tracking-wider">
-
+                Combat Bonuses
               </th>
               <th scope="col" class="px-2 py-3 text-center text-xs font-medium text-white tracking-wider">
-                Bonus
+
               </th>
             </tr>
             </thead>
@@ -21,7 +21,7 @@
                 {{bonuses.name}}
               </td>
               <td v-if="bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus !== 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
-                <span v-if="bonuses.name !== 'Attacks' && bonuses.name !== 'Knockout/Stun' && bonuses.name !== 'Death Blow' && bonuses.name !== 'Critical'">+</span>{{bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus}} <span v-if="bonuses.name === 'Knockout/Stun'  || bonuses.name === 'Death Blow'  || bonuses.name === 'Critical'">+</span>
+                <span v-if="bonuses.name !== 'Attacks per Melee' && bonuses.name !== 'Knockout/Stun' && bonuses.name !== 'Death Blow' && bonuses.name !== 'Critical'">+</span>{{bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus}} <span v-if="bonuses.name === 'Knockout/Stun'  || bonuses.name === 'Death Blow'  || bonuses.name === 'Critical'">+</span>
               </td>
             </tr>
             <!-- End V-For Attribute Loop-->

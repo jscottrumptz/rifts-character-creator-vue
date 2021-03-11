@@ -1,15 +1,20 @@
 <template>
   <div class="bg-gray-800 max-w-7xl mx-auto mb-6 shadow overflow-hidden sm:rounded-lg">
+    <!-- Character Info Header -->
     <div class="px-4 py-5 sm:px-6">
+      <!-- Character Name -->
       <h3 class="text-lg leading-6 font-medium text-white">
         {{info.name}}
       </h3>
+      <!-- Character Alignment, Race, OCC, and Level  -->
       <p class="mt-1 max-w-2xl text-sm text-gray-300">
-        {{race.name}} | {{occ.name}} | Level {{info.level}}
+        {{ info.alignment }} | {{race.name}} | {{occ.name}} | Level {{info.level}}
       </p>
     </div>
+    <!-- Character Info -->
     <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
       <dl class="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-6">
+        <!-- Height -->
         <div class="sm:col-span-1">
           <dt class="text-sm font-medium text-center sm:text-left text-gray-300">
             Height
@@ -18,6 +23,7 @@
             {{ info.heightFt }}' {{ info.heightIn }}"
           </dd>
         </div>
+        <!-- Weight -->
         <div class="sm:col-span-1">
           <dt class="text-sm font-medium text-center text-gray-300">
             Weight
@@ -26,6 +32,7 @@
             {{ info.weight }}
           </dd>
         </div>
+        <!-- Sex -->
         <div class="sm:col-span-1">
           <dt class="text-sm font-medium text-center text-gray-300">
             Sex
@@ -34,6 +41,7 @@
             {{ info.sex }}
           </dd>
         </div>
+        <!-- Age -->
         <div class="sm:col-span-1">
           <dt class="text-sm  text-center font-medium text-gray-300">
             Age
@@ -42,6 +50,7 @@
             {{ info.age }}
           </dd>
         </div>
+        <!-- Insanities -->
         <div class="col-span-4 sm:col-span-2">
           <dt class="text-sm font-medium text-left text-gray-300">
             Insanities
@@ -50,7 +59,17 @@
             <span v-for="(insanity,index) in info.insanity" v-bind:key="index"> {{insanity }} </span>
           </dd>
         </div>
-        <div class="col-span-4 sm:col-span-6">
+        <!-- Physical Description -->
+        <div v-if="info.physicalDescription !== ''" class="col-span-4 sm:col-span-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Physical Description
+          </dt>
+          <dd class="mt-1 text-sm text-white">
+            {{ info.physicalDescription }}
+          </dd>
+        </div>
+        <!-- Bio -->
+        <div v-if="info.bio !== ''" class="col-span-4 sm:col-span-6">
           <dt class="text-sm font-medium text-gray-300">
             Bio
           </dt>
@@ -58,6 +77,7 @@
             {{ info.bio }}
           </dd>
         </div>
+        <!-- PDFs -->
         <div class="col-span-4 sm:col-span-6">
           <dt class="text-sm font-medium text-gray-300">
             Attachments
@@ -97,6 +117,74 @@
                 </div>
               </li>
             </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+    <!-- Extended Info -->
+    <div>
+      <dl>
+        <!-- Disposition -->
+        <div v-if="info.disposition !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Disposition
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.disposition }}
+          </dd>
+        </div>
+        <!-- Initial Reason for Adventure -->
+        <div v-if="info.initialReason !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Initial Reason for Adventure
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.initialReason }}
+          </dd>
+        </div>
+        <!-- Birth Order -->
+        <div v-if="info.birthOrder !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Birth Order
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.birthOrder }}
+          </dd>
+        </div>
+        <!-- Family Origin -->
+        <div v-if="info.familyOrigin !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Family Origin
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.familyOrigin }}
+          </dd>
+        </div>
+        <!-- Environment Growing Up -->
+        <div v-if="info.environment !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Environment Growing Up
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.environment }}
+          </dd>
+        </div>
+        <!-- Sentiments toward the Coalition -->
+        <div v-if="info.coalition !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Sentiments toward the Coalition
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.coalition }}
+          </dd>
+        </div>
+        <!-- Sentiments toward Non-Humans -->
+        <div v-if="info.nonHumans !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-300">
+            Sentiments toward Non-Humans
+          </dt>
+          <dd class="mt-1 text-sm text-white sm:mt-0 sm:col-span-3">
+            {{ info.nonHumans }}
           </dd>
         </div>
       </dl>
