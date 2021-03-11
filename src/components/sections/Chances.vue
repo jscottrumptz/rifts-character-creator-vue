@@ -17,10 +17,10 @@
             <tbody>
             <!-- V-For Chances Loop -->
             <tr v-for="(chances,index) in chances" v-bind:key="index" class="bg-white border-t border-gray-200">
-              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus != 0" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus !== 0" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{chances.name}}
               </td>
-              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus != 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
+              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus !== 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
                 {{chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus}}%
               </td>
             </tr>

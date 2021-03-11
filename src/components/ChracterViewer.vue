@@ -16,6 +16,7 @@
                 <SecondaryStats :secondaryStats="character.secondaryStats"/>
                 <Chances :chances="character.chances"/>
                 <Saves :saves="character.saves"/>
+                <Bonuses :bonuses="character.bonuses"/>
               </div>
               <!-- End left column area -->
             </div>
@@ -102,10 +103,11 @@ import Info from "@/components/sections/Info";
 import SecondaryStats from "@/components/sections/SecondaryStats";
 import Chances from "@/components/sections/Chances";
 import Saves from "@/components/sections/Saves";
+import Bonuses from "@/components/sections/Bonuses";
 
 export default {
   name: 'CharacterViewer',
-  components: {Saves, Chances, SecondaryStats, Info, Magic, Psionics, Inventory, Abilities, Attributes},
+  components: {Bonuses, Saves, Chances, SecondaryStats, Info, Magic, Psionics, Inventory, Abilities, Attributes},
   props: {
     character: Array
   },
