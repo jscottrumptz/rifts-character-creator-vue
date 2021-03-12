@@ -20,13 +20,13 @@
             <tbody>
             <!-- V-For Attribute Loop -->
             <tr v-for="(attributes,index) in attributes" v-bind:key="index" class="bg-white border-t border-gray-200">
-              <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td v-if="attributes.name" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{attributes.name}}
               </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+              <td v-if="attributes.name" class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                 {{attributes.raceTotal + attributes.feebleBonus}}
               </td>
-              <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
+              <td v-if="attributes.name" class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
                 +{{attributes.occBonus + attributes.skillsBonus + attributes.cyberneticBonus}}
               </td>
             </tr>
