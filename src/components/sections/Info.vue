@@ -78,7 +78,7 @@
           </dd>
         </div>
         <!-- PDFs -->
-        <div class="col-span-4 sm:col-span-6">
+        <div class="col-span-4 mb-6 sm:col-span-6">
           <dt class="text-sm font-medium text-gray-300">
             Attachments
           </dt>
@@ -120,9 +120,14 @@
           </dd>
         </div>
       </dl>
+      <!-- Extended Info Toggle -->
+      <a v-if="info.disposition !== '' || info.initialReason !== '' || info.birthOrder !== '' || info.familyOrigin !== '' || info.environment !== '' || info.coalition !== '' || info.nonHumans !== ''" v-on:click="extended = !extended" class="text-gray-200 hover:text-gray-400 p-2 rounded-md bg-gray-900" href="#" onclick="return false;">
+        <span v-if="extended === false">View extended character info...</span>
+        <span v-if="extended === true">Hide extended character info...</span>
+      </a>
     </div>
     <!-- Extended Info -->
-    <div>
+    <div v-if="extended === true">
       <dl>
         <!-- Disposition -->
         <div v-if="info.disposition !== ''" class="px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
@@ -199,7 +204,12 @@ name: "Info",
     info: Array,
     race: Array,
     occ: Array
-  }
+  },
+  data: function(){
+    return {
+      extended: false,
+    }
+  },
 }
 </script>
 
