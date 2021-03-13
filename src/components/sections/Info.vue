@@ -203,7 +203,7 @@ name: "Info",
   props: {
     info: Array,
     race: Array,
-    occ: Array
+    occ: Array,
   },
   data: function(){
     return {

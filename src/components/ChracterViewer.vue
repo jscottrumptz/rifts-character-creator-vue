@@ -5,7 +5,7 @@
       <!-- 3 column wrapper -->
       <div class="flex-grow w-full max-w-7xl mx-auto xl:px-8 lg:flex">
         <!-- Left sidebar & main wrapper -->
-        <div class="flex-1 min-w-0 xl:flex">
+        <div class="flex-1 min-w-0 lg:flex">
           <div class="border-b xl:border-b-0 xl:flex-shrink-0 xl:w-64 border-indigo-300 xl:border-r ">
             <div class="h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0">
               <!-- Start LEFT COLUMN area -->
@@ -33,11 +33,12 @@
                     <div class="sm:hidden">
                       <label for="tabs" class="sr-only">Select a tab</label>
                       <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-                        <option selected>abilities</option>
-                        <option>psionics</option>
-                        <option>magic</option>
-                        <option>cybernetics</option>
-                        <option>skills</option>
+                        <option selected value="abilities">Abilities</option>
+                        <option value="psionics">Psionics</option>
+                        <option value="magic">Magic</option>
+                        <option value="cybernetics">Cybernetics</option>
+                        <option value="skills">Skills</option>
+                        <option value="inventory">Inventory</option>
                       </select>
                     </div>
                     <div class="hidden sm:block">
@@ -62,6 +63,10 @@
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'skills', 'bg-gray-100 text-gray-700': toggle === 'skills'}" href="#" onclick="return false;">
                           Skills
                         </a>
+                        <a v-on:click="toggle='inventory'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                           v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'inventory', 'bg-gray-100 text-gray-700': toggle === 'inventory'}" href="#" onclick="return false;">
+                          Inventory
+                        </a>
                       </nav>
                     </div>
                   </div>
@@ -69,21 +74,11 @@
                   <Abilities :abilities="character.abilities" v-if="toggle==='abilities'"/>
                   <Psionics :psionics="character.psionics" v-if="toggle==='psionics'"/>
                   <Magic :magic="character.spells" v-if="toggle==='magic'"/>
+                  <Inventory :inventory="character.inventory" v-if="toggle==='inventory'"/>
                 </div>
               </div>
               <!-- End main area -->
             </div>
-          </div>
-        </div>
-
-      <div class="pr-4 sm:pr-6 lg:pr-8 lg:flex-shrink-0 lg:border-l lg:border-indigo-300 xl:pr-0">
-        <div class="h-full pl-6 py-6 lg:w-80">
-          <!-- Start RIGHT COLUMN area -->
-          <div class="h-full relative" style="min-height: 16rem;">
-            <div class="absolute inset-0 rounded-lg"></div>
-              <Inventory :inventory="character.inventory"/>
-            </div>
-          <!-- End right column area -->
           </div>
         </div>
       </div>

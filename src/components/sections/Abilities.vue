@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="bg-white border-t border-gray-200 px-4 py-5 sm:p-0">
-      <dl class="sm:divide-y sm:divide-gray-200">
+      <dl class="divide-y divide-gray-200">
         <!-- Begin Ability -->
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">
