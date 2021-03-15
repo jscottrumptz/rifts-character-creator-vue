@@ -74,7 +74,7 @@
                   <Abilities :abilities="character.abilities" v-if="toggle==='abilities'"/>
                   <Psionics :psionics="character.psionics" v-if="toggle==='psionics'"/>
                   <Magic :magic="character.spells" v-if="toggle==='magic'"/>
-                  <Inventory :inventory="character.inventory" v-if="toggle==='inventory'"/>
+                  <Inventory :inventory="character.abilities" v-if="toggle==='inventory'"/>
                 </div>
               </div>
               <!-- End main area -->
