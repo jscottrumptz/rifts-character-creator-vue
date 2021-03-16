@@ -21,7 +21,7 @@
             <span v-if="abilities.recastTime" class="text-xs">{{abilities.recastTime}} <br></span>
           </dt>
           <dd v-on:click="isActive = !isActive" v-bind:class="{ 'line-clamp-5': isActive }" class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-3">
-            <a href="#" onclick="return false;">{{abilities.description}}</a>
+            <a href="#" onclick="return false;" class="whitespace-pre-wrap">{{abilities.description}}</a>
             <span v-if="abilities.gmNote" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{abilities.gmNote}}</span>
           </dd>
         </div>
