@@ -15,7 +15,7 @@
     <div class="px-4 py-5 p-0">
       <ul v-for="(psionics,index) in psionics" v-bind:key="index" class="divide-y divide-gray-200">
         <!-- Inventory Item -->
-        <li class="border-t-8 border-gray-800 relative bg-white py-5 px-4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+        <li class="border-t-8 border-gray-800 relative bg-white py-5 px-4">
           <div class="flex justify-between space-x-3">
             <div class="min-w-0 flex-1">
               <p class="text-lg font-medium text-gray-900 truncate">{{psionics.name}}</p>
@@ -54,7 +54,7 @@ name: "Psionics",
   },
   data: function(){
     return {
-      extended: false,
+      extended: true,
     }
   },
 }
