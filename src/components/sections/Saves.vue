@@ -21,7 +21,7 @@
                 vs. {{saves.name}}
               </td>
               <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus !== 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
-                +{{saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus}} <span v-if="saves.name === 'Coma'  || saves.name === 'Death'">%</span>
+                <span v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus > 0">+</span>{{saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus}} <span v-if="saves.name === 'Coma'  || saves.name === 'Death'">%</span>
               </td>
             </tr>
             <!-- End V-For Attribute Loop-->
