@@ -121,9 +121,9 @@
         </div>
       </dl>
       <!-- Extended Info Toggle -->
-      <a v-if="info.disposition !== '' || info.initialReason !== '' || info.birthOrder !== '' || info.familyOrigin !== '' || info.environment !== '' || info.coalition !== '' || info.nonHumans !== ''" v-on:click="extended = !extended" class="text-gray-200 hover:text-gray-400 p-2 rounded-md bg-gray-900" href="#" onclick="return false;">
+      <a v-if="info.disposition !== '' || info.initialReason !== '' || info.birthOrder !== '' || info.familyOrigin !== '' || info.environment !== '' || info.coalition !== '' || info.nonHumans !== ''" v-on:click="extended = !extended" class="text-gray-300 hover:text-gray-500 text-sm p-2 rounded-md bg-gray-900" href="#" onclick="return false;">
         <span v-if="extended === false">View extended character info...</span>
-        <span v-if="extended === true">Hide extended character info...</span>
+        <span v-if="extended === true">Hide extended character info</span>
       </a>
     </div>
     <!-- Extended Info -->

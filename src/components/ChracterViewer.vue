@@ -11,7 +11,7 @@
               <!-- Start LEFT COLUMN area -->
               <div class="h-full relative" style="min-height: 12rem;">
                 <div class="absolute inset-0 rounded-lg"></div>
-                <!-- Attributes -->
+                <!-- Attributes & Stats -->
                 <Attributes :attributes="character.attributes"/>
                 <SecondaryStats :secondaryStats="character.secondaryStats"/>
                 <Chances :chances="character.chances"/>
@@ -27,35 +27,36 @@
               <!-- Start MAIN area-->
               <div class="relative h-full" style="min-height: 36rem;">
                 <div class="absolute inset-0 rounded-lg">
+                  <!-- Character Info Section -->
                   <Info :info="character.info" :race="character.race" :occ="character.occ"/>
                   <!-- TABS Start-->
                   <div>
                     <div class="sm:hidden">
                       <label for="tabs" class="sr-only">Select a tab</label>
                       <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-                        <option selected value="abilities">Abilities</option>
-                        <option value="psionics">Psionics</option>
-                        <option value="magic">Magic</option>
-                        <option value="cybernetics">Cybernetics</option>
+                        <option v-if="Object.keys(character.abilities).length !== 0" selected value="abilities">Abilities</option>
+                        <option v-if="Object.keys(character.psionics).length !== 0" value="psionics">Psionics</option>
+                        <option v-if="Object.keys(character.spells).length !== 0" value="magic">Magic</option>
+                        <option v-if="Object.keys(character.cybernetics).length !== 0" value="cybernetics">Cybernetics</option>
                         <option value="skills">Skills</option>
                         <option value="inventory">Inventory</option>
                       </select>
                     </div>
                     <div class="hidden sm:block">
                       <nav class="flex space-x-4" aria-label="Tabs">
-                        <a v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="Object.keys(character.abilities).length !== 0" v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">
                           Abilities
                         </a>
-                        <a v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="Object.keys(character.psionics).length !== 0" v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'psionics', 'bg-gray-100 text-gray-700': toggle === 'psionics'}" href="#" onclick="return false;">
                           Psionics
                         </a>
-                        <a v-on:click="toggle='magic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="Object.keys(character.spells).length !== 0" v-on:click="toggle='magic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'magic', 'bg-gray-100 text-gray-700': toggle === 'magic'}" href="#" onclick="return false;">
                           Magic
                         </a>
-                        <a v-on:click="toggle='cybernetics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="Object.keys(character.cybernetics).length !== 0" v-on:click="toggle='cybernetics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'cybernetics', 'bg-gray-100 text-gray-700': toggle === 'cybernetics'}" href="#" onclick="return false;">
                           Cybernetics
                         </a>
@@ -71,10 +72,10 @@
                     </div>
                   </div>
                   <!-- TABS End-->
-                  <Abilities :abilities="character.abilities" v-if="toggle==='abilities'"/>
-                  <Psionics :psionics="character.psionics" v-if="toggle==='psionics'"/>
-                  <Magic :magic="character.spells" v-if="toggle==='magic'"/>
-                  <Inventory :inventory="character.abilities" v-if="toggle==='inventory'"/>
+                  <Abilities :abilities="character.abilities" v-if="toggle==='abilities' && Object.keys(character.abilities).length !== 0" />
+                  <Psionics :psionics="character.psionics" v-if="toggle==='psionics' && Object.keys(character.psionics).length !== 0"/>
+                  <Magic :magic="character.spells" v-if="toggle==='magic' && Object.keys(character.spells).length !== 0"/>
+                  <Inventory :inventory="character.inventory" v-if="toggle==='inventory'"/>
                 </div>
               </div>
               <!-- End main area -->
