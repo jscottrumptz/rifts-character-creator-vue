@@ -14,7 +14,7 @@
         </div>
         <div class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
           <!-- Character Selector -->
-          <label for="selectCharacter" class="block text-base font-medium text-gray-300">{{characters[0].userName}}'s Characters</label>
+          <label for="selectCharacter" class="block text-base font-medium text-gray-300">{{characters[0].username}}'s Characters</label>
           <div class="mt-1.5 relative">
             <select id="selectCharacter" v-model="toggle" v-on:change="onChange($event)" name="selectCharacter" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 pr-10 py-2 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
               <option value="character-viewer" disabled> Select a character... </option>
@@ -35,8 +35,8 @@
     <Home v-if="toggle==='home-page'"/>
     <!-- Character Creator -->
     <CharacterCreator v-if="toggle==='character-creator'"/>
-    <!-- Character Viewer -->
-    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData"/>
+    <!-- Character Viewer - set key to character to force component reload when the character changes -->
+    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData" :key="character"/>
 
   </div>
 </template>
