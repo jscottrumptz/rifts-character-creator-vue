@@ -13,7 +13,7 @@
       </a>
     </div>
     <div class="px-4 py-5 p-0">
-      <ul v-for="(psionics,index) in psionics" v-bind:key="index" class="divide-y divide-gray-200">
+      <ul v-for="(psionics,index) in psionics.known" v-bind:key="index" class="divide-y divide-gray-200">
         <!-- Inventory Item -->
         <li class="border-t-8 border-gray-800 relative bg-white py-5 px-4">
           <div class="flex justify-between space-x-3">

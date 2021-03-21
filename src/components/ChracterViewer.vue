@@ -35,7 +35,7 @@
                       <label for="tabs" class="sr-only">Select a tab</label>
                       <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                         <option v-if="Object.keys(character.abilities).length !== 0" selected value="abilities">Abilities</option>
-                        <option v-if="Object.keys(character.psionics).length !== 0" value="psionics">Psionics</option>
+                        <option v-if="character.psionics.ability !== 'None'" value="psionics">Psionics</option>
                         <option v-if="Object.keys(character.spells).length !== 0" value="magic">Magic</option>
                         <option v-if="Object.keys(character.cybernetics).length !== 0" value="cybernetics">Cybernetics</option>
                         <option value="skills">Skills</option>
@@ -48,7 +48,7 @@
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">
                           Abilities
                         </a>
-                        <a v-if="Object.keys(character.psionics).length !== 0" v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="character.psionics.ability !== 'None'" v-on:click="toggle='psionics'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'psionics', 'bg-gray-100 text-gray-700': toggle === 'psionics'}" href="#" onclick="return false;">
                           Psionics
                         </a>
@@ -73,7 +73,7 @@
                   </div>
                   <!-- TABS End-->
                   <Abilities :abilities="character.abilities" v-if="toggle==='abilities' && Object.keys(character.abilities).length !== 0" />
-                  <Psionics :psionics="character.psionics" v-if="toggle==='psionics' && Object.keys(character.psionics).length !== 0"/>
+                  <Psionics :psionics="character.psionics" v-if="toggle==='psionics' && character.psionics.ability !== 'None'"/>
                   <Magic :magic="character.spells" v-if="toggle==='magic' && Object.keys(character.spells).length !== 0"/>
                   <Inventory :inventory="character.inventory" v-if="toggle==='inventory'"/>
                 </div>
