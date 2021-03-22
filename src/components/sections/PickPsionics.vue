@@ -1,7 +1,7 @@
 <template>
   <div class="px-5">
     <p class="text-white text-xl font-medium p-5" >This character is a Major Psionic</p>
-    <div class="grid grid-cols-4 gap-5">
+    <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <h2 class="text-white p-5">Psionic Picks Remaining: {{remaining}}</h2>
@@ -11,7 +11,7 @@
           </ul>
         </div>
         <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <p class="text-white pl-5" >Select a total of eight powers from any one category (Sensitive, Physical, or Healer) or a total of six powers with selections made from two or three of those categories.</p>
+        <p class="text-white pl-5 pb-5" >Select a total of eight powers from any one category (Sensitive, Physical, or Healer) or a total of six powers with selections made from two or three of those categories.</p>
       </div>
 
       <!-- Finalize Selections -->
@@ -22,7 +22,7 @@
       <!-- Psionic Lists -->
       <div v-show="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <!-- Nav & Tabs -->
-        <div class="sm:hidden">
+        <div class="sm:hidden m-3">
           <label for="tabs" class="sr-only">Select a tab</label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
             <option v-if="healingActive" value="healing">Healing Psionics</option>
@@ -69,7 +69,7 @@
       </div>
 
       <!-- Info Section -->
-      <div class="col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
+      <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div class="text-gray-300 m-10">
           <h2 class="font-medium text-2xl">{{displayPsionic[0].name}}</h2><br>
           <span class="font-medium text-gray-200">Cost:</span> {{displayPsionic[0].cost}}<br>
@@ -241,7 +241,7 @@ name: "PickPsionics",
       }
       document.getElementById(newId).style.backgroundColor = 'rgba(165,180,252,1)';
       document.getElementById(newId).style.color = 'rgba(17,24,39,1)';
-      console.log('changing' + newId)
+      console.log('changing to ' + newId)
       this.selectedId = newId;
     },
     finalizeSelections: function (){
