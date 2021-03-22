@@ -70,19 +70,30 @@
 
       <!-- Info Section -->
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <div class="text-gray-300 m-10">
+        <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="font-medium text-2xl">{{displayPsionic[0].name}}</h2><br>
+          <span v-show="displayPsionic[0].preq != '' || displayPsionic[0].preqOther != '' || displayPsionic[0].preqType != ''" class="font-medium text-gray-200">(Prerequisites:{{displayPsionic[0].preq}} {{displayPsionic[0].preqOther}} {{displayPsionic[0].preqType}})<br></span>
           <span class="font-medium text-gray-200">Cost:</span> {{displayPsionic[0].cost}}<br>
           <span class="font-medium text-gray-200">Range:</span> {{displayPsionic[0].range}}<br>
           <span class="font-medium text-gray-200">Duration:</span> {{displayPsionic[0].duration}}<br>
-          <span class="font-medium text-gray-200">Saving Throw:</span> {{displayPsionic[0].savingThrow}}<br>
+          <span v-show="displayPsionic[0].savingThrow != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].savingThrow}}</span><br></span>
+          <span v-show="displayPsionic[0].damage != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].damage}}</span><br></span>
+          <span v-show="displayPsionic[0].lengthOfTrance != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].lengthOfTrance}}</span><br></span>
+          <span v-show="displayPsionic[0].baseSkill != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].baseSkill}}</span><br></span>
+          <span v-show="displayPsionic[0].limitations != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].limitations}}</span><br></span>
+          <span v-show="displayPsionic[0].attacksPerMelee != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].attacksPerMelee}}</span><br></span>
+          <span v-show="displayPsionic[0].recovers != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].recovers}}</span><br></span>
+          <span v-show="displayPsionic[0].penalties != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].penalties}}</span><br></span>
+          <span v-show="displayPsionic[0].bonuses != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].bonuses}}</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="overflow-y-auto max-h-96">
             {{displayPsionic[0].description}}<br>
             <br>
-            <span class="font-medium text-gray-200">Note:</span>
-            {{displayPsionic[0].note}}</div>
+            <span v-show="displayPsionic[0].note != ''" class="font-medium text-gray-200">Note:</span>
+            {{displayPsionic[0].note}}
+            <span v-show="displayPsionic[0].gmNote != ''" class="font-medium text-gray-200">Note:</span>
+            {{displayPsionic[0].gmNote}}</div>
         </div>
       </div>
 
