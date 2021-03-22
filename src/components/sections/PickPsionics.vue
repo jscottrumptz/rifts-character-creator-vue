@@ -6,10 +6,10 @@
       <h2 class="text-white p-5">Psionic Picks Remaining:</h2>
       <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
         <ul v-for="(psionics,index) in selectedPsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200 ">
-          <li class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
+          <li v-on:click="picked(index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
         </ul>
       </div>
-      <button class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
+      <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
     </div>
 
     <!-- Psionic Lists -->
@@ -90,18 +90,30 @@ export default {
 name: "PickPsionics",
   data: function(){
     return {
+      componentKey: 0,
       healingPsionics: new HealingPsionics,
       physicalPsionics: new PhysicalPsionics,
       sensitivePsionics: new SensitivePsionics,
-      selectedPsionics: [],
+      selectedPsionics: {},
       displayPsionic: [{name:'Select a Psionic'}],
       toggle: "healing",
-      selectedPsionic: {}
+      selectedPsionic: null,
+      selectedProperty: null,
+      pickedPsionic: null,
+      pickedProperty: null,
+      remaining: 8,
+      physicalActive: true,
+      healingActive: true,
+      sensitiveActive: true,
+      finalizePsionicsActive: false,
+      tabsActive: true,
+      healingCount: 0,
+      physicalCount: 0,
+      sensitiveCount: 0
     }
   },methods: {
     selected: function (group,index){
-      console.log(index)
-      let psionicGroup = null
+      let psionicGroup = null;
       if(group === 'healing'){
         psionicGroup = this.healingPsionics
       } else if (group === 'physical'){
@@ -110,14 +122,99 @@ name: "PickPsionics",
         psionicGroup = this.sensitivePsionics
       }
 
-      this.selectedPsionic = psionicGroup[index]
-      this.displayPsionic = []
-      this.displayPsionic.push(psionicGroup[index])
-      // delete this.healingPsionics[index]
+      this.selectedPsionic = psionicGroup[index];
+      this.selectedProperty = index;
+      this.displayPsionic = [];
+      this.displayPsionic.push(psionicGroup[index]);
+    },
+    picked: function (index){
+      this.pickedPsionic = this.selectedPsionics[index];
+      this.displayPsionic = [];
+      this.displayPsionic.push(this.selectedPsionics[index]);
+      this.pickedProperty = index;
     },
     addSelected: function (){
-      this.selectedPsionics.push(this.selectedPsionic)
-      this.selectedPsionic = {}
+      const prop = this.selectedProperty;
+      const psionic = this.selectedPsionic
+      if (psionic !== null){
+        this.selectedPsionics[prop] = psionic
+        if(psionic.group === 'Healing'){
+          delete this.healingPsionics[prop]
+          this.healingCount++;
+        } else if (psionic.group === 'Physical'){
+          delete this.physicalPsionics[prop]
+          this.physicalCount++;
+        } else {
+          delete this.sensitivePsionics[prop]
+          this.sensitiveCount++;
+        }
+        this.selectedPsionic = null;
+        this.selectedProperty = null;
+        console.log(this.sensitiveCount)
+        this.$forceUpdate();
+      }
+    },
+    removePicked: function (){
+      const prop = this.pickedProperty;
+      const psionic = this.pickedPsionic;
+      if (psionic !== null){
+        if(psionic.group === 'Healing'){
+          this.healingPsionics[prop] = psionic;
+          this.healingCount--;
+        } else if (psionic.group === 'Physical'){
+          this.physicalPsionics[prop] = psionic;
+          this.physicalCount--;
+        } else {
+          this.sensitivePsionics[prop] = psionic;
+          this.sensitiveCount--;
+        }
+        delete this.selectedPsionics[prop]
+        this.pickedPsionic = null;
+        this.pickedProperty = null
+        console.log(this.sensitiveCount)
+        this.$forceUpdate();
+      }
+    },
+    init: function() {
+      let psionicPicked = Object.keys(this.selectedPsionics).length;
+      let psionicStart = 8 //character.psionics.total;
+      let psionicHealing = this.healingCount
+      let psionicPhysical = this.physicalCount
+      let psionicSensitive = this.sensitiveCount
+
+      // determine how many picks are left
+      let availablePicks = psionicStart - psionicPicked
+
+      // see if the character is spreading it's picks over multiple groups, if so deduct 2 picks from the available total
+      if ((psionicHealing > 0 && psionicPhysical > 0) || (psionicHealing > 0 && psionicSensitive > 0) || (psionicSensitive > 0 && psionicPhysical > 0)) {
+        availablePicks = availablePicks - 2;
+      }
+
+      // determine what tabs are available
+      if ((psionicHealing > 0 && psionicStart === 2) || (psionicHealing > 5 && psionicStart === 8)) {
+        this.physicalActive(false);
+        this.sensitiveActive(false);
+      }
+      if ((psionicPhysical > 0 && psionicStart === 2) || (psionicPhysical > 5 && psionicStart === 8)) {
+        this.healingActive(false);
+        this.sensitiveActive(false);
+      }
+      if ((psionicSensitive > 0 && psionicStart === 2) || (psionicSensitive > 5 && psionicStart === 8)) {
+        this.physicalActive(false);
+        this.healingActive(false);
+      }
+
+      // either show the finished button or the tabs
+      if (availablePicks === 0) {
+        this.finalizePsionicsActive(true);
+        this.tabsActive(false);
+      } else {
+        this.finalizePsionicsActive(false);
+        this.tabsActive(true);
+      }
+
+      // update remaining psionics counter
+      this.remaining = availablePicks;
     }
   }
 }
