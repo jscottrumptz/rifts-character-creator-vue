@@ -77,23 +77,24 @@
           <span class="font-medium text-gray-200">Range:</span> {{displayPsionic[0].range}}<br>
           <span class="font-medium text-gray-200">Duration:</span> {{displayPsionic[0].duration}}<br>
           <span v-show="displayPsionic[0].savingThrow != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].savingThrow}}</span><br></span>
-          <span v-show="displayPsionic[0].damage != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].damage}}</span><br></span>
-          <span v-show="displayPsionic[0].lengthOfTrance != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].lengthOfTrance}}</span><br></span>
-          <span v-show="displayPsionic[0].baseSkill != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].baseSkill}}</span><br></span>
-          <span v-show="displayPsionic[0].limitations != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].limitations}}</span><br></span>
-          <span v-show="displayPsionic[0].attacksPerMelee != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].attacksPerMelee}}</span><br></span>
-          <span v-show="displayPsionic[0].recovers != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].recovers}}</span><br></span>
-          <span v-show="displayPsionic[0].penalties != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].penalties}}</span><br></span>
-          <span v-show="displayPsionic[0].bonuses != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].bonuses}}</span><br></span>
+          <span v-show="displayPsionic[0].damage != ''" class="font-medium text-gray-200">Damage: <span class="font-normal">{{displayPsionic[0].damage}}</span><br></span>
+          <span v-show="displayPsionic[0].lengthOfTrance != ''" class="font-medium text-gray-200">Length of Trance: <span class="font-normal">{{displayPsionic[0].lengthOfTrance}}</span><br></span>
+          <span v-show="displayPsionic[0].baseSkill != ''" class="font-medium text-gray-200">Base Skill: <span class="font-normal">{{displayPsionic[0].baseSkill}}</span><br></span>
+          <span v-show="displayPsionic[0].limitations != ''" class="font-medium text-gray-200">Limitations: <span class="font-normal">{{displayPsionic[0].limitations}}</span><br></span>
+          <span v-show="displayPsionic[0].attacksPerMelee != ''" class="font-medium text-gray-200">Attacks per Melee: <span class="font-normal">{{displayPsionic[0].attacksPerMelee}}</span><br></span>
+          <span v-show="displayPsionic[0].recovers != ''" class="font-medium text-gray-200">Recovers: <span class="font-normal">{{displayPsionic[0].recovers}}</span><br></span>
+          <span v-show="displayPsionic[0].bonuses != ''" class="font-medium text-gray-200">Bonuses: <span class="font-normal">{{displayPsionic[0].bonuses}}</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
-          <div class="overflow-y-auto max-h-96">
-            {{displayPsionic[0].description}}<br>
-            <br>
-            <span v-show="displayPsionic[0].note != ''" class="font-medium text-gray-200">Note:</span>
+          <div class="whitespace-pre-wrap overflow-y-auto max-h-96">
+            {{displayPsionic[0].description}}
+            <span v-show="displayPsionic[0].note != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Note:</span>
             {{displayPsionic[0].note}}
-            <span v-show="displayPsionic[0].gmNote != ''" class="font-medium text-gray-200">Note:</span>
-            {{displayPsionic[0].gmNote}}</div>
+            <span v-show="displayPsionic[0].gmNote != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>GM Note:</span>
+            {{displayPsionic[0].gmNote}}
+            <span v-show="displayPsionic[0].penalties != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Penalties:</span>
+            {{displayPsionic[0].penalties}}
+          </div>
         </div>
       </div>
 

@@ -36,7 +36,7 @@
           </div>
           <!-- Hidden Toggle Class -->
           <div v-bind:class="{ 'hidden': !extended }"  class="mt-1">
-            <p class="whitespace-pre-wrap text-sm text-gray-600">
+            <p class="whitespace-pre-line text-sm text-gray-600">
               {{abilities.description}}
               <span v-if="abilities.gmNote" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{abilities.gmNote}}</span>
             </p>
