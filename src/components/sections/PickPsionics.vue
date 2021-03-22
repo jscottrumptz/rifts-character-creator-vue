@@ -5,8 +5,8 @@
     <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
       <h2 class="text-white p-5">Psionic Picks Remaining: {{remaining}}</h2>
       <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-        <ul v-for="(psionics,index) in selectedPsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200 ">
-          <li v-on:click="picked(index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
+        <ul class="text-gray-300 divide-y divide-gray-600 ">
+          <li v-for="(psionics,index) in selectedPsionics" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
         </ul>
       </div>
       <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
@@ -18,27 +18,27 @@
     </div>
 
     <!-- Psionic Lists -->
-    <div v-if="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
+    <div v-show="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
       <!-- Nav & Tabs -->
       <div class="sm:hidden">
         <label for="tabs" class="sr-only">Select a tab</label>
         <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-          <option value="healing">Healing Psionics</option>
-          <option value="physical">Physical Psionics</option>
-          <option value="sensitive">Sensitive Psionics</option>
+          <option v-if="healingActive" value="healing">Healing Psionics</option>
+          <option v-if="physicalActive" value="physical">Physical Psionics</option>
+          <option v-if="sensitiveActive" value="sensitive">Sensitive Psionics</option>
         </select>
       </div>
       <div class="hidden sm:block">
         <nav class="flex space-x-4 m-3" aria-label="Tabs">
-          <a v-on:click="toggle='healing'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
+          <a v-if="healingActive" v-on:click="toggle='healing'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'healing', 'bg-gray-100 text-gray-700': toggle === 'healing'}" href="#" onclick="return false;">
             Healing Psionics
           </a>
-          <a v-on:click="toggle='physical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
+          <a v-if="physicalActive" v-on:click="toggle='physical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'physical', 'bg-gray-100 text-gray-700': toggle === 'physical'}" href="#" onclick="return false;">
             Physical Psionics
           </a>
-          <a v-on:click="toggle='sensitive'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
+          <a v-if="sensitiveActive" v-on:click="toggle='sensitive'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'sensitive', 'bg-gray-100 text-gray-700': toggle === 'sensitive'}" href="#" onclick="return false;">
             Sensitive Psionics
           </a>
@@ -46,21 +46,21 @@
       </div>
 
       <!-- Healing List -->
-      <div v-if="toggle==='healing'" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-        <ul v-for="(psionics,index) in healingPsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200 ">
-          <li v-on:click="selected('healing',index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }}</li>
+      <div v-show="toggle==='healing' && healingActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+        <ul class="text-gray-300 divide-y divide-gray-600 ">
+          <li v-for="(psionics,index) in healingPsionics" v-bind:key="index"  :id="'heal-'+ index" v-on:click="selected('healing',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
         </ul>
       </div>
 
-    <div v-if="toggle==='physical'" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-      <ul v-for="(psionics,index) in physicalPsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200">
-        <li v-on:click="selected('physical',index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }}</li>
+    <div v-show="toggle==='physical' && physicalActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+      <ul class="text-gray-300 divide-y divide-gray-600">
+        <li v-for="(psionics,index) in physicalPsionics" v-bind:key="index" :id="'phys-'+ index" v-on:click="selected('physical',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
       </ul>
     </div>
 
-    <div v-if="toggle==='sensitive'" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-      <ul v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200">
-        <li v-on:click="selected('sensitive',index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }}</li>
+    <div v-show="toggle==='sensitive' && sensitiveActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+      <ul class="text-gray-300 divide-y divide-gray-600">
+        <li v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" :id="'sense-'+ index" v-on:click="selected('sensitive',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
       </ul>
     </div>
       <button v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
@@ -107,36 +107,45 @@ name: "PickPsionics",
       selectedProperty: null,
       pickedPsionic: null,
       pickedProperty: null,
-      remaining: 8,
+      remaining: 8, //character.psionics.total;
       physicalActive: true,
       healingActive: true,
       sensitiveActive: true,
       tabsActive: true,
       healingCount: 0,
       physicalCount: 0,
-      sensitiveCount: 0
+      sensitiveCount: 0,
+      selectedId: null
     }
   },methods: {
     selected: function (group,index){
       let psionicGroup = null;
+      let listId = null;
       if(group === 'healing'){
         psionicGroup = this.healingPsionics
+        listId = 'heal-'+[index]
       } else if (group === 'physical'){
         psionicGroup = this.physicalPsionics
+        listId = 'phys-'+[index]
       } else {
         psionicGroup = this.sensitivePsionics
+        listId = 'sense-'+[index]
       }
-
       this.selectedPsionic = psionicGroup[index];
       this.selectedProperty = index;
       this.displayPsionic = [];
       this.displayPsionic.push(psionicGroup[index]);
+      console.log(listId)
+      this.selectedBg(listId)
     },
     picked: function (index){
       this.pickedPsionic = this.selectedPsionics[index];
       this.displayPsionic = [];
       this.displayPsionic.push(this.selectedPsionics[index]);
       this.pickedProperty = index;
+      let listId = 'pick-'+[index]
+      console.log(this.selectedId)
+      this.selectedBg(listId)
     },
     addSelected: function (){
       const prop = this.selectedProperty;
@@ -148,6 +157,7 @@ name: "PickPsionics",
           this.healingCount++;
         } else if (psionic.group === 'Physical'){
           delete this.physicalPsionics[prop]
+
           this.physicalCount++;
         } else {
           delete this.sensitivePsionics[prop]
@@ -155,8 +165,11 @@ name: "PickPsionics",
         }
         this.selectedPsionic = null;
         this.selectedProperty = null;
+        this.selectedId = null;
+        console.log(this.selectedId)
         this.init();
       }
+      this.selectedId = null
     },
     removePicked: function (){
       const prop = this.pickedProperty;
@@ -175,6 +188,8 @@ name: "PickPsionics",
         delete this.selectedPsionics[prop]
         this.pickedPsionic = null;
         this.pickedProperty = null
+        this.selectedId = null;
+        console.log(this.selectedId)
         this.init();
       }
     },
@@ -197,33 +212,38 @@ name: "PickPsionics",
       if ((psionicHealing > 0 && psionicStart === 2) || (psionicHealing > 5 && psionicStart === 8)) {
         this.physicalActive = false;
         this.sensitiveActive = false;
-      }
-      if ((psionicPhysical > 0 && psionicStart === 2) || (psionicPhysical > 5 && psionicStart === 8)) {
+      } else if ((psionicPhysical > 0 && psionicStart === 2) || (psionicPhysical > 5 && psionicStart === 8)) {
         this.healingActive = false;
         this.sensitiveActive = false;
-      }
-      if ((psionicSensitive > 0 && psionicStart === 2) || (psionicSensitive > 5 && psionicStart === 8)) {
+      } else if ((psionicSensitive > 0 && psionicStart === 2) || (psionicSensitive > 5 && psionicStart === 8)) {
         this.physicalActive = false;
         this.healingActive = false;
+      } else {
+        this.physicalActive = true;
+        this.healingActive = true;
+        this.sensitiveActive = true;
       }
 
       // either show the finished button or the tabs
-      if (availablePicks === 0) {
-        this.tabsActive = false;
-      } else {
-        this.tabsActive = true;
-      }
+      this.tabsActive = availablePicks !== 0;
 
       // update remaining psionics counter
       this.remaining = availablePicks;
       console.log(this.remaining)
     },
+    selectedBg: function (newId){
+      if (this.selectedId != null) {
+        document.getElementById(this.selectedId).removeAttribute('style')
+        this.selectedId = null;
+      }
+      document.getElementById(newId).style.backgroundColor = 'rgba(165,180,252,1)';
+      document.getElementById(newId).style.color = 'rgba(17,24,39,1)';
+      console.log('changing' + newId)
+      this.selectedId = newId;
+    },
     finalizeSelections: function (){
       console.log(this.selectedPsionics)
       console.log('Psionics added to the character!')
-    },
-    mounted: function () {
-      this.init();
     }
   }
 }
