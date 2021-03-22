@@ -1,9 +1,9 @@
 <template>
-  <div class="p-10 grid grid-cols-4 gap-4">
+  <div class="grid grid-cols-4 gap-4">
 
     <!-- Selected List -->
     <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-      <h2 class="text-white p-5">Psionic Picks Remaining:</h2>
+      <h2 class="text-white p-5">Psionic Picks Remaining: {{remaining}}</h2>
       <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
         <ul v-for="(psionics,index) in selectedPsionics" v-bind:key="index" class="text-gray-300 divide-y divide-gray-200 ">
           <li v-on:click="picked(index)" class="hover:bg-indigo-300 hover:text-gray-900 border-b border-gray-600 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
@@ -12,8 +12,13 @@
       <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
     </div>
 
+    <!-- Finalize Selections -->
+    <div v-if="!tabsActive" class="flex flex-wrap content-center">
+      <button v-on:click="finalizeSelections" class="bg-gray-700 font-medium rounded hover:bg-yellow-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Finalize Selections</button>
+    </div>
+
     <!-- Psionic Lists -->
-    <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
+    <div v-if="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
       <!-- Nav & Tabs -->
       <div class="sm:hidden">
         <label for="tabs" class="sr-only">Select a tab</label>
@@ -78,6 +83,7 @@
           {{displayPsionic[0].note}}</div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -105,7 +111,6 @@ name: "PickPsionics",
       physicalActive: true,
       healingActive: true,
       sensitiveActive: true,
-      finalizePsionicsActive: false,
       tabsActive: true,
       healingCount: 0,
       physicalCount: 0,
@@ -150,8 +155,7 @@ name: "PickPsionics",
         }
         this.selectedPsionic = null;
         this.selectedProperty = null;
-        console.log(this.sensitiveCount)
-        this.$forceUpdate();
+        this.init();
       }
     },
     removePicked: function (){
@@ -171,8 +175,7 @@ name: "PickPsionics",
         delete this.selectedPsionics[prop]
         this.pickedPsionic = null;
         this.pickedProperty = null
-        console.log(this.sensitiveCount)
-        this.$forceUpdate();
+        this.init();
       }
     },
     init: function() {
@@ -192,29 +195,35 @@ name: "PickPsionics",
 
       // determine what tabs are available
       if ((psionicHealing > 0 && psionicStart === 2) || (psionicHealing > 5 && psionicStart === 8)) {
-        this.physicalActive(false);
-        this.sensitiveActive(false);
+        this.physicalActive = false;
+        this.sensitiveActive = false;
       }
       if ((psionicPhysical > 0 && psionicStart === 2) || (psionicPhysical > 5 && psionicStart === 8)) {
-        this.healingActive(false);
-        this.sensitiveActive(false);
+        this.healingActive = false;
+        this.sensitiveActive = false;
       }
       if ((psionicSensitive > 0 && psionicStart === 2) || (psionicSensitive > 5 && psionicStart === 8)) {
-        this.physicalActive(false);
-        this.healingActive(false);
+        this.physicalActive = false;
+        this.healingActive = false;
       }
 
       // either show the finished button or the tabs
       if (availablePicks === 0) {
-        this.finalizePsionicsActive(true);
-        this.tabsActive(false);
+        this.tabsActive = false;
       } else {
-        this.finalizePsionicsActive(false);
-        this.tabsActive(true);
+        this.tabsActive = true;
       }
 
       // update remaining psionics counter
       this.remaining = availablePicks;
+      console.log(this.remaining)
+    },
+    finalizeSelections: function (){
+      console.log(this.selectedPsionics)
+      console.log('Psionics added to the character!')
+    },
+    mounted: function () {
+      this.init();
     }
   }
 }
