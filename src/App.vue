@@ -1,5 +1,5 @@
 <template>
-  <div v-if="characters" id="app">
+  <div id="app">
     <!-- Header -->
     <div class="bg-gray-900">
       <div class="md:flex md:items-center   md:justify-between">
@@ -12,7 +12,7 @@
             Character Creator <span class="text-xl">v1.0</span>
           </h2>
         </div>
-        <div class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
+        <div v-if="characters" class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
           <!-- Character Selector -->
           <label for="selectCharacter" class="block text-base font-medium text-gray-300">{{characters[0].username}}'s Characters</label>
           <div class="mt-1.5 relative">

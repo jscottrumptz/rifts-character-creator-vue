@@ -89,7 +89,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 import Attributes from "@/components/sections/Attributes";
 import Abilities from "@/components/sections/Abilities";
 import Inventory from "@/components/sections/Inventory";
