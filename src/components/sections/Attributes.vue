@@ -43,7 +43,7 @@
 export default {
   name: "Attributes",
   props: {
-    attributes: Array
+    attributes: Object
   }
 }
 </script>

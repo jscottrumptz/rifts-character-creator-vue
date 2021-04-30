@@ -150,7 +150,6 @@ name: "PickPsionics",
       this.selectedProperty = index;
       this.displayPsionic = [];
       this.displayPsionic.push(psionicGroup[index]);
-      console.log(listId)
       this.selectedBg(listId)
     },
     picked: function (index){
@@ -159,7 +158,6 @@ name: "PickPsionics",
       this.displayPsionic.push(this.selectedPsionics[index]);
       this.pickedProperty = index;
       let listId = 'pick-'+[index]
-      console.log(this.selectedId)
       this.selectedBg(listId)
     },
     addSelected: function (){
@@ -244,7 +242,6 @@ name: "PickPsionics",
 
       // update remaining psionics counter
       this.remaining = availablePicks;
-      console.log(this.remaining)
     },
     selectedBg: function (newId){
       if (this.selectedId != null) {
@@ -253,7 +250,6 @@ name: "PickPsionics",
       }
       document.getElementById(newId).style.backgroundColor = 'rgba(165,180,252,1)';
       document.getElementById(newId).style.color = 'rgba(17,24,39,1)';
-      console.log('changing to ' + newId)
       this.selectedId = newId;
     },
     finalizeSelections: function (){

@@ -23,7 +23,7 @@
                 {{chances.name}}
               </td>
               <!-- only show values that are not equal to 0 -->
-              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus !== 0" v-on="isActive=true" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
+              <td v-if="chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus !== 0" v-show="isActive=true" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
                 {{chances.initialValue + chances.attributeBonus + chances.occBonus + chances.raceBonus + chances.skillsBonus + chances.cyberneticBonus  + chances.otherBonus}}%
               </td>
             </tr>
@@ -40,7 +40,7 @@
 export default {
   name: "Chances",
   props: {
-    chances: Array
+    chances: Object
   },
   data: function(){
     return {

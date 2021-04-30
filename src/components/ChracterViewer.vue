@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="character">
     <!-- begin main area -->
     <div class="relative min-h-screen flex flex-col border-t border-indigo-300">
       <!-- 3 column wrapper -->
@@ -105,7 +105,7 @@ export default {
   name: 'CharacterViewer',
   components: {Bonuses, Saves, Chances, SecondaryStats, Info, Magic, Psionics, Inventory, Abilities, Attributes},
   props: {
-    character: Array
+    character: Object
   },
   data: function(){
     return {

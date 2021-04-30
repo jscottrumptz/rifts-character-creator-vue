@@ -100,7 +100,7 @@
 export default {
   name: "SecondaryStats",
   props: {
-    secondaryStats: Array
+    secondaryStats: Object
   }
 }
 </script>

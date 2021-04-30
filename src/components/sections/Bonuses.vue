@@ -17,7 +17,7 @@
             <tbody>
             <!-- V-For Bonuses Loop -->
             <tr v-for="(bonuses,index) in bonuses" v-bind:key="index" class="bg-white border-t border-gray-200" >
-              <td v-if="bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus !== 0" v-on="isActive=true" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td v-if="bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus !== 0" v-show="isActive=true" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{bonuses.name}}
               </td>
               <td v-if="bonuses.initialValue + bonuses.attributeBonus + bonuses.occBonus + bonuses.raceBonus + bonuses.skillsBonus + bonuses.cyberneticBonus  + bonuses.otherBonus !== 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
@@ -37,7 +37,7 @@
 export default {
   name: "Bonuses",
   props: {
-    bonuses: Array
+    bonuses: Object
   },
   data: function(){
     return {

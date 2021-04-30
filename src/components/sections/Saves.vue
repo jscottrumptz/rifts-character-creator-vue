@@ -17,7 +17,7 @@
             <tbody>
             <!-- V-For Chances Loop -->
             <tr v-for="(saves,index) in saves" v-bind:key="index" class="bg-white border-t border-gray-200" >
-              <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus !== 0" v-on="isActive=true" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus !== 0" v-show="isActive=true" colspan="2" class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 vs. {{saves.name}}
               </td>
               <td v-if="saves.initialValue + saves.attributeBonus + saves.occBonus + saves.raceBonus + saves.skillsBonus + saves.cyberneticBonus  + saves.otherBonus !== 0" class="px-6 py-2 whitespace-nowrap text-center text-sm text-gray-500">
@@ -37,7 +37,7 @@
 export default {
   name: "Saves",
   props: {
-    saves: Array
+    saves: Object
   },
   data: function(){
     return {

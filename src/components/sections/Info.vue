@@ -201,9 +201,9 @@
 export default {
 name: "Info",
   props: {
-    info: Array,
-    race: Array,
-    occ: Array,
+    info: Object,
+    race: Object,
+    occ: Object,
   },
   data: function(){
     return {

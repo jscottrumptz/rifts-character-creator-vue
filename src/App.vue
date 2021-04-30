@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div v-if="characters" id="app">
     <!-- Header -->
     <div class="bg-gray-900">
       <div class="md:flex md:items-center   md:justify-between">
@@ -18,7 +18,7 @@
           <div class="mt-1.5 relative">
             <select id="selectCharacter" v-model="toggle" v-on:change="onChange($event)" name="selectCharacter" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 pr-10 py-2 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
               <option value="character-viewer" disabled> Select a character... </option>
-              <option value="character-viewer" v-for="(characters,index) in characters" v-bind:key="index" :id="characters._id">{{characters.characterData.info.name}} | {{characters.characterData.race.name}} | {{characters.characterData.occ.name}}</option>
+              <option value="character-viewer" v-for="characters in characters" :key="characters._id" :id="characters._id">{{characters.characterData.info.name}} | {{characters.characterData.race.name}} | {{characters.characterData.occ.name}}</option>
               <option value="character-creator">* Create a new character</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">

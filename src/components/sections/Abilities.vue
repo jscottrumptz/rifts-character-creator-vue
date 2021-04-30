@@ -51,7 +51,7 @@
 export default {
   name: "Abilities",
   props: {
-    abilities: Array,
+    abilities: Object,
   },
   data: function(){
     return {
