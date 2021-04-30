@@ -38,7 +38,7 @@
 export default {
 name: "Inventory",
   props: {
-    inventory: Array
+    inventory: Object
   }
 }
 </script>

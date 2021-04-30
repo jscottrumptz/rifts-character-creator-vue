@@ -43,7 +43,7 @@
 export default {
 name: "Magic",
   props: {
-    magic: Array
+    magic: Object
   }
 }
 </script>

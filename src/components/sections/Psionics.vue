@@ -50,7 +50,7 @@
 export default {
 name: "Psionics",
   props: {
-    psionics: Array
+    psionics: Object
   },
   data: function(){
     return {
