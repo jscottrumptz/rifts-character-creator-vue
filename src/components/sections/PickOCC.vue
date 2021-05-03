@@ -2,8 +2,8 @@
   <div class="p-5 grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
 
     <!-- Race Selector -->
-    <div class="col-span-1 md:pl-5 md:pb-0 mr-0 ">
-      <div class="mt-0 relative">
+    <div class="col-span-1 md:pl-5 md:pb-0 mr-6 w-full max-w-xs">
+      <div class="mt-1.5 relative">
         <select id="selectRace" v-on:change="onChange($event)" name="selectRace" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 py-2 pr-10 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
           <option value="race-viewer" selected disabled> Select a race... </option>
           <option value="race-viewer" v-for="(races,index) in races" v-bind:key="index" :id="index" >{{races.name}}</option>
@@ -15,26 +15,16 @@
           </svg>
         </div>
       </div>
-      <img class="mt-5 border-4 border-gray-700 rounded-lg" v-if="race" v-bind:src="require('../../'+ race.image)" v-bind:alt="'Illustration of a ' + race.name">
-      <!-- Select Race Button -->
-      <div v-if="race" class="flex flex-col">
-      <button v-if="race" v-on:click="selectRace" class="mx-auto mt-5 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Select {{race.name}}</button>
-      </div>
+      <img class="pt-5" v-if="race" v-bind:src="require('../../'+ race.image)" v-bind:alt="'Illustration of a ' + race.name">
+      <button v-if="race" v-on:click="selectRace" class="place-self-center mt-3 bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-3 py-2 text-white">Select {{race.name}}</button>
     </div>
 
-    <!-- Stats & Button -->
+    <!-- Stats -->
     <div v-if="race" class="flex flex-col">
-      <div class="sm:-mx-6 lg:-mx-8 my-auto">
+      <div class="sm:-mx-6 lg:-mx-8">
         <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-700">
-              <tr>
-                <th colspan="2" scope="col" class="px-6 py-3 text-center text-xs font-medium text-white tracking-wider">
-                  {{race.name}} Rolls, Bonuses, and Psionics
-                </th>
-              </tr>
-              </thead>
               <tbody>
               <!-- Attribute Rolls -->
               <tr class="bg-white border-t text-left border-gray-200">
@@ -350,10 +340,10 @@
                         </span>
                 </td>
               </tr>
-              <!-- Other -->
+              <!-- Chances -->
               <tr class="bg-white border-t text-left border-gray-200">
                 <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Other
+                  Chances
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- Trust -->
@@ -380,6 +370,14 @@
                             <span v-if="race.impressBonus.bonus > 0">+</span>{{race.impressBonus.bonus}}%
                           </span>
                         </span>
+                </td>
+              </tr>
+              <!-- Currencies -->
+              <tr class="bg-white border-t text-left border-gray-200">
+                <td class="p-4 text-sm text-right font-medium text-gray-900">
+                  Currencies
+                </td>
+                <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- Credits -->
                   <span v-if="race.credits.amount" class="inline-flex items-center px-1">Credits:
                           <span class="pr-2 text-sm font-normal text-gray-500">{{race.credits.amount}}D{{race.credits.sides}}
@@ -415,15 +413,6 @@
                             <span v-if="race.tradableItems.bonus">+</span>{{race.tradableItems.bonus}}
                           </span>
                         </span>
-                </td>
-              </tr>
-              <!-- Psionics -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Psionics
-                </td>
-                <td class="py-2 pr-2 text-sm text-gray-700">
-                  {{race.psionics}}
                 </td>
               </tr>
               </tbody>
@@ -482,7 +471,7 @@
 const Races = require('../../../lib/Races/PickRace');
 
 export default {
-  name: "PickRace",
+  name: "PickOCC",
   data: function(){
     return {
       races: new Races,
