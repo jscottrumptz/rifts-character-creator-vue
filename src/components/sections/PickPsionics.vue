@@ -16,7 +16,7 @@
 
       <!-- Finalize Selections -->
       <div v-if="!tabsActive" class="flex flex-wrap content-center">
-        <button v-on:click="finalizeSelections" class="bg-gray-700 font-medium rounded hover:bg-yellow-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Finalize Selections</button>
+        <button v-on:click="finalizeSelections" class="mx-auto bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Finalize Selections</button>
       </div>
 
       <!-- Psionic Lists -->
