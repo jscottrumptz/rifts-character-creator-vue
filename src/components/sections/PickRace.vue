@@ -423,7 +423,7 @@
                   Psionics
                 </td>
                 <td class="py-2 pr-2 text-sm text-gray-700">
-                  {{race.psionics}}
+                  {{race.psionicsDesc}}
                 </td>
               </tr>
               </tbody>
@@ -434,7 +434,7 @@
     </div>
 
     <!-- Race Info -->
-    <div v-if="race" class="col-span1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
+    <div v-if="race" class="col-span1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
       <!-- Nav & Tabs -->
       <div class="sm:hidden m-3">
         <label for="tabs" class="sr-only">Select a tab</label>
@@ -463,16 +463,51 @@
 
       <!-- About Content -->
       <div v-show="toggle==='about' && aboutActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-          <p class="whitespace-pre-wrap text-gray-50">{{race.description}}</p>
+        <p class="text-gray-50 font-medium">Pronunciation: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{race.pronunciation}}</span></p>
+        <p class="text-gray-50 font-medium" v-if="race.alias">Also known as <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{race.alias}}</span></p>
+        <p class="text-gray-50 font-medium">Alignment: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{race.alignment}}</span></p>
+        <p class="text-gray-50 font-medium">Average Size: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{race.heightMin}}-{{race.heightMax}} {{race.sizeDesc}}</span></p>
+        <p class="text-gray-50 font-medium">Average Weight: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{race.weightMin}}-{{race.weightMax}} {{race.weightDesc}}</span></p>
+        <p class="text-gray-50 font-medium">Average Lifespan: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          <span v-if="race.lifespan.amount">{{race.lifespan.amount}}D{{race.lifespan.sides}}</span><span v-if="race.lifespan.bonus">+{{race.lifespan.bonus}}</span> {{race.lifespanDesc}}</span></p>
+        <br/>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.description}}</p>
+        <br v-if="race.disposition"/>
+        <p v-if="race.disposition" class="text-gray-50 font-medium">Disposition</p>
+        <p v-if="race.disposition" class="whitespace-pre-wrap text-gray-100">{{race.disposition}}</p>
+        <br v-if="race.habitat" />
+        <p v-if="race.habitat" class="text-gray-50 font-medium">Habitat</p>
+        <p v-if="race.habitat" class="whitespace-pre-wrap text-gray-100">{{race.habitat}}</p>
+        <br v-if="race.allies" />
+        <p v-if="race.allies" class="text-gray-50 font-medium">Alliances and Allies</p>
+        <p v-if="race.allies" class="whitespace-pre-wrap text-gray-100">{{race.allies}}</p>
+        <br v-if="race.rivals" />
+        <p v-if="race.rivals" class="text-gray-50 font-medium">Rivals and Enemies</p>
+        <p v-if="race.rivals" class="whitespace-pre-wrap text-gray-100">{{race.rivals}}</p>
       </div>
       <!-- OCC Content -->
       <div v-show="toggle==='stats' && statsActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
         <!-- Available OCCs -->
         <p class="whitespace-pre-wrap text-gray-50">{{race.availableOCCs}}</p>
       </div>
-      <!-- Abilities -->
+      <!-- Abilities, Skills, & Other Content -->
       <div v-show="toggle==='abilities' && abilitiesActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="text-gray-50">IQ: {{race.iqRoll.amount}}d{{race.iqRoll.sides}}</p>
+        <p class="text-gray-50 font-medium">Natural Abilities</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.abilitiesDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">RCC Skills</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.skillsDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Magic</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.magicDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Cybernetics and Bionics</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.cyberneticsDesc}}</p>
       </div>
       </div>
   </div>
