@@ -36,7 +36,7 @@
     <!-- Character Creator -->
     <CharacterCreator v-if="toggle==='character-creator'"/>
     <!-- Character Viewer - set key to character to force component reload when the character changes -->
-    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData" :key="character"/>
+    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData" :key="character[0]._id"/>
 
   </div>
 </template>
@@ -45,9 +45,20 @@
 import Home from './components/Home.vue'
 import CharacterCreator from "@/components/CharacterCreator";
 import CharacterViewer from "@/components/ChracterViewer";
-import axios from "axios";
+// import axios from "axios";
+import gql from 'graphql-tag'
 
 export default {
+  apollo: {
+    characters: gql`query queryAllCharacters {
+      characters {
+        _id
+        characterData
+        createdAt
+        username
+      }
+    }`
+  },
   name: 'App',
   components: {
     CharacterViewer,
@@ -62,18 +73,10 @@ export default {
     }
   },
   methods: {
-    getCharacters: function () {
-      axios
-        .get('http://localhost:3001/api/characters/')
-        .then((response) => (this.characters = response.data))
-    },
     onChange(event) {
       const charId = event.target.selectedOptions[0].id
       this.character = this.characters.filter(chars => chars._id === charId)
     }
-  },
-  mounted: function () {
-    this.getCharacters();
   }
 }
 </script>
