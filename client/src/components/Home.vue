@@ -1,20 +1,22 @@
 <template>
   <div>
-  <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
-    Home Page
-  </h2>
-  <PickRace/>
-  <PickPsionics/>
+    <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
+      Home Page
+    </h2>
+    <Login/>
+    <PickRace/>
+    <PickPsionics/>
   </div>
 </template>
 
 <script>
-import PickPsionics from "@/components/sections/PickPsionics";
-import PickRace from "@/components/sections/PickRace";
+import PickPsionics from "./sections/PickPsionics";
+import PickRace from "./sections/PickRace";
+import Login from "./sections/Login";
 
 export default {
   name: 'Home',
-  components: {PickRace, PickPsionics}
+  components: {Login, PickRace, PickPsionics}
 }
 </script>
 

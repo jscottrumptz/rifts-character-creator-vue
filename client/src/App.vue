@@ -43,8 +43,8 @@
 
 <script>
 import Home from './components/Home.vue'
-import CharacterCreator from "@/components/CharacterCreator";
-import CharacterViewer from "@/components/ChracterViewer";
+import CharacterCreator from "./components/CharacterCreator";
+import CharacterViewer from "./components/ChracterViewer";
 // import axios from "axios";
 import gql from 'graphql-tag'
 
