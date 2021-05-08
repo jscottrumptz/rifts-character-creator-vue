@@ -96,6 +96,15 @@
           </div>
 
           <div>
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
+              Re-enter Password
+            </label>
+            <div class="mt-1">
+              <input id="confirmPassword" v-model="confirmPassword" name="confirmPassword" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+          </div>
+
+          <div>
             <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Sign up
             </button>
@@ -153,6 +162,7 @@ export default {
       username: '',
       email: '',
       password: '',
+      confirmPassword: '',
       show: false,
       errorMessage: '',
       newAccount: false
@@ -161,26 +171,30 @@ export default {
   methods: {
     async handleSignUpFormSubmit(e) {
       e.preventDefault();
-
-      try {
-        const { data } = await this.$apollo.mutate({
-          mutation: gql`mutation addUser($username: String!, $password: String!, $email: String!) {
-            addUser(username: $username, password: $password, email: $email) {
-              token
-              user {
-                _id
-                username
-                email
+      if (this.password === this.confirmPassword) {
+        try {
+          const {data} = await this.$apollo.mutate({
+            mutation: gql`mutation addUser($username: String!, $password: String!, $email: String!) {
+              addUser(username: $username, password: $password, email: $email) {
+                token
+                user {
+                  _id
+                  username
+                  email
+                }
               }
-            }
-          }`,
-          variables: { email: this.email, password: this.password, username: this.username }
-        });
-        // put token in local storage
-        Auth.login(data.addUser.token);
-      } catch (e) {
+            }`,
+            variables: {email: this.email, password: this.password, username: this.username}
+          });
+          // put token in local storage
+          Auth.login(data.addUser.token);
+        } catch (e) {
+          this.show = true;
+          this.errorMessage = e.message;
+        }
+      } else {
         this.show = true;
-        this.errorMessage = e.message;
+        this.errorMessage = 'The passwords do not match';
       }
     },
     async handleLoginFormSubmit(e) {

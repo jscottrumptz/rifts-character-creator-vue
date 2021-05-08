@@ -1,15 +1,10 @@
 <template>
   <div>
     <Login v-if="!loggedIn"/>
-    <PickRace/>
-    <PickPsionics/>
   </div>
 </template>
 
 <script>
-import PickPsionics from "./sections/PickPsionics";
-import PickRace from "./sections/PickRace";
-
 import Login from "./sections/Login";
 
 export default {
@@ -17,7 +12,7 @@ export default {
   props: {
     loggedIn: Boolean
   },
-  components: {Login, PickRace, PickPsionics}
+  components: { Login }
 }
 </script>
 
