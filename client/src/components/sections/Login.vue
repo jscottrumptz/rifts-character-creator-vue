@@ -79,7 +79,6 @@ export default {
   methods: {
     async handleFormSubmit(e) {
       e.preventDefault();
-      console.log(this.email)
 
       try {
         const { data } = await this.$apollo.mutate({

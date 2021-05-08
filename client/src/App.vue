@@ -12,9 +12,9 @@
             Character Creator <span class="text-xl">v1.0</span>
           </h2>
         </div>
-        <div v-if="characters" class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
+        <div v-if="loggedIn" class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
           <!-- Character Selector -->
-          <label for="selectCharacter" class="block text-base font-medium text-gray-300">{{characters[0].username}}'s Characters</label>
+          <label v-if="characters" for="selectCharacter" class="block text-base font-medium text-gray-300">{{myName}}'s Characters</label>
           <div class="mt-1.5 relative">
             <select id="selectCharacter" v-model="toggle" v-on:change="onChange($event)" name="selectCharacter" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 pr-10 py-2 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
               <option value="character-viewer" disabled> Select a character... </option>
@@ -32,7 +32,7 @@
       </div>
     </div>
     <!-- Home Page -->
-    <Home v-if="toggle==='home-page'"/>
+    <Home v-if="toggle==='home-page'" :loggedIn="loggedIn"/>
     <!-- Character Creator -->
     <CharacterCreator v-if="toggle==='character-creator'"/>
     <!-- Character Viewer - set key to character to force component reload when the character changes -->
@@ -47,18 +47,9 @@ import CharacterCreator from "./components/CharacterCreator";
 import CharacterViewer from "./components/ChracterViewer";
 // import axios from "axios";
 import gql from 'graphql-tag'
+import Auth from './utils/auth';
 
 export default {
-  apollo: {
-    characters: gql`query queryAllCharacters {
-      characters {
-        _id
-        characterData
-        createdAt
-        username
-      }
-    }`
-  },
   name: 'App',
   components: {
     CharacterViewer,
@@ -67,16 +58,49 @@ export default {
   },
   data: function(){
     return {
+      user: null,
+      myName: null,
       toggle: "home-page",
       characters: null,
-      character: null
+      character: null,
+      loggedIn: Auth.loggedIn()
     }
   },
   methods: {
     onChange(event) {
       const charId = event.target.selectedOptions[0].id
       this.character = this.characters.filter(chars => chars._id === charId)
+    },
+    async getUser() {
+      this.myName = Auth.getProfile().data.username
+      const { data } = await this.$apollo.query({
+        query: gql`query getSingleUser($username: String!) {
+        user(username: $username) {
+          _id
+          username
+          email
+          friendCount
+          friends {
+            _id
+            username
+          }
+          characterCount
+          characters{
+            _id
+            createdAt
+            username
+            characterData
+          }
+        }
+      }`,
+        variables: { username: this.myName }
+      });
+      this.user = data.user;
+      this.characters = this.user.characters
     }
+  },
+  mounted: function () {
+    this.getUser();
   }
 }
 </script>

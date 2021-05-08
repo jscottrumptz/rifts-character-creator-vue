@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
       Home Page
     </h2>
-    <Login/>
+    <Login v-if="!loggedIn"/>
     <PickRace/>
     <PickPsionics/>
   </div>
@@ -16,6 +16,9 @@ import Login from "./sections/Login";
 
 export default {
   name: 'Home',
+  props: {
+    loggedIn: Boolean
+  },
   components: {Login, PickRace, PickPsionics}
 }
 </script>
