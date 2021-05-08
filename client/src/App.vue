@@ -12,22 +12,27 @@
             Character Creator <span class="text-xl">v1.0</span>
           </h2>
         </div>
-        <div v-if="loggedIn" class="pl-5 md:pl-0 pb-5 md:pb-0 mr-6 w-full max-w-xs">
-          <!-- Character Selector -->
-          <label v-if="characters" for="selectCharacter" class="block text-base font-medium text-gray-300">{{myName}}'s Characters</label>
-          <div class="mt-1.5 relative">
-            <select id="selectCharacter" v-model="toggle" v-on:change="onChange($event)" name="selectCharacter" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 pr-10 py-2 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
-              <option value="character-viewer" disabled> Select a character... </option>
-              <option value="character-viewer" v-for="characters in characters" :key="characters._id" :id="characters._id">{{characters.characterData.info.name}} | {{characters.characterData.race.name}} | {{characters.characterData.occ.name}}</option>
-              <option value="character-creator">* Create a new character</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-              <!-- Heroicon name: solid/chevron-down -->
-              <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
+        <div v-if="loggedIn" class="inline-flex">
+          <div class="pl-5 md:pl-0 pb-5  md:pb-0 mr-6 w-full max-w-xs">
+            <!-- Character Selector -->
+            <label v-if="characters" for="selectCharacter" class="block text-base font-medium text-gray-300">{{myName}}'s Characters</label>
+            <div class="mt-1.5 relative">
+              <select id="selectCharacter" v-model="toggle" v-on:change="onChange($event)" name="selectCharacter" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 pr-10 py-2 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
+                <option value="character-viewer" disabled> Select a character... </option>
+                <option value="character-viewer" v-for="characters in characters" :key="characters._id" :id="characters._id">{{characters.characterData.info.name}} | {{characters.characterData.race.name}} | {{characters.characterData.occ.name}}</option>
+                <option value="character-creator">* Create a new character</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
+                <!-- Heroicon name: solid/chevron-down -->
+                <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
             </div>
           </div>
+          <button v-on:click="logout()" type="button" class=" mb-5 mr-6 mt-8 inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+            Logout
+          </button>
         </div>
       </div>
     </div>
@@ -97,6 +102,9 @@ export default {
       });
       this.user = data.user;
       this.characters = this.user.characters
+    },
+    logout() {
+      Auth.logout();
     }
   },
   mounted: function () {

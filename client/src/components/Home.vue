@@ -4,6 +4,7 @@
       Home Page
     </h2>
     <Login v-if="!loggedIn"/>
+    <Signup v-if="!loggedIn"/>
     <PickRace/>
     <PickPsionics/>
   </div>
@@ -13,13 +14,14 @@
 import PickPsionics from "./sections/PickPsionics";
 import PickRace from "./sections/PickRace";
 import Login from "./sections/Login";
+import Signup from "./sections/Signup";
 
 export default {
   name: 'Home',
   props: {
     loggedIn: Boolean
   },
-  components: {Login, PickRace, PickPsionics}
+  components: {Signup, Login, PickRace, PickPsionics}
 }
 </script>
 
