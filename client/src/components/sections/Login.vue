@@ -112,7 +112,6 @@
         </form>
       </div>
     </div>
-
     <!-- Error notification -->
     <div aria-live="assertive" class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
       <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
@@ -159,20 +158,26 @@ export default {
   name: "Login",
   data: function(){
     return {
+      // fields for mutations
       username: '',
       email: '',
       password: '',
       confirmPassword: '',
+      // toggle for error popup
       show: false,
       errorMessage: '',
+      // toggle for login/create user
       newAccount: false
     }
   },
   methods: {
     async handleSignUpFormSubmit(e) {
+      // don't reload page
       e.preventDefault();
+      // make sure the passwords match
       if (this.password === this.confirmPassword) {
         try {
+          // create a new user and return an auth token
           const {data} = await this.$apollo.mutate({
             mutation: gql`mutation addUser($username: String!, $password: String!, $email: String!) {
               addUser(username: $username, password: $password, email: $email) {
@@ -189,18 +194,23 @@ export default {
           // put token in local storage
           Auth.login(data.addUser.token);
         } catch (e) {
+          // make error popup visible
           this.show = true;
+          // write error message to popup
           this.errorMessage = e.message;
         }
       } else {
+        // make error popup visible
         this.show = true;
+        // write error message to popup
         this.errorMessage = 'The passwords do not match';
       }
     },
     async handleLoginFormSubmit(e) {
+      // don't reload page
       e.preventDefault();
-
       try {
+        // login the user and return an auth token
         const { data } = await this.$apollo.mutate({
           mutation: gql`mutation login($email: String!, $password: String!) {
           login(email: $email, password: $password) {
@@ -216,7 +226,9 @@ export default {
         // put token in local storage
         Auth.login(data.login.token);
       } catch (e) {
+        // make error popup visible
         this.show = true;
+        // write error message to popup
         this.errorMessage = e.message;
       }
     }
