@@ -538,8 +538,17 @@ export default {
       this.race = this.races[raceName]
     },
     selectRace(){
-      console.log(this.race)
-      console.log(this.newCharacter)
+      console.log(this.race);
+      this.newCharacter.race = this.race;
+      console.log(this.newCharacter);
+      this.newCharacter.attributes.rollAttributes(this.newCharacter.race);
+      this.newCharacter.race.rollBonuses(this.newCharacter);
+      this.newCharacter.race.rollSecondary(this.newCharacter);
+      this.newCharacter.race.randomPsionics(this.newCharacter);
+      this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
+      console.log(this.newCharacter.attributes.feebleTest());
+      console.log(this.newCharacter.attributes);
+      console.log(this.newCharacter.bonuses);
     }
   }
 }
