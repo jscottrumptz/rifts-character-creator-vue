@@ -339,7 +339,7 @@ class OCC {
     }
 
     rollSecondary(character) {
-
+        console.log(character)
     }
 }
 

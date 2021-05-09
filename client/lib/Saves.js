@@ -60,7 +60,7 @@ class Saves {
 
     getInsanity() {
         return this.insanity;
-    };
+    }
 
     getSpell() {
         return this.spell;
@@ -72,11 +72,11 @@ class Saves {
 
     getDisease() {
         return this.disease;
-    };
+    }
 
     getDrugs() {
         return this.drugs;
-    };
+    }
 
     getRitual() {
         return this.ritual;

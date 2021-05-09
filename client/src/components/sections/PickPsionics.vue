@@ -108,7 +108,7 @@ const PhysicalPsionics = require('../../../lib/Psinoics/PhysicalPsionics');
 const SensitivePsionics = require('../../../lib/Psinoics/SensitivePsionics');
 
 export default {
-name: "PickPsionics",
+  name: "PickPsionics",
   data: function(){
     return {
       componentKey: 0,
@@ -132,7 +132,8 @@ name: "PickPsionics",
       sensitiveCount: 0,
       selectedId: null
     }
-  },methods: {
+  },
+  methods: {
     selected: function (group,index){
       let psionicGroup = null;
       let listId = null;

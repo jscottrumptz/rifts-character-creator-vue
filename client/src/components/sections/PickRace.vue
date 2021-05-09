@@ -518,6 +518,9 @@ const Races = require('../../../lib/Races/PickRace');
 
 export default {
   name: "PickRace",
+  props: {
+    newCharacter: Object
+  },
   data: function(){
     return {
       races: new Races,
@@ -533,10 +536,10 @@ export default {
     onChange(event) {
       const raceName = event.target.selectedOptions[0].id
       this.race = this.races[raceName]
-      console.log(this.race)
     },
     selectRace(){
       console.log(this.race)
+      console.log(this.newCharacter)
     }
   }
 }

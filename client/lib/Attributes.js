@@ -19,47 +19,47 @@ class Attributes {
     // return the iq object
     getIq() {
         return this.iq;
-    };
+    }
 
     // return the me object
     getMe() {
         return this.me;
-    };
+    }
 
     // return the ma object
     getMa() {
         return this.ma;
-    };
+    }
 
     // return the ps object
     getPs() {
         return this.ps;
-    };
+    }
 
     // return the pp object
     getPp() {
         return this.pp;
-    };
+    }
 
     // return the pe object
     getPe() {
         return this.pe;
-    };
+    }
 
     // return the pd object
     getPb() {
         return this.pb;
-    };
+    }
 
     // return the spd object
     getSpd() {
         return this.spd;
-    };
+    }
 
     // return the strType object
     getStrType() {
         return this.strType;
-    };
+    }
 
     // roll one of the 8 attributes for the character based on it's race
     rollAttribute(race, sides, amount, multiplier, bonus) {
@@ -95,7 +95,7 @@ class Attributes {
         }
 
         return new Attribute(attributeRoll, multiplier, bonus, feeble);
-    };
+    }
 
     // roll all of the character's starting 8 attributes based on it's race
     rollAttributes(race) {
@@ -115,7 +115,7 @@ class Attributes {
         this.pb.name = 'PB';
         this.spd = this.rollAttribute(race.name, race.spdRoll.sides, race.spdRoll.amount, race.spdRoll.multiplier, race.spdRoll.bonus);
         this.spd.name = 'Spd';
-    };
+    }
 
     // test each of the current attribute totals to see if they are feeble
     feebleTest() {
@@ -128,7 +128,7 @@ class Attributes {
             }
         }
         return { feebleCount, feebleArr };
-    };
+    }
 
     // test current attribute totals to see if the qualify for attribute bonuses
     attributeBonusTest(character) {
@@ -140,8 +140,8 @@ class Attributes {
                 switch (attribute) {
                     // IQ bonuses
                     case 'iq':
-                        let iq = this[attribute].total;
-                        let iqOver = 0;
+                        var iq = this[attribute].total;
+                        var iqOver = 0;
                         if (iq > 30) {
                             iqOver = ~~((iq-30)/5) * 2
                             character.bonuses.perception.attributeBonus = ~~((iq-30)/10)
@@ -155,7 +155,7 @@ class Attributes {
                         break;
                     // ME bonuses
                     case 'me':
-                        let me = this[attribute].total;
+                        var me = this[attribute].total;
                         if (me > 30) {
                             me = 30;
                         }
@@ -168,11 +168,11 @@ class Attributes {
                         break;
                     // MA bonuses
                     case 'ma':
-                        let ma = this[attribute].total;
+                        var ma = this[attribute].total;
                         if (ma > 30) {
                             ma = 30;
                         }
-                        let maBonus = 35 + ((ma - 15) * 5);
+                        var maBonus = 35 + ((ma - 15) * 5);
                         if (ma > 24 && ma < 28) {
                             maBonus = 80 + ((ma - 24) * 4);
                         }
@@ -187,12 +187,12 @@ class Attributes {
                         break;
                     // PS bonuses
                     case 'ps':
-                        let ps = this[attribute].total;
+                        var ps = this[attribute].total;
                         character.bonuses.handDamage.attributeBonus = ps - 15;
                         break;
                     // PP bonuses
                     case 'pp':
-                        let pp = this[attribute].total;
+                        var pp = this[attribute].total;
                         if (pp > 30) {
                             character.bonuses.initiative.attributeBonus = ~~((pp-31)/3) + 1
                             if (pp > 45) {
@@ -206,11 +206,11 @@ class Attributes {
                         break;
                     // PE bonuses
                     case 'pe':
-                        let pe = this[attribute].total;
+                        var pe = this[attribute].total;
                         if (pe > 30) {
                             pe = 30;
                         }
-                        let peBonus = 3 + (pe - 15);
+                        var peBonus = 3 + (pe - 15);
                         if (pe > 17) {
                             peBonus = 4 + ((pe - 17) * 2);
                         }
@@ -221,11 +221,11 @@ class Attributes {
                         break;
                     // PB bonuses
                     case 'pb':
-                        let pb = this[attribute].total;
+                        var pb = this[attribute].total;
                         if (pb > 30) {
                             pb = 30;
                         }
-                        let pbBonus = 25 + ((pb - 15) * 5);
+                        var pbBonus = 25 + ((pb - 15) * 5);
                         if (pb > 26 && pb < 29) {
                             pbBonus = 80 + ((pb - 26) * 3);
                         }
@@ -238,7 +238,7 @@ class Attributes {
                 }
             }
         }
-    };
+    }
 
     // convert the current spd value to mph and km per hour values
     speedConversion() {
@@ -291,13 +291,13 @@ class Attributes {
         if (spd > 292) {
             return '200mph (321km per hour)';
         }
-    };
+    }
 
     // return the yards per minute
-    get ypm() { return this.spd.total * 20 };
+    get ypm() { return this.spd.total * 20 }
 
     // return the yards per melee round
-    get ypmr() { return this.spd.total * 5 };
+    get ypmr() { return this.spd.total * 5 }
 
     // not sure how I am going to handle the storage of carry/lift/throw etc... 
     // however, I worked out a method for calculating carry and throw
@@ -314,23 +314,23 @@ class Attributes {
         if (ps > 16) {
             this.carry = ps * 20
             this.lift = ps* 40
-        };
+        }
 
         if (this.strType === 'Robot' && ps > 17) {
             this.carry = ps * 25
             this.lift = ps * 50
-        };
+        }
 
         if (this.strType === 'Giant Robot') {
             this.carry = ps * 100
             this.lift = ps * 200
-        };
+        }
 
         if (this.strType === 'Supernatural' && ps < 18) {
             this.carry = ps * 20
             this.lift = ps* 40
             this.duration = pe * 60
-        };
+        }
 
         if (this.strType === 'Supernatural' && ps > 17) {
         
@@ -341,9 +341,9 @@ class Attributes {
                 // +30% bonus for every 5 points above 30
                 this.carry = this.carry * ~~((90-30)/5) * 3/10
                 this.lift = this.lift * ~~((90-30)/5) * 3/10
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
 
 module.exports = Attributes;

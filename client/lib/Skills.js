@@ -1,4 +1,3 @@
-const Skill = require('./Skill');
 const SkillGroup = require('./SkillGroup');
 const StatValue = require('./StatValue')
 

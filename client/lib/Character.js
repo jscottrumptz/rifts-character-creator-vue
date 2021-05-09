@@ -49,52 +49,52 @@ class Character {
         this.abilities = abilities;
         this.cybernetics = cybernetics;
         this.inventory = inventory;
-    };
+    }
 
 
     getInfo() {
         return this.info;
-    };
+    }
 
     getRace() {
         return this.race;
-    };
+    }
 
     getOcc() {
         return this.occ;
-    };
+    }
 
     getAttributes() {
         return this.attributes;
-    };
+    }
 
     getSecondaryStats() {
         return this.secondaryStats;
-    };
+    }
 
     getBonuses() {
         return this.bonuses;
-    };
+    }
 
     getSaves() {
         return this.saves;
-    };
+    }
 
     getChances() {
         return this.chances;
-    };
+    }
 
     getCurrency() {
         return this.currency;
-    };
+    }
 
     getPsionics() {
         return this.psionics;
-    };
+    }
 
     getSpells() {
         return this.spells;
-    };
+    }
 
     getHandToHand() {
         return this.handToHand;
@@ -102,19 +102,19 @@ class Character {
 
     getSkills() {
         return this.skills;
-    };
+    }
 
     getAbilities() {
         return this.abilities;
-    };
+    }
 
     getCybernetics() {
         return this.cybernetics;
-    };
+    }
 
     getInventory() {
         return this.inventory;
-    };
-};
+    }
+}
 
 module.exports = Character;
