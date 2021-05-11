@@ -549,6 +549,7 @@ export default {
       console.log(this.newCharacter.attributes.feebleTest());
       console.log(this.newCharacter.attributes);
       console.log(this.newCharacter.bonuses);
+      console.log(this.newCharacter.psionics.ability)
     }
   }
 }

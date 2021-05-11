@@ -3,8 +3,8 @@
     <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
       Create a New Character
     </h2>
-    <PickRace :newCharacter="newCharacter"/>
-    <PickPsionics/>
+    <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
+    <PickPsionics v-if="newCharacter.psionics.ability != 'None'" :newCharacter="newCharacter"/>
   </div>
 </template>
 

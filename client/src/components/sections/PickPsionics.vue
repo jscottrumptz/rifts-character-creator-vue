@@ -1,6 +1,6 @@
 <template>
   <div class="px-5">
-    <p class="text-white text-xl font-medium p-5" >This character is a Major Psionic</p>
+    <p class="text-white text-xl font-medium p-5" >This character is a {{newCharacter.psionics.ability}} Psionic</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
@@ -109,6 +109,9 @@ const SensitivePsionics = require('../../../lib/Psinoics/SensitivePsionics');
 
 export default {
   name: "PickPsionics",
+  props: {
+    newCharacter: Object
+  },
   data: function(){
     return {
       componentKey: 0,
@@ -122,7 +125,7 @@ export default {
       selectedProperty: null,
       pickedPsionic: null,
       pickedProperty: null,
-      remaining: 8, //character.psionics.total;
+      remaining: null,
       physicalActive: true,
       healingActive: true,
       sensitiveActive: true,
@@ -165,13 +168,15 @@ export default {
       const prop = this.selectedProperty;
       const psionic = this.selectedPsionic
       if (psionic !== null){
+        // create the same object property in selectedPsionics and copy the selected object to it
         this.selectedPsionics[prop] = psionic
+        // create the same object property in newCharacter's known psionics and copy the selected object to it
+        this.newCharacter.psionics.known[prop] = psionic
         if(psionic.group === 'Healing'){
           delete this.healingPsionics[prop]
           this.healingCount++;
         } else if (psionic.group === 'Physical'){
           delete this.physicalPsionics[prop]
-
           this.physicalCount++;
         } else {
           delete this.sensitivePsionics[prop]
@@ -200,6 +205,7 @@ export default {
           this.sensitiveCount--;
         }
         delete this.selectedPsionics[prop]
+        delete this.newCharacter.psionics.known[prop]
         this.pickedPsionic = null;
         this.pickedProperty = null
         this.selectedId = null;
@@ -209,10 +215,14 @@ export default {
     },
     init: function() {
       let psionicPicked = Object.keys(this.selectedPsionics).length;
-      let psionicStart = 8 //character.psionics.total;
+      let psionicStart = 8;
       let psionicHealing = this.healingCount
       let psionicPhysical = this.physicalCount
       let psionicSensitive = this.sensitiveCount
+
+      if(this.newCharacter.psionics.ability === 'Minor') {
+        psionicStart = 2
+      }
 
       // determine how many picks are left
       let availablePicks = psionicStart - psionicPicked
@@ -254,9 +264,12 @@ export default {
       this.selectedId = newId;
     },
     finalizeSelections: function (){
-      console.log(this.selectedPsionics)
+      console.log(this.newCharacter.psionics.known)
       console.log('Psionics added to the character!')
     }
+  },
+  mounted: function () {
+    this.init();
   }
 }
 </script>
