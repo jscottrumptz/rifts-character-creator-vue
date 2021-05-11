@@ -19,17 +19,17 @@
           <div class="flex justify-between space-x-3">
             <div class="min-w-0 flex-1">
               <p class="text-lg font-medium text-gray-900 truncate">{{psionics.name}}</p>
-              <p class="text-sm mb-2 text-gray-500">({{psionics.psionic_group.name}})</p>
+              <p class="text-sm mb-2 text-gray-500">({{psionics.group}})</p>
               <p class="text-sm p-2 bg-gray-200 font-medium text-gray-700">
               <span v-if="psionics.cost" class="text-xs">Cost: <span class="font-normal"> {{psionics.cost}} </span><br></span>
               <span v-if="psionics.range" class="text-xs">Range: <span class="font-normal"> {{psionics.range}} </span><br></span>
               <span v-if="psionics.duration" class="text-xs">Duration: <span class="font-normal"> {{psionics.duration}} </span><br></span>
               <span v-if="psionics.damage" class="text-xs">Damage: <span class="font-normal"> {{psionics.damage}} </span><br></span>
-              <span v-if="psionics.saving_throw" class="text-xs">Saving Throw: <span class="font-normal"> {{psionics.saving_throw}} </span><br></span>
-              <span v-if="psionics.trance_length" class="text-xs">Trance Length: <span class="font-normal"> {{psionics.trance_length}} </span><br></span>
-              <span v-if="psionics.base_skill" class="text-xs">Base Skill: <span class="font-normal"> {{psionics.base_skill}} </span><br></span>
+              <span v-if="psionics.savingThrow" class="text-xs">Saving Throw: <span class="font-normal"> {{psionics.savingThrow}} </span><br></span>
+              <span v-if="psionics.lengthOfTrance" class="text-xs">Trance Length: <span class="font-normal"> {{psionics.lengthOfTrance}} </span><br></span>
+              <span v-if="psionics.base" class="text-xs">Base Skill: <span class="font-normal"> {{psionics.base}} </span><br></span>
               <span v-if="psionics.limitations" class="text-xs">Limitations: <span class="font-normal"> {{psionics.limitations}} </span><br></span>
-              <span v-if="psionics.attacks_per_melee" class="text-xs">Attacks per Melee: <span class="font-normal"> {{psionics.attacks_per_melee}} </span><br></span>
+              <span v-if="psionics.attacksPerMelee" class="text-xs">Attacks per Melee: <span class="font-normal"> {{psionics.attacksPerMelee}} </span><br></span>
               </p>
             </div>
           </div>
