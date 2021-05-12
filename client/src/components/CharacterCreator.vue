@@ -9,6 +9,7 @@
       <button v-on:click="saveCharacter" class="ml-6 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Save Character</button>
     </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
+    <Feeble v-if="newCharacter.race.name != ''" :attributes="newCharacter.attributes"/>
     <PickPsionics v-if="newCharacter.psionics.ability != 'None'" :newCharacter="newCharacter"/>
   </div>
 </template>
@@ -17,16 +18,18 @@
 import PickPsionics from "./sections/PickPsionics";
 import PickRace from "./sections/PickRace";
 import gql from "graphql-tag";
+import Feeble from "./sections/Feeble";
 
 const Character = require('../../lib/Character');
 
 export default {
-  components: {PickRace, PickPsionics},
+  components: {Feeble, PickRace, PickPsionics},
   name: 'CharacterCreator',
   data: function(){
     return {
       newCharacter: new Character,
-      charName: ''
+      charName: '',
+      feeble: null
     }
   },
   methods: {

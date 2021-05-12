@@ -185,7 +185,6 @@ export default {
         this.selectedPsionic = null;
         this.selectedProperty = null;
         this.selectedId = null;
-        console.log(this.selectedId)
         this.init();
       }
       this.selectedId = null
@@ -209,7 +208,6 @@ export default {
         this.pickedPsionic = null;
         this.pickedProperty = null
         this.selectedId = null;
-        console.log(this.selectedId)
         this.init();
       }
     },

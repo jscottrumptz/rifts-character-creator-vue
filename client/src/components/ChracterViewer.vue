@@ -1,12 +1,12 @@
 <template>
   <div v-if="character">
     <!-- begin main area -->
-    <div class="relative min-h-screen flex flex-col border-t border-indigo-300">
+    <div class="relative min-h-screen flex flex-col">
       <!-- 3 column wrapper -->
       <div class="flex-grow w-full max-w-7xl mx-auto xl:px-8 lg:flex">
         <!-- Left sidebar & main wrapper -->
         <div class="flex-1 min-w-0 lg:flex">
-          <div class="border-b xl:border-b-0 xl:flex-shrink-0 xl:w-64 border-indigo-300 xl:border-r ">
+          <div class="xl:flex-shrink-0 xl:w-64">
             <div class="h-full pl-4 pr-6 py-6 sm:pl-6 lg:pl-8 xl:pl-0">
               <!-- Start LEFT COLUMN area -->
               <div class="h-full relative" style="min-height: 12rem;">
