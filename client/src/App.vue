@@ -43,7 +43,7 @@
     <!-- Character Creator -->
     <CharacterCreator v-if="toggle==='character-creator'"/>
     <!-- Character Viewer - set key to character to force component reload when the character changes -->
-    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData" :key="character[0]._id"/>
+    <CharacterViewer v-if="toggle==='character-viewer'" :character="character[0].characterData" :id="character[0]._id" :key="character[0]._id"/>
 
   </div>
 </template>

@@ -28,7 +28,7 @@
               <div class="relative h-full" style="min-height: 36rem;">
                 <div class="absolute inset-0 rounded-lg">
                   <!-- Character Info Section -->
-                  <Info :info="character.info" :race="character.race" :occ="character.occ"/>
+                  <Info :info="character.info" :race="character.race" :occ="character.occ" :id="id"/>
                   <!-- TABS Start-->
                   <div>
                     <div class="sm:hidden">
@@ -104,7 +104,8 @@ export default {
   name: 'CharacterViewer',
   components: {Bonuses, Saves, Chances, SecondaryStats, Info, Magic, Psionics, Inventory, Abilities, Attributes},
   props: {
-    character: Object
+    character: Object,
+    id: String
   },
   data: function(){
     return {

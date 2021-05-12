@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="bg-gray-800 max-w-7xl mx-auto mb-6 shadow overflow-hidden sm:rounded-lg">
     <!-- Character Info Header -->
     <div class="px-4 py-5 sm:px-6">
@@ -8,7 +9,7 @@
       </h3>
       <!-- Character Alignment, Race, OCC, and Level  -->
       <p class="mt-1 max-w-2xl text-sm text-gray-300">
-        {{ info.alignment }} | {{race.name}} | {{occ.name}} | Level {{info.level}}
+        {{ info.alignment }} | {{race.name}} | {{occ.name}} | Level {{info.level}} <span v-on:click="show=true" class="ml-10 text-red-500 text-xs cursor-pointer font-bold hover:text-red-300">DELETE</span>
       </p>
     </div>
     <!-- Character Info -->
@@ -194,22 +195,82 @@
         </div>
       </dl>
     </div>
+     </div>
+  <!-- Modal -->
+    <div aria-live="assertive" class="z-50 fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+      <div class="w-full flex flex-col items-center space-y-10 sm:items-middle">
+        <!-- Error information -->
+        <transition enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
+          <div v-if="show" class="pointer-events-auto inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+            <div class="sm:flex sm:items-start">
+              <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <div as="h3" class="text-lg leading-6 font-medium text-gray-900">
+                  Delete Character
+                </div>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Are you sure you want to delete your character? All of this character's data will be permanently removed from our servers forever. This action cannot be undone.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+              <button v-on:click="removeCharacter" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Delete Character
+              </button>
+              <button v-on:click="show=false" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
 name: "Info",
   props: {
     info: Object,
     race: Object,
     occ: Object,
+    id: String
   },
   data: function(){
     return {
       extended: false,
+      // toggle for modal
+      show: false,
     }
   },
+  methods: {
+    async removeCharacter() {
+      this.show=false
+      try {
+        await this.$apollo.mutate({
+          mutation: gql`mutation removeCharacter($characterId:ID!) {
+            removeCharacter(characterId:$characterId) {
+              _id
+              characterData
+            }
+          }`,
+          variables: {characterId: this.id}
+        });
+      } catch (e) {
+        console.log(e.message);
+      }
+      setTimeout(location.reload.bind(location), 200);
+    }
+  }
 }
 </script>
 

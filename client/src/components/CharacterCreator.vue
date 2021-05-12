@@ -3,10 +3,11 @@
     <h2 class="text-2xl font-bold leading-7 text-center text-white sm:text-3xl sm:truncate p-6">
       Create a New Character
     </h2>
-    <div v-if="newCharacter.race.name != ''" class="inline-flex">
-      <p class="ml-6 my-auto text-white text-lg font-medium"> {{newCharacter.race.name}}<span v-if="newCharacter.occ.name != ''"> || {{newCharacter.race.occ}}</span></p>
+    <form v-if="newCharacter.race.name != ''" class="inline-flex">
+      <input type="text" v-model="charName" id="charName" name="charName" placeholder="character name" class="ml-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md" >
+      <p class="ml-2 my-auto text-white text-lg font-medium"> || {{newCharacter.race.name}}<span v-if="newCharacter.occ.name != ''"> || {{newCharacter.occ.name}}</span></p>
       <button v-on:click="saveCharacter" class="ml-6 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Save Character</button>
-    </div>
+    </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <PickPsionics v-if="newCharacter.psionics.ability != 'None'" :newCharacter="newCharacter"/>
   </div>
@@ -24,11 +25,13 @@ export default {
   name: 'CharacterCreator',
   data: function(){
     return {
-      newCharacter: new Character
+      newCharacter: new Character,
+      charName: ''
     }
   },
   methods: {
     async saveCharacter() {
+      this.newCharacter.info.name = this.charName
       try {
         await this.$apollo.mutate({
           mutation: gql`mutation addCharacter($characterData: JSON) {
