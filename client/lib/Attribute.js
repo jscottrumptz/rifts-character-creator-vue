@@ -1,3 +1,6 @@
+const { Random } = require('random-js');
+const random = new Random();
+
 class Attribute {
     constructor(attributeRoll = [0], multiplier = 1, bonus = 0, feeble = false) {
         this.attributeRoll = attributeRoll;
@@ -50,6 +53,14 @@ class Attribute {
 
     getTotal() {
         return this.raceTotal + this.occBonus + this.skillsBonus + this.cyberneticBonus + this.feebleBonus;
+    }
+
+    rollFeeble() {
+        this.feebleBonus = random.die(4) + 3;
+    }
+
+    rollMajorFeeble() {
+        this.feebleBonus = random.die(4) + 5;
     }
 }
 

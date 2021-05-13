@@ -29,7 +29,6 @@ export default {
     return {
       newCharacter: new Character,
       charName: '',
-      feeble: null
     }
   },
   methods: {

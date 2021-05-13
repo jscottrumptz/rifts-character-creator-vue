@@ -519,7 +519,7 @@ const Races = require('../../../lib/Races/PickRace');
 export default {
   name: "PickRace",
   props: {
-    newCharacter: Object
+    newCharacter: Object,
   },
   data: function(){
     return {
@@ -544,7 +544,6 @@ export default {
       this.newCharacter.race.rollSecondary(this.newCharacter);
       this.newCharacter.race.randomPsionics(this.newCharacter);
       this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
-      console.log(this.newCharacter.attributes.feebleTest());
     }
   }
 }
