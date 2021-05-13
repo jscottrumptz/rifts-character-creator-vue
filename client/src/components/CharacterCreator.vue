@@ -9,8 +9,8 @@
       <button v-on:click="saveCharacter" class="ml-6 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Save Character</button>
     </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
-    <Feeble v-if="newCharacter.race.name != ''" :attributes="newCharacter.attributes"/>
-    <PickPsionics v-if="newCharacter.psionics.ability != 'None'" :newCharacter="newCharacter"/>
+    <Feeble v-if="newCharacter.race.name != '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses"/>
+    <PickPsionics v-if="newCharacter.psionics.ability != 'None' && newCharacter.attributes.confirmAttributes" :newCharacter="newCharacter"/>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
   data: function(){
     return {
       newCharacter: new Character,
-      charName: '',
+      charName: ''
     }
   },
   methods: {

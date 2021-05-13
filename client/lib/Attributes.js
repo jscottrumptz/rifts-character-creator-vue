@@ -4,7 +4,7 @@ const { Random } = require('random-js');
 const random = new Random();
 
 class Attributes {
-    constructor(iq = new Attribute, me = new Attribute, ma = new Attribute, ps = new Attribute, pp = new Attribute, pe = new Attribute, pb = new Attribute, spd = new Attribute, strType = 'Standard') {
+    constructor(iq = new Attribute, me = new Attribute, ma = new Attribute, ps = new Attribute, pp = new Attribute, pe = new Attribute, pb = new Attribute, spd = new Attribute, strType = 'Standard', confirmAttributes = false) {
         this.iq = iq;
         this.me = me;
         this.ma = ma;
@@ -14,6 +14,7 @@ class Attributes {
         this.pb = pb;
         this.spd = spd;
         this.strType = strType;
+        this.confirmAttributes = confirmAttributes;
     }
     
     // return the iq object
@@ -59,6 +60,10 @@ class Attributes {
     // return the strType object
     getStrType() {
         return this.strType;
+    }
+
+    getConfirmAttributes() {
+        return this.confirmAttributes;
     }
 
     // roll one of the 8 attributes for the character based on it's race
