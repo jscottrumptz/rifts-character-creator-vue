@@ -8,6 +8,12 @@ class OCC {
         name = '',
         group = '',
         description = '',
+        image = '',
+        psionicsDesc = `Standard; the same probability of psionic powers as a human.`,
+        abilitiesDesc = `As per O.C.C.`,
+        magicDesc = `None, unless a Magic O.C.C. is chosen.`,
+        cyberneticsDesc = `As per O.C.C.`,
+        skillsDesc =  `By O.C.C. only.`,
 
         // REQUIREMENTS
         reqAlignment = [],
@@ -110,6 +116,12 @@ class OCC {
         this.name = name;
         this.group = group;
         this.description = description;
+        this.image = image;
+        this.psionicsDesc = psionicsDesc;
+        this.abilitiesDesc = abilitiesDesc;
+        this.magicDesc = magicDesc;
+        this.cyberneticsDesc = cyberneticsDesc;
+        this.skillsDesc = skillsDesc;
 
         // REQUIREMENTS
         this.reqAlignment = reqAlignment;
@@ -302,8 +314,6 @@ class OCC {
             character.currencies.gems.occBonus = this.bonusRoll(this.gems);
             character.currencies.gold.occBonus = this.bonusRoll(this.gold);
             character.currencies.tradableItems.occBonus = this.bonusRoll(this.tradableItems);
-        } else {
-            return
         }
     }
 

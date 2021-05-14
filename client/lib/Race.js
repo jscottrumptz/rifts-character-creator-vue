@@ -332,22 +332,6 @@ class Race {
 
     }
 
-    // randomPsionics(character) {
-    //     if (this.abilities.includes('Random Psionics')) {
-    //         let chance = random.die(100)
-    //         if (chance < 11) {
-    //             character.psionics.ability = 'Major'
-    //             return 'Major'
-    //         } else if (chance < 26) {
-    //             character.psionics.ability = 'Minor'
-    //             return 'Minor'
-    //         } else {
-    //             character.psionics.ability = 'None'
-    //             return 'None'
-    //         }
-    //     }
-    // }
-
     randomPsionics(character) {
         if (character.psionics.randomPsionics) {
                 let chance = random.die(100)

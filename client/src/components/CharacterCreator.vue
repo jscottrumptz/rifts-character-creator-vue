@@ -11,6 +11,7 @@
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <Feeble v-if="newCharacter.race.name != '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses"/>
     <PickPsionics v-if="newCharacter.psionics.ability != 'None' && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
+    <PickOCC v-if="newCharacter.race.name != '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
   </div>
 </template>
 
@@ -19,11 +20,12 @@ import PickPsionics from "./sections/PickPsionics";
 import PickRace from "./sections/PickRace";
 import gql from "graphql-tag";
 import Feeble from "./sections/Feeble";
+import PickOCC from "./sections/PickOCC";
 
 const Character = require('../../lib/Character');
 
 export default {
-  components: {Feeble, PickRace, PickPsionics},
+  components: {PickOCC, Feeble, PickRace, PickPsionics},
   name: 'CharacterCreator',
   data: function(){
     return {

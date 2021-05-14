@@ -5,7 +5,7 @@ class PickOCC {
         rogueScientist = new RogueScientist,
     ) {
         this.rogueScientist = rogueScientist;
-    };
-};
+    }
+}
 
 module.exports = PickOCC;
