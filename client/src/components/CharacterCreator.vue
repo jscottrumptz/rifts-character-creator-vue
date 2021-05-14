@@ -10,7 +10,7 @@
     </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <Feeble v-if="newCharacter.race.name != '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses"/>
-    <PickPsionics v-if="newCharacter.psionics.ability != 'None' && newCharacter.attributes.confirmAttributes" :newCharacter="newCharacter"/>
+    <PickPsionics v-if="newCharacter.psionics.ability != 'None' && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
   </div>
 </template>
 

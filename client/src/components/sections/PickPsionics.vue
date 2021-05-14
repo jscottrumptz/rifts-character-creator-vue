@@ -262,8 +262,7 @@ export default {
       this.selectedId = newId;
     },
     finalizeSelections: function (){
-      console.log(this.newCharacter.psionics.known)
-      console.log('Psionics added to the character!')
+      this.newCharacter.psionics.selected = true
     }
   },
   mounted: function () {
