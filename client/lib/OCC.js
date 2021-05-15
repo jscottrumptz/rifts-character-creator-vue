@@ -9,6 +9,7 @@ class OCC {
         group = '',
         description = '',
         image = '',
+        alignment = '',
         psionicsDesc = `Standard; the same probability of psionic powers as a human.`,
         abilitiesDesc = `As per O.C.C.`,
         magicDesc = `None, unless a Magic O.C.C. is chosen.`,
@@ -18,6 +19,7 @@ class OCC {
         // REQUIREMENTS
         reqAlignment = [],
         reqRace = [],
+        recommendedAttributes = '',
         reqIq = 0,
         reqMe = 0,
         reqMa = 0,
@@ -117,6 +119,7 @@ class OCC {
         this.group = group;
         this.description = description;
         this.image = image;
+        this.alignment = alignment;
         this.psionicsDesc = psionicsDesc;
         this.abilitiesDesc = abilitiesDesc;
         this.magicDesc = magicDesc;
@@ -126,6 +129,7 @@ class OCC {
         // REQUIREMENTS
         this.reqAlignment = reqAlignment;
         this.reqRace = reqRace;
+        this.recommendedAttributes = recommendedAttributes;
         this.reqIq = reqIq;
         this.reqMe = reqMe;
         this.reqMa = reqMa;
@@ -319,32 +323,45 @@ class OCC {
 
     testRequirements(character) {
         if (this.reqIq > character.attributes.iq.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqIq} IQ needed.`)
             return false
         } else if (this.reqMe > character.attributes.me.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqMe} ME needed.`)
             return false
         } else if (this.reqMa > character.attributes.ma.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqMa} MA needed.`)
             return false
         } else if (this.reqPs > character.attributes.ps.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPs} PS needed.`)
             return false
         } else if (this.reqPp > character.attributes.pp.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPp} PP needed.`)
             return false
         } else if (this.reqPe > character.attributes.pe.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPe} PE needed.`)
             return false
         } else if (this.reqPb > character.attributes.pb.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPb} PB needed.`)
             return false
         } else if (this.reqSpd > character.attributes.spd.total) {
-            console.log(`This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqSpd} Spd needed.`)
             return false
         } else {
-            console.log(`This character would make a great ${this.name}.`)
             return true
+        }
+    }
+
+    requirementsMessage(character) {
+        if (this.reqIq > character.attributes.iq.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqIq} IQ needed.`
+        } else if (this.reqMe > character.attributes.me.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqMe} ME needed.`
+        } else if (this.reqMa > character.attributes.ma.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqMa} MA needed.`
+        } else if (this.reqPs > character.attributes.ps.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPs} PS needed.`
+        } else if (this.reqPp > character.attributes.pp.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPp} PP needed.`
+        } else if (this.reqPe > character.attributes.pe.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPe} PE needed.`
+        } else if (this.reqPb > character.attributes.pb.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPb} PB needed.`
+        } else if (this.reqSpd > character.attributes.spd.total) {
+            return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqSpd} Spd needed.`
+        } else {
+            return `This character would make a great ${this.name}.`
         }
     }
 

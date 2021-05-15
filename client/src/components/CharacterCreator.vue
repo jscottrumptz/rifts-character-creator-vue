@@ -5,7 +5,7 @@
     </h2>
     <form v-if="newCharacter.race.name != ''" class="inline-flex">
       <input type="text" v-model="charName" id="charName" name="charName" placeholder="character name" class="ml-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md" >
-      <p class="ml-2 my-auto text-white text-lg font-medium"> || {{newCharacter.race.name}}<span v-if="newCharacter.occ.name != ''"> || {{newCharacter.occ.name}}</span></p>
+      <p class="ml-2 my-auto text-white text-lg font-medium"> | {{newCharacter.race.name}}<span v-if="newCharacter.occ.name != ''"> | {{newCharacter.occ.name}}</span></p>
       <button v-on:click="saveCharacter" class="ml-6 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Save Character</button>
     </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>

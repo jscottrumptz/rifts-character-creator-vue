@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!-- Stats & Button -->
+    <!-- Stats -->
     <div v-if="race" class="flex flex-col">
       <div class="sm:-mx-6 lg:-mx-8 my-auto">
         <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">

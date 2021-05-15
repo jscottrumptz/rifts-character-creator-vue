@@ -1,7 +1,7 @@
 <template>
   <div class="p-5 grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
 
-    <!-- Race Selector -->
+    <!-- OCC Selector -->
     <div class="col-span-1 md:pl-5 md:pb-0 mr-0 ">
       <div class="mt-0 relative">
         <select id="selectRace" v-on:change="onChange($event)" name="selectRace" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md pl-3 py-2 pr-10 text-base text-white focus:outline-none focus:ring-1 focus:ring-white focus:border-white sm:text-sm">
@@ -18,84 +18,141 @@
       <img class="mt-5 border-4 border-gray-700 rounded-lg" v-if="occ" v-bind:src="require('../../'+ occ.image)" v-bind:alt="'Illustration of a ' + occ.name">
       <!-- Select OCC Button -->
       <div v-if="occ" class="flex flex-col">
-        <button v-if="occ" v-on:click="selectOCC" class="mx-auto mt-5 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Select {{occ.name}}</button>
+        <button v-if="occ && occ.testRequirements(newCharacter)" v-on:click="selectOCC" class="mx-auto mt-5 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Select {{occ.name}}</button>
       </div>
     </div>
 
-    <!-- Stats & Button -->
+    <!-- Bonuses, Money, and Requirements -->
     <div v-if="occ" class="flex flex-col">
       <div class="sm:-mx-6 lg:-mx-8 my-auto">
         <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
+            <p v-if="!occ.testRequirements(newCharacter)" class="text-yellow-400 text-center m-5">{{occ.requirementsMessage(newCharacter)}}</p>
+            <p v-if="occ.testRequirements(newCharacter)" class="text-green-400 text-center m-5">{{occ.requirementsMessage(newCharacter)}}</p>
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-700">
               <tr>
                 <th colspan="2" scope="col" class="px-6 py-3 text-center text-xs font-medium text-white tracking-wider">
-                  {{occ.name}} Rolls, Bonuses, and Psionics
+                  {{occ.name}} Bonuses, Money, & Requirements
                 </th>
               </tr>
               </thead>
               <tbody>
+              <!-- Attribute Requirements -->
+              <tr v-if="occ.reqIq || occ.reqMe || occ.reqMa || occ.reqPs || occ.reqPp|| occ.reqPe || occ.reqPb|| occ.reqSpd || occ.recommendedAttributes" class="bg-white border-t text-left border-gray-200">
+                <td class="p-4 text-sm text-right font-medium text-gray-900">
+                  Required
+                </td>
+                <td class="py-2 text-sm font-medium text-gray-900">
+                  <!-- IQ -->
+                  <span  v-if="occ.reqIq" class="inline-flex items-center px-1">IQ:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqIq}} or higher.
+                    </span>
+                  </span>
+                  <!-- ME -->
+                  <span  v-if="occ.reqMe" class="inline-flex items-center px-1">ME:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqMe}} or higher.
+                    </span>
+                  </span>
+                  <!-- MA -->
+                  <span  v-if="occ.reqMa" class="inline-flex items-center px-1">MA:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqMa}} or higher.
+                    </span>
+                  </span>
+                  <!-- PS -->
+                  <span  v-if="occ.reqPs" class="inline-flex items-center px-1">PS:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqPs}} or higher.
+                    </span>
+                  </span>
+                  <!-- PP -->
+                  <span  v-if="occ.reqPp" class="inline-flex items-center px-1">PP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqPp}} or higher.
+                    </span>
+                  </span>
+                  <!-- PE -->
+                  <span  v-if="occ.reqPe" class="inline-flex items-center px-1">PE:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqPe}} or higher.
+                    </span>
+                  </span>
+                  <!-- PB -->
+                  <span  v-if="occ.reqPb" class="inline-flex items-center px-1">PB:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqPb}} or higher.
+                    </span>
+                  </span>
+                  <!-- Spd -->
+                  <span  v-if="occ.reqSpd" class="inline-flex items-center px-1">Spd:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.reqSpd}} or higher.
+                    </span>
+                  </span>
+                  <!-- Recommended -->
+                  <span  v-if="occ.recommendedAttributes" class="px-1 text-gray-500 italic"> Recommended:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      {{occ.recommendedAttributes}}
+                    </span>
+                  </span>
+                </td>
+
+              </tr>
               <!-- Attribute Rolls -->
-              <tr class="bg-white border-t text-left border-gray-200">
+              <tr v-if="occ.iqBonus.bonus || occ.meBonus.bonus || occ.maBonus.bonus || occ.psBonus.bonus || occ.ppBonus.bonus || occ.peBonus.bonus || occ.pbBonus.bonus || occ.spdBonus.bonus" class="bg-white border-t text-left border-gray-200">
                 <td class="p-4 text-sm text-right font-medium text-gray-900">
                   Attributes
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- IQ -->
-                  <span class="inline-flex items-center px-1">IQ:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.iqBonus.amount}}D{{occ.iqBonus.sides}}
-                      <span v-if="occ.iqBonus.multiplier">x</span>{{occ.iqBonus.multiplier}}
-                      <span v-if="occ.iqBonus.bonus">+</span>{{occ.iqBonus.bonus}}
+                  <span  v-if="occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.iqBonus.bonus}}
                     </span>
                   </span>
                   <!-- ME -->
-                  <span class="inline-flex items-center px-1">ME:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.meBonus.amount}}D{{occ.meBonus.sides}}
-                      <span v-if="occ.meBonus.multiplier">x</span>{{occ.meBonus.multiplier}}
-                      <span v-if="occ.meBonus.bonus">+</span>{{occ.meBonus.bonus}}
+                  <span  v-if="occ.meBonus.bonus" class="inline-flex items-center px-1">ME:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.meBonus.bonus}}
                     </span>
                   </span>
                   <!-- MA -->
-                  <span class="inline-flex items-center px-1">MA:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.maBonus.amount}}D{{occ.maBonus.sides}}
-                      <span v-if="occ.maBonus.multiplier">x</span>{{occ.maBonus.multiplier}}
-                      <span v-if="occ.maBonus.bonus">+</span>{{occ.maBonus.bonus}}
+                  <span  v-if="occ.maBonus.bonus" class="inline-flex items-center px-1">MA:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.maBonus.bonus}}
                     </span>
                   </span>
                   <!-- PS -->
-                  <span class="inline-flex items-center px-1">PS:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.psBonus.amount}}D{{occ.psBonus.sides}}
-                      <span v-if="occ.psBonus.multiplier">x</span>{{occ.psBonus.multiplier}}
-                      <span v-if="occ.psBonus.bonus">+</span>{{occ.psBonus.bonus}}
+                  <span  v-if="occ.psBonus.bonus" class="inline-flex items-center px-1">PS:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.psBonus.bonus}}
                     </span>
                   </span>
                   <!-- PP -->
-                  <span class="inline-flex items-center px-1">PP:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.ppBonus.amount}}D{{occ.ppBonus.sides}}
-                      <span v-if="occ.ppBonus.multiplier">x</span>{{occ.ppBonus.multiplier}}
-                      <span v-if="occ.ppBonus.bonus">+</span>{{occ.ppBonus.bonus}}
+                  <span  v-if="occ.ppBonus.bonus" class="inline-flex items-center px-1">PP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.ppBonus.bonus}}
                     </span>
                   </span>
                   <!-- PE -->
-                  <span class="inline-flex items-center px-1">PE:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.peBonus.amount}}D{{occ.peBonus.sides}}
-                      <span v-if="occ.peBonus.multiplier">x</span>{{occ.peBonus.multiplier}}
-                      <span v-if="occ.peBonus.bonus">+</span>{{occ.peBonus.bonus}}
+                  <span  v-if="occ.peBonus.bonus" class="inline-flex items-center px-1">PE:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.peBonus.bonus}}
                     </span>
                   </span>
                   <!-- PB -->
-                  <span class="inline-flex items-center px-1">PB:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.pbBonus.amount}}D{{occ.pbBonus.sides}}
-                      <span v-if="occ.pbBonus.multiplier">x</span>{{occ.pbBonus.multiplier}}
-                      <span v-if="occ.pbBonus.bonus">+</span>{{occ.pbBonus.bonus}}
+                  <span  v-if="occ.pbBonus.bonus" class="inline-flex items-center px-1">PB:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.pbBonus.bonus}}
                     </span>
                   </span>
                   <!-- Spd -->
-                  <span class="inline-flex items-center px-1">Spd:
-                    <span class="pr-2 text-sm font-normal text-gray-500">{{occ.spdBonus.amount}}D{{occ.spdBonus.sides}}
-                      <span v-if="occ.spdBonus.multiplier">x</span>{{occ.spdBonus.multiplier}}
-                      <span v-if="occ.spdBonus.bonus">+</span>{{occ.spdBonus.bonus}}
+                  <span  v-if="occ.spdBonus.bonus" class="inline-flex items-center px-1">Spd:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      +{{occ.spdBonus.bonus}}
                     </span>
                   </span>
                 </td>
@@ -352,7 +409,7 @@
                 </td>
               </tr>
               <!-- Other -->
-              <tr class="bg-white border-t text-left border-gray-200">
+              <tr v-if="occ.trustBonus.bonus || occ.intimidateBonus.bonus || occ.charmBonus.bonus || occ.impressBonus.bonus" class="bg-white border-t text-left border-gray-200">
                 <td class="p-4 text-sm text-right font-medium text-gray-900">
                   Other
                 </td>
@@ -381,6 +438,14 @@
                             <span v-if="occ.impressBonus.bonus > 0">+</span>{{occ.impressBonus.bonus}}%
                           </span>
                         </span>
+                </td>
+              </tr>
+              <!-- Money -->
+              <tr class="bg-white border-t text-left border-gray-200">
+                <td class="p-4 text-sm text-right font-medium text-gray-900">
+                  Money
+                </td>
+                <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- Credits -->
                   <span v-if="occ.credits.amount" class="inline-flex items-center px-1">Credits:
                           <span class="pr-2 text-sm font-normal text-gray-500">{{occ.credits.amount}}D{{occ.credits.sides}}
@@ -418,13 +483,16 @@
                         </span>
                 </td>
               </tr>
-              <!-- Psionics -->
+              <!-- Alignment -->
               <tr class="bg-white border-t text-left border-gray-200">
                 <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Psionics
+                  Alignment
                 </td>
-                <td class="py-2 pr-2 text-sm text-gray-700">
-                  {{occ.psionicsDesc}}
+                <td v-if="occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
+                  {{occ.alignment}}
+                </td>
+                <td v-if="!occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
+                  Any
                 </td>
               </tr>
               </tbody>
@@ -440,8 +508,8 @@
       <div class="sm:hidden m-3">
         <label for="tabs" class="sr-only">Select a tab</label>
         <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-          <option v-if="aboutActive" value="about" >About {{occ.name}}<span v-if="occ.name !== `D'norr Devilmen`">s</span></option>
-          <option v-if="statsActive" value="stats">Available {{occ.name}} OCCs</option>
+          <option v-if="aboutActive" value="about" >About {{occ.name}}s</option>
+          <option v-if="statsActive" value="stats">{{occ.name}} Skills</option>
           <option v-if="abilitiesActive" value="abilities">Other Notes, Abilities, and Skills</option>
         </select>
       </div>
@@ -449,11 +517,11 @@
         <nav class="flex space-x-4 m-3 mb-0" aria-label="Tabs">
           <a v-if="aboutActive" v-on:click="toggle='about'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'about', 'bg-gray-100 text-gray-700': toggle === 'about'}" href="#" onclick="return false;">
-            About {{occ.name}}<span v-if="occ.name !== `D'norr Devilmen`">s</span>
+            About {{occ.name}}s
           </a>
           <a v-if="statsActive" v-on:click="toggle='stats'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'stats', 'bg-gray-100 text-gray-700': toggle === 'stats'}" href="#" onclick="return false;">
-            Available {{occ.name}} OCCs
+            {{occ.name}} Skills
           </a>
           <a v-if="abilitiesActive" v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">
@@ -464,16 +532,9 @@
 
       <!-- About Content -->
       <div v-show="toggle==='about' && aboutActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="text-gray-50 font-medium">Pronunciation: <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.pronunciation}}</span></p>
-        <p class="text-gray-50 font-medium" v-if="occ.alias">Also known as <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.alias}}</span></p>
-        <p class="text-gray-50 font-medium">Alignment: <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.alignment}}</span></p>
-        <p class="text-gray-50 font-medium">Average Size: <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.heightMin}}-{{occ.heightMax}} {{occ.sizeDesc}}</span></p>
-        <p class="text-gray-50 font-medium">Average Weight: <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.weightMin}}-{{occ.weightMax}} {{occ.weightDesc}}</span></p>
+        <p class="text-gray-50 font-medium" v-if="occ.group">OCC Group: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{occ.group}}</span></p>
+        <br/>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.description}}</p>
         <br v-if="occ.disposition"/>
         <p v-if="occ.disposition" class="text-gray-50 font-medium">Disposition</p>
