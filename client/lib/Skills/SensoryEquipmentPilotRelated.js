@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class SensoryEquipment extends Skill {
+class SensoryEquipmentPilotRelated extends Skill {
     constructor() {
         super();
         this.name = `Sensory Equipment`;
@@ -21,4 +21,4 @@ class SensoryEquipment extends Skill {
     }
 }
 
-module.exports = SensoryEquipment;
+module.exports = SensoryEquipmentPilotRelated;

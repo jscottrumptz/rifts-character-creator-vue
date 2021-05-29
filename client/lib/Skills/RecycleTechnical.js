@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class Recycle extends Skill {
+class RecycleTechnical extends Skill {
     constructor() {
         super();
         this.name = `Recycle`;
@@ -20,4 +20,4 @@ class Recycle extends Skill {
     }
 }
 
-module.exports = Recycle;ycle;
+module.exports = RecycleTechnical;

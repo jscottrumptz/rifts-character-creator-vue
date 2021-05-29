@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class WPRope extends Skill {
+class WPRopeWP extends Skill {
     constructor() {
         super();
         this.name = `W.P. Rope`;
@@ -44,4 +44,4 @@ W.P. Rope can not be used to parry. Does not require Rope Skill to use as a weap
     }
 }
 
-module.exports = WPRope;
+module.exports = WPRopeWP;

@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class HorsemanshipExoticAnimals extends Skill {
+class HorsemanshipExoticAnimalsHorsemanship extends Skill {
     constructor() {
         super();
         this.name = `Horsemanship: Exotic Animals`;
@@ -35,4 +35,4 @@ Racing (2nd percentile is success ratio of getting maximum speed while racing at
     }
 }
 
-module.exports = HorsemanshipExoticAnimals;
+module.exports = HorsemanshipExoticAnimalsHorsemanship;

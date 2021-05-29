@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class ForcedMarch extends Skill {
+class ForcedMarchPhysical extends Skill {
     constructor() {
         super();
         this.name = `Forced March`;
@@ -23,4 +23,4 @@ x5 Normal physical endurance rate for maintaining forced marches and traveling a
     }
 }
 
-module.exports = ForcedMarch;
+module.exports = ForcedMarchPhysical;

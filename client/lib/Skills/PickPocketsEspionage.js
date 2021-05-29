@@ -1,10 +1,10 @@
 const Skill = require('../Skill');
 
-class PickPockets extends Skill {
+class PickPocketsEspionage extends Skill {
     constructor() {
         super();
         this.name = `Pick Pockets`;
-        this.group = `Rogue`;
+        this.group = `Espionage`;
         this.isSecondary = `false`;
         this.note = ``;
         this.description = `The ability to remove items from a person without their being aware of it. If a Pick Pocket attempt fails, the item has not been removed and their is a 67% likelihood that the intended victim recognized the intent of the action.`;
@@ -20,4 +20,4 @@ class PickPockets extends Skill {
     }
 }
 
-module.exports = PickPockets;ets;
+module.exports = PickPocketsEspionage;

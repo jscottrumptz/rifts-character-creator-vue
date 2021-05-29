@@ -1,0 +1,80 @@
+const Acrobatics = require('./Acrobatics');
+const AerobicAthletics = require('./AerobicAthletics');
+const AthleticsGeneral = require('./AthleticsGeneral');
+const BodyBuildingandWeightLifting = require('./BodyBuildingandWeightLifting');
+const Boxing = require('./Boxing');
+const Climb = require('./Climb');
+const Fencing = require('./Fencing');
+const ForcedMarchPhysical = require('./ForcedMarchPhysical');
+const Gymnastics = require('./Gymnastics');
+const HandToHandAssassin = require('./HandToHandAssassin');
+const HandToHandBasic = require('./HandToHandBasic');
+const HandToHandCommando = require('./HandToHandCommando');
+const HandToHandExpert = require('./HandToHandExpert');
+const HandToHandMartialArts = require('./HandToHandMartialArts');
+const Juggling = require('./Juggling');
+const KickBoxing = require('./KickBoxing');
+const NoHandToHandSkill = require('./NoHandToHandSkill');
+const Outdoormanship = require('./Outdoormanship');
+const PhysicalLabour = require('./PhysicalLabour');
+const ProwlPhysical = require('./ProwlPhysical');
+const Running = require('./Running');
+const SCUBA = require('./SCUBA');
+const Swimming = require('./Swimming');
+const Wrestling = require('./Wrestling');
+
+class Physical {
+    constructor(
+        acrobatics = new Acrobatics,
+        aerobicAthletics = new AerobicAthletics,
+        athleticsGeneral = new AthleticsGeneral,
+        bodyBuildingandWeightLifting = new BodyBuildingandWeightLifting,
+        boxing = new Boxing,
+        climb = new Climb,
+        fencing = new Fencing,
+        forcedMarchPhysical = new ForcedMarchPhysical,
+        gymnastics = new Gymnastics,
+        handToHandAssassin = new HandToHandAssassin,
+        handToHandBasic = new HandToHandBasic,
+        handToHandCommando = new HandToHandCommando,
+        handToHandExpert = new HandToHandExpert,
+        handToHandMartialArts = new HandToHandMartialArts,
+        juggling = new Juggling,
+        kickBoxing = new KickBoxing,
+        noHandToHandSkill = new NoHandToHandSkill,
+        outdoormanship = new Outdoormanship,
+        physicalLabour = new PhysicalLabour,
+        prowlPhysical = new ProwlPhysical,
+        running = new Running,
+        sCUBA = new SCUBA,
+        swimming = new Swimming,
+        wrestling = new Wrestling
+    ) {
+        this.acrobatics = acrobatics;
+        this.aerobicAthletics = aerobicAthletics;
+        this.athleticsGeneral = athleticsGeneral;
+        this.bodyBuildingandWeightLifting = bodyBuildingandWeightLifting;
+        this.boxing = boxing;
+        this.climb = climb;
+        this.fencing = fencing;
+        this.forcedMarchPhysical = forcedMarchPhysical;
+        this.gymnastics = gymnastics;
+        this.handToHandAssassin = handToHandAssassin;
+        this.handToHandBasic = handToHandBasic;
+        this.handToHandCommando = handToHandCommando;
+        this.handToHandExpert = handToHandExpert;
+        this.handToHandMartialArts = handToHandMartialArts;
+        this.juggling = juggling;
+        this.kickBoxing = kickBoxing;
+        this.noHandToHandSkill = noHandToHandSkill;
+        this.outdoormanship = outdoormanship;
+        this.physicalLabour = physicalLabour;
+        this.prowlPhysical = prowlPhysical;
+        this.running = running;
+        this.sCUBA = sCUBA;
+        this.swimming = swimming;
+        this.wrestling = wrestling;
+    }
+}
+
+module.exports = Physical;
