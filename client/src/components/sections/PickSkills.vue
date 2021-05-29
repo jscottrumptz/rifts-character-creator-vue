@@ -22,7 +22,7 @@
       <!-- Skill Lists -->
       <div v-show="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <!-- Nav & Tabs -->
-        <div class="sm:hidden m-3">
+        <div class="m-3">
           <label for="tabs" class="sr-only">Select a tab</label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
             <option v-if="communicationActive" value="communication">Communication Skills</option>
@@ -44,82 +44,6 @@
             <option v-if="weaponProficienciesModernActive" value="weaponProficienciesModern">Weapon Proficiencies Modern Skills</option>
             <option v-if="wildernessActive" value="wilderness">Wilderness Skills</option>
           </select>
-        </div>
-        <div class="hidden sm:block">
-          <nav class="flex space-x-4 m-3" aria-label="Tabs">
-            <a v-if="communicationActive" v-on:click="toggle='communication'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' communication', 'bg-gray-100 text-gray-700': toggle === 'communication'}" href="#" onclick="return false;">
-              Communication Skills
-            </a>
-            <a v-if="cowboyActive" v-on:click="toggle='cowboy'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' cowboy', 'bg-gray-100 text-gray-700': toggle === 'cowboy'}" href="#" onclick="return false;">
-              Cowboy Skills
-            </a>
-            <a v-if="domesticActive" v-on:click="toggle='domestic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' domestic', 'bg-gray-100 text-gray-700': toggle === 'domestic'}" href="#" onclick="return false;">
-              Domestic Skills
-            </a>
-            <a v-if="electricalActive" v-on:click="toggle='electrical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' electrical', 'bg-gray-100 text-gray-700': toggle === 'electrical'}" href="#" onclick="return false;">
-              Electrical Skills
-            </a>
-            <a v-if="espionageActive" v-on:click="toggle='espionage'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' espionage', 'bg-gray-100 text-gray-700': toggle === 'espionage'}" href="#" onclick="return false;">
-              Espionage Skills
-            </a>
-            <a v-if="horsemanshipActive" v-on:click="toggle='horsemanship'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' horsemanship', 'bg-gray-100 text-gray-700': toggle === 'horsemanship'}" href="#" onclick="return false;">
-              Horsemanship Skills
-            </a>
-            <a v-if="mechanicalActive" v-on:click="toggle='mechanical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' mechanical', 'bg-gray-100 text-gray-700': toggle === 'mechanical'}" href="#" onclick="return false;">
-              Mechanical Skills
-            </a>
-            <a v-if="medicalActive" v-on:click="toggle='medical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' medical', 'bg-gray-100 text-gray-700': toggle === 'medical'}" href="#" onclick="return false;">
-              Medical Skills
-            </a>
-            <a v-if="militaryActive" v-on:click="toggle='military'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' military', 'bg-gray-100 text-gray-700': toggle === 'military'}" href="#" onclick="return false;">
-              Military Skills
-            </a>
-            <a v-if="physicalActive" v-on:click="toggle='physical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' physical', 'bg-gray-100 text-gray-700': toggle === 'physical'}" href="#" onclick="return false;">
-              Physical Skills
-            </a>
-            <a v-if="pilotActive" v-on:click="toggle='pilot'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' pilot', 'bg-gray-100 text-gray-700': toggle === 'pilot'}" href="#" onclick="return false;">
-              Pilot Skills
-            </a>
-            <a v-if="pilotRelatedActive" v-on:click="toggle='pilotRelated'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' pilotRelated', 'bg-gray-100 text-gray-700': toggle === 'pilotRelated'}" href="#" onclick="return false;">
-              Pilot Related Skills
-            </a>
-            <a v-if="rogueActive" v-on:click="toggle='rogue'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' rogue', 'bg-gray-100 text-gray-700': toggle === 'rogue'}" href="#" onclick="return false;">
-              Rogue Skills
-            </a>
-            <a v-if="scienceActive" v-on:click="toggle='science'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' science', 'bg-gray-100 text-gray-700': toggle === 'science'}" href="#" onclick="return false;">
-              Science Skills
-            </a>
-            <a v-if="technicalActive" v-on:click="toggle='technical'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' technical', 'bg-gray-100 text-gray-700': toggle === 'technical'}" href="#" onclick="return false;">
-              Technical Skills
-            </a>
-            <a v-if="weaponProficienciesAncientActive" v-on:click="toggle='weaponProficienciesAncient'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' weaponProficienciesAncient', 'bg-gray-100 text-gray-700': toggle === 'weaponProficienciesAncient'}" href="#" onclick="return false;">
-              Weapon Proficiencies Ancient Skills
-            </a>
-            <a v-if="weaponProficienciesModernActive" v-on:click="toggle='weaponProficienciesModern'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' weaponProficienciesModern', 'bg-gray-100 text-gray-700': toggle === 'weaponProficienciesModern'}" href="#" onclick="return false;">
-              Weapon Proficiencies Modern Skills
-            </a>
-            <a v-if="wildernessActive" v-on:click="toggle='wilderness'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
-               v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== ' wilderness', 'bg-gray-100 text-gray-700': toggle === 'wilderness'}" href="#" onclick="return false;">
-              Wilderness Skills
-            </a>
-          </nav>
         </div>
 
         <!-- Communication List -->
