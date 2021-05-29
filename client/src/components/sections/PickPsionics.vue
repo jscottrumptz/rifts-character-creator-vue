@@ -11,7 +11,8 @@
           </ul>
         </div>
         <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <p class="text-white pl-5 pb-5" >Select a total of eight powers from any one category (Sensitive, Physical, or Healer) or a total of six powers with selections made from two or three of those categories.</p>
+        <p v-if="this.newCharacter.psionics.ability === 'Major'" class="text-white pl-5 pb-5" >Select a total of eight powers from any one category (Sensitive, Physical, or Healer) or a total of six powers with selections made from two or three of those categories.</p>
+        <p v-if="this.newCharacter.psionics.ability === 'Minor'" class="text-white pl-5 pb-5" >Select a total of two powers from any one category (Sensitive, Physical, or Healer).</p>
       </div>
 
       <!-- Finalize Selections -->

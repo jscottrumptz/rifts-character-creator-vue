@@ -15,7 +15,7 @@ class Skill {
         // bonus for selectin the skill twice
         takeTwiceBonus = 0,
         // text that conveys requirements during skill selection
-        required = false,
+        required = '',
         // array of required skills
         preq = [],
         description = '',
