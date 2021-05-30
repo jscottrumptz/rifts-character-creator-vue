@@ -12,7 +12,7 @@ class Skill {
         known = false,
         // toggle to see if it can be selected again
         takeTwice = false,
-        // bonus for selectin the skill twice
+        // bonus for selecting the skill twice
         takeTwiceBonus = 0,
         // text that conveys requirements during skill selection
         required = '',

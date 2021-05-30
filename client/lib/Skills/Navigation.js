@@ -17,6 +17,11 @@ class Navigation extends Skill {
         this.base = `40`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = [
+            'mathematicsBasic',
+            'sensoryEquipment',
+            'literacy'
+            ];
     }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="px-5">
+  <div class="px-5 pb-5">
     <p class="text-white text-xl font-medium p-5" >{{newCharacter.skills.total}} total Skill picks</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
@@ -155,19 +155,21 @@
           </ul>
         </div>
         <!-- Add Selected Button -->
-        <button v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+        <button v-show="canAdd" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+        <button v-show="!canAdd" class="bg-gray-700 font-medium rounded hover:bg-yellow-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Prerequisites Not Met</button>
       </div>
 
       <!-- Info Section -->
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
-          <h2 class="font-medium text-2xl">{{displaySkill[0].name}}</h2><br>
-          <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites:{{displaySkill[0].required}})<br></span>
+          <h2 class="font-medium text-2xl">{{displaySkill[0].name}}</h2>
+          <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
+
+          <span v-show="displaySkill[0].base"> <br><span class="font-medium text-gray-200">Base Skill:</span> {{displaySkill[0].base}}%
+          <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
+          <span v-show="displaySkill[0].perLvl"> + {{displaySkill[0].perLvl}}% per level<br></span></span>
+          <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
           <!--
-          <span class="font-medium text-gray-200">Base Skill:</span> {{displaySkill[0].base}}<br>
-          <span class="font-medium text-gray-200">Range:</span> {{displaySkill[0].range}}<br>
-          <span class="font-medium text-gray-200">Duration:</span> {{displaySkill[0].perLvl}}<br>
-          <span v-show="displaySkill[0].savingThrow != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displaySkill[0].savingThrow}}</span><br></span>
           <span v-show="displaySkill[0].damage != ''" class="font-medium text-gray-200">Damage: <span class="font-normal">{{displaySkill[0].damage}}</span><br></span>
           <span v-show="displaySkill[0].lengthOfTrance != ''" class="font-medium text-gray-200">Length of Trance: <span class="font-normal">{{displaySkill[0].lengthOfTrance}}</span><br></span>
           <span v-show="displaySkill[0].baseSkill != ''" class="font-medium text-gray-200">Base Skill: <span class="font-normal">{{displaySkill[0].baseSkill}}</span><br></span>
@@ -178,13 +180,13 @@
           -->
           <br>
           <span class="font-medium text-gray-200">Description:</span>
-          <div class="whitespace-pre-wrap overflow-y-auto max-h-96">
+          <div class="whitespace-pre-line overflow-y-auto max-h-96">
             {{displaySkill[0].description}}
-            <span v-show="displaySkill[0].note != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Note:</span>
+            <span v-show="displaySkill[0].note != ''" class="font-medium text-gray-200"><br><br>Note:<br/></span>
             {{displaySkill[0].note}}
-            <span v-show="displaySkill[0].bonus != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>GM Note:</span>
+            <span v-show="displaySkill[0].bonus != ''" class="font-medium text-gray-200"><br><br>Bonuses:<br/></span>
             {{displaySkill[0].bonus}}
-            <span v-show="displaySkill[0].penalty != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Penalties:</span>
+            <span v-show="displaySkill[0].penalty != ''" class="font-medium text-gray-200"><br><br>Penalties:<br/></span>
             {{displaySkill[0].penalty}}
           </div>
         </div>
@@ -222,6 +224,7 @@ export default {
   data: function(){
     return {
       componentKey: 0,
+      canAdd: true,
       communication: new Communication,
       cowboy: new Cowboy,
       domestic: new Domestic,
@@ -352,6 +355,28 @@ export default {
       this.displaySkill = [];
       this.displaySkill.push(skillGroup[index]);
       this.selectedBg(listId)
+      // Check prerequisites
+      if(this.selectedSkill.preq.length > 0) {
+        let required = 0;
+        // get preq array from the selected skill object
+        this.selectedSkill.preq.forEach(preq => {
+          // check for each prerequisite in the currently selected skills
+          for(const [key] of Object.entries(this.selectedSkills)) {
+            if (key.includes(preq)){
+              // if the key includes the needed skill increase the required counter
+              required++
+            }
+          }
+        })
+        // check if required count is equal to the number of preqs, if so the user can add the skill
+        if (required === this.selectedSkill.preq.length) {
+          this.canAdd = true
+        } else {
+          this.canAdd = false
+        }
+      } else {
+        this.canAdd = true
+      }
     },
     picked: function (index){
       this.pickedSkill = this.selectedSkills[index];

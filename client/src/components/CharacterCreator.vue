@@ -11,8 +11,8 @@
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <Feeble v-if="newCharacter.race.name != '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses"/>
     <PickPsionics v-if="newCharacter.psionics.ability != 'None' && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
-    <PickOCC v-if="newCharacter.race.name != '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
-    <PickSkills :newCharacter="newCharacter"/>
+    <PickOCC v-if="newCharacter.race.name != '' && newCharacter.occ.name === '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
+    <PickSkills v-if="newCharacter.occ.name != ''" :newCharacter="newCharacter"/>
   </div>
 </template>
 
