@@ -10,7 +10,9 @@
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
-        <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.canRemove" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove" class="bg-yellow-500 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
+        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Select a Skill</button>
         <p class="text-white pl-5 pb-5" >Fulfill the following requirements.</p>
       </div>
 
@@ -155,8 +157,9 @@
           </ul>
         </div>
         <!-- Add Selected Button -->
-        <button v-show="canAdd" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
-        <button v-show="!canAdd" class="bg-gray-700 font-medium rounded hover:bg-yellow-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Prerequisites Not Met</button>
+        <button v-if="this.selectedSkill && canAdd" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+        <button v-if="this.selectedSkill && !canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Prerequisites Not Met</button>
+        <button v-if="!this.selectedSkill" class="bg-gray-700 font-medium rounded m-7 text-xs px-3 py-2 text-white">Select a Skill</button>
       </div>
 
       <!-- Info Section -->
@@ -377,6 +380,7 @@ export default {
       } else {
         this.canAdd = true
       }
+      this.pickedSkill = null;
     },
     picked: function (index){
       this.pickedSkill = this.selectedSkills[index];
@@ -394,6 +398,7 @@ export default {
         this.selectedSkills[prop] = skill
         // create the same object property in newCharacter's known skills and copy the selected object to it
         this.newCharacter.skills.known[prop] = skill
+        // increase group counts
         if (skill.group === 'Communication'){
           delete this.communication[prop]
           this.communicationCount++;
@@ -517,6 +522,17 @@ export default {
         }
         delete this.selectedSkills[prop]
         delete this.newCharacter.skills.known[prop]
+
+        // check for prerequisites
+        this.pickedSkill.preq.forEach(preq => {
+          // make prerequisites un-removable
+          for (const [key] of Object.entries(this.selectedSkills)) {
+            if (key.includes(preq)) {
+              this.selectedSkills[key].canRemove = true
+            }
+          }
+        })
+
         this.pickedSkill = null;
         this.pickedProperty = null
         this.selectedId = null;
@@ -561,8 +577,25 @@ export default {
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
 
+      // check to see if skills are removable
+      if(Object.keys(this.selectedSkills).length > 0){
+        for (const [key] of Object.entries(this.selectedSkills)) {
+          // check for prerequisites
+          this.selectedSkills[key].preq.forEach(preq => {
+            // make prerequisites un-removable
+            for (const [key] of Object.entries(this.selectedSkills)) {
+              if (key.includes(preq)) {
+                this.selectedSkills[key].canRemove = false
+              }
+            }
+          })
+        }
+      }
+
+
       // update remaining skills counter
       this.remaining = availablePicks;
+      console.log(this.selectedSkills)
     },
     selectedBg: function (newId){
       if (this.selectedId != null) {

@@ -17,6 +17,7 @@ class MathematicsAdvanced extends Skill {
         this.base = `45`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['mathematicsBasic']
     }
 }
 
