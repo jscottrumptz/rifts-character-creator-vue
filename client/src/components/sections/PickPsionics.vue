@@ -51,19 +51,19 @@
         <!-- Healing List -->
         <div v-show="toggle==='healing' && healingActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
-            <li v-for="(psionics,index) in healingPsionics" v-bind:key="index"  :id="'heal-'+ index" v-on:click="selected('healing',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
+            <li v-for="(psionics,index) in healingPsionics" v-bind:key="index"  :id="'heal-'+ index" v-on:click="selected('healing',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
           </ul>
         </div>
 
       <div v-show="toggle==='physical' && physicalActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
         <ul class="text-gray-300 divide-y divide-gray-600">
-          <li v-for="(psionics,index) in physicalPsionics" v-bind:key="index" :id="'phys-'+ index" v-on:click="selected('physical',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
+          <li v-for="(psionics,index) in physicalPsionics" v-bind:key="index" :id="'phys-'+ index" v-on:click="selected('physical',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
         </ul>
       </div>
 
       <div v-show="toggle==='sensitive' && sensitiveActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
         <ul class="text-gray-300 divide-y divide-gray-600">
-          <li v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" :id="'sense-'+ index" v-on:click="selected('sensitive',index)" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
+          <li v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" :id="'sense-'+ index" v-on:click="selected('sensitive',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
         </ul>
       </div>
         <button v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
