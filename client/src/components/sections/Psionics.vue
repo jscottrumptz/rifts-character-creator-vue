@@ -7,9 +7,9 @@
       <p class="inline-block mt-1 max-w-2xl text-sm text-gray-300">
         Racial, OCC, and Other
       </p>
-      <a v-on:click="extended = !extended" class="text-xs inline-block text-gray-300 hover:text-gray-500 p-1 px-2 ml-6 rounded-md bg-gray-900" href="#" onclick="return false;">
-        <span v-if="extended === false">show descriptions</span>
-        <span v-if="extended === true">hide descriptions</span>
+      <a v-on:click="extendPsionics = !extendPsionics" class="text-xs inline-block text-gray-300 hover:text-gray-500 p-1 px-2 ml-6 rounded-md bg-gray-900" href="#" onclick="return false;">
+        <span v-if="extendPsionics === false">show descriptions</span>
+        <span v-if="extendPsionics === true">hide descriptions</span>
       </a>
     </div>
     <div class="px-4 py-5 p-0">
@@ -34,7 +34,7 @@
             </div>
           </div>
           <!-- Hidden Toggle Class -->
-          <div v-bind:class="{ 'hidden': !extended }"  class="mt-1">
+          <div v-bind:class="{ 'hidden': !extendPsionics }"  class="mt-1">
             <p class="whitespace-pre-wrap text-sm text-gray-600">
               {{psionics.description}}
               <span v-if="psionics.gm_note" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.gm_note}}</span>
@@ -54,7 +54,7 @@ name: "Psionics",
   },
   data: function(){
     return {
-      extended: true,
+      extendPsionics: true,
     }
   },
 }

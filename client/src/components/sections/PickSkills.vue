@@ -607,6 +607,9 @@ export default {
       this.selectedId = newId;
     },
     finalizeSelections: function (){
+
+      // need to add stat bonuses here
+
       this.newCharacter.skills.selected = true
     }
   },
