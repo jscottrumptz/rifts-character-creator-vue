@@ -17,6 +17,7 @@ class ChemistryAnalytical extends Skill {
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['chemistry', 'mathematicsAdvanced', 'literacy']
     }
 }
 

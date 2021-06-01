@@ -17,6 +17,7 @@ class VeterinaryScience extends Skill {
         this.base = `50`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['biology', 'animalHusbandry']
     }
 }
 

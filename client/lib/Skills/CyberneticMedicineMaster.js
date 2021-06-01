@@ -3,7 +3,7 @@ const Skill = require('../Skill');
 class CyberneticMedicine extends Skill {
     constructor() {
         super();
-        this.name = `Cybernetic Medicine (Basic)`;
+        this.name = `Cybernetic Medicine (Master)`;
         this.group = `Medical`;
         this.isSecondary = `false`;
         this.note = `One can not create a bionic implant in a garage. The character will need access to a cybernetics or bionics laboratory and the components to build or modify an artificial implant. Even a high-tech medical facility will not have the necessary components to create a cybernetic or bionic mechanism, although it may have access to them.`;
@@ -19,12 +19,13 @@ A doctor in cybernetics needs to select this skill twice and Electrical Engineer
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `None (for basic skill), Cybernetic Medicine x2 and Electrical Engineering (for master-level skill).`;
+        this.required = `Cybernetic Medicine and Electrical Engineering.`;
         this.perLvl = `5`;
         this.baseTwo = `60`;
         this.base = `40`;
         this.takeTwiceBonus = ``;
         this.takeTwice = `true`;
+        this.preq = ['cyberneticMedicine', 'electricalEngineer']
     }
 }
 

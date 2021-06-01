@@ -23,6 +23,7 @@ This skill does not provide the ability to recite written words with any level o
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['literacy'];
     }
 }
 

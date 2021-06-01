@@ -23,6 +23,7 @@ The character can hot-wire any vehicle without penalty but it takes 1D4 melee ro
         this.base = `35`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['mathematicsAdvanced', 'literacy']
     }
 }
 

@@ -18,6 +18,8 @@ class Skill {
         required = '',
         // array of required skills
         preq = [],
+        // array of alternative prerequisites
+        preqOr = [],
         description = '',
         note = '',
         group = '',
@@ -44,6 +46,7 @@ class Skill {
         this.takeTwiceBonus = takeTwiceBonus;
         this.required = required;
         this.preq = preq;
+        this.preqOr = preqOr;
         this.description = description;
         this.note = note;
         this.group = group;

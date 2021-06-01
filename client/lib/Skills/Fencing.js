@@ -13,12 +13,13 @@ class Fencing extends Skill {
         this.bonus = `+1 Strike (with sword or dagger).
 +1 Parry (with sword or dagger).
 +1D6 damage (with sword).`;
-        this.required = `W.P. Sword, W.P. Knife.`;
+        this.required = `W.P. Sword`;
         this.perLvl = ``;
         this.baseTwo = ``;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['wPSword']
     }
 }
 

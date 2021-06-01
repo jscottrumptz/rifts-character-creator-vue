@@ -11,12 +11,13 @@ class ComputerHacking extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Literacy, Computer Operation, Computer Programming, and at least Mathematics: Basic.`;
+        this.required = `Computer Programming and at least Mathematics: Basic.`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `20`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['computerProgramming', 'mathematics']
     }
 }
 

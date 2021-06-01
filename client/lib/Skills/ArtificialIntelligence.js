@@ -21,6 +21,7 @@ A character with this Science skill understands the many principles and theories
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['computerOperation']
     }
 }
 

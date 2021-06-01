@@ -13,12 +13,13 @@ This skill is usually reserved for Operators, military engineers, and military c
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = `+1 Strike (when using heavy weapons or vehicular weapon systems).`;
-        this.required = `Mechanical Engineering.`;
+        this.required = `Mechanical Engineer`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['mechanicalEngineer']
     }
 }
 

@@ -11,12 +11,13 @@ class Surveillance extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Electronics: Basic or Electrical Engineering and Computer Operation and Literacy (the latter two are needed only for complex, high-tech systems).`;
+        this.required = `Basic Electronics or Electrical Engineer and Computer Operation and Literacy (the latter two are needed only for complex, high-tech systems).`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['lectr'];
     }
 }
 

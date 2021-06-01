@@ -19,6 +19,7 @@ Swimming underwater with S.C.U.B.A. equipment or other underwater equipment is c
         this.base = `50`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['swimming']
     }
 }
 

@@ -19,6 +19,7 @@ Jamming military or police communications can cause unit confusion and disrupt c
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['radioBasic'];
     }
 }
 

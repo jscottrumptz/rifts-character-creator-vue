@@ -17,6 +17,7 @@ class Laser extends Skill {
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['radioBasic', 'electricalEngineer', 'computerOperation'];
     }
 }
 

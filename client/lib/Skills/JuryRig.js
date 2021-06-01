@@ -17,6 +17,7 @@ class JuryRig extends Skill {
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['mechan', 'lectr']
     }
 }
 

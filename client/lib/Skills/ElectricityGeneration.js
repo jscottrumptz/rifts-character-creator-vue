@@ -19,6 +19,7 @@ Electricity is generated in a variety of ways: from sunlight, wind and hydro sys
         this.base = `50`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['basicElectronics', 'basicMechanics', 'mathematicsBasic']
     }
 }
 

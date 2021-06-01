@@ -7,7 +7,7 @@
         <h2 class="text-white p-5">Skill Picks Remaining: {{remaining}}</h2>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
-            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
+            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
         <button v-if="this.pickedSkill && this.pickedSkill.canRemove" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
@@ -361,18 +361,38 @@ export default {
       // Check prerequisites
       if(this.selectedSkill.preq.length > 0) {
         let required = 0;
+        let requiredOr = 0;
         // get preq array from the selected skill object
         this.selectedSkill.preq.forEach(preq => {
           // check for each prerequisite in the currently selected skills
+          let thisRequired = false
           for(const [key] of Object.entries(this.selectedSkills)) {
             if (key.includes(preq)){
-              // if the key includes the needed skill increase the required counter
-              required++
+              // if one of the keys includes the needed skill, set this required to True
+              thisRequired = true
             }
+          }
+          // if this required = true increase the required count
+          if(thisRequired === true) {
+            required++
+          }
+        })
+        this.selectedSkill.preqOr.forEach(preqOr => {
+          // check for each prerequisite in the currently selected skills
+          let thisRequiredOr = false
+          for(const [key] of Object.entries(this.selectedSkills)) {
+            if (key.includes(preqOr)){
+              // if one of the keys includes the needed skill, set this required to True
+              thisRequiredOr = true
+            }
+          }
+          // if this required = true increase the required count
+          if(thisRequiredOr === true) {
+            requiredOr++
           }
         })
         // check if required count is equal to the number of preqs, if so the user can add the skill
-        if (required === this.selectedSkill.preq.length) {
+        if (required === this.selectedSkill.preq.length || (requiredOr !== 0 && requiredOr === this.selectedSkill.preqOr.length)) {
           this.canAdd = true
         } else {
           this.canAdd = false
@@ -389,6 +409,7 @@ export default {
       this.pickedProperty = index;
       let listId = 'pick-'+[index]
       this.selectedBg(listId)
+      this.selectedSkill = null;
     },
     addSelected: function (){
       const prop = this.selectedProperty;
@@ -533,6 +554,16 @@ export default {
           }
         })
 
+        // check for ALT prerequisites
+        this.pickedSkill.preqOr.forEach(preqOr => {
+          // make prerequisites un-removable
+          for (const [key] of Object.entries(this.selectedSkills)) {
+            if (key.includes(preqOr)) {
+              this.selectedSkills[key].canRemove = true
+            }
+          }
+        })
+
         this.pickedSkill = null;
         this.pickedProperty = null
         this.selectedId = null;
@@ -589,9 +620,16 @@ export default {
               }
             }
           })
+          this.selectedSkills[key].preqOr.forEach(preqOr => {
+            // make prerequisites un-removable
+            for (const [key] of Object.entries(this.selectedSkills)) {
+              if (key.includes(preqOr)) {
+                this.selectedSkills[key].canRemove = false
+              }
+            }
+          })
         }
       }
-
 
       // update remaining skills counter
       this.remaining = availablePicks;

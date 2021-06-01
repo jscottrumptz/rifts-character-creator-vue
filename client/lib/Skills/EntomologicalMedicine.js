@@ -23,6 +23,8 @@ In its more advanced application, the character understands and can treat 'insec
         this.base = `40`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['chemistryAnalytical'];
+        this.preqOr = ['chemistry', 'mathematicsBasic']
     }
 }
 

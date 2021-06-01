@@ -15,12 +15,13 @@ The first percentage is the doctor's ability to accurately diagnose the problem.
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Biology, Chemistry, Mathematics: Basic OR Mathematics: Advanced, Pathology, and Literacy.`;
+        this.required = `Pathology and Basic or Advanced Mathematics.`;
         this.perLvl = `5`;
         this.baseTwo = `50`;
         this.base = `60`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['pathology', 'mathematics']
     }
 }
 

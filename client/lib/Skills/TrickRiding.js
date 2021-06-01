@@ -17,6 +17,7 @@ class TrickRiding extends Skill {
         this.base = `Equal to the first (larger) Horsemanship skill percentage; roll for each trick/stunt attempt.`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['horsemanship'];
     }
 }
 

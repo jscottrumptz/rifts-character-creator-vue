@@ -17,6 +17,7 @@ class Forensics extends Skill {
         this.base = `35`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['biology', 'chemistry']
     }
 }
 

@@ -37,6 +37,7 @@ Light Ground Robots`;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['robotsandPower']
     }
 }
 

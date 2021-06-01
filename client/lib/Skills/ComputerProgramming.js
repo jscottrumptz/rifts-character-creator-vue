@@ -19,6 +19,7 @@ Hacking is possible but at a penalty of -40% (unless the character has the Compu
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['computerOperation', 'literacy']
     }
 }
 

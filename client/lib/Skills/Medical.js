@@ -2,6 +2,7 @@ const AnimalHusbandry = require('./AnimalHusbandry');
 const BrewingMedicinal = require('./BrewingMedicinal');
 const CrimeSceneInvestigation = require('./CrimeSceneInvestigation');
 const CyberneticMedicine = require('./CyberneticMedicine');
+const CyberneticMedicineMaster = require('./CyberneticMedicineMaster');
 const EntomologicalMedicine = require('./EntomologicalMedicine');
 const FieldSurgery = require('./FieldSurgery');
 const FirstAid = require('./FirstAid');
@@ -19,6 +20,7 @@ class Medical {
         brewingMedicinal = new BrewingMedicinal,
         crimeSceneInvestigation = new CrimeSceneInvestigation,
         cyberneticMedicine = new CyberneticMedicine,
+        cyberneticMedicineMaster = new CyberneticMedicineMaster,
         entomologicalMedicine = new EntomologicalMedicine,
         fieldSurgery = new FieldSurgery,
         firstAid = new FirstAid,
@@ -34,6 +36,7 @@ class Medical {
         this.brewingMedicinal = brewingMedicinal;
         this.crimeSceneInvestigation = crimeSceneInvestigation;
         this.cyberneticMedicine = cyberneticMedicine;
+        this.cyberneticMedicineMaster = cyberneticMedicineMaster;
         this.entomologicalMedicine = entomologicalMedicine;
         this.fieldSurgery = fieldSurgery;
         this.firstAid = firstAid;

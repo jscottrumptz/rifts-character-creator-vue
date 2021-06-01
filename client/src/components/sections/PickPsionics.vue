@@ -7,7 +7,7 @@
         <h2 class="text-white p-5">Psionic Picks Remaining: {{remaining}}</h2>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
-            <li v-for="(psionics,index) in selectedPsionics" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
+            <li v-for="(psionics,index) in selectedPsionics" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }} ({{ psionics.group }})</li>
           </ul>
         </div>
         <button v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>

@@ -17,6 +17,7 @@ class Astrophysics extends Skill {
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['mathematicsAdvanced']
     }
 }
 

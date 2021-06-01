@@ -22,6 +22,7 @@ class Outdoormanship extends Skill {
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.preq = ['wildernessSurvival']
     }
 }
 
