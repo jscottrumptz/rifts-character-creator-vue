@@ -89,6 +89,24 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         name:'literacyOther',
                         occBonus: 35
                     }
+                ],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 5
+                    },
+                    {
+                        name: 'cryptography',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'laser',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'opticSystems',
+                        occBonus: 15
+                    }
                 ]
             }
         }

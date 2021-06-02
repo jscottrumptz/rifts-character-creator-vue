@@ -174,6 +174,7 @@
           <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
           <span v-show="displaySkill[0].perLvl"> + {{displaySkill[0].perLvl}}% per level<br></span></span>
           <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
+          <span v-show="displaySkill[0].occBonus" class="font-medium text-gray-200">O.C.C. Bonus: <span class="font-normal">+{{displaySkill[0].occBonus}}%</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-line overflow-y-auto max-h-96">
@@ -684,11 +685,11 @@ export default {
     },
     // prepares skill lists
     skillLoader: function (groupList, occList) {
-      // check for prerequisites
+      // handle known skills
       occList.free.forEach(skill => {
         // make prerequisites un-removable
         for (const [key] of Object.entries(groupList)) {
-          if (key.includes(skill.name)) {
+          if (key === skill.name) {
             this.newCharacter.skills.known[key] = groupList[key]
             this.newCharacter.skills.known[key].known = true;
             this.newCharacter.skills.known[key].occBonus = skill.occBonus
@@ -696,6 +697,18 @@ export default {
               this.newCharacter.skills.known[key].base = skill.base
             }
             delete groupList[key]
+          }
+        }
+      })
+      // handle available skills
+      occList.available.forEach(skill => {
+        // make prerequisites un-removable
+        for (const [key] of Object.entries(groupList)) {
+          if(skill.name === 'Any') {
+            groupList[key].occBonus = skill.occBonus
+          }
+          if (key === skill.name) {
+            groupList[key].occBonus = skill.occBonus
           }
         }
       })
