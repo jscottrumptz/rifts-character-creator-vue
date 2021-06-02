@@ -111,11 +111,42 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             baseSkill: "57% + 3% per lvl"
         };
 
-        character.skills.known.analyze =
+        character.skills.known.startingSkill =
             {
-                name: `Analyze`,
-                description: `A skill-like ability that enables a character to break patterns, solve strange equations. and otherwise gain insight and analysis to a situation, event or character. It also applies to strategy, finance, or just "working all the angles." Adds a bonus of+ 10% to skills such as Anthropology, Chemistry: Analytical, Computer Hacking, Cryptography, Entomological Medicine, Jury-Rig, Sensory Equipment, Trap/ Mine Detection, Zoology and Xenology, and + 1 on Perception Rolls when the scientist is focused on analyzing/figuring something out.`,
-                type: 'Occupational',
+                name: 'Starting Skill',
+                // can this be selected as a secondary skill
+                isSecondary: false,
+                // toggle to check if required for another skill
+                canRemove: false,
+                // toggle to see if requirements met
+                canSelect: true,
+                // toggle to see if auto assigned by an OCC or Race
+                known: true,
+                // toggle to see if it can be selected again
+                takeTwice: false,
+                // bonus for selecting the skill twice
+                takeTwiceBonus: 0,
+                // text that conveys requirements during skill selection
+                required: '',
+                // array of required skills
+                preq: [],
+                // array of alternative prerequisites
+                preqOr: [],
+                description: '',
+                note: '',
+                group: 'OCC Skill',
+                // text the conveys skill bonuses during skill selection
+                bonus: '',
+                // text that conveys skill penalties during skill selection
+                penalty: '',
+                // text that conveys OCC Group requirements
+                reqOCCGroup: '',
+                base: 0,
+                baseTwo: 0,
+                perLvl: 0,
+                raceBonus: 0,
+                occBonus: 0,
+                skillBonus: 0
             };
     }
 }

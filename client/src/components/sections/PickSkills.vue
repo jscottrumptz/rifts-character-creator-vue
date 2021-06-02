@@ -10,9 +10,10 @@
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
-        <button v-if="this.pickedSkill && this.pickedSkill.canRemove" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove" class="bg-yellow-500 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
         <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Select a Skill</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">O.C.C. Skill ( Can't Remove )</button>
         <p class="text-white pl-5 pb-5" >Fulfill the following requirements.</p>
       </div>
 
@@ -246,6 +247,7 @@ export default {
       weaponProficienciesAncient: new WeaponProficienciesAncient,
       weaponProficienciesModern: new WeaponProficienciesModern,
       wilderness: new Wilderness,
+      startingSkills: 0,
       selectedSkills: {},
       displaySkill: [{name:'Select a Skill'}],
       toggle: "communication",
@@ -572,12 +574,14 @@ export default {
     },
     init: function() {
       let skillPicked = Object.keys(this.selectedSkills).length;
+      let noCostSkills = this.startingSkills;
       let skillStart = this.newCharacter.occ.occRelatedNumber;
       let skillHealing = this.healingCount
       let skillPhysical = this.physicalCount
       let skillSensitive = this.sensitiveCount
+
       // determine how many picks are left
-      let availablePicks = skillStart - skillPicked
+      let availablePicks = skillStart - skillPicked + noCostSkills
 
       // see if the character is spreading it's picks over multiple groups, if so deduct 2 picks from the available total
       if ((skillHealing > 0 && skillPhysical > 0) || (skillHealing > 0 && skillSensitive > 0) || (skillSensitive > 0 && skillPhysical > 0)) {
@@ -628,7 +632,6 @@ export default {
 
       // update remaining skills counter
       this.remaining = availablePicks;
-      console.log(this.selectedSkills)
     },
     selectedBg: function (newId){
       if (this.selectedId != null) {
@@ -644,9 +647,14 @@ export default {
       // need to add stat bonuses here
 
       this.newCharacter.skills.selected = true
+    },
+    loadSelected: function () {
+      this.selectedSkills = this.newCharacter.skills.known
+      this.startingSkills = Object.keys(this.newCharacter.skills.known).length
     }
   },
   mounted: function () {
+    this.loadSelected();
     this.init();
   }
 }
