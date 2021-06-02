@@ -73,11 +73,27 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
         this.occSkills = [];
         this.reqOcc = [];
         this.occRelatedNumber = 15;
-        this.occRelatedSkills = [];
-        this.occRelatedAtLevel = [{ level: 1, amount: 15, levels: [3, 6, 9, 12, 15], amounts: 2 }];
-        this.reqOccRelated = [{ group: 'Science', amount: 3 }, { group: 'Medical', amount: 2 }, { group: 'Technical', amount: 2 }];
-        this.secondarySkills = [];
-        this.secondaryAtLevel = [{ level: 1, amount: 4, levels: [2, 4, 7, 10, 13], amounts: 1 }];
+        this.secondaryNumber = 4;
+        this.occSkills = {
+            communication: {
+                free: [
+                    {
+                        name:'languageNativeTongue',
+                        base: 96
+                    },
+                    {
+                        name:'languageOther',
+                        occBonus: 20
+                    },
+                    {
+                        name:'literacyOther',
+                        occBonus: 35
+                    }
+                ]
+            }
+        }
+        this.occRelatedAtLevel = { levels: [3, 6, 9, 12, 15], amounts: 2 };
+        this.secondaryAtLevel = { levels: [2, 4, 7, 10, 13], amounts: 1 };
     }
 
     rollSecondary(character) {
@@ -132,7 +148,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 preq: [],
                 // array of alternative prerequisites
                 preqOr: [],
-                description: '',
+                description: 'Just a placeholder skill that represents a skill that the character knew before this skill selection process.',
                 note: '',
                 group: 'OCC Skill',
                 // text the conveys skill bonuses during skill selection

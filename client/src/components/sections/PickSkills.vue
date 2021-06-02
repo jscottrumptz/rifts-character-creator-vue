@@ -10,10 +10,11 @@
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
+        <!-- Determine what button is active depending on prerequisites and previously known skills-->
         <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
         <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
         <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">O.C.C. Skill ( Can't Remove )</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
         <p class="text-white pl-5 pb-5" >Fulfill the following requirements.</p>
       </div>
 
@@ -173,15 +174,6 @@
           <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
           <span v-show="displaySkill[0].perLvl"> + {{displaySkill[0].perLvl}}% per level<br></span></span>
           <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
-          <!--
-          <span v-show="displaySkill[0].damage != ''" class="font-medium text-gray-200">Damage: <span class="font-normal">{{displaySkill[0].damage}}</span><br></span>
-          <span v-show="displaySkill[0].lengthOfTrance != ''" class="font-medium text-gray-200">Length of Trance: <span class="font-normal">{{displaySkill[0].lengthOfTrance}}</span><br></span>
-          <span v-show="displaySkill[0].baseSkill != ''" class="font-medium text-gray-200">Base Skill: <span class="font-normal">{{displaySkill[0].baseSkill}}</span><br></span>
-          <span v-show="displaySkill[0].limitations != ''" class="font-medium text-gray-200">Limitations: <span class="font-normal">{{displaySkill[0].limitations}}</span><br></span>
-          <span v-show="displaySkill[0].attacksPerMelee != ''" class="font-medium text-gray-200">Attacks per Melee: <span class="font-normal">{{displaySkill[0].attacksPerMelee}}</span><br></span>
-          <span v-show="displaySkill[0].recovers != ''" class="font-medium text-gray-200">Recovers: <span class="font-normal">{{displaySkill[0].recovers}}</span><br></span>
-          <span v-show="displaySkill[0].bonuses != ''" class="font-medium text-gray-200">Bonuses: <span class="font-normal">{{displaySkill[0].bonuses}}</span><br></span>
-          -->
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-line overflow-y-auto max-h-96">
@@ -690,8 +682,27 @@ export default {
       // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.selected = true
     },
+    // prepares skill lists
+    skillLoader: function (groupList, occList) {
+      // check for prerequisites
+      occList.free.forEach(skill => {
+        // make prerequisites un-removable
+        for (const [key] of Object.entries(groupList)) {
+          if (key.includes(skill.name)) {
+            this.newCharacter.skills.known[key] = groupList[key]
+            this.newCharacter.skills.known[key].known = true;
+            this.newCharacter.skills.known[key].occBonus = skill.occBonus
+            if (skill.base) {
+              this.newCharacter.skills.known[key].base = skill.base
+            }
+            delete groupList[key]
+          }
+        }
+      })
+    },
     // gathers the necessary initial occ and character skill data
-    loadSelected: function () {
+    onLoad: function () {
+      this.skillLoader(this.communication, this.newCharacter.occ.occSkills.communication)
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
       // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
@@ -700,7 +711,7 @@ export default {
   },
   mounted: function () {
     // runs a function to gather the necessary initial occ and character skill data
-    this.loadSelected();
+    this.onLoad();
     // called to update skill counts, group counts, prerequisites and other data
     this.init();
   }

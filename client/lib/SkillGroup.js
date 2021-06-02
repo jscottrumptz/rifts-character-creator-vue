@@ -3,11 +3,10 @@ class SkillGroup {
     (
         name = '',
         min = 0,
-        max = 0,
-        current = 0,
-        bonus = 0,
-        required = false,
-        known = [],
+        available = ['any'],
+        unavailable = [],
+        free = [],
+        cyberneticBonus = 0,
         raceBonus = 0,
         occBonus = 0,
         skillBonus = 0
@@ -15,11 +14,10 @@ class SkillGroup {
     {
         this.name = name;
         this.min = min;
-        this.max = max;
-        this.current = current;
-        this.bonus = bonus;
-        this.required = required;
-        this.known = known;
+        this.available = available;
+        this.unavailable = unavailable;
+        this.free = free;
+        this.cyberneticBonus = cyberneticBonus;
         this.raceBonus = raceBonus;
         this.occBonus = occBonus;
         this.skillBonus = skillBonus

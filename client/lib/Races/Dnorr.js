@@ -61,19 +61,12 @@ Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess 
     rollSecondary(character) {
         character.psionics.randomPsionics = false;
         character.secondaryStats.ppe.raceBonus = character.attributes.pe.total + random.dice(6,6).reduce((a, b) => a + b, 0);
-        character.skills.total = 4;
 
         let ma = character.attributes.ma
         if (ma.raceTotal > 17) {
             ma.attributeRoll.push(random.die(6));
             ma.raceTotal = ma.attributeRoll.reduce((a, b) => a + b, 0) + ma.bonus;
         }
-        character.skills.science.total = 3;
-        character.skills.technical.total =1;
-        character.skills.science.anthropology = { known: true, required: true, raceBonus: 10};
-        character.skills.science.mathmaticsBasic = { known: true, required: true, raceBonus: 15};
-        character.skills.science.mathmaticsAdvanced = { known: true, required: true, raceBonus: 15};
-        // character.skills.technical.known.push(new Skill ('Art', true, [], 20, 35, 5))
     }
 }
 

@@ -1,4 +1,5 @@
 const StatRoll = require('./StatRoll');
+const SkillGroups = require('./SkillGroups');
 
 const { Random } = require('random-js');
 const random = new Random();
@@ -30,16 +31,10 @@ class OCC {
         reqSpd = 0,
 
         // SKILLS
+        occSkills = new SkillGroups,
         occRelatedNumber = 0,
-        occSkillsList = '',
-        occRelatedSkillsList = '',
-        secondarySkillsList = '',
-        occSkills = [],
-        reqOcc = [],
-        occRelatedSkills = [],
         occRelatedAtLevel = [],
-        reqOccRelated = [],
-        secondarySkills = [],
+        secondaryNumber = 0,
         secondaryAtLevel = [],
 
         // ATTRIBUTES
@@ -144,16 +139,10 @@ class OCC {
         this.reqSpd = reqSpd;
 
         // SKILLS
-        this.occRelatedNumber = occRelatedNumber,
-        this.occSkillsList = occSkillsList,
-        this.occRelatedSkillsList = occRelatedSkillsList,
-        this.secondarySkillsList = secondarySkillsList,
         this.occSkills = occSkills;
-        this.reqOcc = reqOcc;
-        this.occRelatedSkills = occRelatedSkills;
+        this.occRelatedNumber = occRelatedNumber,
+        this.secondaryNumber = secondaryNumber,
         this.occRelatedAtLevel = occRelatedAtLevel;
-        this.reqOccRelated = reqOccRelated;
-        this.secondarySkills = secondarySkills;
         this.secondaryAtLevel = secondaryAtLevel;
 
         // ATTRIBUTES
