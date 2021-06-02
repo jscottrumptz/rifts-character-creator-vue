@@ -107,7 +107,19 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         name: 'opticSystems',
                         occBonus: 15
                     }
-                ]
+                ],
+                unavailable: [],
+                only:[]
+            },
+            cowboy: {
+                free: [],
+                available: [],
+                unavailable: [
+                    {
+                        name:'All',
+                    }
+                ],
+                only:[]
             }
         }
         this.occRelatedAtLevel = { levels: [3, 6, 9, 12, 15], amounts: 2 };

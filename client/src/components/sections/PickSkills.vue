@@ -687,7 +687,6 @@ export default {
     skillLoader: function (groupList, occList) {
       // handle known skills
       occList.free.forEach(skill => {
-        // make prerequisites un-removable
         for (const [key] of Object.entries(groupList)) {
           if (key === skill.name) {
             this.newCharacter.skills.known[key] = groupList[key]
@@ -702,7 +701,6 @@ export default {
       })
       // handle available skills
       occList.available.forEach(skill => {
-        // make prerequisites un-removable
         for (const [key] of Object.entries(groupList)) {
           if(skill.name === 'Any') {
             groupList[key].occBonus = skill.occBonus
@@ -712,10 +710,33 @@ export default {
           }
         }
       })
+      // handle unavailable skills
+      occList.unavailable.forEach(skill => {
+        for (const [key] of Object.entries(groupList)) {
+          if(skill.name === 'All') {
+            delete groupList[key];
+            this.cowboyActive = false;
+          }
+          if (key === skill.name) {
+            delete groupList[key]
+          }
+        }
+      })
+      // handle only skills
+      occList.only.forEach(skill => {
+        for (const [key] of Object.entries(groupList)) {
+          if (key === skill.name) {
+            groupList[key].occBonus = skill.occBonus
+          } else {
+            delete groupList[key]
+          }
+        }
+      })
     },
     // gathers the necessary initial occ and character skill data
     onLoad: function () {
       this.skillLoader(this.communication, this.newCharacter.occ.occSkills.communication)
+      this.skillLoader(this.cowboy, this.newCharacter.occ.occSkills.cowboy)
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
       // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
