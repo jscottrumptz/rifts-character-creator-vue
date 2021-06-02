@@ -20,8 +20,59 @@ class RogueScientist extends OCC {
         this.credits = { sides: 6, amount: 1, multiplier: 1000 };
         this.blackMarketItems = { sides: 6, amount: 3, multiplier: 1000 };
 
+        this.occSkillsList = `Literacy in two Languages of choice (+ 35%). 
+Language: Native Tongue at 96%. 
+Language: Other: Three of choice (+20%). 
+Astronomy & Navigation (+20%) 
+Basic and Advanced Math (both+ 30%) 
+Basic Electronics (+20%) 
+Computer Operation (+20%) 
+Find Contraband (+10%) 
+Pilot Automobile (+10%)
+Radio: Basic (+10%) 
+Recycle (+20%) 
+Salvage (+20%) 
+W.P. Energy Pistol or Energy Rifle. 
+
+Hand to Hand combat can be selected as an "O.C.C. Related" skill as follows: 
+Basic counts as one skill selection, Expert as two, Martial Arts three, or Assassin (if evil) as four selections.`;
+        this.occRelatedSkillsList = `Select three Science skills, two Medical skills, and two Technical skills, and eight other skills (including others from the previous categories if so desired), +2 additional skills at levels 3, 6, 9, 12, and 15. All new skills start at level one proficiency. 
+
+Communications: Any (+5%; but +15% to Cryptography, Laser Communications and Optic Systems). 
+Cowboy: None. 
+Domestic: Any (+5%). 
+Electrical: Any (+10%). 
+Espionage: Wilderness Survival only (+10%). 
+Horsemanship: General only. 
+Mechanical: Any (+5%). 
+Medical: Any (+ 10%). 
+Military: Trap/Mine Detection (+5%) only. 
+Physical: Any, excluding Acrobatics, Gymnastics and Wrestling. Pilot: Any (+5%). 
+Pilot Related: Any (+10%). 
+Rogue: Any. 
+Science: Any (+20%).
+Technical: Any (+15%). 
+W.P.: Any, excluding Heavy Weapons of any kind. 
+Wilderness: Any (+10%).
+`;
+        this.secondarySkillsList = `Select four skills from the Secondary Skills List in the Skill Section, + 1 at levels 2, 4, 7, 10 and 13. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
+        this.cyberneticsDesc = `Starts with none. May or may not be opposed to cybernetics and bionics.`
+        this.equipmentDesc = `One suit of light M.D.C. body armor, one weapon for each W.P. and two E-Clips, one laser scalpel or Vibro-Knife, a P.D.D. pocket audio digital disc recorder & player (plays one inch discs, two hours per disc, powered by a tiny one year battery) and a dozen blank discs, note pad, variety of markers, mechanical pencil, portable hand-held computer with micro-printer, pocket laser distance finder, conventional tape measure, digital camera (100 still photos and up to 30 minutes of video per video disc, triple the number of still photos if no video is used) and a dozen video discs, multi-optics band, pen flashlight, large flashlight, hand pick ( 1D4 damage), survival knife ( 1D6 damage), backpack, knapsack, utility belt, ammo-belt, canteen, sunglasses and goggles, walkie-talkie radio, air filter, gas mask, 100 feet (30 m) of lightweight rope, and tool kit. If applicable, the character may also have a half dozen specimen cases, a dozen specimen dishes, six test tubes, 1D4 specimen jars, two dozen microscope slides, portable microscope, scalpel, pins, and tweezers. Weapons, armor, and equipment can be upgraded over time.`
+        this.abilitiesDesc = `Analyze
+A skill-like ability that enables a character to break patterns, solve strange equations. and otherwise gain insight and analysis to a situation, event or character. It also applies to strategy, finance, or just "working all the angles." Adds a bonus of+ 10% to skills such as Anthropology, Chemistry: Analytical, Computer Hacking, Cryptography, Entomological Medicine, Jury-Rig, Sensory Equipment, Trap/ Mine Detection, Zoology and Xenology, and + 1 on Perception Rolls when the scientist is focused on analyzing/figuring something out.
+
+Hypothesize
+A skill-like ability that enables a character to brainstorm out an answer to an impossible question. Given all of the information at hand, the character can make a quantum leap in logic to arrive at a new, and possibly radical solution to a problem that no one else has made, or is likely to understand. The catch is the odds of being able to duplicate it again. Adds a +20% bonus to Jury-Rig and Brewing.
+GM Note: Use this as a sudden flash of insight or realization and a quick fix (temporary) in which the character knows what to do about some critical problem. This ability does NOT apply to finding a cure for cancer or figuring out how to use, build or improve every-thing, but it does reduce all penalties for extremely alien physiology or alien technology by half.
+
+Find the Exotic
+Find the Exotic. +20% bonus to Find Contraband related to scientific equipment, medicinal drugs, rare herbs and chemicals, exotic specimens (plant, herb, insect, animal, etc.) as ingredients and component parts, or as live subjects for study or testing. May also include rare parts and pre-Rifts science related books and artifacts. Only + 10% bonus to find electrical, mechanical, scholastic, or bionic contraband. These bonuses are added to the character's normal Find Contraband skill whenever such items are being sought. Gets science and medical equipment, medicinal drugs, and exotic specimens at a discount - 30% off as a professional courtesy from most other Scientists, doctors, medical suppliers and the Black Market, 50% discount from the Black Market, labs and clinics if he trades at least 12 hours of his time to work at one of their facilities, like a Body-Chop-Shop, underground lab or illegal clinic. Every 12 hours he puts in, he can get up to 100,000 credits worth of equipment or specimens at the discount (that's 50,000 credits, his cost).
+
+Recognize Scientific Authenticity and Quality
+An exclusive skill that enables the Rogue Scientist to tell if scientific equipment is new or used, defective, low or high quality, and if a chemical, drug, specimen or sample is genuine, a fair price and if it is exactly what he needs or not. Reduce this skill by half when dealing with unknown alien items, bionics, electronics and mechanical items. Not applicable to magic items.`
         this.occSkills = [];
         this.reqOcc = [];
+        this.occRelatedNumber = 15;
         this.occRelatedSkills = [];
         this.occRelatedAtLevel = [{ level: 1, amount: 15, levels: [3, 6, 9, 12, 15], amounts: 2 }];
         this.reqOccRelated = [{ group: 'Science', amount: 3 }, { group: 'Medical', amount: 2 }, { group: 'Technical', amount: 2 }];
@@ -59,6 +110,13 @@ class RogueScientist extends OCC {
             type: 'Occupational',
             baseSkill: "57% + 3% per lvl"
         };
+
+        character.skills.known.analyze =
+            {
+                name: `Analyze`,
+                description: `A skill-like ability that enables a character to break patterns, solve strange equations. and otherwise gain insight and analysis to a situation, event or character. It also applies to strategy, finance, or just "working all the angles." Adds a bonus of+ 10% to skills such as Anthropology, Chemistry: Analytical, Computer Hacking, Cryptography, Entomological Medicine, Jury-Rig, Sensory Equipment, Trap/ Mine Detection, Zoology and Xenology, and + 1 on Perception Rolls when the scientist is focused on analyzing/figuring something out.`,
+                type: 'Occupational',
+            };
     }
 }
 

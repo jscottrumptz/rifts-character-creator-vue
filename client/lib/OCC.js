@@ -10,11 +10,11 @@ class OCC {
         description = '',
         image = '',
         alignment = '',
-        psionicsDesc = `Standard; the same probability of psionic powers as a human.`,
-        abilitiesDesc = `As per O.C.C.`,
-        magicDesc = `None, unless a Magic O.C.C. is chosen.`,
-        cyberneticsDesc = `As per O.C.C.`,
-        skillsDesc =  `By O.C.C. only.`,
+        psionicsDesc = `As per Race.`,
+        abilitiesDesc = `As per Race.`,
+        magicDesc = `None, unless a Magic Race is chosen.`,
+        cyberneticsDesc = `As per Race.`,
+        equipmentDesc =  `None.`,
 
         // REQUIREMENTS
         reqAlignment = [],
@@ -30,6 +30,10 @@ class OCC {
         reqSpd = 0,
 
         // SKILLS
+        occRelatedNumber = 0,
+        occSkillsList = '',
+        occRelatedSkillsList = '',
+        secondarySkillsList = '',
         occSkills = [],
         reqOcc = [],
         occRelatedSkills = [],
@@ -124,7 +128,7 @@ class OCC {
         this.abilitiesDesc = abilitiesDesc;
         this.magicDesc = magicDesc;
         this.cyberneticsDesc = cyberneticsDesc;
-        this.skillsDesc = skillsDesc;
+        this.equipmentDesc = equipmentDesc;
 
         // REQUIREMENTS
         this.reqAlignment = reqAlignment;
@@ -140,6 +144,10 @@ class OCC {
         this.reqSpd = reqSpd;
 
         // SKILLS
+        this.occRelatedNumber = occRelatedNumber,
+        this.occSkillsList = occSkillsList,
+        this.occRelatedSkillsList = occRelatedSkillsList,
+        this.secondarySkillsList = secondarySkillsList,
         this.occSkills = occSkills;
         this.reqOcc = reqOcc;
         this.occRelatedSkills = occRelatedSkills;

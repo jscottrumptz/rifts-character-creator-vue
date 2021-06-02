@@ -1,6 +1,6 @@
 <template>
   <div class="px-5 pb-5">
-    <p class="text-white text-xl font-medium p-5" >{{newCharacter.skills.total}} total Skill picks</p>
+    <p class="text-white text-xl font-medium p-5" >Pick your character's OCC Related Skills</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
@@ -572,15 +572,10 @@ export default {
     },
     init: function() {
       let skillPicked = Object.keys(this.selectedSkills).length;
-      let skillStart = 8;
+      let skillStart = this.newCharacter.occ.occRelatedNumber;
       let skillHealing = this.healingCount
       let skillPhysical = this.physicalCount
       let skillSensitive = this.sensitiveCount
-
-      if(this.newCharacter.skills.ability === 'Minor') {
-        skillStart = 2
-      }
-
       // determine how many picks are left
       let availablePicks = skillStart - skillPicked
 

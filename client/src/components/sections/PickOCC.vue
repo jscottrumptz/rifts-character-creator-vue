@@ -510,7 +510,7 @@
         <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
           <option v-if="aboutActive" value="about" >About {{occ.name}}s</option>
           <option v-if="statsActive" value="stats">{{occ.name}} Skills</option>
-          <option v-if="abilitiesActive" value="abilities">Other Notes, Abilities, and Skills</option>
+          <option v-if="abilitiesActive" value="abilities">Other Notes and Abilities</option>
         </select>
       </div>
       <div class="hidden sm:block">
@@ -525,7 +525,7 @@
           </a>
           <a v-if="abilitiesActive" v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">
-            Other Notes, Abilities, and Skills
+            Other Notes and Abilities
           </a>
         </nav>
       </div>
@@ -549,24 +549,33 @@
         <p v-if="occ.rivals" class="text-gray-50 font-medium">Rivals and Enemies</p>
         <p v-if="occ.rivals" class="whitespace-pre-wrap text-gray-100">{{occ.rivals}}</p>
       </div>
-      <!-- OCC Content -->
+      <!-- OCC Skills -->
       <div v-show="toggle==='stats' && statsActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <!-- Available OCCs -->
-        <p class="whitespace-pre-wrap text-gray-50">{{occ.availableOCCs}}</p>
+        <!-- OCC Skills -->
+        <p class="text-gray-50 font-medium">OCC Skills:</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{occ.occSkillsList}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">OCC Related Skills:</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{occ.occRelatedSkillsList}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Secondary Skills:</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{occ.secondarySkillsList}}</p>
+        <br/>
       </div>
       <!-- Abilities, Skills, & Other Content -->
       <div v-show="toggle==='abilities' && abilitiesActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="text-gray-50 font-medium">Natural Abilities</p>
+        <p class="text-gray-50 font-medium">OCC Abilities:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.abilitiesDesc}}</p>
         <br/>
-        <p class="text-gray-50 font-medium">RCC Skills</p>
-        <p class="whitespace-pre-wrap text-gray-100">{{occ.skillsDesc}}</p>
-        <br/>
-        <p class="text-gray-50 font-medium">Magic</p>
+        <p class="text-gray-50 font-medium">Magic:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.magicDesc}}</p>
         <br/>
-        <p class="text-gray-50 font-medium">Cybernetics and Bionics</p>
+        <p class="text-gray-50 font-medium">Cybernetics and Bionics:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.cyberneticsDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Equipment:</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{occ.equipmentDesc}}</p>
+        <br/>
       </div>
     </div>
   </div>
