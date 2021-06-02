@@ -227,8 +227,12 @@ export default {
   },
   data: function(){
     return {
+      // used to force a refresh
       componentKey: 0,
+      // toggle to see if prerequisites are met
       canAdd: true,
+      //
+      // create skill groups
       communication: new Communication,
       cowboy: new Cowboy,
       domestic: new Domestic,
@@ -247,15 +251,27 @@ export default {
       weaponProficienciesAncient: new WeaponProficienciesAncient,
       weaponProficienciesModern: new WeaponProficienciesModern,
       wilderness: new Wilderness,
+      //
+      // how many skill that are already known by the character before the user starts picking skills
       startingSkills: 0,
+      // list of the characters currently selected skills
       selectedSkills: {},
+      // current skill being displayed in the information section
       displaySkill: [{name:'Select a Skill'}],
+      // toggles what skill list is currently visible
       toggle: "communication",
+      // currently selected skill in the active skill list
       selectedSkill: null,
+      // property of that selected skill
       selectedProperty: null,
+      // currently selected skill in the selected skills list
       pickedSkill: null,
+      // property of that selected skill
       pickedProperty: null,
+      // number of remaining skill picks
       remaining: null,
+      //
+      // toggle to control if a skill list is available
       communicationActive: true,
       cowboyActive: true,
       domesticActive: true,
@@ -274,7 +290,11 @@ export default {
       weaponProficienciesAncientActive: true,
       weaponProficienciesModernActive: true,
       wildernessActive: true,
+      //
+      // toggle to determine if the skill list tabs are active or the finalize button
       tabsActive: true,
+      //
+      // number of currently selected skills from a group
       communicationCount: 0,
       cowboyCount: 0,
       domesticCount: 0,
@@ -293,13 +313,17 @@ export default {
       weaponProficienciesAncientCount: 0,
       weaponProficienciesModernCount: 0,
       wildernessCount: 0,
+      // ID of the currently selected skill
       selectedId: null
     }
   },
   methods: {
+    // handles what skill from the skill list is currently selected
     selected: function (group,index){
-      let skillGroup = null;
-      let listId = null;
+      let skillGroup;
+      let listId;
+      //
+      // sets a tag on the list index so we know what group to return the skill to if selected and later removed
       if(group === 'communication'){
         skillGroup = this.communication
         listId = 'communication-'+[index]
@@ -355,10 +379,16 @@ export default {
         skillGroup = this.wilderness
         listId = 'wilderness-'+[index]
       }
+      //
+      // sets the selected skill
       this.selectedSkill = skillGroup[index];
+      // sets the property of the selected skill
       this.selectedProperty = index;
+      // clears the displayed skill array
       this.displaySkill = [];
+      // puts the currently selected skill into the displaySkill array so user can see the skill information
       this.displaySkill.push(skillGroup[index]);
+      // sets the background color of the list item
       this.selectedBg(listId)
       // Check prerequisites
       if(this.selectedSkill.preq.length > 0) {
@@ -394,16 +424,17 @@ export default {
           }
         })
         // check if required count is equal to the number of preqs, if so the user can add the skill
-        if (required === this.selectedSkill.preq.length || (requiredOr !== 0 && requiredOr === this.selectedSkill.preqOr.length)) {
-          this.canAdd = true
-        } else {
-          this.canAdd = false
-        }
+        required === this.selectedSkill.preq.length || (requiredOr !== 0 && requiredOr === this.selectedSkill.preqOr.length) ?
+            this.canAdd = true : this.canAdd = false
+
       } else {
+        // if the array is empty there are no prerequisites
         this.canAdd = true
       }
+      // set pickedSkill to null since the user is now in the skill group list
       this.pickedSkill = null;
     },
+    // handles what skill from the selected skill list is currently selected
     picked: function (index){
       this.pickedSkill = this.selectedSkills[index];
       this.displaySkill = [];
@@ -411,8 +442,10 @@ export default {
       this.pickedProperty = index;
       let listId = 'pick-'+[index]
       this.selectedBg(listId)
+      // set selectedSkill to null since the user is now in the selected skills list
       this.selectedSkill = null;
     },
+    // adds a skill from the skill group to the selected list
     addSelected: function (){
       const prop = this.selectedProperty;
       const skill = this.selectedSkill
@@ -484,6 +517,7 @@ export default {
       }
       this.selectedId = null
     },
+    // removes a skill from the selected list and places it back in the skill group list
     removePicked: function (){
       const prop = this.pickedProperty;
       const skill = this.pickedSkill;
@@ -572,10 +606,15 @@ export default {
         this.init();
       }
     },
+    // called to update skill counts, group counts, prerequisites and other data
     init: function() {
+      // current count of total skills selected
       let skillPicked = Object.keys(this.selectedSkills).length;
+      // count of skills given to the character at no cost by race or OCC
       let noCostSkills = this.startingSkills;
+      // OCC or RCC related skills to be picked by user
       let skillStart = this.newCharacter.occ.occRelatedNumber;
+      // selected skill count by group
       let skillHealing = this.healingCount
       let skillPhysical = this.physicalCount
       let skillSensitive = this.sensitiveCount
@@ -633,6 +672,7 @@ export default {
       // update remaining skills counter
       this.remaining = availablePicks;
     },
+    // controls the background color on the skill group lists
     selectedBg: function (newId){
       if (this.selectedId != null) {
         document.getElementById(this.selectedId).removeAttribute('style')
@@ -642,19 +682,26 @@ export default {
       document.getElementById(newId).style.color = 'rgba(17,24,39,1)';
       this.selectedId = newId;
     },
+    // adds the selected skills to the character and moves the user to the next creation step
     finalizeSelections: function (){
 
       // need to add stat bonuses here
 
+      // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.selected = true
     },
+    // gathers the necessary initial occ and character skill data
     loadSelected: function () {
+      // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
+      // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
       this.startingSkills = Object.keys(this.newCharacter.skills.known).length
     }
   },
   mounted: function () {
+    // runs a function to gather the necessary initial occ and character skill data
     this.loadSelected();
+    // called to update skill counts, group counts, prerequisites and other data
     this.init();
   }
 }
