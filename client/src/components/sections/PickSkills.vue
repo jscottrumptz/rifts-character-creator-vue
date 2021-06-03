@@ -4,18 +4,38 @@
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <h2 class="text-white p-5">Skill Picks Remaining: {{remaining}}</h2>
+        <h2 class="text-white pt-5 pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
         <!-- Determine what button is active depending on prerequisites and previously known skills-->
-        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
-        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3  m-7 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
-        <p class="text-white pl-5 pb-5" >Fulfill the following requirements.</p>
+        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
+        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
+        <p class="text-white pl-5 font-medium" >Fulfill the following requirements.</p>
+        <div class="pl-10 pb-5">
+          <h2 v-if="communicationRequired > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRequired}}</h2>
+          <h2 v-if="cowboyRequired > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRequired}}</h2>
+          <h2 v-if="domesticRequired > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRequired}}</h2>
+          <h2 v-if="electricalRequired > 0" class="text-white pl-5">Electrical Picks Needed: {{electricalRequired}}</h2>
+          <h2 v-if="espionageRequired > 0" class="text-white ">Espionage Picks Needed: {{espionageRequired}}</h2>
+          <h2 v-if="horsemanshipRequired > 0" class="text-white ">Horsemanship Picks Needed: {{horsemanshipRequired}}</h2>
+          <h2 v-if="mechanicalRequired > 0" class="text-white ">Mechanical Picks Needed: {{mechanicalRequired}}</h2>
+          <h2 v-if="medicalRequired > 0" class="text-white ">Medical Picks Needed: {{medicalRequired}}</h2>
+          <h2 v-if="militaryRequired > 0" class="text-white ">Military Picks Needed: {{militaryRequired}}</h2>
+          <h2 v-if="physicalRequired > 0" class="text-white ">Physical Picks Needed: {{physicalRequired}}</h2>
+          <h2 v-if="pilotRequired > 0" class="text-white ">Pilot Picks Needed: {{pilotRequired}}</h2>
+          <h2 v-if="pilotRelatedRequired > 0" class="text-white ">Pilot Related Picks Needed: {{pilotRelatedRequired}}</h2>
+          <h2 v-if="rogueRequired > 0" class="text-white ">Rogue Picks Needed: {{rogueRequired}}</h2>
+          <h2 v-if="scienceRequired > 0" class="text-white ">Science Picks Needed: {{scienceRequired}}</h2>
+          <h2 v-if="technicalRequired > 0" class="text-white ">Technical Picks Needed: {{technicalRequired}}</h2>
+          <h2 v-if="weaponProficienciesAncientRequired > 0" class="text-white ">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRequired}}</h2>
+          <h2 v-if="weaponProficienciesModernRequired > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRequired}}</h2>
+          <h2 v-if="wildernessRequired > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRequired}}</h2>
+        </div>
       </div>
 
       <!-- Finalize Selections -->
@@ -306,6 +326,27 @@ export default {
       weaponProficienciesAncientCount: 0,
       weaponProficienciesModernCount: 0,
       wildernessCount: 0,
+      //
+      // number of skill picks required by occ
+      communicationRequired: 0,
+      cowboyRequired: 0,
+      domesticRequired: 0,
+      electricalRequired: 0,
+      espionageRequired: 0,
+      horsemanshipRequired: 0,
+      mechanicalRequired: 0,
+      medicalRequired: 0,
+      militaryRequired: 0,
+      physicalRequired: 0,
+      pilotRequired: 0,
+      pilotRelatedRequired: 0,
+      rogueRequired: 0,
+      scienceRequired: 0,
+      technicalRequired: 0,
+      weaponProficienciesAncientRequired: 0,
+      weaponProficienciesModernRequired: 0,
+      wildernessRequired: 0,
+
       // ID of the currently selected skill
       selectedId: null
     }
@@ -609,27 +650,27 @@ export default {
       let skillStart = this.newCharacter.occ.occRelatedNumber;
 
       // determine how many picks are left
-      let availablePicks = skillStart - skillPicked + noCostSkills
+      let availablePicks = skillStart - skillPicked + noCostSkills;
 
-      // determine what tabs are available
-      Object.keys(this.communication).length > 0 ? this.communicationActive = true : this.communicationActive = false;
-      Object.keys(this.cowboy).length > 0 ? this.cowboyActive = true : this.cowboyActive = false;
-      Object.keys(this.domestic).length > 0 ? this.domesticActive = true : this.domesticActive = false;
-      Object.keys(this.electrical).length > 0 ? this.electricalActive = true : this.electricalActive = false;
-      Object.keys(this.espionage).length > 0 ? this.espionageActive = true : this.espionageActive = false;
-      Object.keys(this.horsemanship).length > 0 ? this.horsemanshipActive = true : this.horsemanshipActive = false;
-      Object.keys(this.mechanical).length > 0 ? this.mechanicalActive = true : this.mechanicalActive = false;
-      Object.keys(this.medical).length > 0 ? this.medicalActive = true : this.medicalActive = false;
-      Object.keys(this.military).length > 0 ? this.militaryActive = true : this.militaryActive = false;
-      Object.keys(this.physical).length > 0 ? this.physicalActive = true : this.physicalActive = false;
-      Object.keys(this.pilot).length > 0 ? this.pilotActive = true : this.pilotActive = false;
-      Object.keys(this.pilotRelated).length > 0 ? this.pilotRelatedActive = true : this.pilotRelatedActive = false;
-      Object.keys(this.rogue).length > 0 ? this.rogueActive = true : this.rogueActive = false;
-      Object.keys(this.science).length > 0 ? this.scienceActive = true : this.scienceActive = false;
-      Object.keys(this.technical).length > 0 ? this.technicalActive = true : this.technicalActive = false;
-      Object.keys(this.weaponProficienciesAncient).length > 0 ? this.weaponProficienciesAncientActive = true : this.weaponProficienciesAncientActive = false;
-      Object.keys(this.weaponProficienciesModern).length > 0 ? this.weaponProficienciesModernActive = true : this.weaponProficienciesModernActive = false;
-      Object.keys(this.wilderness).length > 0 ? this.wildernessActive = true : this.wildernessActive = false;
+      // get skill pick requirements
+      this.communicationRequired = Math.max(0, this.newCharacter.occ.occSkills.communication.number - this.communicationCount)
+      this.cowboyRequired = Math.max(0, this.newCharacter.occ.occSkills.cowboy.number - this.cowboyCount)
+      this.domesticRequired = Math.max(0, this.newCharacter.occ.occSkills.domestic.number - this.domesticCount)
+      this.electricalRequired = Math.max(0, this.newCharacter.occ.occSkills.electrical.number - this.electricalCount)
+      this.espionageRequired = Math.max(0, this.newCharacter.occ.occSkills.espionage.number - this.espionageCount)
+      this.horsemanshipRequired = Math.max(0, this.newCharacter.occ.occSkills.horsemanship.number - this.horsemanshipCount)
+      this.mechanicalRequired = Math.max(0, this.newCharacter.occ.occSkills.mechanical.number - this.mechanicalCount)
+      this.medicalRequired = Math.max(0, this.newCharacter.occ.occSkills.medical.number - this.medicalCount)
+      this.militaryRequired = Math.max(0, this.newCharacter.occ.occSkills.military.number - this.militaryCount)
+      this.physicalRequired = Math.max(0, this.newCharacter.occ.occSkills.physical.number - this.physicalCount)
+      this.pilotRequired = Math.max(0, this.newCharacter.occ.occSkills.pilot.number - this.pilotCount)
+      this.pilotRelatedRequired = Math.max(0, this.newCharacter.occ.occSkills.pilotRelated.number - this.pilotRelatedCount)
+      this.rogueRequired = Math.max(0, this.newCharacter.occ.occSkills.rogue.number - this.rogueCount)
+      this.scienceRequired = Math.max(0, this.newCharacter.occ.occSkills.science.number - this.scienceCount)
+      this.technicalRequired = Math.max(0, this.newCharacter.occ.occSkills.technical.number - this.technicalCount)
+      this.weaponProficienciesAncientRequired = Math.max(0, this.newCharacter.occ.occSkills.weaponProficienciesAncient.number - this.weaponProficienciesAncientCount)
+      this.weaponProficienciesModernRequired = Math.max(0, this.newCharacter.occ.occSkills.weaponProficienciesModern.number - this.weaponProficienciesModernCount)
+      this.wildernessRequired = Math.max(0, this.newCharacter.occ.occSkills.wilderness.number - this.wildernessCount)
 
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
@@ -658,7 +699,226 @@ export default {
       }
 
       // update remaining skills counter
-      this.remaining = availablePicks;
+      this.remaining = availablePicks
+          - this.communicationRequired
+          - this.cowboyRequired
+          - this.domesticRequired
+          - this.electricalRequired
+          - this.espionageRequired
+          - this.horsemanshipRequired
+          - this.mechanicalRequired
+          - this.medicalRequired
+          - this.militaryRequired
+          - this.physicalRequired
+          - this.pilotRequired
+          - this.pilotRelatedRequired
+          - this.rogueRequired
+          - this.scienceRequired
+          - this.technicalRequired
+          - this.weaponProficienciesAncientRequired
+          - this.weaponProficienciesModernRequired
+          - this.wildernessRequired
+      ;
+
+      // determine what tabs are available
+      if (Object.keys(this.communication).length > 0 && this.remaining === 0) {
+        if (this.communicationRequired === 0) {
+          this.communicationActive = false
+        } else {
+          this.communicationActive = true
+        }
+      } else if (Object.keys(this.communication).length > 0 && this.remaining !== 0) {
+        this.communicationActive = true
+      } else {
+        this.communicationActive = false
+      }
+      if (Object.keys(this.cowboy).length > 0 && this.remaining === 0) {
+        if (this.cowboyRequired === 0) {
+          this.cowboyActive = false
+        } else {
+          this.cowboyActive = true
+        }
+      } else if (Object.keys(this.cowboy).length > 0 && this.remaining !== 0) {
+        this.cowboyActive = true
+      } else {
+        this.cowboyActive = false
+      }
+      if (Object.keys(this.domestic).length > 0 && this.remaining === 0) {
+        if (this.domesticRequired === 0) {
+          this.domesticActive = false
+        } else {
+          this.domesticActive = true
+        }
+      } else if (Object.keys(this.domestic).length > 0 && this.remaining !== 0) {
+        this.domesticActive = true
+      } else {
+        this.domesticActive = false
+      }
+      if (Object.keys(this.electrical).length > 0 && this.remaining === 0) {
+        if (this.electricalRequired === 0) {
+          this.electricalActive = false
+        } else {
+          this.electricalActive = true
+        }
+      } else if (Object.keys(this.electrical).length > 0 && this.remaining !== 0) {
+        this.electricalActive = true
+      } else {
+        this.electricalActive = false
+      }
+      if (Object.keys(this.espionage).length > 0 && this.remaining === 0) {
+        if (this.espionageRequired === 0) {
+          this.espionageActive = false
+        } else {
+          this.espionageActive = true
+        }
+      } else if (Object.keys(this.espionage).length > 0 && this.remaining !== 0) {
+        this.espionageActive = true
+      } else {
+        this.espionageActive = false
+      }
+      if (Object.keys(this.horsemanship).length > 0 && this.remaining === 0) {
+        if (this.horsemanshipRequired === 0) {
+          this.horsemanshipActive = false
+        } else {
+          this.horsemanshipActive = true
+        }
+      } else if (Object.keys(this.horsemanship).length > 0 && this.remaining !== 0) {
+        this.horsemanshipActive = true
+      } else {
+        this.horsemanshipActive = false
+      }
+      if (Object.keys(this.mechanical).length > 0 && this.remaining === 0) {
+        if (this.mechanicalRequired === 0) {
+          this.mechanicalActive = false
+        } else {
+          this.mechanicalActive = true
+        }
+      } else if (Object.keys(this.mechanical).length > 0 && this.remaining !== 0) {
+        this.mechanicalActive = true
+      } else {
+        this.mechanicalActive = false
+      }
+      if (Object.keys(this.medical).length > 0 && this.remaining === 0) {
+        if (this.medicalRequired === 0) {
+          this.medicalActive = false
+        } else {
+          this.medicalActive = true
+        }
+      } else if (Object.keys(this.medical).length > 0 && this.remaining !== 0) {
+        this.medicalActive = true
+      } else {
+        this.medicalActive = false
+      }
+      if (Object.keys(this.military).length > 0 && this.remaining === 0) {
+        if (this.militaryRequired === 0) {
+          this.militaryActive = false
+        } else {
+          this.militaryActive = true
+        }
+      } else if (Object.keys(this.military).length > 0 && this.remaining !== 0) {
+        this.militaryActive = true
+      } else {
+        this.militaryActive = false
+      }
+      if (Object.keys(this.physical).length > 0 && this.remaining === 0) {
+        if (this.physicalRequired === 0) {
+          this.physicalActive = false
+        } else {
+          this.physicalActive = true
+        }
+      } else if (Object.keys(this.physical).length > 0 && this.remaining !== 0) {
+        this.physicalActive = true
+      } else {
+        this.physicalActive = false
+      }
+      if (Object.keys(this.pilot).length > 0 && this.remaining === 0) {
+        if (this.pilotRequired === 0) {
+          this.pilotActive = false
+        } else {
+          this.pilotActive = true
+        }
+      } else if (Object.keys(this.pilot).length > 0 && this.remaining !== 0) {
+        this.pilotActive = true
+      } else {
+        this.pilotActive = false
+      }
+      if (Object.keys(this.pilotRelated).length > 0 && this.remaining === 0) {
+        if (this.pilotRelatedRequired === 0) {
+          this.pilotRelatedActive = false
+        } else {
+          this.pilotRelatedActive = true
+        }
+      } else if (Object.keys(this.pilotRelated).length > 0 && this.remaining !== 0) {
+        this.pilotRelatedActive = true
+      } else {
+        this.pilotRelatedActive = false
+      }
+      if (Object.keys(this.rogue).length > 0 && this.remaining === 0) {
+        if (this.rogueRequired === 0) {
+          this.rogueActive = false
+        } else {
+          this.rogueActive = true
+        }
+      } else if (Object.keys(this.rogue).length > 0 && this.remaining !== 0) {
+        this.rogueActive = true
+      } else {
+        this.rogueActive = false
+      }
+      if (Object.keys(this.science).length > 0 && this.remaining === 0) {
+        if (this.scienceRequired === 0) {
+          this.scienceActive = false
+        } else {
+          this.scienceActive = true
+        }
+      } else if (Object.keys(this.science).length > 0 && this.remaining !== 0) {
+        this.scienceActive = true
+      } else {
+        this.scienceActive = false
+      }
+      if (Object.keys(this.technical).length > 0 && this.remaining === 0) {
+        if (this.technicalRequired === 0) {
+          this.technicalActive = false
+        } else {
+          this.technicalActive = true
+        }
+      } else if (Object.keys(this.technical).length > 0 && this.remaining !== 0) {
+        this.technicalActive = true
+      } else {
+        this.technicalActive = false
+      }
+      if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining === 0) {
+        if (this.weaponProficienciesAncientRequired === 0) {
+          this.weaponProficienciesAncientActive = false
+        } else {
+          this.weaponProficienciesAncientActive = true
+        }
+      } else if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining !== 0) {
+        this.weaponProficienciesAncientActive = true
+      } else {
+        this.weaponProficienciesAncientActive = false
+      }
+      if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining === 0) {
+        if (this.weaponProficienciesModernRequired === 0) {
+          this.weaponProficienciesModernActive = false
+        } else {
+          this.weaponProficienciesModernActive = true
+        }
+      } else if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining !== 0) {
+        this.weaponProficienciesModernActive = true
+      } else {
+        this.weaponProficienciesModernActive = false
+      }
+      if (Object.keys(this.wilderness).length > 0 && this.remaining === 0) {
+        if (this.wildernessRequired === 0) {
+          this.wildernessActive = false
+        } else {
+          this.wildernessActive = true
+        }
+      } else if (Object.keys(this.wilderness).length > 0 && this.remaining !== 0) {
+        this.wildernessActive = true
+      } else {
+        this.wildernessActive = false
+      }
     },
     // controls the background color on the skill group lists
     selectedBg: function (newId){
@@ -749,26 +1009,6 @@ export default {
       this.skillLoader(this.weaponProficienciesAncient, this.newCharacter.occ.occSkills.weaponProficienciesAncient)
       this.skillLoader(this.weaponProficienciesModern, this.newCharacter.occ.occSkills.weaponProficienciesModern)
       this.skillLoader(this.wilderness, this.newCharacter.occ.occSkills.wilderness)
-      //
-      // set group skill counts
-      this.communicationCount = this.newCharacter.occ.occSkills.communication.number
-      this.cowboyCount = this.newCharacter.occ.occSkills.cowboy.number
-      this.domesticCount = this.newCharacter.occ.occSkills.domestic.number
-      this.electricalCount = this.newCharacter.occ.occSkills.electrical.number
-      this.espionageCount = this.newCharacter.occ.occSkills.espionage.number
-      this.horsemanshipCount = this.newCharacter.occ.occSkills.horsemanship.number
-      this.mechanicalCount = this.newCharacter.occ.occSkills.mechanical.number
-      this.medicalCount = this.newCharacter.occ.occSkills.medical.number
-      this.militaryCount = this.newCharacter.occ.occSkills.military.number
-      this.physicalCount = this.newCharacter.occ.occSkills.physical.number
-      this.pilotCount = this.newCharacter.occ.occSkills.pilot.number
-      this.pilotRelatedCount = this.newCharacter.occ.occSkills.pilotRelated.number
-      this.rogueCount = this.newCharacter.occ.occSkills.rogue.number
-      this.scienceCount = this.newCharacter.occ.occSkills.science.number
-      this.technicalCount = this.newCharacter.occ.occSkills.technical.number
-      this.weaponProficienciesAncientCount = this.newCharacter.occ.occSkills.weaponProficienciesAncient.number
-      this.weaponProficienciesModernCount = this.newCharacter.occ.occSkills.weaponProficienciesModern.number
-      this.wildernessCount = this.newCharacter.occ.occSkills.wilderness.number
 
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
