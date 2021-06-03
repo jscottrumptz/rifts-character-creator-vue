@@ -63,12 +63,13 @@ Perform Holds.
 Level 15:
 +2 Strike in hand to hand.
 +1 Strike with guns.`;
-        this.required = ``;
+        this.required = `Character must be an Evil alignment`;
         this.perLvl = ``;
         this.baseTwo = ``;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.skillCost = 3;
     }
 }
 

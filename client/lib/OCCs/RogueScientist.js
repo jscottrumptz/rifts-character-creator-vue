@@ -219,8 +219,25 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             },
             physical: {
                 number: 0,
-                free: [],
-                available: [],
+                free: [
+                    {
+                        name: 'noHandToHandSkill',
+                    }
+                ],
+                available: [
+                    {
+                        name:'handToHandExpert',
+                        skillCost: 2
+                    },
+                    {
+                        name:'handToHandMartialArts',
+                        skillCost: 3
+                    },
+                    {
+                        name:'handToHandAssassin',
+                        skillCost: 4
+                    }
+                ],
                 unavailable: [
                     {
                         name: 'acrobatics',
@@ -231,6 +248,9 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                     {
                         name: 'wrestling',
                     },
+                    {
+                        name: 'handToHandCommando',
+                    }
                 ],
                 only:[]
             },

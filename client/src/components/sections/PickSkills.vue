@@ -17,24 +17,24 @@
         <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
         <p class="text-white pl-5 font-medium" >Fulfill the following requirements.</p>
         <div class="pl-10 pb-5">
-          <h2 v-if="communicationRequired > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRequired}}</h2>
-          <h2 v-if="cowboyRequired > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRequired}}</h2>
-          <h2 v-if="domesticRequired > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRequired}}</h2>
-          <h2 v-if="electricalRequired > 0" class="text-white pl-5">Electrical Picks Needed: {{electricalRequired}}</h2>
-          <h2 v-if="espionageRequired > 0" class="text-white ">Espionage Picks Needed: {{espionageRequired}}</h2>
-          <h2 v-if="horsemanshipRequired > 0" class="text-white ">Horsemanship Picks Needed: {{horsemanshipRequired}}</h2>
-          <h2 v-if="mechanicalRequired > 0" class="text-white ">Mechanical Picks Needed: {{mechanicalRequired}}</h2>
-          <h2 v-if="medicalRequired > 0" class="text-white ">Medical Picks Needed: {{medicalRequired}}</h2>
-          <h2 v-if="militaryRequired > 0" class="text-white ">Military Picks Needed: {{militaryRequired}}</h2>
-          <h2 v-if="physicalRequired > 0" class="text-white ">Physical Picks Needed: {{physicalRequired}}</h2>
-          <h2 v-if="pilotRequired > 0" class="text-white ">Pilot Picks Needed: {{pilotRequired}}</h2>
-          <h2 v-if="pilotRelatedRequired > 0" class="text-white ">Pilot Related Picks Needed: {{pilotRelatedRequired}}</h2>
-          <h2 v-if="rogueRequired > 0" class="text-white ">Rogue Picks Needed: {{rogueRequired}}</h2>
-          <h2 v-if="scienceRequired > 0" class="text-white ">Science Picks Needed: {{scienceRequired}}</h2>
-          <h2 v-if="technicalRequired > 0" class="text-white ">Technical Picks Needed: {{technicalRequired}}</h2>
-          <h2 v-if="weaponProficienciesAncientRequired > 0" class="text-white ">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRequired}}</h2>
-          <h2 v-if="weaponProficienciesModernRequired > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRequired}}</h2>
-          <h2 v-if="wildernessRequired > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRequired}}</h2>
+          <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
+          <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
+          <h2 v-if="domesticRemaining > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRemaining}}</h2>
+          <h2 v-if="electricalRemaining > 0" class="text-white pl-5">Electrical Picks Needed: {{electricalRemaining}}</h2>
+          <h2 v-if="espionageRemaining > 0" class="text-white ">Espionage Picks Needed: {{espionageRemaining}}</h2>
+          <h2 v-if="horsemanshipRemaining > 0" class="text-white ">Horsemanship Picks Needed: {{horsemanshipRemaining}}</h2>
+          <h2 v-if="mechanicalRemaining > 0" class="text-white ">Mechanical Picks Needed: {{mechanicalRemaining}}</h2>
+          <h2 v-if="medicalRemaining > 0" class="text-white ">Medical Picks Needed: {{medicalRemaining}}</h2>
+          <h2 v-if="militaryRemaining > 0" class="text-white ">Military Picks Needed: {{militaryRemaining}}</h2>
+          <h2 v-if="physicalRemaining > 0" class="text-white ">Physical Picks Needed: {{physicalRemaining}}</h2>
+          <h2 v-if="pilotRemaining > 0" class="text-white ">Pilot Picks Needed: {{pilotRemaining}}</h2>
+          <h2 v-if="pilotRelatedRemaining > 0" class="text-white ">Pilot Related Picks Needed: {{pilotRelatedRemaining}}</h2>
+          <h2 v-if="rogueRemaining > 0" class="text-white ">Rogue Picks Needed: {{rogueRemaining}}</h2>
+          <h2 v-if="scienceRemaining > 0" class="text-white ">Science Picks Needed: {{scienceRemaining}}</h2>
+          <h2 v-if="technicalRemaining > 0" class="text-white ">Technical Picks Needed: {{technicalRemaining}}</h2>
+          <h2 v-if="weaponProficienciesAncientRemaining > 0" class="text-white ">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
+          <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
+          <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
       </div>
 
@@ -179,8 +179,9 @@
           </ul>
         </div>
         <!-- Add Selected Button -->
-        <button v-if="this.selectedSkill && canAdd" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+        <button v-if="this.selectedSkill && canAdd && enoughPicks" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
         <button v-if="this.selectedSkill && !canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Prerequisites Not Met</button>
+        <button v-if="this.selectedSkill && !enoughPicks" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Not Enough Picks Remaining</button>
         <button v-if="!this.selectedSkill" class="bg-gray-700 font-medium rounded m-7 text-xs px-3 py-2 text-white">Select a Skill</button>
       </div>
 
@@ -189,6 +190,7 @@
         <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="font-medium text-2xl">{{displaySkill[0].name}}</h2>
           <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
+          <span v-show="displaySkill[0].skillCost > 1 " class="font-medium text-gray-200">(Counts as {{displaySkill[0].skillCost}} skill selections)<br></span>
 
           <span v-show="displaySkill[0].base"> <br><span class="font-medium text-gray-200">Base Skill:</span> {{displaySkill[0].base}}%
           <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
@@ -283,6 +285,10 @@ export default {
       pickedProperty: null,
       // number of remaining skill picks
       remaining: null,
+      // number of skills picked so far
+      skillPicked: 0,
+      // toggle for picks left vs needed
+      enoughPicks: true,
       //
       // toggle to control if a skill list is available
       communicationActive: true,
@@ -327,7 +333,7 @@ export default {
       weaponProficienciesModernCount: 0,
       wildernessCount: 0,
       //
-      // number of skill picks required by occ
+      // number of required skill picks by occ
       communicationRequired: 0,
       cowboyRequired: 0,
       domesticRequired: 0,
@@ -346,6 +352,26 @@ export default {
       weaponProficienciesAncientRequired: 0,
       weaponProficienciesModernRequired: 0,
       wildernessRequired: 0,
+      //
+      // number of required occ skill picks remaining
+      communicationRemaining: 0,
+      cowboyRemaining: 0,
+      domesticRemaining: 0,
+      electricalRemaining: 0,
+      espionageRemaining: 0,
+      horsemanshipRemaining: 0,
+      mechanicalRemaining: 0,
+      medicalRemaining: 0,
+      militaryRemaining: 0,
+      physicalRemaining: 0,
+      pilotRemaining: 0,
+      pilotRelatedRemaining: 0,
+      rogueRemaining: 0,
+      scienceRemaining: 0,
+      technicalRemaining: 0,
+      weaponProficienciesAncientRemaining: 0,
+      weaponProficienciesModernRemaining: 0,
+      wildernessRemaining: 0,
 
       // ID of the currently selected skill
       selectedId: null
@@ -361,57 +387,255 @@ export default {
       if(group === 'communication'){
         skillGroup = this.communication
         listId = 'communication-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.communicationRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'cowboy'){
         skillGroup = this.cowboy
         listId = 'cowboy-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.cowboyRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'domestic'){
         skillGroup = this.domestic
         listId = 'domestic-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.domesticRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'electrical'){
         skillGroup = this.electrical
         listId = 'electrical-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.electricalRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'espionage'){
         skillGroup = this.espionage
         listId = 'espionage-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.espionageRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'horsemanship'){
         skillGroup = this.horsemanship
         listId = 'horsemanship-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.horsemanshipRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'mechanical'){
         skillGroup = this.mechanical
         listId = 'mechanical-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.mechanicalRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'medical'){
         skillGroup = this.medical
         listId = 'medical-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.medicalRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'military'){
         skillGroup = this.military
         listId = 'military-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.militaryRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'physical'){
         skillGroup = this.physical
         listId = 'physical-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.physicalRemaining )
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'pilot'){
         skillGroup = this.pilot
         listId = 'pilot-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.pilotRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'pilotRelated'){
         skillGroup = this.pilotRelated
         listId = 'pilotRelated-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.pilotRelatedRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'rogue'){
         skillGroup = this.rogue
         listId = 'rogue-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.rogueRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'science'){
         skillGroup = this.science
         listId = 'science-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.scienceRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'technical'){
         skillGroup = this.technical
         listId = 'technical-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.technicalRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'weaponProficienciesAncient'){
         skillGroup = this.weaponProficienciesAncient
         listId = 'weaponProficienciesAncient-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.weaponProficienciesAncientRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else if (group === 'weaponProficienciesModern'){
         skillGroup = this.weaponProficienciesModern
         listId = 'weaponProficienciesModern-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.weaponProficienciesModernRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       } else {
         skillGroup = this.wilderness
         listId = 'wilderness-'+[index]
+        if(skillGroup[index].skillCost > this.remaining)
+        {
+          if(skillGroup[index].skillCost <= this.wildernessRemaining)
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
       }
       //
       // sets the selected skill
@@ -431,29 +655,29 @@ export default {
         // get preq array from the selected skill object
         this.selectedSkill.preq.forEach(preq => {
           // check for each prerequisite in the currently selected skills
-          let thisRequired = false
+          let thisRemaining = false
           for(const [key] of Object.entries(this.selectedSkills)) {
             if (key.includes(preq)){
               // if one of the keys includes the needed skill, set this required to True
-              thisRequired = true
+              thisRemaining = true
             }
           }
           // if this required = true increase the required count
-          if(thisRequired === true) {
+          if(thisRemaining === true) {
             required++
           }
         })
         this.selectedSkill.preqOr.forEach(preqOr => {
           // check for each prerequisite in the currently selected skills
-          let thisRequiredOr = false
+          let thisRemainingOr = false
           for(const [key] of Object.entries(this.selectedSkills)) {
             if (key.includes(preqOr)){
               // if one of the keys includes the needed skill, set this required to True
-              thisRequiredOr = true
+              thisRemainingOr = true
             }
           }
           // if this required = true increase the required count
-          if(thisRequiredOr === true) {
+          if(thisRemainingOr === true) {
             requiredOr++
           }
         })
@@ -491,58 +715,78 @@ export default {
         // increase group counts
         if (skill.group === 'Communication'){
           delete this.communication[prop]
-          this.communicationCount++;
+          this.communicationCount = this.communicationCount + skill.skillCost;
+          console.log(this.skillPicked)
+          console.log(skill.skillCost)
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Cowboy'){
           delete this.cowboy[prop]
-          this.cowboyCount++;
+          this.cowboyCount = this.cowboyCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Domestic'){
           delete this.domestic[prop]
-          this.domesticCount++;
+          this.domesticCount = this.domesticCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Electrical'){
           delete this.electrical[prop]
-          this.electricalCount++;
+          this.electricalCount = this.electricalCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Espionage'){
           delete this.espionage[prop]
-          this.espionageCount++;
+          this.espionageCount = this.espionageCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Horsemanship'){
           delete this.horsemanship[prop]
-          this.horsemanshipCount++;
+          this.horsemanshipCount = this.horsemanshipCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Mechanical'){
           delete this.mechanical[prop]
-          this.mechanicalCount++;
+          this.mechanicalCount = this.mechanicalCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Medical'){
           delete this.medical[prop]
-          this.medicalCount++;
+          this.medicalCount = this.medicalCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Military'){
           delete this.military[prop]
-          this.militaryCount++;
+          this.militaryCount = this.militaryCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Physical'){
           delete this.physical[prop]
-          this.physicalCount++;
+          this.physicalCount = this.physicalCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Pilot'){
           delete this.pilot[prop]
-          this.pilotCount++;
+          this.pilotCount = this.pilotCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Pilot Related'){
           delete this.pilotRelated[prop]
-          this.pilotRelatedCount++;
+          this.pilotRelatedCount = this.pilotRelatedCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Rogue'){
           delete this.rogue[prop]
-          this.rogueCount++;
+          this.rogueCount = this.rogueCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Science'){
           delete this.science[prop]
-          this.scienceCount++;
+          this.scienceCount = this.scienceCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Technical'){
           delete this.technical[prop]
-          this.technicalCount++;
+          this.technicalCount = this.technicalCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Weapon Proficiencies Ancient'){
           delete this.weaponProficienciesAncient[prop]
-          this.weaponProficienciesAncientCount++;
+          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else if (skill.group === 'Weapon Proficiencies Modern'){
           delete this.weaponProficienciesModern[prop]
-          this.weaponProficienciesModernCount++;
+          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         } else {
           delete this.wilderness[prop]
-          this.wildernessCount++;
+          this.wildernessCount = this.wildernessCount + skill.skillCost;
+          this.skillPicked = this.skillPicked + skill.skillCost;
         }
         this.selectedSkill = null;
         this.selectedProperty = null;
@@ -558,58 +802,76 @@ export default {
       if (skill !== null){
         if (skill.group === 'Communication'){
           this.communication[prop] = skill
-          this.communicationCount--;
+          this.communicationCount = this.communicationCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Cowboy'){
           this.cowboy[prop] = skill
-          this.cowboyCount--;
+          this.cowboyCount = this.cowboyCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Domestic'){
           this.domestic[prop] = skill
-          this.domesticCount--;
+          this.domesticCount = this.domesticCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Electrical'){
           this.electrical[prop] = skill
-          this.electricalCount--;
+          this.electricalCount = this.electricalCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Espionage'){
           this.espionage[prop] = skill
-          this.espionageCount--;
+          this.espionageCount = this.espionageCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Horsemanship'){
           this.horsemanship[prop] = skill
-          this.horsemanshipCount--;
+          this.horsemanshipCount = this.horsemanshipCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Mechanical'){
           this.mechanical[prop] = skill
-          this.mechanicalCount--;
+          this.mechanicalCount = this.mechanicalCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Medical'){
           this.medical[prop] = skill
-          this.medicalCount--;
+          this.medicalCount = this.medicalCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Military'){
           this.military[prop] = skill
-          this.militaryCount--;
+          this.militaryCount = this.militaryCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Physical'){
           this.physical[prop] = skill
-          this.physicalCount--;
+          this.physicalCount = this.physicalCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Pilot'){
           this.pilot[prop] = skill
-          this.pilotCount--;
+          this.pilotCount = this.pilotCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Pilot Related'){
           this.pilotRelated[prop] = skill
-          this.pilotRelatedCount--;
+          this.pilotRelatedCount = this.pilotRelatedCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Rogue'){
           this.rogue[prop] = skill
-          this.rogueCount--;
+          this.rogueCount = this.rogueCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Science'){
           this.science[prop] = skill
-          this.scienceCount--;
+          this.scienceCount = this.scienceCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Technical'){
           this.technical[prop] = skill
-          this.technicalCount--;
+          this.technicalCount = this.technicalCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Weapon Proficiencies Ancient'){
           this.weaponProficienciesAncient[prop] = skill
-          this.weaponProficienciesAncientCount--;
+          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else if (skill.group === 'Weapon Proficiencies Modern'){
           this.weaponProficienciesModern[prop] = skill
-          this.weaponProficienciesModernCount--;
+          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         } else {
           this.wilderness[prop] = skill
-          this.wildernessCount--;
+          this.wildernessCount = this.wildernessCount - skill.skillCost;
+          this.skillPicked = this.skillPicked - skill.skillCost;
         }
         delete this.selectedSkills[prop]
         delete this.newCharacter.skills.known[prop]
@@ -643,34 +905,54 @@ export default {
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
       // current count of total skills selected
-      let skillPicked = Object.keys(this.selectedSkills).length;
+      // let skillPicked = Object.keys(this.selectedSkills).length;
       // count of skills given to the character at no cost by race or OCC
-      let noCostSkills = this.startingSkills;
+      // let noCostSkills = this.startingSkills;
       // OCC or RCC related skills to be picked by user
       let skillStart = this.newCharacter.occ.occRelatedNumber;
 
       // determine how many picks are left
-      let availablePicks = skillStart - skillPicked + noCostSkills;
+      let availablePicks = skillStart - this.skillPicked;
+
+      // get required occ picks
+      this.communicationRequired = this.newCharacter.occ.occSkills.communication.number;
+      this.cowboyRequired = this.newCharacter.occ.occSkills.cowboy.number;
+      this.domesticRequired = this.newCharacter.occ.occSkills.domestic.number;
+      this.electricalRequired = this.newCharacter.occ.occSkills.electrical.number;
+      this.espionageRequired = this.newCharacter.occ.occSkills.espionage.number;
+      this.horsemanshipRequired = this.newCharacter.occ.occSkills.horsemanship.number;
+      this.mechanicalRequired = this.newCharacter.occ.occSkills.mechanical.number;
+      this.medicalRequired = this.newCharacter.occ.occSkills.medical.number;
+      this.militaryRequired = this.newCharacter.occ.occSkills.military.number;
+      this.physicalRequired = this.newCharacter.occ.occSkills.physical.number;
+      this.pilotRequired = this.newCharacter.occ.occSkills.pilot.number;
+      this.pilotRelatedRequired = this.newCharacter.occ.occSkills.pilotRelated.number;
+      this.rogueRequired = this.newCharacter.occ.occSkills.rogue.number;
+      this.scienceRequired = this.newCharacter.occ.occSkills.science.number;
+      this.technicalRequired = this.newCharacter.occ.occSkills.technical.number;
+      this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.number;
+      this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.number;
+      this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.number;
 
       // get skill pick requirements
-      this.communicationRequired = Math.max(0, this.newCharacter.occ.occSkills.communication.number - this.communicationCount)
-      this.cowboyRequired = Math.max(0, this.newCharacter.occ.occSkills.cowboy.number - this.cowboyCount)
-      this.domesticRequired = Math.max(0, this.newCharacter.occ.occSkills.domestic.number - this.domesticCount)
-      this.electricalRequired = Math.max(0, this.newCharacter.occ.occSkills.electrical.number - this.electricalCount)
-      this.espionageRequired = Math.max(0, this.newCharacter.occ.occSkills.espionage.number - this.espionageCount)
-      this.horsemanshipRequired = Math.max(0, this.newCharacter.occ.occSkills.horsemanship.number - this.horsemanshipCount)
-      this.mechanicalRequired = Math.max(0, this.newCharacter.occ.occSkills.mechanical.number - this.mechanicalCount)
-      this.medicalRequired = Math.max(0, this.newCharacter.occ.occSkills.medical.number - this.medicalCount)
-      this.militaryRequired = Math.max(0, this.newCharacter.occ.occSkills.military.number - this.militaryCount)
-      this.physicalRequired = Math.max(0, this.newCharacter.occ.occSkills.physical.number - this.physicalCount)
-      this.pilotRequired = Math.max(0, this.newCharacter.occ.occSkills.pilot.number - this.pilotCount)
-      this.pilotRelatedRequired = Math.max(0, this.newCharacter.occ.occSkills.pilotRelated.number - this.pilotRelatedCount)
-      this.rogueRequired = Math.max(0, this.newCharacter.occ.occSkills.rogue.number - this.rogueCount)
-      this.scienceRequired = Math.max(0, this.newCharacter.occ.occSkills.science.number - this.scienceCount)
-      this.technicalRequired = Math.max(0, this.newCharacter.occ.occSkills.technical.number - this.technicalCount)
-      this.weaponProficienciesAncientRequired = Math.max(0, this.newCharacter.occ.occSkills.weaponProficienciesAncient.number - this.weaponProficienciesAncientCount)
-      this.weaponProficienciesModernRequired = Math.max(0, this.newCharacter.occ.occSkills.weaponProficienciesModern.number - this.weaponProficienciesModernCount)
-      this.wildernessRequired = Math.max(0, this.newCharacter.occ.occSkills.wilderness.number - this.wildernessCount)
+      this.communicationRemaining = Math.max(0, this.communicationRequired - this.communicationCount)
+      this.cowboyRemaining = Math.max(0, this.cowboyRequired - this.cowboyCount)
+      this.domesticRemaining = Math.max(0, this.domesticRequired - this.domesticCount)
+      this.electricalRemaining = Math.max(0, this.electricalRequired - this.electricalCount)
+      this.espionageRemaining = Math.max(0, this.espionageRequired - this.espionageCount)
+      this.horsemanshipRemaining = Math.max(0, this.horsemanshipRequired - this.horsemanshipCount)
+      this.mechanicalRemaining = Math.max(0, this.mechanicalRequired - this.mechanicalCount)
+      this.medicalRemaining = Math.max(0, this.medicalRequired - this.medicalCount)
+      this.militaryRemaining = Math.max(0, this.militaryRequired - this.militaryCount)
+      this.physicalRemaining = Math.max(0, this.physicalRequired - this.physicalCount)
+      this.pilotRemaining = Math.max(0, this.pilotRequired - this.pilotCount)
+      this.pilotRelatedRemaining = Math.max(0, this.pilotRelatedRequired - this.pilotRelatedCount)
+      this.rogueRemaining = Math.max(0, this.rogueRequired - this.rogueCount)
+      this.scienceRemaining = Math.max(0, this.scienceRequired - this.scienceCount)
+      this.technicalRemaining = Math.max(0, this.technicalRequired - this.technicalCount)
+      this.weaponProficienciesAncientRemaining = Math.max(0, this.weaponProficienciesAncientRequired - this.weaponProficienciesAncientCount)
+      this.weaponProficienciesModernRemaining = Math.max(0, this.weaponProficienciesModernRequired - this.weaponProficienciesModernCount)
+      this.wildernessRemaining = Math.max(0, this.wildernessRequired - this.wildernessCount)
 
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
@@ -700,29 +982,29 @@ export default {
 
       // update remaining skills counter
       this.remaining = availablePicks
-          - this.communicationRequired
-          - this.cowboyRequired
-          - this.domesticRequired
-          - this.electricalRequired
-          - this.espionageRequired
-          - this.horsemanshipRequired
-          - this.mechanicalRequired
-          - this.medicalRequired
-          - this.militaryRequired
-          - this.physicalRequired
-          - this.pilotRequired
-          - this.pilotRelatedRequired
-          - this.rogueRequired
-          - this.scienceRequired
-          - this.technicalRequired
-          - this.weaponProficienciesAncientRequired
-          - this.weaponProficienciesModernRequired
-          - this.wildernessRequired
+          - this.communicationRemaining
+          - this.cowboyRemaining
+          - this.domesticRemaining
+          - this.electricalRemaining
+          - this.espionageRemaining
+          - this.horsemanshipRemaining
+          - this.mechanicalRemaining
+          - this.medicalRemaining
+          - this.militaryRemaining
+          - this.physicalRemaining
+          - this.pilotRemaining
+          - this.pilotRelatedRemaining
+          - this.rogueRemaining
+          - this.scienceRemaining
+          - this.technicalRemaining
+          - this.weaponProficienciesAncientRemaining
+          - this.weaponProficienciesModernRemaining
+          - this.wildernessRemaining
       ;
 
       // determine what tabs are available
       if (Object.keys(this.communication).length > 0 && this.remaining === 0) {
-        if (this.communicationRequired === 0) {
+        if (this.communicationRemaining === 0) {
           this.communicationActive = false
         } else {
           this.communicationActive = true
@@ -733,7 +1015,7 @@ export default {
         this.communicationActive = false
       }
       if (Object.keys(this.cowboy).length > 0 && this.remaining === 0) {
-        if (this.cowboyRequired === 0) {
+        if (this.cowboyRemaining === 0) {
           this.cowboyActive = false
         } else {
           this.cowboyActive = true
@@ -744,7 +1026,7 @@ export default {
         this.cowboyActive = false
       }
       if (Object.keys(this.domestic).length > 0 && this.remaining === 0) {
-        if (this.domesticRequired === 0) {
+        if (this.domesticRemaining === 0) {
           this.domesticActive = false
         } else {
           this.domesticActive = true
@@ -755,7 +1037,7 @@ export default {
         this.domesticActive = false
       }
       if (Object.keys(this.electrical).length > 0 && this.remaining === 0) {
-        if (this.electricalRequired === 0) {
+        if (this.electricalRemaining === 0) {
           this.electricalActive = false
         } else {
           this.electricalActive = true
@@ -766,7 +1048,7 @@ export default {
         this.electricalActive = false
       }
       if (Object.keys(this.espionage).length > 0 && this.remaining === 0) {
-        if (this.espionageRequired === 0) {
+        if (this.espionageRemaining === 0) {
           this.espionageActive = false
         } else {
           this.espionageActive = true
@@ -777,7 +1059,7 @@ export default {
         this.espionageActive = false
       }
       if (Object.keys(this.horsemanship).length > 0 && this.remaining === 0) {
-        if (this.horsemanshipRequired === 0) {
+        if (this.horsemanshipRemaining === 0) {
           this.horsemanshipActive = false
         } else {
           this.horsemanshipActive = true
@@ -788,7 +1070,7 @@ export default {
         this.horsemanshipActive = false
       }
       if (Object.keys(this.mechanical).length > 0 && this.remaining === 0) {
-        if (this.mechanicalRequired === 0) {
+        if (this.mechanicalRemaining === 0) {
           this.mechanicalActive = false
         } else {
           this.mechanicalActive = true
@@ -799,7 +1081,7 @@ export default {
         this.mechanicalActive = false
       }
       if (Object.keys(this.medical).length > 0 && this.remaining === 0) {
-        if (this.medicalRequired === 0) {
+        if (this.medicalRemaining === 0) {
           this.medicalActive = false
         } else {
           this.medicalActive = true
@@ -810,7 +1092,7 @@ export default {
         this.medicalActive = false
       }
       if (Object.keys(this.military).length > 0 && this.remaining === 0) {
-        if (this.militaryRequired === 0) {
+        if (this.militaryRemaining === 0) {
           this.militaryActive = false
         } else {
           this.militaryActive = true
@@ -821,7 +1103,7 @@ export default {
         this.militaryActive = false
       }
       if (Object.keys(this.physical).length > 0 && this.remaining === 0) {
-        if (this.physicalRequired === 0) {
+        if (this.physicalRemaining === 0) {
           this.physicalActive = false
         } else {
           this.physicalActive = true
@@ -832,7 +1114,7 @@ export default {
         this.physicalActive = false
       }
       if (Object.keys(this.pilot).length > 0 && this.remaining === 0) {
-        if (this.pilotRequired === 0) {
+        if (this.pilotRemaining === 0) {
           this.pilotActive = false
         } else {
           this.pilotActive = true
@@ -843,7 +1125,7 @@ export default {
         this.pilotActive = false
       }
       if (Object.keys(this.pilotRelated).length > 0 && this.remaining === 0) {
-        if (this.pilotRelatedRequired === 0) {
+        if (this.pilotRelatedRemaining === 0) {
           this.pilotRelatedActive = false
         } else {
           this.pilotRelatedActive = true
@@ -854,7 +1136,7 @@ export default {
         this.pilotRelatedActive = false
       }
       if (Object.keys(this.rogue).length > 0 && this.remaining === 0) {
-        if (this.rogueRequired === 0) {
+        if (this.rogueRemaining === 0) {
           this.rogueActive = false
         } else {
           this.rogueActive = true
@@ -865,7 +1147,7 @@ export default {
         this.rogueActive = false
       }
       if (Object.keys(this.science).length > 0 && this.remaining === 0) {
-        if (this.scienceRequired === 0) {
+        if (this.scienceRemaining === 0) {
           this.scienceActive = false
         } else {
           this.scienceActive = true
@@ -876,7 +1158,7 @@ export default {
         this.scienceActive = false
       }
       if (Object.keys(this.technical).length > 0 && this.remaining === 0) {
-        if (this.technicalRequired === 0) {
+        if (this.technicalRemaining === 0) {
           this.technicalActive = false
         } else {
           this.technicalActive = true
@@ -887,7 +1169,7 @@ export default {
         this.technicalActive = false
       }
       if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining === 0) {
-        if (this.weaponProficienciesAncientRequired === 0) {
+        if (this.weaponProficienciesAncientRemaining === 0) {
           this.weaponProficienciesAncientActive = false
         } else {
           this.weaponProficienciesAncientActive = true
@@ -898,7 +1180,7 @@ export default {
         this.weaponProficienciesAncientActive = false
       }
       if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining === 0) {
-        if (this.weaponProficienciesModernRequired === 0) {
+        if (this.weaponProficienciesModernRemaining === 0) {
           this.weaponProficienciesModernActive = false
         } else {
           this.weaponProficienciesModernActive = true
@@ -909,7 +1191,7 @@ export default {
         this.weaponProficienciesModernActive = false
       }
       if (Object.keys(this.wilderness).length > 0 && this.remaining === 0) {
-        if (this.wildernessRequired === 0) {
+        if (this.wildernessRemaining === 0) {
           this.wildernessActive = false
         } else {
           this.wildernessActive = true
@@ -958,10 +1240,16 @@ export default {
       occList.available.forEach(skill => {
         for (const [key] of Object.entries(groupList)) {
           if(skill.name === 'Any') {
-            groupList[key].occBonus = skill.occBonus
+            groupList[key].occBonus = skill.occBonus;
+            if(skill.skillCost) {
+              groupList[key].skillCost = skill.skillCost;
+            }
           }
           if (key === skill.name) {
-            groupList[key].occBonus = skill.occBonus
+            groupList[key].occBonus = skill.occBonus;
+            if(skill.skillCost) {
+              groupList[key].skillCost = skill.skillCost;
+            }
           }
         }
       })
@@ -980,7 +1268,10 @@ export default {
       occList.only.forEach(skill => {
         for (const [key] of Object.entries(groupList)) {
           if (key === skill.name) {
-            groupList[key].occBonus = skill.occBonus
+            groupList[key].occBonus = skill.occBonus;
+            if(skill.skillCost) {
+              groupList[key].skillCost = skill.skillCost;
+            }
           } else {
             delete groupList[key]
           }

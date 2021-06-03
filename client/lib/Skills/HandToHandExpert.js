@@ -58,6 +58,7 @@ Death Blow on roll of natural 20.`;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+        this.skillCost = 1;
     }
 }
 

@@ -14,6 +14,8 @@ class Skill {
         takeTwice = false,
         // toggle to see if this is a free skill
         noCost = false,
+        // cost of selecting the skill
+        skillCost = 1,
         // bonus for selecting the skill twice
         takeTwiceBonus = 0,
         // text that conveys requirements during skill selection
@@ -46,6 +48,7 @@ class Skill {
         this.known = known;
         this.takeTwice = takeTwice;
         this.noCost = noCost;
+        this.skillCost = skillCost;
         this.takeTwiceBonus = takeTwiceBonus;
         this.required = required;
         this.preq = preq;
