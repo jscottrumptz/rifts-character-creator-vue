@@ -24,7 +24,7 @@
                 <span v-if="skills.base" class="text-xs">Base Skill: <span class="font-normal"> {{skills.base}}% </span>
                 <span v-if="skills.baseTwo" class="font-normal"> / {{skills.baseTwo}}% </span>
                 <span v-if="skills.perLvl" class="font-normal">+ {{skills.perLvl}}% per lvl</span><br></span>
-                <span v-if="skills.takeTwiceBonus" class="text-xs">Damage: <span class="font-normal"> {{skills.takeTwiceBonus}} </span><br></span>
+                <span v-if="skills.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skills.occBonus}}% </span><br></span>
               </p>
             </div>
           </div>
