@@ -76,6 +76,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
         this.secondaryNumber = 4;
         this.occSkills = {
             communication: {
+                number: 0,
                 free: [
                     {
                         name:'languageNativeTongue',
@@ -88,6 +89,10 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                     {
                         name:'literacyOther',
                         occBonus: 35
+                    },
+                    {
+                        name:'radioBasic',
+                        occBonus: 10
                     }
                 ],
                 available: [
@@ -112,6 +117,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 only:[]
             },
             cowboy: {
+                number: 0,
                 free: [],
                 available: [],
                 unavailable: [
@@ -119,6 +125,251 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         name:'All',
                     }
                 ],
+                only:[]
+            },
+            domestic: {
+                number: 0,
+                free: [],
+                available: [
+                    {
+                    name: 'Any',
+                    occBonus: 5
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            electrical: {
+                number: 0,
+                free: [
+                    {
+                        name: 'basicElectronics',
+                        occBonus: 20
+                    }
+                ],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 10
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            espionage: {
+                number: 0,
+                free: [],
+                available: [],
+                unavailable: [],
+                only:[
+                    {
+                        name: 'wildernessSurvivalEspionage',
+                        occBonus: 10
+                    }
+                ]
+            },
+            horsemanship: {
+                number: 0,
+                free: [],
+                available: [],
+                unavailable: [],
+                only:[
+                    {
+                        name: 'horsemanshipGeneral'
+                    }
+
+                ]
+            },
+            mechanical: {
+                number: 0,
+                free: [],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 5
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            medical: {
+                number: 2,
+                free: [],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 10
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            military: {
+                number: 0,
+                free: [],
+                available: [],
+                unavailable: [],
+                only:[
+                    {
+                        name: 'trapOrMineDetection',
+                        occBonus: 5
+                    }
+
+                ]
+            },
+            physical: {
+                number: 0,
+                free: [],
+                available: [],
+                unavailable: [
+                    {
+                        name: 'acrobatics',
+                    },
+                    {
+                        name: 'gymnastics',
+                    },
+                    {
+                        name: 'wrestling',
+                    },
+                ],
+                only:[]
+            },
+            pilot: {
+                number: 0,
+                free: [
+                    {
+                        name:'automobile',
+                        occBonus: 10
+                    }
+                ],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 5
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            pilotRelated: {
+                number: 0,
+                free: [],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 10
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            rogue: {
+                number: 0,
+                free: [
+                    {
+                        name: 'findContrabandRogue',
+                        occBonus: 10
+                    }
+                ],
+                available: [
+                    {
+                        name: 'Any'
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            science: {
+                number: 3,
+                free: [
+                    {
+                        name: 'astronomyandNavigation',
+                        occBonus: 20
+                    },
+                    {
+                        name: 'mathematicsBasic',
+                        occBonus: 30
+                    },
+                    {
+                        name: 'mathematicsAdvanced',
+                        occBonus: 30
+                    }
+                ],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 20
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            technical: {
+                number: 2,
+                free: [
+                    {
+                        name: 'computerOperation',
+                        occBonus: 20
+                    },
+                    {
+                        name: 'recycleTechnical',
+                        occBonus: 20
+                    },
+                    {
+                        name: 'salvage',
+                        occBonus: 20
+                    }
+                ],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 15
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            weaponProficienciesAncient: {
+                number: 0,
+                free: [],
+                available: [
+                    {
+                        name: 'Any'
+                    }
+                ],
+                unavailable: [],
+                only:[]
+            },
+            weaponProficienciesModern: {
+                number: 0,
+                free: [],
+                choice: {
+                    choiceOne: {
+                        optionOne: 'wPEnergyPistol',
+                        optionTwo: 'wPEnergyRifle'
+                    }
+                },
+                available: [],
+                unavailable: [
+                    {
+                        name: 'wPHeavyMD',
+                    },
+                    {
+                        name: 'wPHeavyMilitary',
+                    },
+                ],
+                only:[]
+            },
+            wilderness: {
+                number: 0,
+                free: [],
+                available: [
+                    {
+                        name: 'Any',
+                        occBonus: 10
+                    }
+                ],
+                unavailable: [],
                 only:[]
             }
         }

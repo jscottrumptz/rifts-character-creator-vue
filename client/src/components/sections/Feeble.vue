@@ -101,8 +101,6 @@ export default {
         this.bonusCount++
         this.feebleCount = 0
       }
-      console.log('feeble = ' + this.feebleCount)
-      console.log('bonus = ' + this.bonusCount)
     },
     perceptionBonus() {
       this.bonuses.perception.attributeBonus = 2
@@ -112,8 +110,6 @@ export default {
     testFeeble() {
       this.bonusCount = 0
       this.feebleCount = this.attributes.feebleTest().feebleCount;
-      console.log(this.feebleCount)
-      console.log(this.bonusCount)
     },
     confirmStats(){
       this.attributes.confirmAttributes = true

@@ -6,7 +6,7 @@
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <h2 class="text-white p-5">Skill Picks Remaining: {{remaining}}</h2>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-          <ul class="text-gray-300 divide-y divide-gray-600 ">
+          <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
         </div>
@@ -57,7 +57,7 @@
           </ul>
         </div>
         <!-- Cowboy List -->
-        <div v-show="toggle==='cowboy' && cowboyActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+        <div v-show="toggle==='cowboy' && cowboy.active" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
             <li v-for="(skills,index) in cowboy" v-bind:key="index"  :id="'cowboy-'+ index" v-on:click="selected('cowboy',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }}</li>
           </ul>
@@ -607,34 +607,29 @@ export default {
       let noCostSkills = this.startingSkills;
       // OCC or RCC related skills to be picked by user
       let skillStart = this.newCharacter.occ.occRelatedNumber;
-      // selected skill count by group
-      let skillHealing = this.healingCount
-      let skillPhysical = this.physicalCount
-      let skillSensitive = this.sensitiveCount
 
       // determine how many picks are left
       let availablePicks = skillStart - skillPicked + noCostSkills
 
-      // see if the character is spreading it's picks over multiple groups, if so deduct 2 picks from the available total
-      if ((skillHealing > 0 && skillPhysical > 0) || (skillHealing > 0 && skillSensitive > 0) || (skillSensitive > 0 && skillPhysical > 0)) {
-        availablePicks = availablePicks - 2;
-      }
-
       // determine what tabs are available
-      if ((skillHealing > 0 && skillStart === 2) || (skillHealing > 5 && skillStart === 8)) {
-        this.physicalActive = false;
-        this.sensitiveActive = false;
-      } else if ((skillPhysical > 0 && skillStart === 2) || (skillPhysical > 5 && skillStart === 8)) {
-        this.healingActive = false;
-        this.sensitiveActive = false;
-      } else if ((skillSensitive > 0 && skillStart === 2) || (skillSensitive > 5 && skillStart === 8)) {
-        this.physicalActive = false;
-        this.healingActive = false;
-      } else {
-        this.physicalActive = true;
-        this.healingActive = true;
-        this.sensitiveActive = true;
-      }
+      Object.keys(this.communication).length > 0 ? this.communicationActive = true : this.communicationActive = false;
+      Object.keys(this.cowboy).length > 0 ? this.cowboyActive = true : this.cowboyActive = false;
+      Object.keys(this.domestic).length > 0 ? this.domesticActive = true : this.domesticActive = false;
+      Object.keys(this.electrical).length > 0 ? this.electricalActive = true : this.electricalActive = false;
+      Object.keys(this.espionage).length > 0 ? this.espionageActive = true : this.espionageActive = false;
+      Object.keys(this.horsemanship).length > 0 ? this.horsemanshipActive = true : this.horsemanshipActive = false;
+      Object.keys(this.mechanical).length > 0 ? this.mechanicalActive = true : this.mechanicalActive = false;
+      Object.keys(this.medical).length > 0 ? this.medicalActive = true : this.medicalActive = false;
+      Object.keys(this.military).length > 0 ? this.militaryActive = true : this.militaryActive = false;
+      Object.keys(this.physical).length > 0 ? this.physicalActive = true : this.physicalActive = false;
+      Object.keys(this.pilot).length > 0 ? this.pilotActive = true : this.pilotActive = false;
+      Object.keys(this.pilotRelated).length > 0 ? this.pilotRelatedActive = true : this.pilotRelatedActive = false;
+      Object.keys(this.rogue).length > 0 ? this.rogueActive = true : this.rogueActive = false;
+      Object.keys(this.science).length > 0 ? this.scienceActive = true : this.scienceActive = false;
+      Object.keys(this.technical).length > 0 ? this.technicalActive = true : this.technicalActive = false;
+      Object.keys(this.weaponProficienciesAncient).length > 0 ? this.weaponProficienciesAncientActive = true : this.weaponProficienciesAncientActive = false;
+      Object.keys(this.weaponProficienciesModern).length > 0 ? this.weaponProficienciesModernActive = true : this.weaponProficienciesModernActive = false;
+      Object.keys(this.wilderness).length > 0 ? this.wildernessActive = true : this.wildernessActive = false;
 
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
@@ -714,8 +709,7 @@ export default {
       occList.unavailable.forEach(skill => {
         for (const [key] of Object.entries(groupList)) {
           if(skill.name === 'All') {
-            delete groupList[key];
-            this.cowboyActive = false;
+            delete groupList[key]
           }
           if (key === skill.name) {
             delete groupList[key]
@@ -735,8 +729,47 @@ export default {
     },
     // gathers the necessary initial occ and character skill data
     onLoad: function () {
+      //
+      // loads occ skills and occ related skill selections
       this.skillLoader(this.communication, this.newCharacter.occ.occSkills.communication)
       this.skillLoader(this.cowboy, this.newCharacter.occ.occSkills.cowboy)
+      this.skillLoader(this.domestic, this.newCharacter.occ.occSkills.domestic)
+      this.skillLoader(this.electrical, this.newCharacter.occ.occSkills.electrical)
+      this.skillLoader(this.espionage, this.newCharacter.occ.occSkills.espionage)
+      this.skillLoader(this.horsemanship, this.newCharacter.occ.occSkills.horsemanship)
+      this.skillLoader(this.mechanical, this.newCharacter.occ.occSkills.mechanical)
+      this.skillLoader(this.medical, this.newCharacter.occ.occSkills.medical)
+      this.skillLoader(this.military, this.newCharacter.occ.occSkills.military)
+      this.skillLoader(this.physical, this.newCharacter.occ.occSkills.physical)
+      this.skillLoader(this.pilot, this.newCharacter.occ.occSkills.pilot)
+      this.skillLoader(this.pilotRelated, this.newCharacter.occ.occSkills.pilotRelated)
+      this.skillLoader(this.rogue, this.newCharacter.occ.occSkills.rogue)
+      this.skillLoader(this.science, this.newCharacter.occ.occSkills.science)
+      this.skillLoader(this.technical, this.newCharacter.occ.occSkills.technical)
+      this.skillLoader(this.weaponProficienciesAncient, this.newCharacter.occ.occSkills.weaponProficienciesAncient)
+      this.skillLoader(this.weaponProficienciesModern, this.newCharacter.occ.occSkills.weaponProficienciesModern)
+      this.skillLoader(this.wilderness, this.newCharacter.occ.occSkills.wilderness)
+      //
+      // set group skill counts
+      this.communicationCount = this.newCharacter.occ.occSkills.communication.number
+      this.cowboyCount = this.newCharacter.occ.occSkills.cowboy.number
+      this.domesticCount = this.newCharacter.occ.occSkills.domestic.number
+      this.electricalCount = this.newCharacter.occ.occSkills.electrical.number
+      this.espionageCount = this.newCharacter.occ.occSkills.espionage.number
+      this.horsemanshipCount = this.newCharacter.occ.occSkills.horsemanship.number
+      this.mechanicalCount = this.newCharacter.occ.occSkills.mechanical.number
+      this.medicalCount = this.newCharacter.occ.occSkills.medical.number
+      this.militaryCount = this.newCharacter.occ.occSkills.military.number
+      this.physicalCount = this.newCharacter.occ.occSkills.physical.number
+      this.pilotCount = this.newCharacter.occ.occSkills.pilot.number
+      this.pilotRelatedCount = this.newCharacter.occ.occSkills.pilotRelated.number
+      this.rogueCount = this.newCharacter.occ.occSkills.rogue.number
+      this.scienceCount = this.newCharacter.occ.occSkills.science.number
+      this.technicalCount = this.newCharacter.occ.occSkills.technical.number
+      this.weaponProficienciesAncientCount = this.newCharacter.occ.occSkills.weaponProficienciesAncient.number
+      this.weaponProficienciesModernCount = this.newCharacter.occ.occSkills.weaponProficienciesModern.number
+      this.wildernessCount = this.newCharacter.occ.occSkills.wilderness.number
+
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
       // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
