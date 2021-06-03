@@ -13,28 +13,29 @@
       </a>
     </div>
     <div class="px-4 py-5 p-0">
-      <ul v-for="(skills,index) in skills.known" v-bind:key="index" class="divide-y divide-gray-200">
+      <ul v-for="(skill,index) in skills.known" v-bind:key="index" class="divide-y divide-gray-200">
         <!-- Inventory Item -->
         <li class="border-t-8 border-gray-800 relative bg-white py-5 px-4">
           <div class="flex justify-between space-x-3">
             <div class="min-w-0 flex-1">
-              <p class="text-lg font-medium text-gray-900 truncate">{{skills.name}}</p>
-              <p class="text-sm mb-2 text-gray-500">({{skills.group}})</p>
+              <p class="text-lg font-medium text-gray-900 truncate">{{skill.name}}</p>
+              <p class="text-sm mb-2 text-gray-500">({{skill.group}})</p>
               <p class="text-sm p-2 bg-gray-200 font-medium text-gray-700">
-                <span v-if="skills.base" class="text-xs">Base Skill: <span class="font-normal"> {{skills.base}}% </span>
-                <span v-if="skills.baseTwo" class="font-normal"> / {{skills.baseTwo}}% </span>
-                <span v-if="skills.perLvl" class="font-normal">+ {{skills.perLvl}}% per lvl</span><br></span>
-                <span v-if="skills.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skills.occBonus}}% </span><br></span>
+                <span v-if="skill.base" class="text-xs">Base Skill: <span class="font-normal"> {{skill.base}}% </span>
+                <span v-if="skill.baseTwo" class="font-normal"> / {{skill.baseTwo}}% </span>
+                <span v-if="skill.perLvl" class="font-normal">+ {{skill.perLvl}}% per lvl</span><br></span>
+                <span v-if="skill.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skill.occBonus}}% </span><br></span>
+                <span v-if="skill.base && skills.bonus.attributeBonus" class="text-xs">IQ Bonus: <span class="font-normal">+{{skills.bonus.attributeBonus}}% </span><br></span>
               </p>
             </div>
           </div>
           <!-- Hidden Toggle Class -->
           <div v-bind:class="{ 'hidden': !extendSkills }"  class="mt-1">
             <p class="whitespace-pre-line text-sm text-gray-600">
-              {{skills.description}}
-              <span v-if="skills.note" class="italic"><br><br><span class="font-medium not-italic">Note:</span> {{skills.note}}</span>
-              <span v-if="skills.bonus" class="italic"><br><br><span class="font-medium not-italic">Bonuses:</span> {{skills.bonus}}</span>
-              <span v-if="skills.penalty" class="italic"><br><br><span class="font-medium not-italic">Penalties:</span> {{skills.penalty}}</span>
+              {{skill.description}}
+              <span v-if="skill.note" class="italic"><br><br><span class="font-medium not-italic">Note:</span> {{skill.note}}</span>
+              <span v-if="skill.bonus" class="italic"><br><br><span class="font-medium not-italic">Bonuses:</span> {{skill.bonus}}</span>
+              <span v-if="skill.penalty" class="italic"><br><br><span class="font-medium not-italic">Penalties:</span> {{skill.penalty}}</span>
             </p>
           </div>
         </li>

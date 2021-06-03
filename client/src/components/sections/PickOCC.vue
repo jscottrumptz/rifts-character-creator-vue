@@ -609,6 +609,7 @@ export default {
       this.newCharacter.occ = this.occ;
       this.newCharacter.occ.rollBonuses(this.newCharacter);
       this.newCharacter.occ.rollSecondary(this.newCharacter);
+      this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
 
       // filler information
       this.newCharacter.info.randomAge();

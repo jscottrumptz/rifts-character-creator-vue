@@ -543,7 +543,6 @@ export default {
       this.newCharacter.race.rollBonuses(this.newCharacter);
       this.newCharacter.race.rollSecondary(this.newCharacter);
       this.newCharacter.race.randomPsionics(this.newCharacter);
-      this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
     }
   }
 }
