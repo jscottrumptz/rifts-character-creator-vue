@@ -77,7 +77,7 @@
           </ul>
         </div>
         <!-- Cowboy List -->
-        <div v-show="toggle==='cowboy' && cowboy.active" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+        <div v-show="toggle==='cowboy' && cowboyActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
             <li v-for="(skills,index) in cowboy" v-bind:key="index"  :id="'cowboy-'+ index" v-on:click="selected('cowboy',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }}</li>
           </ul>
@@ -207,7 +207,7 @@
             </span>
           </h2>
           <br/>
-          <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
+          <span v-show="displaySkill[0].required !== ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
           <span v-show="displaySkill[0].skillCost > 1 " class="font-medium text-gray-200">(Counts as {{displaySkill[0].skillCost}} skill selections)<br></span>
 
           <span v-show="displaySkill[0].base"> <br><span class="font-medium text-gray-200">Base Skill:</span> {{displaySkill[0].base}}%
@@ -220,11 +220,11 @@
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-line overflow-y-auto max-h-96">
             {{displaySkill[0].description}}
-            <span v-show="displaySkill[0].note != ''" class="font-medium text-gray-200"><br><br>Note:<br/></span>
+            <span v-show="displaySkill[0].note !== ''" class="font-medium text-gray-200"><br><br>Note:<br/></span>
             {{displaySkill[0].note}}
-            <span v-show="displaySkill[0].bonus != ''" class="font-medium text-gray-200"><br><br>Bonuses:<br/></span>
+            <span v-show="displaySkill[0].bonus !== ''" class="font-medium text-gray-200"><br><br>Bonuses:<br/></span>
             {{displaySkill[0].bonus}}
-            <span v-show="displaySkill[0].penalty != ''" class="font-medium text-gray-200"><br><br>Penalties:<br/></span>
+            <span v-show="displaySkill[0].penalty !== ''" class="font-medium text-gray-200"><br><br>Penalties:<br/></span>
             {{displaySkill[0].penalty}}
           </div>
         </div>
@@ -405,12 +405,7 @@ export default {
       // check the skill cost to be sure there are enough picks remaining
       if(skillGroup[index].skillCost > this.remaining)
       {
-        if(skillGroup[index].skillCost <= groupRemaining)
-        {
-          this.enoughPicks = true;
-        } else {
-          this.enoughPicks = false
-        }
+        skillGroup[index].skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
       } else {
         this.enoughPicks = true
       }
@@ -461,7 +456,7 @@ export default {
             requiredOr++
           }
         })
-        // check if required count is equal to the number of preqs, if so the user can add the skill
+        // check if required count is equal to the number of prerequisites, if so the user can add the skill
         required === this.selectedSkill.preq.length || (requiredOr !== 0 && requiredOr === this.selectedSkill.preqOr.length) ?
             this.canAdd = true : this.canAdd = false
 
@@ -501,7 +496,7 @@ export default {
         skill.takenTwice = true;
       }
       // make sure something is selected
-      if (skill !== null){
+      if (skill){
         // create the same object property in selectedSkills and copy the selected object to it
         this.selectedSkills[prop] = skill
         // create the same object property in newCharacter's known skills and copy the selected object to it
@@ -529,7 +524,7 @@ export default {
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
       const groupCount = group + 'Count'
       // make sure something is selected
-      if (skill !== null){
+      if (skill){
         // return the skill to it's list
         this[group][prop] = skill
         // update the group count
@@ -581,12 +576,7 @@ export default {
       const groupRemaining = group + 'Remaining'
 
       if(skill.skillCost > this.remaining) {
-        if(skill.skillCost <= this[groupRemaining])
-        {
-          this.enoughPicks = true;
-        } else {
-          this.enoughPicks = false
-        }
+        skill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
       } else {
         this.enoughPicks = true
       }
@@ -602,12 +592,7 @@ export default {
 
       if(skill.skillCost > this.remaining)
       {
-        if(skill.skillCost <= groupRemaining)
-        {
-          this.enoughPicks = true;
-        } else {
-          this.enoughPicks = false
-        }
+        skill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
       } else {
         this.enoughPicks = true
       }
@@ -635,24 +620,14 @@ export default {
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
         console.log(this[groupRemaining])
         if (this.selectedSkill.skillCost * 2 > this.remaining) {
-            if (this.selectedSkill.skillCost * 2 <= this[groupRemaining])
-            {
-              this.enoughPicks = true;
-            } else {
-              this.enoughPicks = false
-            }
+          this.selectedSkill.skillCost * 2 <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
           } else {
             this.enoughPicks = true
           }
       }
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === false) {
         if (this.selectedSkill.skillCost > this.remaining) {
-          if (this.selectedSkill.skillCost <= this[groupRemaining])
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
+          this.selectedSkill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
         } else {
           this.enoughPicks = true
         }
@@ -735,7 +710,6 @@ export default {
           })
         }
       }
-
       // update remaining skills counter
       this.remaining = availablePicks
           - this.communicationRemaining
@@ -757,206 +731,134 @@ export default {
           - this.weaponProficienciesModernRemaining
           - this.wildernessRemaining
       ;
-
+      //
       // determine what tabs are available
+      // communication tab
       if (Object.keys(this.communication).length > 0 && this.remaining === 0) {
-        if (this.communicationRemaining === 0) {
-          this.communicationActive = false
-        } else {
-          this.communicationActive = true
-        }
-      } else if (Object.keys(this.communication).length > 0 && this.remaining !== 0) {
-        this.communicationActive = true
-      } else {
-        this.communicationActive = false
-      }
+        this.communicationRemaining === 0 ?
+            this.communicationActive = false : this.communicationActive = true
+      } else
+        Object.keys(this.communication).length > 0 && this.remaining !== 0 ?
+            this.communicationActive = true : this.communicationActive = false
+      // cowboy tab
       if (Object.keys(this.cowboy).length > 0 && this.remaining === 0) {
-        if (this.cowboyRemaining === 0) {
-          this.cowboyActive = false
-        } else {
-          this.cowboyActive = true
-        }
-      } else if (Object.keys(this.cowboy).length > 0 && this.remaining !== 0) {
-        this.cowboyActive = true
-      } else {
-        this.cowboyActive = false
-      }
+        this.cowboyRemaining === 0 ?
+            this.cowboyActive = false : this.cowboyActive = true
+      } else
+        Object.keys(this.cowboy).length > 0 && this.remaining !== 0 ?
+            this.cowboyActive = true : this.cowboyActive = false
+      // domestic tab
       if (Object.keys(this.domestic).length > 0 && this.remaining === 0) {
-        if (this.domesticRemaining === 0) {
-          this.domesticActive = false
-        } else {
-          this.domesticActive = true
-        }
-      } else if (Object.keys(this.domestic).length > 0 && this.remaining !== 0) {
-        this.domesticActive = true
-      } else {
-        this.domesticActive = false
-      }
+        this.domesticRemaining === 0 ?
+            this.domesticActive = false : this.domesticActive = true
+      } else
+        Object.keys(this.domestic).length > 0 && this.remaining !== 0 ?
+            this.domesticActive = true : this.domesticActive = false
+      // electrical tab
       if (Object.keys(this.electrical).length > 0 && this.remaining === 0) {
-        if (this.electricalRemaining === 0) {
-          this.electricalActive = false
-        } else {
-          this.electricalActive = true
-        }
-      } else if (Object.keys(this.electrical).length > 0 && this.remaining !== 0) {
-        this.electricalActive = true
-      } else {
-        this.electricalActive = false
-      }
+        this.electricalRemaining === 0 ?
+            this.electricalActive = false : this.electricalActive = true
+      } else
+        Object.keys(this.electrical).length > 0 && this.remaining !== 0 ?
+            this.electricalActive = true : this.electricalActive = false
+      // espionage tab
       if (Object.keys(this.espionage).length > 0 && this.remaining === 0) {
-        if (this.espionageRemaining === 0) {
-          this.espionageActive = false
-        } else {
-          this.espionageActive = true
-        }
-      } else if (Object.keys(this.espionage).length > 0 && this.remaining !== 0) {
-        this.espionageActive = true
-      } else {
-        this.espionageActive = false
-      }
+        this.espionageRemaining === 0 ?
+            this.espionageActive = false : this.espionageActive = true
+      } else
+        Object.keys(this.espionage).length > 0 && this.remaining !== 0 ?
+            this.espionageActive = true : this.espionageActive = false
+      // horsemanship tab
       if (Object.keys(this.horsemanship).length > 0 && this.remaining === 0) {
-        if (this.horsemanshipRemaining === 0) {
-          this.horsemanshipActive = false
-        } else {
-          this.horsemanshipActive = true
-        }
-      } else if (Object.keys(this.horsemanship).length > 0 && this.remaining !== 0) {
-        this.horsemanshipActive = true
-      } else {
-        this.horsemanshipActive = false
-      }
+        this.horsemanshipRemaining === 0 ?
+            this.horsemanshipActive = false : this.horsemanshipActive = true
+      } else
+        Object.keys(this.horsemanship).length > 0 && this.remaining !== 0 ?
+            this.horsemanshipActive = true : this.horsemanshipActive = false
+      // mechanical tab
       if (Object.keys(this.mechanical).length > 0 && this.remaining === 0) {
-        if (this.mechanicalRemaining === 0) {
-          this.mechanicalActive = false
-        } else {
-          this.mechanicalActive = true
-        }
-      } else if (Object.keys(this.mechanical).length > 0 && this.remaining !== 0) {
-        this.mechanicalActive = true
-      } else {
-        this.mechanicalActive = false
-      }
+        this.mechanicalRemaining === 0 ?
+            this.mechanicalActive = false : this.mechanicalActive = true
+      } else
+        Object.keys(this.mechanical).length > 0 && this.remaining !== 0 ?
+            this.mechanicalActive = true : this.mechanicalActive = false
+      // medical tab
       if (Object.keys(this.medical).length > 0 && this.remaining === 0) {
-        if (this.medicalRemaining === 0) {
-          this.medicalActive = false
-        } else {
-          this.medicalActive = true
-        }
-      } else if (Object.keys(this.medical).length > 0 && this.remaining !== 0) {
-        this.medicalActive = true
-      } else {
-        this.medicalActive = false
-      }
+        this.medicalRemaining === 0 ?
+            this.medicalActive = false : this.medicalActive = true
+      } else
+        Object.keys(this.medical).length > 0 && this.remaining !== 0 ?
+            this.medicalActive = true : this.medicalActive = false
+      // military tab
       if (Object.keys(this.military).length > 0 && this.remaining === 0) {
-        if (this.militaryRemaining === 0) {
-          this.militaryActive = false
-        } else {
-          this.militaryActive = true
-        }
-      } else if (Object.keys(this.military).length > 0 && this.remaining !== 0) {
-        this.militaryActive = true
-      } else {
-        this.militaryActive = false
-      }
+        this.militaryRemaining === 0 ?
+            this.militaryActive = false : this.militaryActive = true
+      } else
+        Object.keys(this.military).length > 0 && this.remaining !== 0 ?
+            this.militaryActive = true : this.militaryActive = false
+      // physical tab
       if (Object.keys(this.physical).length > 0 && this.remaining === 0) {
-        if (this.physicalRemaining === 0) {
-          this.physicalActive = false
-        } else {
-          this.physicalActive = true
-        }
-      } else if (Object.keys(this.physical).length > 0 && this.remaining !== 0) {
-        this.physicalActive = true
-      } else {
-        this.physicalActive = false
-      }
+        this.physicalRemaining === 0 ?
+            this.physicalActive = false : this.physicalActive = true
+      } else
+        Object.keys(this.physical).length > 0 && this.remaining !== 0 ?
+            this.physicalActive = true : this.physicalActive = false
+      // pilot tab
       if (Object.keys(this.pilot).length > 0 && this.remaining === 0) {
-        if (this.pilotRemaining === 0) {
-          this.pilotActive = false
-        } else {
-          this.pilotActive = true
-        }
-      } else if (Object.keys(this.pilot).length > 0 && this.remaining !== 0) {
-        this.pilotActive = true
-      } else {
-        this.pilotActive = false
-      }
+        this.pilotRemaining === 0 ?
+            this.pilotActive = false : this.pilotActive = true
+      } else
+        Object.keys(this.pilot).length > 0 && this.remaining !== 0 ?
+            this.pilotActive = true : this.pilotActive = false
+      // pilotRelated tab
       if (Object.keys(this.pilotRelated).length > 0 && this.remaining === 0) {
-        if (this.pilotRelatedRemaining === 0) {
-          this.pilotRelatedActive = false
-        } else {
-          this.pilotRelatedActive = true
-        }
-      } else if (Object.keys(this.pilotRelated).length > 0 && this.remaining !== 0) {
-        this.pilotRelatedActive = true
-      } else {
-        this.pilotRelatedActive = false
-      }
+        this.pilotRelatedRemaining === 0 ?
+            this.pilotRelatedActive = false : this.pilotRelatedActive = true
+      } else
+        Object.keys(this.pilotRelated).length > 0 && this.remaining !== 0 ?
+            this.pilotRelatedActive = true : this.pilotRelatedActive = false
+      // rogue tab
       if (Object.keys(this.rogue).length > 0 && this.remaining === 0) {
-        if (this.rogueRemaining === 0) {
-          this.rogueActive = false
-        } else {
-          this.rogueActive = true
-        }
-      } else if (Object.keys(this.rogue).length > 0 && this.remaining !== 0) {
-        this.rogueActive = true
-      } else {
-        this.rogueActive = false
-      }
+        this.rogueRemaining === 0 ?
+            this.rogueActive = false : this.rogueActive = true
+      } else
+        Object.keys(this.rogue).length > 0 && this.remaining !== 0 ?
+            this.rogueActive = true : this.rogueActive = false
+      // science tab
       if (Object.keys(this.science).length > 0 && this.remaining === 0) {
-        if (this.scienceRemaining === 0) {
-          this.scienceActive = false
-        } else {
-          this.scienceActive = true
-        }
-      } else if (Object.keys(this.science).length > 0 && this.remaining !== 0) {
-        this.scienceActive = true
-      } else {
-        this.scienceActive = false
-      }
+        this.scienceRemaining === 0 ?
+            this.scienceActive = false : this.scienceActive = true
+      } else
+        Object.keys(this.science).length > 0 && this.remaining !== 0 ?
+            this.scienceActive = true : this.scienceActive = false
+      // technical tab
       if (Object.keys(this.technical).length > 0 && this.remaining === 0) {
-        if (this.technicalRemaining === 0) {
-          this.technicalActive = false
-        } else {
-          this.technicalActive = true
-        }
-      } else if (Object.keys(this.technical).length > 0 && this.remaining !== 0) {
-        this.technicalActive = true
-      } else {
-        this.technicalActive = false
-      }
+        this.technicalRemaining === 0 ?
+            this.technicalActive = false : this.technicalActive = true
+      } else
+        Object.keys(this.technical).length > 0 && this.remaining !== 0 ?
+            this.technicalActive = true : this.technicalActive = false
+      // weaponProficienciesAncient tab
       if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining === 0) {
-        if (this.weaponProficienciesAncientRemaining === 0) {
-          this.weaponProficienciesAncientActive = false
-        } else {
-          this.weaponProficienciesAncientActive = true
-        }
-      } else if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining !== 0) {
-        this.weaponProficienciesAncientActive = true
-      } else {
-        this.weaponProficienciesAncientActive = false
-      }
+        this.weaponProficienciesAncientRemaining === 0 ?
+            this.weaponProficienciesAncientActive = false : this.weaponProficienciesAncientActive = true
+      } else
+        Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining !== 0 ?
+            this.weaponProficienciesAncientActive = true : this.weaponProficienciesAncientActive = false
+      // weaponProficienciesModern tab
       if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining === 0) {
-        if (this.weaponProficienciesModernRemaining === 0) {
-          this.weaponProficienciesModernActive = false
-        } else {
-          this.weaponProficienciesModernActive = true
-        }
-      } else if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining !== 0) {
-        this.weaponProficienciesModernActive = true
-      } else {
-        this.weaponProficienciesModernActive = false
-      }
+        this.weaponProficienciesModernRemaining === 0 ?
+            this.weaponProficienciesModernActive = false : this.weaponProficienciesModernActive = true
+      } else
+        Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining !== 0 ?
+            this.weaponProficienciesModernActive = true : this.weaponProficienciesModernActive = false
+      // wilderness tab
       if (Object.keys(this.wilderness).length > 0 && this.remaining === 0) {
-        if (this.wildernessRemaining === 0) {
-          this.wildernessActive = false
-        } else {
-          this.wildernessActive = true
-        }
-      } else if (Object.keys(this.wilderness).length > 0 && this.remaining !== 0) {
-        this.wildernessActive = true
-      } else {
-        this.wildernessActive = false
-      }
+        this.wildernessRemaining === 0 ?
+            this.wildernessActive = false : this.wildernessActive = true
+      } else
+        Object.keys(this.wilderness).length > 0 && this.remaining !== 0 ?
+            this.wildernessActive = true : this.wildernessActive = false
     },
     // controls the background color on the skill group lists
     selectedBg: function (newId){

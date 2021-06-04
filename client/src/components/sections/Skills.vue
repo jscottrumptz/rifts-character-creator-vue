@@ -18,13 +18,18 @@
         <li class="border-t-8 border-gray-800 relative bg-white py-5 px-4">
           <div class="flex justify-between space-x-3">
             <div class="min-w-0 flex-1">
-              <p class="text-lg font-medium text-gray-900 truncate">{{skill.name}}</p>
+              <p class="text-lg font-medium text-gray-900 truncate">{{skill.name}}
+                <span v-if="skill.takenTwice" class="my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-full text-xs font-medium bg-indigo-600 text-white">
+                taken twice
+                </span>
+              </p>
               <p class="text-sm mb-2 text-gray-500">({{skill.group}})</p>
               <p class="text-sm p-2 bg-gray-200 font-medium text-gray-700">
                 <span v-if="skill.base" class="text-xs">Base Skill: <span class="font-normal"> {{skill.base}}% </span>
                 <span v-if="skill.baseTwo" class="font-normal"> / {{skill.baseTwo}}% </span>
                 <span v-if="skill.perLvl" class="font-normal">+ {{skill.perLvl}}% per lvl</span><br></span>
                 <span v-if="skill.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skill.occBonus}}% </span><br></span>
+                <span v-if="skill.takenTwice && skill.takeTwiceBonus" class="text-xs">Taken Twice Bonus: <span class="font-normal">{{skill.takeTwiceBonus}} </span><br></span>
                 <span v-if="skill.base && skills.bonus.attributeBonus" class="text-xs">IQ Bonus: <span class="font-normal">+{{skills.bonus.attributeBonus}}% </span><br></span>
               </p>
             </div>
