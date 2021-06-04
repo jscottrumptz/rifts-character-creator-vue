@@ -188,7 +188,7 @@
       <!-- Info Section -->
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
-          <h2 class="font-medium text-2xl">{{displaySkill[0].name}}</h2>
+          <h2 class="font-medium text-2xl">{{displaySkill[0].name}} <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="text-xs px-5"><input id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" /> (take twice)</span></h2>
           <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
           <span v-show="displaySkill[0].skillCost > 1 " class="font-medium text-gray-200">(Counts as {{displaySkill[0].skillCost}} skill selections)<br></span>
 
@@ -639,6 +639,10 @@ export default {
         }
       }
       //
+      // clears the takeTwice checkbox
+      if (document.getElementById("takeTwice") && this.selectedSkill !== skillGroup[index]) {
+        document.getElementById("takeTwice").checked = false
+      }
       // sets the selected skill
       this.selectedSkill = skillGroup[index];
       // sets the property of the selected skill
