@@ -188,15 +188,16 @@
       <!-- Info Section -->
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
-          <h2 class="font-medium text-2xl">{{displaySkill[0].name}}
-            <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="text-xs px-5">
+          <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}
+            <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="my-auto text-xs px-5">
               <input id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
               (take twice)
             </span>
-            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice" class="text-xs px-5">
-              (taken twice)
+            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice" class="my-auto ml-5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600 text-white">
+              taken twice
             </span>
           </h2>
+          <br/>
           <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
           <span v-show="displaySkill[0].skillCost > 1 " class="font-medium text-gray-200">(Counts as {{displaySkill[0].skillCost}} skill selections)<br></span>
 
