@@ -196,6 +196,9 @@
             <span v-if="this.pickedSkill && this.pickedSkill.takenTwice" class="my-auto ml-5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600 text-white">
               taken twice
             </span>
+            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" class="my-auto ml-5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600 text-white">
+              taken once
+            </span>
           </h2>
           <br/>
           <span v-show="displaySkill[0].required!= ''" class="font-medium text-gray-200">(Prerequisites: {{displaySkill[0].required}})<br></span>
