@@ -1,21 +1,10 @@
 <template>
   <div class="px-5 pb-5">
-    <p class="text-white text-xl font-medium p-5" >Choose O.C.C skills </p>
+    <p class="text-white text-xl font-medium p-5" >Pick O.C.C skills</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <h2 class="text-white pt-5 pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
-        <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-          <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
-            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
-          </ul>
-        </div>
-        <!-- Determine what button is active depending on prerequisites and previously known skills-->
-        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
-        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
-        <p class="text-white pl-5 font-medium" >Fulfill the following requirements.</p>
+        <p class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements.</p>
         <div class="pl-10 pb-5">
           <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
           <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
@@ -36,6 +25,16 @@
           <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
           <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
+        <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+          <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
+            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
+          </ul>
+        </div>
+        <!-- Determine what button is active depending on prerequisites and previously known skills-->
+        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
+        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
       </div>
 
       <!-- Finalize Selections -->
@@ -47,8 +46,9 @@
       <div v-show="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <!-- Nav & Tabs -->
         <div class="m-3">
-          <label for="tabs" class="sr-only">Select a tab</label>
+          <label for="tabs" class="sr-only"></label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+            <option selected disabled> Select a Skill Group... </option>
             <option v-if="communicationActive" value="communication">Communication Skills</option>
             <option v-if="cowboyActive" value="cowboy">Cowboy Skills</option>
             <option v-if="domesticActive" value="domestic">Domestic Skills</option>
@@ -635,16 +635,6 @@ export default {
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
-      // current count of total skills selected
-      // let skillPicked = Object.keys(this.selectedSkills).length;
-      // count of skills given to the character at no cost by race or OCC
-      // let noCostSkills = this.startingSkills;
-      // OCC or RCC related skills to be picked by user
-      const skillStart = this.newCharacter.occ.occRelatedNumber;
-
-      // determine how many picks are left
-      let availablePicks = skillStart - this.skillPicked;
-
       // get required occ picks
       this.communicationRequired = this.newCharacter.occ.occSkills.communication.number;
       this.cowboyRequired = this.newCharacter.occ.occSkills.cowboy.number;
@@ -662,8 +652,32 @@ export default {
       this.scienceRequired = this.newCharacter.occ.occSkills.science.number;
       this.technicalRequired = this.newCharacter.occ.occSkills.technical.number;
       this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.number;
-      this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.number;
+      this.weaponProficienciesModernRequired = 1;
       this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.number;
+
+      // OCC or RCC related skills to be picked by user
+      const skillStart =
+            this.communicationRequired
+          + this.cowboyRequired
+          + this.domesticRequired
+          + this.electricalRequired
+          + this.espionageRequired
+          + this.horsemanshipRequired
+          + this.mechanicalRequired
+          + this.medicalRequired
+          + this.militaryRequired
+          + this.physicalRequired
+          + this.pilotRequired
+          + this.pilotRelatedRequired
+          + this.rogueRequired
+          + this.scienceRequired
+          + this.technicalRequired
+          + this.weaponProficienciesAncientRequired
+          + this.weaponProficienciesModernRequired
+          + this.wildernessRequired;
+
+      // determine how many picks are left
+      let availablePicks = skillStart - this.skillPicked;
 
       // get skill pick requirements
       this.communicationRemaining = Math.max(0, this.communicationRequired - this.communicationCount)
@@ -872,11 +886,8 @@ export default {
     },
     // adds the selected skills to the character and moves the user to the next creation step
     finalizeSelections: function (){
-
-      // need to add stat bonuses here
-
       // set a toggle to true so that the player can move on in the character creation process
-      this.newCharacter.skills.selected = true
+      this.newCharacter.skills.choices = false
     },
     // prepares skill lists
     skillLoader: function (groupList, occList) {
@@ -896,65 +907,68 @@ export default {
           }
         })
       }
-      // handle available skills
-      if (occList.available) {
-        occList.available.forEach(skill => {
-          for (const [key] of Object.entries(groupList)) {
-            if (skill.name === 'Any') {
-              groupList[key].occBonus = skill.occBonus;
-              if (skill.skillCost) {
-                groupList[key].skillCost = skill.skillCost;
-              }
-            }
-            if (key === skill.name) {
-              groupList[key].occBonus = skill.occBonus;
-              if (skill.skillCost) {
-                groupList[key].skillCost = skill.skillCost;
-              }
-            }
-          }
-        })
-      }
-      // handle unavailable skills
-      if (occList.unavailable) {
-        occList.unavailable.forEach(skill => {
-          for (const [key] of Object.entries(groupList)) {
-            if (skill.name === 'All') {
-              delete groupList[key]
-            }
-            if (key === skill.name) {
-              delete groupList[key]
-            }
-          }
-        })
-      }
-      // handle only skills
-      if (occList.only) {
-        occList.only.forEach(skill => {
-          for (const [key] of Object.entries(groupList)) {
-            if (key === skill.name) {
-              groupList[key].occBonus = skill.occBonus;
-              if (skill.skillCost) {
-                groupList[key].skillCost = skill.skillCost;
-              }
-            } else {
-              delete groupList[key]
-            }
-          }
-        })
-      }
       // handle skill choices if there is a choice array
       if (occList.choice) {
         occList.choice.forEach(choice => {
-          for (const [key] of Object.entries(choice)) {
             // extracts skill group and choiceNumber
             console.log('skill group: ' + groupList.constructor.name)
-            console.log('key: ' + key)
-            for (const [option] of Object.entries(choice[key])) {
-              // extracts option number and skill property
-              console.log(option + ': ' + choice[key][option])
+            console.log(choice.only)
+            // handle available skills
+            if (choice.available) {
+              choice.available.forEach(skill => {
+                for (const [key] of Object.entries(groupList)) {
+                  console.log('key: ' + key)
+                  console.log('skill: ' + skill.name)
+                  if (skill.name === 'Any') {
+                    if (groupList[key].occBonus) {
+                      groupList[key].occBonus = skill.occBonus;
+                    }
+                    if (skill.skillCost) {
+                      groupList[key].skillCost = skill.skillCost;
+                    }
+                  }
+                  if (key === skill.name) {
+                    if (groupList[key].occBonus) {
+                      groupList[key].occBonus = skill.occBonus;
+                    }
+                    if (skill.skillCost) {
+                      groupList[key].skillCost = skill.skillCost;
+                    }
+                  }
+                }
+              })
             }
-          }
+            // handle unavailable skills
+            if (choice.unavailable) {
+              choice.unavailable.forEach(skill => {
+                for (const [key] of Object.entries(groupList)) {
+                  if (skill.name === 'All') {
+                    delete groupList[key]
+                  }
+                  if (key === skill.name) {
+                    delete groupList[key]
+                  }
+                }
+              })
+            }
+            // handle or skills
+            if (choice.or) {
+              for (const [key] of Object.entries(groupList)) {
+                console.log('key: ' + key)
+                console.log('skill: ' + choice.or[0].name)
+                if (key === choice.or[0].name || key === choice.or[1].name) {
+                  if (choice.or[0].occBonus) {
+                    groupList[key].occBonus = choice.or[0].occBonus;
+                  }
+                  if (choice.or[0].skillCost) {
+                    groupList[key].skillCost = choice.or[0].skillCost;
+                  }
+                } else {
+                  delete groupList[key]
+                }
+              }
+            }
+
         })
       }
     },

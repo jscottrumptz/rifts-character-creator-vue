@@ -370,23 +370,23 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 free: [],
                 choice: [
                     {
-                        choiceOne: {
-                            optionOne: 'wPEnergyPistol',
-                            optionTwo: 'wPEnergyRifle'
-                        },
-                        choiceTwo: {
-                            optionOne: 'wPShotguns',
-                            optionTwo: 'wPRifles'
-                        }
+                        or: [
+                            {
+                                name: 'wPEnergyPistol'
+                            },
+                            {
+                                name: 'wPEnergyRifle'
+                            }
+                        ]
                     }
                 ],
                 available: [],
                 unavailable: [
                     {
-                        name: 'wPHeavyMD',
+                        name: 'wPHeavyMD'
                     },
                     {
-                        name: 'wPHeavyMilitary',
+                        name: 'wPHeavyMilitary'
                     },
                 ],
                 only:[]
@@ -410,7 +410,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
 
     rollSecondary(character) {
         // must choose between occ skills
-        // character.skills.choices = true;
+        character.skills.choices = true;
 
         character.abilities.analyze = 
         { 
