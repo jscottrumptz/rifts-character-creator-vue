@@ -12,6 +12,8 @@ class Skill {
         known = false,
         // toggle to see if it can be selected again
         takeTwice = false,
+        // toggle to see if it was taken twice
+        takenTwice = false,
         // toggle to see if this is a free skill
         noCost = false,
         // cost of selecting the skill
@@ -47,6 +49,7 @@ class Skill {
         this.canSelect = canSelect;
         this.known = known;
         this.takeTwice = takeTwice;
+        this.takenTwice = takenTwice;
         this.noCost = noCost;
         this.skillCost = skillCost;
         this.takeTwiceBonus = takeTwiceBonus;
