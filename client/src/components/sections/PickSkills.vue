@@ -199,8 +199,11 @@
             <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" class="my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-full text-xs font-medium bg-gray-300 text-indigo-900">
               taken once
             </span>
-            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" v-on:click="takeAgain()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-green-500 hover:text-gray-900">
+            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" v-on:click="takeAgain()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-green-500 hover:text-gray-900">
               take again
+            </span>
+            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && !enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-yellow-500 text-gray-900">
+              not enough picks to take again
             </span>
           </h2>
           <br/>
@@ -396,9 +399,9 @@ export default {
   methods: {
     // handles what skill from the skill list is currently selected
     selected: function (group,index){
-      let skillGroup = this[group]
-      let listId = group + '-' +[index]
-      let groupRemaining = group + 'Remaining'
+      const skillGroup = this[group]
+      const listId = group + '-' +[index]
+      const groupRemaining = group + 'Remaining'
       // check the skill cost to be sure there are enough picks remaining
       if(skillGroup[index].skillCost > this.remaining)
       {
@@ -570,11 +573,61 @@ export default {
       }
 
     },
+    // see if picks are available to upgrade skill from selected list
+    takeAvailable: function () {
+      const skill = this.pickedSkill;
+      // get group property from group name
+      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      const groupRemaining = group + 'Remaining'
+
+      if(skill.skillCost > this.remaining) {
+        if(skill.skillCost <= this[groupRemaining])
+        {
+          this.enoughPicks = true;
+        } else {
+          this.enoughPicks = false
+        }
+      } else {
+        this.enoughPicks = true
+      }
+    },
     // upgrade a previously picked skill
     takeAgain: function (){
       const skill = this.pickedSkill;
-      console.log(skill)
+      const prop = this.pickedProperty;
+      // get group property from group name
+      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      const groupCount = group + 'Count'
+      const groupRemaining = group + 'Remaining'
+
+      if(skill.skillCost > this.remaining)
+      {
+        if(skill.skillCost <= groupRemaining)
+        {
+          this.enoughPicks = true;
+        } else {
+          this.enoughPicks = false
+        }
+      } else {
+        this.enoughPicks = true
+      }
+
+      // increase group counts
+      this[groupCount] = this[groupCount] + skill.skillCost;
+      // increase skill count
+      this.skillPicked = this.skillPicked + skill.skillCost;
+      // update the skill with the new cost
+      skill.skillCost = skill.skillCost * 2
+      // toggle the skill as taken twice
+      skill.takenTwice = true;
+      // create the same object property in selectedSkills and copy the selected object to it
+      this.selectedSkills[prop] = skill
+      // create the same object property in newCharacter's known skills and copy the selected object to it
+      this.newCharacter.skills.known[prop] = skill
+      // reinitialize logic
+      this.init();
     },
+    // checks if skill is still available after the take twice box is checked
     takeChecked: function (){
       const group = this.selectedSkill.group.charAt(0).toLowerCase() + this.selectedSkill.group.slice(1).replace(/\s+/g, '');
       const groupRemaining = group + 'Remaining'
@@ -612,7 +665,7 @@ export default {
       // count of skills given to the character at no cost by race or OCC
       // let noCostSkills = this.startingSkills;
       // OCC or RCC related skills to be picked by user
-      let skillStart = this.newCharacter.occ.occRelatedNumber;
+      const skillStart = this.newCharacter.occ.occRelatedNumber;
 
       // determine how many picks are left
       let availablePicks = skillStart - this.skillPicked;
