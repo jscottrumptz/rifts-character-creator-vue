@@ -190,14 +190,17 @@
         <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}
             <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="my-auto text-xs px-5">
-              <input id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
+              <input v-on:click="takeChecked()" id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
               (take twice)
             </span>
-            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice" class="my-auto ml-5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600 text-white">
+            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice" class="my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-full text-xs font-medium bg-indigo-600 text-white">
               taken twice
             </span>
-            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" class="my-auto ml-5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-600 text-white">
+            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" class="my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-full text-xs font-medium bg-gray-300 text-indigo-900">
               taken once
+            </span>
+            <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" v-on:click="takeAgain()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-green-500 hover:text-gray-900">
+              take again
             </span>
           </h2>
           <br/>
@@ -393,264 +396,21 @@ export default {
   methods: {
     // handles what skill from the skill list is currently selected
     selected: function (group,index){
-      let skillGroup;
-      let listId;
-      //
-      // sets a tag on the list index so we know what group to return the skill to if selected and later removed
-      if(group === 'communication'){
-        skillGroup = this.communication
-        listId = 'communication-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
+      let skillGroup = this[group]
+      let listId = group + '-' +[index]
+      let groupRemaining = group + 'Remaining'
+      // check the skill cost to be sure there are enough picks remaining
+      if(skillGroup[index].skillCost > this.remaining)
+      {
+        if(skillGroup[index].skillCost <= groupRemaining)
         {
-          if(skillGroup[index].skillCost <= this.communicationRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
+          this.enoughPicks = true;
         } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'cowboy'){
-        skillGroup = this.cowboy
-        listId = 'cowboy-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.cowboyRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'domestic'){
-        skillGroup = this.domestic
-        listId = 'domestic-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.domesticRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'electrical'){
-        skillGroup = this.electrical
-        listId = 'electrical-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.electricalRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'espionage'){
-        skillGroup = this.espionage
-        listId = 'espionage-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.espionageRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'horsemanship'){
-        skillGroup = this.horsemanship
-        listId = 'horsemanship-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.horsemanshipRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'mechanical'){
-        skillGroup = this.mechanical
-        listId = 'mechanical-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.mechanicalRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'medical'){
-        skillGroup = this.medical
-        listId = 'medical-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.medicalRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'military'){
-        skillGroup = this.military
-        listId = 'military-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.militaryRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'physical'){
-        skillGroup = this.physical
-        listId = 'physical-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.physicalRemaining )
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'pilot'){
-        skillGroup = this.pilot
-        listId = 'pilot-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.pilotRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'pilotRelated'){
-        skillGroup = this.pilotRelated
-        listId = 'pilotRelated-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.pilotRelatedRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'rogue'){
-        skillGroup = this.rogue
-        listId = 'rogue-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.rogueRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'science'){
-        skillGroup = this.science
-        listId = 'science-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.scienceRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'technical'){
-        skillGroup = this.technical
-        listId = 'technical-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.technicalRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'weaponProficienciesAncient'){
-        skillGroup = this.weaponProficienciesAncient
-        listId = 'weaponProficienciesAncient-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.weaponProficienciesAncientRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
-      } else if (group === 'weaponProficienciesModern'){
-        skillGroup = this.weaponProficienciesModern
-        listId = 'weaponProficienciesModern-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.weaponProficienciesModernRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
+          this.enoughPicks = false
         }
       } else {
-        skillGroup = this.wilderness
-        listId = 'wilderness-'+[index]
-        if(skillGroup[index].skillCost > this.remaining)
-        {
-          if(skillGroup[index].skillCost <= this.wildernessRemaining)
-          {
-            this.enoughPicks = true;
-          } else {
-            this.enoughPicks = false
-          }
-        } else {
-          this.enoughPicks = true
-        }
+        this.enoughPicks = true
       }
-      //
       // clears the takeTwice checkbox
       if (document.getElementById("takeTwice") && this.selectedSkill !== skillGroup[index]) {
         document.getElementById("takeTwice").checked = false
@@ -712,10 +472,15 @@ export default {
     // handles what skill from the selected skill list is currently selected
     picked: function (index){
       this.pickedSkill = this.selectedSkills[index];
+      // clear the display
       this.displaySkill = [];
+      // make the picked skill visible in the display
       this.displaySkill.push(this.selectedSkills[index]);
+      // get the index
       this.pickedProperty = index;
+      // set the index up to be passed as an id to the color changer
       let listId = 'pick-'+[index]
+      // handle color change on selection
       this.selectedBg(listId)
       // set selectedSkill to null since the user is now in the selected skills list
       this.selectedSkill = null;
@@ -724,94 +489,31 @@ export default {
     addSelected: function (){
       const prop = this.selectedProperty;
       const skill = this.selectedSkill
+      // get group property from group name
+      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      const groupCount = group + 'Count'
+      // check to see if take twice box is checked, if so double the cost before adding
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
         skill.skillCost = skill.skillCost * 2
         skill.takenTwice = true;
       }
+      // make sure something is selected
       if (skill !== null){
         // create the same object property in selectedSkills and copy the selected object to it
         this.selectedSkills[prop] = skill
         // create the same object property in newCharacter's known skills and copy the selected object to it
         this.newCharacter.skills.known[prop] = skill
+        // remove from group list
+        delete this[group][prop]
         // increase group counts
-        if (skill.group === 'Communication'){
-          delete this.communication[prop]
-          this.communicationCount = this.communicationCount + skill.skillCost;
-          console.log(this.skillPicked)
-          console.log(skill.skillCost)
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Cowboy'){
-          delete this.cowboy[prop]
-          this.cowboyCount = this.cowboyCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Domestic'){
-          delete this.domestic[prop]
-          this.domesticCount = this.domesticCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Electrical'){
-          delete this.electrical[prop]
-          this.electricalCount = this.electricalCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Espionage'){
-          delete this.espionage[prop]
-          this.espionageCount = this.espionageCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Horsemanship'){
-          delete this.horsemanship[prop]
-          this.horsemanshipCount = this.horsemanshipCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Mechanical'){
-          delete this.mechanical[prop]
-          this.mechanicalCount = this.mechanicalCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Medical'){
-          delete this.medical[prop]
-          this.medicalCount = this.medicalCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Military'){
-          delete this.military[prop]
-          this.militaryCount = this.militaryCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Physical'){
-          delete this.physical[prop]
-          this.physicalCount = this.physicalCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Pilot'){
-          delete this.pilot[prop]
-          this.pilotCount = this.pilotCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Pilot Related'){
-          delete this.pilotRelated[prop]
-          this.pilotRelatedCount = this.pilotRelatedCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Rogue'){
-          delete this.rogue[prop]
-          this.rogueCount = this.rogueCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Science'){
-          delete this.science[prop]
-          this.scienceCount = this.scienceCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Technical'){
-          delete this.technical[prop]
-          this.technicalCount = this.technicalCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Weapon Proficiencies Ancient'){
-          delete this.weaponProficienciesAncient[prop]
-          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else if (skill.group === 'Weapon Proficiencies Modern'){
-          delete this.weaponProficienciesModern[prop]
-          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        } else {
-          delete this.wilderness[prop]
-          this.wildernessCount = this.wildernessCount + skill.skillCost;
-          this.skillPicked = this.skillPicked + skill.skillCost;
-        }
+        this[groupCount] = this[groupCount] + skill.skillCost;
+        // increase skill count
+        this.skillPicked = this.skillPicked + skill.skillCost;
+        // clear selected values
         this.selectedSkill = null;
         this.selectedProperty = null;
         this.selectedId = null;
+        // reinitialize logic
         this.init();
       }
       this.selectedId = null
@@ -820,90 +522,29 @@ export default {
     removePicked: function (){
       const prop = this.pickedProperty;
       const skill = this.pickedSkill;
+      // get group property from group name
+      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      const groupCount = group + 'Count'
+      // make sure something is selected
       if (skill !== null){
-        if (skill.group === 'Communication'){
-          this.communication[prop] = skill
-          this.communicationCount = this.communicationCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Cowboy'){
-          this.cowboy[prop] = skill
-          this.cowboyCount = this.cowboyCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Domestic'){
-          this.domestic[prop] = skill
-          this.domesticCount = this.domesticCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Electrical'){
-          this.electrical[prop] = skill
-          this.electricalCount = this.electricalCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Espionage'){
-          this.espionage[prop] = skill
-          this.espionageCount = this.espionageCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Horsemanship'){
-          this.horsemanship[prop] = skill
-          this.horsemanshipCount = this.horsemanshipCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Mechanical'){
-          this.mechanical[prop] = skill
-          this.mechanicalCount = this.mechanicalCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Medical'){
-          this.medical[prop] = skill
-          this.medicalCount = this.medicalCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Military'){
-          this.military[prop] = skill
-          this.militaryCount = this.militaryCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Physical'){
-          this.physical[prop] = skill
-          this.physicalCount = this.physicalCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Pilot'){
-          this.pilot[prop] = skill
-          this.pilotCount = this.pilotCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Pilot Related'){
-          this.pilotRelated[prop] = skill
-          this.pilotRelatedCount = this.pilotRelatedCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Rogue'){
-          this.rogue[prop] = skill
-          this.rogueCount = this.rogueCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Science'){
-          this.science[prop] = skill
-          this.scienceCount = this.scienceCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Technical'){
-          this.technical[prop] = skill
-          this.technicalCount = this.technicalCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Weapon Proficiencies Ancient'){
-          this.weaponProficienciesAncient[prop] = skill
-          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else if (skill.group === 'Weapon Proficiencies Modern'){
-          this.weaponProficienciesModern[prop] = skill
-          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        } else {
-          this.wilderness[prop] = skill
-          this.wildernessCount = this.wildernessCount - skill.skillCost;
-          this.skillPicked = this.skillPicked - skill.skillCost;
-        }
+        // return the skill to it's list
+        this[group][prop] = skill
+        // update the group count
+        this[groupCount] = this[groupCount] - skill.skillCost;
+        // update the skill count
+        this.skillPicked = this.skillPicked - skill.skillCost;
+        // check if the skill was taken twice, if so cut the points in half before returning
         if (skill.takenTwice === true) {
           skill.skillCost = skill.skillCost / 2
           skill.takenTwice = false;
         }
+        // remove the skill from the lists
         delete this.selectedSkills[prop]
         delete this.newCharacter.skills.known[prop]
 
         // check for prerequisites
         this.pickedSkill.preq.forEach(preq => {
-          // make prerequisites un-removable
+          // make prerequisites removable
           for (const [key] of Object.entries(this.selectedSkills)) {
             if (key.includes(preq)) {
               this.selectedSkills[key].canRemove = true
@@ -913,20 +554,56 @@ export default {
 
         // check for ALT prerequisites
         this.pickedSkill.preqOr.forEach(preqOr => {
-          // make prerequisites un-removable
+          // make prerequisites removable
           for (const [key] of Object.entries(this.selectedSkills)) {
             if (key.includes(preqOr)) {
               this.selectedSkills[key].canRemove = true
             }
           }
         })
-
+        // clear the picked values
         this.pickedSkill = null;
         this.pickedProperty = null
         this.selectedId = null;
+        // reinitialize logic
         this.init();
       }
 
+    },
+    // upgrade a previously picked skill
+    takeAgain: function (){
+      const skill = this.pickedSkill;
+      console.log(skill)
+    },
+    takeChecked: function (){
+      const group = this.selectedSkill.group.charAt(0).toLowerCase() + this.selectedSkill.group.slice(1).replace(/\s+/g, '');
+      const groupRemaining = group + 'Remaining'
+
+      if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
+        console.log(this[groupRemaining])
+        if (this.selectedSkill.skillCost * 2 > this.remaining) {
+            if (this.selectedSkill.skillCost * 2 <= this[groupRemaining])
+            {
+              this.enoughPicks = true;
+            } else {
+              this.enoughPicks = false
+            }
+          } else {
+            this.enoughPicks = true
+          }
+      }
+      if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === false) {
+        if (this.selectedSkill.skillCost > this.remaining) {
+          if (this.selectedSkill.skillCost <= this[groupRemaining])
+          {
+            this.enoughPicks = true;
+          } else {
+            this.enoughPicks = false
+          }
+        } else {
+          this.enoughPicks = true
+        }
+      }
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
