@@ -129,7 +129,12 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             },
             domestic: {
                 number: 0,
-                free: [],
+                free: [
+                    {
+                        name: 'brewing',
+                        occBonus: 15
+                    }
+                ],
                 available: [
                     {
                     name: 'Any',
@@ -363,12 +368,18 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             weaponProficienciesModern: {
                 number: 0,
                 free: [],
-                choice: {
-                    choiceOne: {
-                        optionOne: 'wPEnergyPistol',
-                        optionTwo: 'wPEnergyRifle'
+                choice: [
+                    {
+                        choiceOne: {
+                            optionOne: 'wPEnergyPistol',
+                            optionTwo: 'wPEnergyRifle'
+                        },
+                        choiceTwo: {
+                            optionOne: 'wPShotguns',
+                            optionTwo: 'wPRifles'
+                        }
                     }
-                },
+                ],
                 available: [],
                 unavailable: [
                     {
@@ -398,6 +409,9 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
     }
 
     rollSecondary(character) {
+        // must choose between occ skills
+        // character.skills.choices = true;
+
         character.abilities.analyze = 
         { 
             name: `Analyze`,
@@ -427,44 +441,6 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             type: 'Occupational',
             baseSkill: "57% + 3% per lvl"
         };
-
-        character.skills.known.startingSkill =
-            {
-                name: 'Starting Skill',
-                // can this be selected as a secondary skill
-                isSecondary: false,
-                // toggle to check if required for another skill
-                canRemove: false,
-                // toggle to see if requirements met
-                canSelect: true,
-                // toggle to see if auto assigned by an OCC or Race
-                known: true,
-                // toggle to see if it can be selected again
-                takeTwice: false,
-                // bonus for selecting the skill twice
-                takeTwiceBonus: 0,
-                // text that conveys requirements during skill selection
-                required: '',
-                // array of required skills
-                preq: [],
-                // array of alternative prerequisites
-                preqOr: [],
-                description: 'Just a placeholder skill that represents a skill that the character knew before this skill selection process.',
-                note: '',
-                group: 'OCC Skill',
-                // text the conveys skill bonuses during skill selection
-                bonus: '',
-                // text that conveys skill penalties during skill selection
-                penalty: '',
-                // text that conveys OCC Group requirements
-                reqOCCGroup: '',
-                base: 0,
-                baseTwo: 0,
-                perLvl: 0,
-                raceBonus: 0,
-                occBonus: 0,
-                skillBonus: 0
-            };
     }
 }
 

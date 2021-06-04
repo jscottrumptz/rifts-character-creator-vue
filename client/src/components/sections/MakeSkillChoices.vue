@@ -1,6 +1,6 @@
 <template>
   <div class="px-5 pb-5">
-    <p class="text-white text-xl font-medium p-5" >Pick your character's OCC Related Skills</p>
+    <p class="text-white text-xl font-medium p-5" >Choose O.C.C skills </p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
@@ -202,9 +202,6 @@
             <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" v-on:click="takeAgain()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-green-500 hover:text-gray-900">
               take again
             </span>
-            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" v-on:click="takeBack()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-yellow-700 hover:text-gray-900">
-              take once
-            </span>
             <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && !enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-yellow-500 text-gray-900">
               not enough picks to take again
             </span>
@@ -258,7 +255,7 @@ const WeaponProficienciesModern = require('../../../lib/Skills/WeaponProficienci
 const Wilderness = require('../../../lib/Skills/Wilderness');
 
 export default {
-  name: "PickSkills",
+  name: "MakeSkillChoices",
   props: {
     newCharacter: Object
   },
@@ -612,24 +609,6 @@ export default {
       this.selectedSkills[prop] = skill
       // create the same object property in newCharacter's known skills and copy the selected object to it
       this.newCharacter.skills.known[prop] = skill
-      // reinitialize logic
-      this.init();
-    },
-    // downgrade an upgraded skill
-    takeBack: function (){
-      const skill = this.pickedSkill;
-      // get group property from group name
-      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
-
-      // update the skill with the new cost
-      skill.skillCost = skill.skillCost / 2
-      // decrease group counts
-      this[groupCount] = this[groupCount] - skill.skillCost;
-      // decrease skill count
-      this.skillPicked = this.skillPicked - skill.skillCost;
-      // toggle the skill as not taken twice
-      skill.takenTwice = false;
       // reinitialize logic
       this.init();
     },

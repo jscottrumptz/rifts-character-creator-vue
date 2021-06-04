@@ -73,27 +73,27 @@
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="font-medium text-2xl">{{displayPsionic[0].name}}</h2><br>
-          <span v-show="displayPsionic[0].preq != '' || displayPsionic[0].preqOther != '' || displayPsionic[0].preqType != ''" class="font-medium text-gray-200">(Prerequisites:{{displayPsionic[0].preq}} {{displayPsionic[0].preqOther}} {{displayPsionic[0].preqType}})<br></span>
+          <span v-show="displayPsionic[0].preq !== '' || displayPsionic[0].preqOther !== '' || displayPsionic[0].preqType !== ''" class="font-medium text-gray-200">(Prerequisites:{{displayPsionic[0].preq}} {{displayPsionic[0].preqOther}} {{displayPsionic[0].preqType}})<br></span>
           <span class="font-medium text-gray-200">Cost:</span> {{displayPsionic[0].cost}}<br>
           <span class="font-medium text-gray-200">Range:</span> {{displayPsionic[0].range}}<br>
           <span class="font-medium text-gray-200">Duration:</span> {{displayPsionic[0].duration}}<br>
-          <span v-show="displayPsionic[0].savingThrow != ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].savingThrow}}</span><br></span>
-          <span v-show="displayPsionic[0].damage != ''" class="font-medium text-gray-200">Damage: <span class="font-normal">{{displayPsionic[0].damage}}</span><br></span>
-          <span v-show="displayPsionic[0].lengthOfTrance != ''" class="font-medium text-gray-200">Length of Trance: <span class="font-normal">{{displayPsionic[0].lengthOfTrance}}</span><br></span>
-          <span v-show="displayPsionic[0].baseSkill != ''" class="font-medium text-gray-200">Base Skill: <span class="font-normal">{{displayPsionic[0].baseSkill}}</span><br></span>
-          <span v-show="displayPsionic[0].limitations != ''" class="font-medium text-gray-200">Limitations: <span class="font-normal">{{displayPsionic[0].limitations}}</span><br></span>
-          <span v-show="displayPsionic[0].attacksPerMelee != ''" class="font-medium text-gray-200">Attacks per Melee: <span class="font-normal">{{displayPsionic[0].attacksPerMelee}}</span><br></span>
-          <span v-show="displayPsionic[0].recovers != ''" class="font-medium text-gray-200">Recovers: <span class="font-normal">{{displayPsionic[0].recovers}}</span><br></span>
-          <span v-show="displayPsionic[0].bonuses != ''" class="font-medium text-gray-200">Bonuses: <span class="font-normal">{{displayPsionic[0].bonuses}}</span><br></span>
+          <span v-show="displayPsionic[0].savingThrow !== ''" class="font-medium text-gray-200">Saving Throw: <span class="font-normal">{{displayPsionic[0].savingThrow}}</span><br></span>
+          <span v-show="displayPsionic[0].damage !== ''" class="font-medium text-gray-200">Damage: <span class="font-normal">{{displayPsionic[0].damage}}</span><br></span>
+          <span v-show="displayPsionic[0].lengthOfTrance !== ''" class="font-medium text-gray-200">Length of Trance: <span class="font-normal">{{displayPsionic[0].lengthOfTrance}}</span><br></span>
+          <span v-show="displayPsionic[0].baseSkill !== ''" class="font-medium text-gray-200">Base Skill: <span class="font-normal">{{displayPsionic[0].baseSkill}}</span><br></span>
+          <span v-show="displayPsionic[0].limitations !== ''" class="font-medium text-gray-200">Limitations: <span class="font-normal">{{displayPsionic[0].limitations}}</span><br></span>
+          <span v-show="displayPsionic[0].attacksPerMelee !== ''" class="font-medium text-gray-200">Attacks per Melee: <span class="font-normal">{{displayPsionic[0].attacksPerMelee}}</span><br></span>
+          <span v-show="displayPsionic[0].recovers !== ''" class="font-medium text-gray-200">Recovers: <span class="font-normal">{{displayPsionic[0].recovers}}</span><br></span>
+          <span v-show="displayPsionic[0].bonuses !== ''" class="font-medium text-gray-200">Bonuses: <span class="font-normal">{{displayPsionic[0].bonuses}}</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-wrap overflow-y-auto max-h-96">
             {{displayPsionic[0].description}}
-            <span v-show="displayPsionic[0].note != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Note:</span>
+            <span v-show="displayPsionic[0].note !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Note:</span>
             {{displayPsionic[0].note}}
-            <span v-show="displayPsionic[0].gmNote != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>GM Note:</span>
+            <span v-show="displayPsionic[0].gmNote !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>GM Note:</span>
             {{displayPsionic[0].gmNote}}
-            <span v-show="displayPsionic[0].penalties != ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Penalties:</span>
+            <span v-show="displayPsionic[0].penalties !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Penalties:</span>
             {{displayPsionic[0].penalties}}
           </div>
         </div>
@@ -139,8 +139,8 @@ export default {
   },
   methods: {
     selected: function (group,index){
-      let psionicGroup = null;
-      let listId = null;
+      let psionicGroup;
+      let listId;
       if(group === 'healing'){
         psionicGroup = this.healingPsionics
         listId = 'heal-'+[index]
