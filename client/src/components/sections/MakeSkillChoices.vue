@@ -931,15 +931,10 @@ export default {
       // handle skill choices if there is a choice array
       if (occList.choice) {
         occList.choice.forEach(choice => {
-            // extracts skill group and choiceNumber
-            console.log('skill group: ' + groupList.constructor.name)
-            console.log(choice.only)
             // handle available skills
             if (choice.available) {
               choice.available.forEach(skill => {
                 for (const [key] of Object.entries(groupList)) {
-                  console.log('key: ' + key)
-                  console.log('skill: ' + skill.name)
                   if (skill.name === 'Any') {
                       groupList[key].occBonus = skill.occBonus;
                     if (skill.skillCost) {

@@ -4,19 +4,8 @@
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <h2 class="text-white pt-5 pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
-        <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-          <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
-            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
-          </ul>
-        </div>
-        <!-- Determine what button is active depending on prerequisites and previously known skills-->
-        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
-        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
-        <p class="text-white pl-5 font-medium" >Fulfill the following requirements.</p>
-        <div class="pl-10 pb-5">
+        <p class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements.</p>
+        <div class="pl-10 pb-3">
           <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
           <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
           <h2 v-if="domesticRemaining > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRemaining}}</h2>
@@ -36,6 +25,18 @@
           <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
           <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
+        <h2 class="text-white pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
+        <h2 class="text-white text-center py-3 text-lg font-extrabold">Selected Skills</h2>
+        <div class="p-5 pt-0 bg-gray-900 shadow overflow-hidden rounded-md">
+          <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
+            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
+          </ul>
+        </div>
+        <!-- Determine what button is active depending on prerequisites and previously known skills-->
+        <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
+        <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
       </div>
 
       <!-- Finalize Selections -->
@@ -639,7 +640,6 @@ export default {
       const groupRemaining = group + 'Remaining'
 
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
-        console.log(this[groupRemaining])
         if (this.selectedSkill.skillCost * 2 > this.remaining) {
           this.selectedSkill.skillCost * 2 <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
           } else {
@@ -960,20 +960,6 @@ export default {
               }
             } else {
               delete groupList[key]
-            }
-          }
-        })
-      }
-      // handle skill choices if there is a choice array
-      if (occList.choice) {
-        occList.choice.forEach(choice => {
-          for (const [key] of Object.entries(choice)) {
-            // extracts skill group and choiceNumber
-            console.log('skill group: ' + groupList.constructor.name)
-            console.log('key: ' + key)
-            for (const [option] of Object.entries(choice[key])) {
-              // extracts option number and skill property
-              console.log(option + ': ' + choice[key][option])
             }
           }
         })
