@@ -202,6 +202,9 @@
             <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" v-on:click="takeAgain()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-green-500 hover:text-gray-900">
               take again
             </span>
+            <span v-if="this.pickedSkill && this.pickedSkill.takenTwice && this.pickedSkill.takeTwice" v-on:click="takeBack()" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-gray-700 text-white hover:bg-yellow-700 hover:text-gray-900">
+              take once
+            </span>
             <span v-if="this.pickedSkill && !this.pickedSkill.takenTwice && this.pickedSkill.takeTwice && !enoughPicks" v-on:mouseleave="enoughPicks = true" v-on:mouseenter="takeAvailable" class="cursor-pointer my-auto ml-5 px-2.5 pt-0.5 py-1 rounded-sm text-xs font-medium bg-yellow-500 text-gray-900">
               not enough picks to take again
             </span>
@@ -612,6 +615,24 @@ export default {
       // reinitialize logic
       this.init();
     },
+    // downgrade an upgraded skill
+    takeBack: function (){
+      const skill = this.pickedSkill;
+      // get group property from group name
+      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      const groupCount = group + 'Count'
+
+      // update the skill with the new cost
+      skill.skillCost = skill.skillCost / 2
+      // decrease group counts
+      this[groupCount] = this[groupCount] - skill.skillCost;
+      // decrease skill count
+      this.skillPicked = this.skillPicked - skill.skillCost;
+      // toggle the skill as not taken twice
+      skill.takenTwice = false;
+      // reinitialize logic
+      this.init();
+    },
     // checks if skill is still available after the take twice box is checked
     takeChecked: function (){
       const group = this.selectedSkill.group.charAt(0).toLowerCase() + this.selectedSkill.group.slice(1).replace(/\s+/g, '');
@@ -636,24 +657,24 @@ export default {
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
       // get required occ picks
-      this.communicationRequired = this.newCharacter.occ.occSkills.communication.number;
-      this.cowboyRequired = this.newCharacter.occ.occSkills.cowboy.number;
-      this.domesticRequired = this.newCharacter.occ.occSkills.domestic.number;
-      this.electricalRequired = this.newCharacter.occ.occSkills.electrical.number;
-      this.espionageRequired = this.newCharacter.occ.occSkills.espionage.number;
-      this.horsemanshipRequired = this.newCharacter.occ.occSkills.horsemanship.number;
-      this.mechanicalRequired = this.newCharacter.occ.occSkills.mechanical.number;
-      this.medicalRequired = this.newCharacter.occ.occSkills.medical.number;
-      this.militaryRequired = this.newCharacter.occ.occSkills.military.number;
-      this.physicalRequired = this.newCharacter.occ.occSkills.physical.number;
-      this.pilotRequired = this.newCharacter.occ.occSkills.pilot.number;
-      this.pilotRelatedRequired = this.newCharacter.occ.occSkills.pilotRelated.number;
-      this.rogueRequired = this.newCharacter.occ.occSkills.rogue.number;
-      this.scienceRequired = this.newCharacter.occ.occSkills.science.number;
-      this.technicalRequired = this.newCharacter.occ.occSkills.technical.number;
-      this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.number;
-      this.weaponProficienciesModernRequired = 1;
-      this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.number;
+      this.communicationRequired = this.newCharacter.occ.occSkills.communication.choice[0].amount;
+      this.cowboyRequired = this.newCharacter.occ.occSkills.cowboy.choice[0].amount;
+      this.domesticRequired = this.newCharacter.occ.occSkills.domestic.choice[0].amount;
+      this.electricalRequired = this.newCharacter.occ.occSkills.electrical.choice[0].amount;
+      this.espionageRequired = this.newCharacter.occ.occSkills.espionage.choice[0].amount;
+      this.horsemanshipRequired = this.newCharacter.occ.occSkills.horsemanship.choice[0].amount;
+      this.mechanicalRequired = this.newCharacter.occ.occSkills.mechanical.choice[0].amount;
+      this.medicalRequired = this.newCharacter.occ.occSkills.medical.choice[0].amount;
+      this.militaryRequired = this.newCharacter.occ.occSkills.military.choice[0].amount;
+      this.physicalRequired = this.newCharacter.occ.occSkills.physical.choice[0].amount;
+      this.pilotRequired = this.newCharacter.occ.occSkills.pilot.choice[0].amount;
+      this.pilotRelatedRequired = this.newCharacter.occ.occSkills.pilotRelated.choice[0].amount;
+      this.rogueRequired = this.newCharacter.occ.occSkills.rogue.choice[0].amount;
+      this.scienceRequired = this.newCharacter.occ.occSkills.science.choice[0].amount;
+      this.technicalRequired = this.newCharacter.occ.occSkills.technical.choice[0].amount;
+      this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.choice[0].amount;
+      this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.choice[0].amount;
+      this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.choice[0].amount;
 
       // OCC or RCC related skills to be picked by user
       const skillStart =
@@ -920,17 +941,13 @@ export default {
                   console.log('key: ' + key)
                   console.log('skill: ' + skill.name)
                   if (skill.name === 'Any') {
-                    if (groupList[key].occBonus) {
                       groupList[key].occBonus = skill.occBonus;
-                    }
                     if (skill.skillCost) {
                       groupList[key].skillCost = skill.skillCost;
                     }
                   }
                   if (key === skill.name) {
-                    if (groupList[key].occBonus) {
                       groupList[key].occBonus = skill.occBonus;
-                    }
                     if (skill.skillCost) {
                       groupList[key].skillCost = skill.skillCost;
                     }
@@ -954,12 +971,8 @@ export default {
             // handle or skills
             if (choice.or) {
               for (const [key] of Object.entries(groupList)) {
-                console.log('key: ' + key)
-                console.log('skill: ' + choice.or[0].name)
                 if (key === choice.or[0].name || key === choice.or[1].name) {
-                  if (choice.or[0].occBonus) {
                     groupList[key].occBonus = choice.or[0].occBonus;
-                  }
                   if (choice.or[0].skillCost) {
                     groupList[key].skillCost = choice.or[0].skillCost;
                   }

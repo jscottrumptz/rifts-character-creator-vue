@@ -95,6 +95,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         occBonus: 10
                     }
                 ],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -119,6 +124,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             cowboy: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [],
                 unavailable: [
                     {
@@ -129,10 +139,10 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             },
             domestic: {
                 number: 0,
-                free: [
+                free: [],
+                choice: [
                     {
-                        name: 'brewing',
-                        occBonus: 15
+                        amount: 0
                     }
                 ],
                 available: [
@@ -152,6 +162,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         occBonus: 20
                     }
                 ],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -164,6 +179,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             espionage: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [],
                 unavailable: [],
                 only:[
@@ -176,6 +196,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             horsemanship: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [],
                 unavailable: [],
                 only:[
@@ -188,6 +213,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             mechanical: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -200,6 +230,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             medical: {
                 number: 2,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -212,6 +247,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             military: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [],
                 unavailable: [],
                 only:[
@@ -227,6 +267,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 free: [
                     {
                         name: 'noHandToHandSkill',
+                    }
+                ],
+                choice: [
+                    {
+                        amount: 0
                     }
                 ],
                 available: [
@@ -267,6 +312,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         occBonus: 10
                     }
                 ],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -279,6 +329,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             pilotRelated: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -294,6 +349,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                     {
                         name: 'findContrabandRogue',
                         occBonus: 10
+                    }
+                ],
+                choice: [
+                    {
+                        amount: 0
                     }
                 ],
                 available: [
@@ -318,6 +378,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                     {
                         name: 'mathematicsAdvanced',
                         occBonus: 30
+                    }
+                ],
+                choice: [
+                    {
+                        amount: 0
                     }
                 ],
                 available: [
@@ -345,6 +410,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         occBonus: 20
                     }
                 ],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
@@ -357,6 +427,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             weaponProficienciesAncient: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any'
@@ -370,6 +445,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 free: [],
                 choice: [
                     {
+                        amount: 1,
                         or: [
                             {
                                 name: 'wPEnergyPistol'
@@ -394,6 +470,11 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             wilderness: {
                 number: 0,
                 free: [],
+                choice: [
+                    {
+                        amount: 0
+                    }
+                ],
                 available: [
                     {
                         name: 'Any',
