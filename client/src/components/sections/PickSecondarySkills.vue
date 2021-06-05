@@ -4,28 +4,7 @@
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <p class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements.</p>
-        <div class="pl-10 pb-3">
-          <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
-          <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
-          <h2 v-if="domesticRemaining > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRemaining}}</h2>
-          <h2 v-if="electricalRemaining > 0" class="text-white pl-5">Electrical Picks Needed: {{electricalRemaining}}</h2>
-          <h2 v-if="espionageRemaining > 0" class="text-white ">Espionage Picks Needed: {{espionageRemaining}}</h2>
-          <h2 v-if="horsemanshipRemaining > 0" class="text-white ">Horsemanship Picks Needed: {{horsemanshipRemaining}}</h2>
-          <h2 v-if="mechanicalRemaining > 0" class="text-white ">Mechanical Picks Needed: {{mechanicalRemaining}}</h2>
-          <h2 v-if="medicalRemaining > 0" class="text-white ">Medical Picks Needed: {{medicalRemaining}}</h2>
-          <h2 v-if="militaryRemaining > 0" class="text-white ">Military Picks Needed: {{militaryRemaining}}</h2>
-          <h2 v-if="physicalRemaining > 0" class="text-white ">Physical Picks Needed: {{physicalRemaining}}</h2>
-          <h2 v-if="pilotRemaining > 0" class="text-white ">Pilot Picks Needed: {{pilotRemaining}}</h2>
-          <h2 v-if="pilotRelatedRemaining > 0" class="text-white ">Pilot Related Picks Needed: {{pilotRelatedRemaining}}</h2>
-          <h2 v-if="rogueRemaining > 0" class="text-white ">Rogue Picks Needed: {{rogueRemaining}}</h2>
-          <h2 v-if="scienceRemaining > 0" class="text-white ">Science Picks Needed: {{scienceRemaining}}</h2>
-          <h2 v-if="technicalRemaining > 0" class="text-white ">Technical Picks Needed: {{technicalRemaining}}</h2>
-          <h2 v-if="weaponProficienciesAncientRemaining > 0" class="text-white ">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
-          <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
-          <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
-        </div>
-        <h2 class="text-white pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
+        <h2 class="text-white pl-5 pt-5 ">Picks Remaining: {{remaining}}</h2>
         <h2 class="text-white text-center py-3 text-lg font-extrabold">Selected Skills</h2>
         <div class="p-5 pt-0 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
@@ -332,69 +311,9 @@ export default {
       weaponProficienciesAncientActive: true,
       weaponProficienciesModernActive: true,
       wildernessActive: true,
-      //
+
       // toggle to determine if the skill list tabs are active or the finalize button
       tabsActive: true,
-      //
-      // number of currently selected skills from a group
-      communicationCount: 0,
-      cowboyCount: 0,
-      domesticCount: 0,
-      electricalCount: 0,
-      espionageCount: 0,
-      horsemanshipCount: 0,
-      mechanicalCount: 0,
-      medicalCount: 0,
-      militaryCount: 0,
-      physicalCount: 0,
-      pilotCount: 0,
-      pilotRelatedCount: 0,
-      rogueCount: 0,
-      scienceCount: 0,
-      technicalCount: 0,
-      weaponProficienciesAncientCount: 0,
-      weaponProficienciesModernCount: 0,
-      wildernessCount: 0,
-      //
-      // number of required skill picks by occ
-      communicationRequired: 0,
-      cowboyRequired: 0,
-      domesticRequired: 0,
-      electricalRequired: 0,
-      espionageRequired: 0,
-      horsemanshipRequired: 0,
-      mechanicalRequired: 0,
-      medicalRequired: 0,
-      militaryRequired: 0,
-      physicalRequired: 0,
-      pilotRequired: 0,
-      pilotRelatedRequired: 0,
-      rogueRequired: 0,
-      scienceRequired: 0,
-      technicalRequired: 0,
-      weaponProficienciesAncientRequired: 0,
-      weaponProficienciesModernRequired: 0,
-      wildernessRequired: 0,
-      //
-      // number of required occ skill picks remaining
-      communicationRemaining: 0,
-      cowboyRemaining: 0,
-      domesticRemaining: 0,
-      electricalRemaining: 0,
-      espionageRemaining: 0,
-      horsemanshipRemaining: 0,
-      mechanicalRemaining: 0,
-      medicalRemaining: 0,
-      militaryRemaining: 0,
-      physicalRemaining: 0,
-      pilotRemaining: 0,
-      pilotRelatedRemaining: 0,
-      rogueRemaining: 0,
-      scienceRemaining: 0,
-      technicalRemaining: 0,
-      weaponProficienciesAncientRemaining: 0,
-      weaponProficienciesModernRemaining: 0,
-      wildernessRemaining: 0,
 
       // ID of the currently selected skill
       selectedId: null
@@ -405,14 +324,10 @@ export default {
     selected: function (group,index){
       const skillGroup = this[group]
       const listId = group + '-' +[index]
-      const groupRemaining = group + 'Remaining'
+
       // check the skill cost to be sure there are enough picks remaining
-      if(skillGroup[index].skillCost > this.remaining)
-      {
-        skillGroup[index].skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
-      } else {
-        this.enoughPicks = true
-      }
+      skillGroup[index].skillCost <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
+
       // clears the takeTwice checkbox
       if (document.getElementById("takeTwice") && this.selectedSkill !== skillGroup[index]) {
         document.getElementById("takeTwice").checked = false
@@ -493,7 +408,6 @@ export default {
       const skill = this.selectedSkill
       // get group property from group name
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
       // check to see if take twice box is checked, if so double the cost before adding
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
         skill.skillCost = skill.skillCost * 2
@@ -507,8 +421,6 @@ export default {
         this.newCharacter.skills.known[prop] = skill
         // remove from group list
         delete this[group][prop]
-        // increase group counts
-        this[groupCount] = this[groupCount] + skill.skillCost;
         // increase skill count
         this.skillPicked = this.skillPicked + skill.skillCost;
         // clear selected values
@@ -526,13 +438,10 @@ export default {
       const skill = this.pickedSkill;
       // get group property from group name
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
       // make sure something is selected
       if (skill){
         // return the skill to it's list
         this[group][prop] = skill
-        // update the group count
-        this[groupCount] = this[groupCount] - skill.skillCost;
         // update the skill count
         this.skillPicked = this.skillPicked - skill.skillCost;
         // check if the skill was taken twice, if so cut the points in half before returning
@@ -575,34 +484,15 @@ export default {
     // see if picks are available to upgrade skill from selected list
     takeAvailable: function () {
       const skill = this.pickedSkill;
-      // get group property from group name
-      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupRemaining = group + 'Remaining'
-
-      if(skill.skillCost > this.remaining) {
-        skill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
-      } else {
-        this.enoughPicks = true
-      }
+      // see if enough picks are available
+      skill.skillCost <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
     },
     // upgrade a previously picked skill
     takeAgain: function (){
       const skill = this.pickedSkill;
       const prop = this.pickedProperty;
-      // get group property from group name
-      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
-      const groupRemaining = group + 'Remaining'
-
-      if(skill.skillCost > this.remaining)
-      {
-        skill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
-      } else {
-        this.enoughPicks = true
-      }
-
-      // increase group counts
-      this[groupCount] = this[groupCount] + skill.skillCost;
+      // see if enough picks are available
+      skill.skillCost <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
       // increase skill count
       this.skillPicked = this.skillPicked + skill.skillCost;
       // update the skill with the new cost
@@ -619,14 +509,8 @@ export default {
     // downgrade an upgraded skill
     takeBack: function (){
       const skill = this.pickedSkill;
-      // get group property from group name
-      const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
-
       // update the skill with the new cost
       skill.skillCost = skill.skillCost / 2
-      // decrease group counts
-      this[groupCount] = this[groupCount] - skill.skillCost;
       // decrease skill count
       this.skillPicked = this.skillPicked - skill.skillCost;
       // toggle the skill as not taken twice
@@ -636,22 +520,11 @@ export default {
     },
     // checks if skill is still available after the take twice box is checked
     takeChecked: function (){
-      const group = this.selectedSkill.group.charAt(0).toLowerCase() + this.selectedSkill.group.slice(1).replace(/\s+/g, '');
-      const groupRemaining = group + 'Remaining'
-
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
-        if (this.selectedSkill.skillCost * 2 > this.remaining) {
-          this.selectedSkill.skillCost * 2 <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
-          } else {
-            this.enoughPicks = true
-          }
+        this.selectedSkill.skillCost * 2 <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
       }
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === false) {
-        if (this.selectedSkill.skillCost > this.remaining) {
-          this.selectedSkill.skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
-        } else {
-          this.enoughPicks = true
-        }
+        this.selectedSkill.skillCost <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
       }
     },
     // called to update skill counts, group counts, prerequisites and other data
@@ -694,133 +567,60 @@ export default {
       // update remaining skills counter
       this.remaining = availablePicks
       ;
-      //
+
       // determine what tabs are available
       // communication tab
-      if (Object.keys(this.communication).length > 0 && this.remaining === 0) {
-        this.communicationRemaining === 0 ?
-            this.communicationActive = false : this.communicationActive = true
-      } else
-        Object.keys(this.communication).length > 0 && this.remaining !== 0 ?
-            this.communicationActive = true : this.communicationActive = false
+      Object.keys(this.communication).length > 0 ? this.communicationActive = true : this.communicationActive = false
       // cowboy tab
-      if (Object.keys(this.cowboy).length > 0 && this.remaining === 0) {
-        this.cowboyRemaining === 0 ?
-            this.cowboyActive = false : this.cowboyActive = true
-      } else
-        Object.keys(this.cowboy).length > 0 && this.remaining !== 0 ?
-            this.cowboyActive = true : this.cowboyActive = false
+      Object.keys(this.cowboy).length > 0 ?
+          this.cowboyActive = true : this.cowboyActive = false
       // domestic tab
-      if (Object.keys(this.domestic).length > 0 && this.remaining === 0) {
-        this.domesticRemaining === 0 ?
-            this.domesticActive = false : this.domesticActive = true
-      } else
-        Object.keys(this.domestic).length > 0 && this.remaining !== 0 ?
-            this.domesticActive = true : this.domesticActive = false
+      Object.keys(this.domestic).length > 0 ?
+          this.domesticActive = true : this.domesticActive = false
       // electrical tab
-      if (Object.keys(this.electrical).length > 0 && this.remaining === 0) {
-        this.electricalRemaining === 0 ?
-            this.electricalActive = false : this.electricalActive = true
-      } else
-        Object.keys(this.electrical).length > 0 && this.remaining !== 0 ?
-            this.electricalActive = true : this.electricalActive = false
+      Object.keys(this.electrical).length > 0 ?
+          this.electricalActive = true : this.electricalActive = false
       // espionage tab
-      if (Object.keys(this.espionage).length > 0 && this.remaining === 0) {
-        this.espionageRemaining === 0 ?
-            this.espionageActive = false : this.espionageActive = true
-      } else
-        Object.keys(this.espionage).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.espionage).length > 0 ?
             this.espionageActive = true : this.espionageActive = false
       // horsemanship tab
-      if (Object.keys(this.horsemanship).length > 0 && this.remaining === 0) {
-        this.horsemanshipRemaining === 0 ?
-            this.horsemanshipActive = false : this.horsemanshipActive = true
-      } else
-        Object.keys(this.horsemanship).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.horsemanship).length > 0 ?
             this.horsemanshipActive = true : this.horsemanshipActive = false
       // mechanical tab
-      if (Object.keys(this.mechanical).length > 0 && this.remaining === 0) {
-        this.mechanicalRemaining === 0 ?
-            this.mechanicalActive = false : this.mechanicalActive = true
-      } else
-        Object.keys(this.mechanical).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.mechanical).length > 0 ?
             this.mechanicalActive = true : this.mechanicalActive = false
       // medical tab
-      if (Object.keys(this.medical).length > 0 && this.remaining === 0) {
-        this.medicalRemaining === 0 ?
-            this.medicalActive = false : this.medicalActive = true
-      } else
-        Object.keys(this.medical).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.medical).length > 0 ?
             this.medicalActive = true : this.medicalActive = false
       // military tab
-      if (Object.keys(this.military).length > 0 && this.remaining === 0) {
-        this.militaryRemaining === 0 ?
-            this.militaryActive = false : this.militaryActive = true
-      } else
-        Object.keys(this.military).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.military).length > 0 ?
             this.militaryActive = true : this.militaryActive = false
       // physical tab
-      if (Object.keys(this.physical).length > 0 && this.remaining === 0) {
-        this.physicalRemaining === 0 ?
-            this.physicalActive = false : this.physicalActive = true
-      } else
-        Object.keys(this.physical).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.physical).length > 0 ?
             this.physicalActive = true : this.physicalActive = false
       // pilot tab
-      if (Object.keys(this.pilot).length > 0 && this.remaining === 0) {
-        this.pilotRemaining === 0 ?
-            this.pilotActive = false : this.pilotActive = true
-      } else
-        Object.keys(this.pilot).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.pilot).length > 0 ?
             this.pilotActive = true : this.pilotActive = false
       // pilotRelated tab
-      if (Object.keys(this.pilotRelated).length > 0 && this.remaining === 0) {
-        this.pilotRelatedRemaining === 0 ?
-            this.pilotRelatedActive = false : this.pilotRelatedActive = true
-      } else
-        Object.keys(this.pilotRelated).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.pilotRelated).length > 0 ?
             this.pilotRelatedActive = true : this.pilotRelatedActive = false
       // rogue tab
-      if (Object.keys(this.rogue).length > 0 && this.remaining === 0) {
-        this.rogueRemaining === 0 ?
-            this.rogueActive = false : this.rogueActive = true
-      } else
-        Object.keys(this.rogue).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.rogue).length > 0 ?
             this.rogueActive = true : this.rogueActive = false
       // science tab
-      if (Object.keys(this.science).length > 0 && this.remaining === 0) {
-        this.scienceRemaining === 0 ?
-            this.scienceActive = false : this.scienceActive = true
-      } else
-        Object.keys(this.science).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.science).length > 0 ?
             this.scienceActive = true : this.scienceActive = false
       // technical tab
-      if (Object.keys(this.technical).length > 0 && this.remaining === 0) {
-        this.technicalRemaining === 0 ?
-            this.technicalActive = false : this.technicalActive = true
-      } else
-        Object.keys(this.technical).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.technical).length > 0 ?
             this.technicalActive = true : this.technicalActive = false
       // weaponProficienciesAncient tab
-      if (Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining === 0) {
-        this.weaponProficienciesAncientRemaining === 0 ?
-            this.weaponProficienciesAncientActive = false : this.weaponProficienciesAncientActive = true
-      } else
-        Object.keys(this.weaponProficienciesAncient).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.weaponProficienciesAncient).length > 0 ?
             this.weaponProficienciesAncientActive = true : this.weaponProficienciesAncientActive = false
       // weaponProficienciesModern tab
-      if (Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining === 0) {
-        this.weaponProficienciesModernRemaining === 0 ?
-            this.weaponProficienciesModernActive = false : this.weaponProficienciesModernActive = true
-      } else
-        Object.keys(this.weaponProficienciesModern).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.weaponProficienciesModern).length > 0 ?
             this.weaponProficienciesModernActive = true : this.weaponProficienciesModernActive = false
       // wilderness tab
-      if (Object.keys(this.wilderness).length > 0 && this.remaining === 0) {
-        this.wildernessRemaining === 0 ?
-            this.wildernessActive = false : this.wildernessActive = true
-      } else
-        Object.keys(this.wilderness).length > 0 && this.remaining !== 0 ?
+      Object.keys(this.wilderness).length > 0 && this.remaining === 0 ?
             this.wildernessActive = true : this.wildernessActive = false
     },
     // controls the background color on the skill group lists
