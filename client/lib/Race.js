@@ -348,7 +348,7 @@ class Race {
                 character.secondaryStats.ispLvl.initialValue = random.die(6)
                 return 'Minor'
             } else {
-                character.psionics.ability = 'Minor'
+                character.psionics.ability = 'None'
                 return 'None'
             }
         }

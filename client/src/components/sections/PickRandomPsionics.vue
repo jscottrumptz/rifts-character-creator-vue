@@ -109,7 +109,7 @@ const PhysicalPsionics = require('../../../lib/Psinoics/PhysicalPsionics');
 const SensitivePsionics = require('../../../lib/Psinoics/SensitivePsionics');
 
 export default {
-  name: "PickPsionics",
+  name: "PickRandomPsionics",
   props: {
     newCharacter: Object
   },

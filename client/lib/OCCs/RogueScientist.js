@@ -91,6 +91,10 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         occBonus: 35
                     },
                     {
+                        name:'literacyNativeTongue',
+                        occBonus: 35
+                    },
+                    {
                         name:'radioBasic',
                         occBonus: 10
                     }

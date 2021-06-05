@@ -1,11 +1,11 @@
 <template>
   <div class="px-5 pb-5">
-    <p class="text-white text-xl font-medium p-5" >Pick O.C.C skills</p>
+    <p class="text-white text-xl font-medium p-5" >Pick your character's Secondary Skills</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <p class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements.</p>
-        <div class="pl-10 pb-5">
+        <div class="pl-10 pb-3">
           <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
           <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
           <h2 v-if="domesticRemaining > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRemaining}}</h2>
@@ -25,7 +25,9 @@
           <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
           <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
-        <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+        <h2 class="text-white pl-5">Other Skill Picks Remaining: {{remaining}}</h2>
+        <h2 class="text-white text-center py-3 text-lg font-extrabold">Selected Skills</h2>
+        <div class="p-5 pt-0 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
             <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
           </ul>
@@ -46,9 +48,8 @@
       <div v-show="tabsActive" class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <!-- Nav & Tabs -->
         <div class="m-3">
-          <label for="tabs" class="sr-only"></label>
+          <label for="tabs" class="sr-only">Select a tab</label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-            <option selected disabled> Select a Skill Group... </option>
             <option v-if="communicationActive" value="communication">Communication Skills</option>
             <option v-if="cowboyActive" value="cowboy">Cowboy Skills</option>
             <option v-if="domesticActive" value="domestic">Domestic Skills</option>
@@ -258,7 +259,7 @@ const WeaponProficienciesModern = require('../../../lib/Skills/WeaponProficienci
 const Wilderness = require('../../../lib/Skills/Wilderness');
 
 export default {
-  name: "MakeSkillChoices",
+  name: "PickSecondarySkills",
   props: {
     newCharacter: Object
   },
@@ -639,7 +640,6 @@ export default {
       const groupRemaining = group + 'Remaining'
 
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
-        console.log(this[groupRemaining])
         if (this.selectedSkill.skillCost * 2 > this.remaining) {
           this.selectedSkill.skillCost * 2 <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
           } else {
@@ -656,69 +656,15 @@ export default {
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
-      // get required occ picks
-      this.communicationRequired = this.newCharacter.occ.occSkills.communication.choice[0].amount;
-      this.cowboyRequired = this.newCharacter.occ.occSkills.cowboy.choice[0].amount;
-      this.domesticRequired = this.newCharacter.occ.occSkills.domestic.choice[0].amount;
-      this.electricalRequired = this.newCharacter.occ.occSkills.electrical.choice[0].amount;
-      this.espionageRequired = this.newCharacter.occ.occSkills.espionage.choice[0].amount;
-      this.horsemanshipRequired = this.newCharacter.occ.occSkills.horsemanship.choice[0].amount;
-      this.mechanicalRequired = this.newCharacter.occ.occSkills.mechanical.choice[0].amount;
-      this.medicalRequired = this.newCharacter.occ.occSkills.medical.choice[0].amount;
-      this.militaryRequired = this.newCharacter.occ.occSkills.military.choice[0].amount;
-      this.physicalRequired = this.newCharacter.occ.occSkills.physical.choice[0].amount;
-      this.pilotRequired = this.newCharacter.occ.occSkills.pilot.choice[0].amount;
-      this.pilotRelatedRequired = this.newCharacter.occ.occSkills.pilotRelated.choice[0].amount;
-      this.rogueRequired = this.newCharacter.occ.occSkills.rogue.choice[0].amount;
-      this.scienceRequired = this.newCharacter.occ.occSkills.science.choice[0].amount;
-      this.technicalRequired = this.newCharacter.occ.occSkills.technical.choice[0].amount;
-      this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.choice[0].amount;
-      this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.choice[0].amount;
-      this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.choice[0].amount;
-
+      // current count of total skills selected
+      // let skillPicked = Object.keys(this.selectedSkills).length;
+      // count of skills given to the character at no cost by race or OCC
+      // let noCostSkills = this.startingSkills;
       // OCC or RCC related skills to be picked by user
-      const skillStart =
-            this.communicationRequired
-          + this.cowboyRequired
-          + this.domesticRequired
-          + this.electricalRequired
-          + this.espionageRequired
-          + this.horsemanshipRequired
-          + this.mechanicalRequired
-          + this.medicalRequired
-          + this.militaryRequired
-          + this.physicalRequired
-          + this.pilotRequired
-          + this.pilotRelatedRequired
-          + this.rogueRequired
-          + this.scienceRequired
-          + this.technicalRequired
-          + this.weaponProficienciesAncientRequired
-          + this.weaponProficienciesModernRequired
-          + this.wildernessRequired;
+      const skillStart = this.newCharacter.occ.secondaryNumber;
 
       // determine how many picks are left
       let availablePicks = skillStart - this.skillPicked;
-
-      // get skill pick requirements
-      this.communicationRemaining = Math.max(0, this.communicationRequired - this.communicationCount)
-      this.cowboyRemaining = Math.max(0, this.cowboyRequired - this.cowboyCount)
-      this.domesticRemaining = Math.max(0, this.domesticRequired - this.domesticCount)
-      this.electricalRemaining = Math.max(0, this.electricalRequired - this.electricalCount)
-      this.espionageRemaining = Math.max(0, this.espionageRequired - this.espionageCount)
-      this.horsemanshipRemaining = Math.max(0, this.horsemanshipRequired - this.horsemanshipCount)
-      this.mechanicalRemaining = Math.max(0, this.mechanicalRequired - this.mechanicalCount)
-      this.medicalRemaining = Math.max(0, this.medicalRequired - this.medicalCount)
-      this.militaryRemaining = Math.max(0, this.militaryRequired - this.militaryCount)
-      this.physicalRemaining = Math.max(0, this.physicalRequired - this.physicalCount)
-      this.pilotRemaining = Math.max(0, this.pilotRequired - this.pilotCount)
-      this.pilotRelatedRemaining = Math.max(0, this.pilotRelatedRequired - this.pilotRelatedCount)
-      this.rogueRemaining = Math.max(0, this.rogueRequired - this.rogueCount)
-      this.scienceRemaining = Math.max(0, this.scienceRequired - this.scienceCount)
-      this.technicalRemaining = Math.max(0, this.technicalRequired - this.technicalCount)
-      this.weaponProficienciesAncientRemaining = Math.max(0, this.weaponProficienciesAncientRequired - this.weaponProficienciesAncientCount)
-      this.weaponProficienciesModernRemaining = Math.max(0, this.weaponProficienciesModernRequired - this.weaponProficienciesModernCount)
-      this.wildernessRemaining = Math.max(0, this.wildernessRequired - this.wildernessCount)
 
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
@@ -747,24 +693,6 @@ export default {
       }
       // update remaining skills counter
       this.remaining = availablePicks
-          - this.communicationRemaining
-          - this.cowboyRemaining
-          - this.domesticRemaining
-          - this.electricalRemaining
-          - this.espionageRemaining
-          - this.horsemanshipRemaining
-          - this.mechanicalRemaining
-          - this.medicalRemaining
-          - this.militaryRemaining
-          - this.physicalRemaining
-          - this.pilotRemaining
-          - this.pilotRelatedRemaining
-          - this.rogueRemaining
-          - this.scienceRemaining
-          - this.technicalRemaining
-          - this.weaponProficienciesAncientRemaining
-          - this.weaponProficienciesModernRemaining
-          - this.wildernessRemaining
       ;
       //
       // determine what tabs are available
@@ -907,101 +835,52 @@ export default {
     },
     // adds the selected skills to the character and moves the user to the next creation step
     finalizeSelections: function (){
+
+      // need to add stat bonuses here
+
       // set a toggle to true so that the player can move on in the character creation process
-      this.newCharacter.skills.choices = false
+      this.newCharacter.skills.secondary = true
     },
     // prepares skill lists
-    skillLoader: function (groupList, occList) {
-      // handle known skills
-      if (occList.free) {
-        occList.free.forEach(skill => {
-          for (const [key] of Object.entries(groupList)) {
-            if (key === skill.name) {
-              this.newCharacter.skills.known[key] = groupList[key]
-              this.newCharacter.skills.known[key].known = true;
-              this.newCharacter.skills.known[key].occBonus = skill.occBonus
-              if (skill.base) {
-                this.newCharacter.skills.known[key].base = skill.base
-              }
-              delete groupList[key]
-            }
+    skillLoader: function (groupList) {
+      // remove already known skills
+      for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
+        this.newCharacter.skills.known[skill].known = true;
+        for (const [key] of Object.entries(groupList)) {
+          if (groupList[key].name === this.newCharacter.skills.known[skill].name) {
+            delete groupList[key]
           }
-        })
+        }
       }
-      // handle skill choices if there is a choice array
-      if (occList.choice) {
-        occList.choice.forEach(choice => {
-            // handle available skills
-            if (choice.available) {
-              choice.available.forEach(skill => {
-                for (const [key] of Object.entries(groupList)) {
-                  if (skill.name === 'Any') {
-                      groupList[key].occBonus = skill.occBonus;
-                    if (skill.skillCost) {
-                      groupList[key].skillCost = skill.skillCost;
-                    }
-                  }
-                  if (key === skill.name) {
-                      groupList[key].occBonus = skill.occBonus;
-                    if (skill.skillCost) {
-                      groupList[key].skillCost = skill.skillCost;
-                    }
-                  }
-                }
-              })
-            }
-            // handle unavailable skills
-            if (choice.unavailable) {
-              choice.unavailable.forEach(skill => {
-                for (const [key] of Object.entries(groupList)) {
-                  if (skill.name === 'All') {
-                    delete groupList[key]
-                  }
-                  if (key === skill.name) {
-                    delete groupList[key]
-                  }
-                }
-              })
-            }
-            // handle or skills
-            if (choice.or) {
-              for (const [key] of Object.entries(groupList)) {
-                if (key === choice.or[0].name || key === choice.or[1].name) {
-                    groupList[key].occBonus = choice.or[0].occBonus;
-                  if (choice.or[0].skillCost) {
-                    groupList[key].skillCost = choice.or[0].skillCost;
-                  }
-                } else {
-                  delete groupList[key]
-                }
-              }
-            }
-
-        })
+      // only load secondary skills
+      for (const [key] of Object.entries(groupList)) {
+        if (groupList[key].isSecondary === 'false' ) {
+          delete groupList[key]
+        }
       }
     },
     // gathers the necessary initial occ and character skill data
     onLoad: function () {
       //
       // loads occ skills and occ related skill selections
-      this.skillLoader(this.communication, this.newCharacter.occ.occSkills.communication)
-      this.skillLoader(this.cowboy, this.newCharacter.occ.occSkills.cowboy)
-      this.skillLoader(this.domestic, this.newCharacter.occ.occSkills.domestic)
-      this.skillLoader(this.electrical, this.newCharacter.occ.occSkills.electrical)
-      this.skillLoader(this.espionage, this.newCharacter.occ.occSkills.espionage)
-      this.skillLoader(this.horsemanship, this.newCharacter.occ.occSkills.horsemanship)
-      this.skillLoader(this.mechanical, this.newCharacter.occ.occSkills.mechanical)
-      this.skillLoader(this.medical, this.newCharacter.occ.occSkills.medical)
-      this.skillLoader(this.military, this.newCharacter.occ.occSkills.military)
-      this.skillLoader(this.physical, this.newCharacter.occ.occSkills.physical)
-      this.skillLoader(this.pilot, this.newCharacter.occ.occSkills.pilot)
-      this.skillLoader(this.pilotRelated, this.newCharacter.occ.occSkills.pilotRelated)
-      this.skillLoader(this.rogue, this.newCharacter.occ.occSkills.rogue)
-      this.skillLoader(this.science, this.newCharacter.occ.occSkills.science)
-      this.skillLoader(this.technical, this.newCharacter.occ.occSkills.technical)
-      this.skillLoader(this.weaponProficienciesAncient, this.newCharacter.occ.occSkills.weaponProficienciesAncient)
-      this.skillLoader(this.weaponProficienciesModern, this.newCharacter.occ.occSkills.weaponProficienciesModern)
-      this.skillLoader(this.wilderness, this.newCharacter.occ.occSkills.wilderness)
+      this.skillLoader(this.communication)
+      this.skillLoader(this.cowboy)
+      this.skillLoader(this.domestic)
+      this.skillLoader(this.electrical)
+      this.skillLoader(this.espionage)
+      this.skillLoader(this.horsemanship)
+      this.skillLoader(this.mechanical)
+      this.skillLoader(this.medical)
+      this.skillLoader(this.military)
+      this.skillLoader(this.physical)
+      this.skillLoader(this.pilot)
+      this.skillLoader(this.pilotRelated)
+      this.skillLoader(this.rogue)
+      this.skillLoader(this.science)
+      this.skillLoader(this.technical)
+      this.skillLoader(this.weaponProficienciesAncient)
+      this.skillLoader(this.weaponProficienciesModern)
+      this.skillLoader(this.wilderness)
 
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known

@@ -7,11 +7,13 @@ class Skills {
         known = {},
         choices = false,
         selected = false,
+        secondary = false
         ) {
         this.bonus = bonus;
         this.known = known;
         this.choices = choices;
         this.selected = selected;
+        this.secondary = secondary;
     }
 }
 

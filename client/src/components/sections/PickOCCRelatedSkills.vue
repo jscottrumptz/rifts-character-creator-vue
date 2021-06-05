@@ -259,7 +259,7 @@ const WeaponProficienciesModern = require('../../../lib/Skills/WeaponProficienci
 const Wilderness = require('../../../lib/Skills/Wilderness');
 
 export default {
-  name: "PickSkills",
+  name: "PickOCCRelatedSkills",
   props: {
     newCharacter: Object
   },
@@ -893,29 +893,19 @@ export default {
     },
     // adds the selected skills to the character and moves the user to the next creation step
     finalizeSelections: function (){
-
-      // need to add stat bonuses here
-
       // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.selected = true
     },
     // prepares skill lists
     skillLoader: function (groupList, occList) {
-      // handle known skills
-      if (occList.free) {
-        occList.free.forEach(skill => {
-          for (const [key] of Object.entries(groupList)) {
-            if (key === skill.name) {
-              this.newCharacter.skills.known[key] = groupList[key]
-              this.newCharacter.skills.known[key].known = true;
-              this.newCharacter.skills.known[key].occBonus = skill.occBonus
-              if (skill.base) {
-                this.newCharacter.skills.known[key].base = skill.base
-              }
-              delete groupList[key]
-            }
+      // remove already known skills
+      for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
+        this.newCharacter.skills.known[skill].known = true;
+        for (const [key] of Object.entries(groupList)) {
+          if (groupList[key].name === this.newCharacter.skills.known[skill].name) {
+            delete groupList[key]
           }
-        })
+        }
       }
       // handle available skills
       if (occList.available) {
