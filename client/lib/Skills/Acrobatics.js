@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class Acrobatics extends Skill {
     constructor() {
@@ -28,6 +30,15 @@ Walk Tightrope or High Wire - 60% +5% per level.`;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 1;
+        character.attributes.pp.skillsBonus = character.attributes.pp.skillsBonus + 1;
+        character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 1;
+        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus + 1;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.die(6)
+
     }
 }
 

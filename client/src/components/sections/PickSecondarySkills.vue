@@ -544,21 +544,21 @@ export default {
 
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
-        for (const [key] of Object.entries(this.selectedSkills)) {
+        for (const [skillKey] of Object.entries(this.selectedSkills)) {
           // check for prerequisites
-          this.selectedSkills[key].preq.forEach(preq => {
+          this.selectedSkills[skillKey].preq.forEach(preq => {
             // make prerequisites un-removable
-            for (const [key] of Object.entries(this.selectedSkills)) {
-              if (key.includes(preq)) {
-                this.selectedSkills[key].canRemove = false
+            for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              if (preqKey.includes(preq) && skillKey !== preqKey) {
+                this.selectedSkills[preqKey].canRemove = false
               }
             }
           })
-          this.selectedSkills[key].preqOr.forEach(preqOr => {
+          this.selectedSkills[skillKey].preqOr.forEach(preqOr => {
             // make prerequisites un-removable
-            for (const [key] of Object.entries(this.selectedSkills)) {
-              if (key.includes(preqOr)) {
-                this.selectedSkills[key].canRemove = false
+            for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              if (preqKey.includes(preqOr) && skillKey !== preqKey) {
+                this.selectedSkills[preqKey].canRemove = false
               }
             }
           })
@@ -635,9 +635,15 @@ export default {
     },
     // adds the selected skills to the character and moves the user to the next creation step
     finalizeSelections: function (){
-
-      // need to add stat bonuses here
-
+      let skillList = []
+      // get a list of picked skill property names and add them to the skillList array
+      for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
+        skillList.push(skill)
+      }
+      // roll bonuses
+      for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
+        this.newCharacter.skills.known[skill].rollSecondary(this.newCharacter, skillList)
+      }
       // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.secondary = true
     },

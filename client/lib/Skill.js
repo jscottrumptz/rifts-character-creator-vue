@@ -72,6 +72,9 @@ class Skill {
         this.occBonus = occBonus;
         this.skillBonus = skillBonus
     }
+    rollSecondary() {
+        return
+    }
 }
 
 module.exports = Skill;

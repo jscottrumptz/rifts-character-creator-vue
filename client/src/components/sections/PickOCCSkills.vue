@@ -725,21 +725,21 @@ export default {
 
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
-        for (const [key] of Object.entries(this.selectedSkills)) {
+        for (const [skillKey] of Object.entries(this.selectedSkills)) {
           // check for prerequisites
-          this.selectedSkills[key].preq.forEach(preq => {
+          this.selectedSkills[skillKey].preq.forEach(preq => {
             // make prerequisites un-removable
-            for (const [key] of Object.entries(this.selectedSkills)) {
-              if (key.includes(preq)) {
-                this.selectedSkills[key].canRemove = false
+            for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              if (preqKey.includes(preq) && skillKey !== preqKey) {
+                this.selectedSkills[preqKey].canRemove = false
               }
             }
           })
-          this.selectedSkills[key].preqOr.forEach(preqOr => {
+          this.selectedSkills[skillKey].preqOr.forEach(preqOr => {
             // make prerequisites un-removable
-            for (const [key] of Object.entries(this.selectedSkills)) {
-              if (key.includes(preqOr)) {
-                this.selectedSkills[key].canRemove = false
+            for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              if (preqKey.includes(preqOr) && skillKey !== preqKey) {
+                this.selectedSkills[preqKey].canRemove = false
               }
             }
           })

@@ -1,5 +1,6 @@
 const Skill = require('../Skill');
 
+
 class BodyBuildingandWeightLifting extends Skill {
     constructor() {
         super();
@@ -18,6 +19,11 @@ class BodyBuildingandWeightLifting extends Skill {
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 2;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + 10
     }
 }
 

@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class Boxing extends Skill {
     constructor() {
@@ -23,6 +25,17 @@ Natural 20 punch (even undeclared) automatically causes knockout on opponent. (v
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        console.log(list)
+        character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 2;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(6,3).reduce((a, b) => a + b, 0)
+        character.bonuses.parry.skillsBonus = character.bonuses.parry.skillsBonus +2;
+        character.bonuses.dodge.skillsBonus = character.bonuses.dodge.skillsBonus +2;
+        character.bonuses.attacks.skillsBonus = character.bonuses.attacks.skillsBonus +1;
+        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus +1;
+        character.bonuses.knockout.initialValue  = 20;
     }
 }
 

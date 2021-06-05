@@ -19,6 +19,16 @@ class Barter extends Skill {
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+
+    rollSecondary(character, list) {
+        let gotLit = false;
+        list.forEach(skill => {
+            if((skill.includes('literacy') && !gotLit)|| skill === 'mathematicsBasic') {
+                this.skillBonus = this.skillBonus + 2;
+                gotLit = true
+            }
+        })
+    }
 }
 
 module.exports = Barter;
