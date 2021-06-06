@@ -18,16 +18,25 @@ Characters with high M.S. and/or P.B. gains bonuses as indicated below. [Example
 +1% for each M.S. point over 20.
 +1% for each two P.B. points over 17 (round up).
 +5 to Pick Pockets/Palming/plant things on victim.
-+5% to Cardsharp.
-+5% to Sing.
-+5% to Dance.
-+1 additional target of seduction every 3 levels of experience.`;
++5% to Cardsharp [Rogue] if this skill is taken.
++5% to Sing [Domestic or Communication] if this skill is taken.
++5% to Dance [Domestic] if this skill is taken.
++1 additional target of seduction every 3 levels of experience.
++2% to this skill if Wardrobe & Grooming is taken.`;
         this.required = ``;
         this.perLvl = `3`;
         this.baseTwo = ``;
         this.base = `20`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'wardrobeandGrooming') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
     }
 }
 

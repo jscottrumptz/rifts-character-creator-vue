@@ -21,7 +21,9 @@ class Barter extends Skill {
     }
 
     rollSecondary(character, list) {
+        // set a trigger to only add bonus for one literacy skill in case character has multiple
         let gotLit = false;
+        // search for literacy and mathematics basic
         list.forEach(skill => {
             if((skill.includes('literacy') && !gotLit)|| skill === 'mathematicsBasic') {
                 this.skillBonus = this.skillBonus + 2;

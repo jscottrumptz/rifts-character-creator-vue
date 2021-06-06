@@ -11,17 +11,23 @@ class WardrobeandGrooming extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = `+1 P.B. (when dressed to impress).
-+2% Disguise.
-+2% Impersonation.
-+2% Performance.
-+2% Undercover Ops
-+2% Seduction.`;
++2% to Disguise [Espionage] if this skill is taken.
++2% to Impersonation [Espionage] if this skill is taken.
++2% to Performance [Communication] if this skill is taken.
++2% to Undercover Ops [Espionage] if this skill is taken.
++2% to Seduction [Rogue] if this skill is taken.`;
         this.required = ``;
         this.perLvl = `4`;
         this.baseTwo = ``;
         this.base = `50`;
-        this.takeTwiceBonus = `10`;
+        this.takeTwiceBonus = `+10%`;
         this.takeTwice = `true`;
+    }
+
+    rollSecondary() {
+        if (this.takenTwice) {
+            this.skillBonus = this.skillBonus + 10;
+        }
     }
 }
 

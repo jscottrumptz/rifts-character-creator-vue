@@ -1,9 +1,9 @@
 const Skill = require('../Skill');
 
-class HollisticMedicine extends Skill {
+class HolisticMedicine extends Skill {
     constructor() {
         super();
-        this.name = `Hollistic Medicine`;
+        this.name = `Holistic Medicine`;
         this.group = `Medical`;
         this.isSecondary = `false`;
         this.note = `Plants are seasonal ad the right fruit, root or leaf may not be readily available in certain times of the year/season, or may be found exclusively in remote regions. DM's should use a certain amount of logic and drama with this skill.
@@ -16,7 +16,8 @@ A failed roll means the treatment or concoction did not work. Can not perform su
 The student of herbology also has a good knowledge of plant lore and when and where to find healing plants, edible fruit, roots, and bark, as well as how to use and/or avoid dangerous flora. The character can also preserve foods and knows how to set bones, bandage wounds, and suture cuts.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+10% to Brewing skill.
+        this.bonus = `+5% to this skill if Brewing skill is taken.
++10% to Brewing skill.
 +10% to Identify Plants & Fruits skill.
 +10% to Preserve Food skill.
 -5% to cauterize.
@@ -29,6 +30,14 @@ The student of herbology also has a good knowledge of plant lore and when and wh
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'brewing') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
+    }
 }
 
-module.exports = HollisticMedicine;
+module.exports = HolisticMedicine;

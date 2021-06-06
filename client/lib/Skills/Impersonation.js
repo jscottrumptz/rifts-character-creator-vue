@@ -14,13 +14,26 @@ The success of one's impersonation/disguise can only be determined after exposin
 A successful impersonation requires the player to roll under his character's Impersonation skill for each of the first three encounters. Afterward, the character must roll under their skill for each encounter with an officer, high ranking official or any close friend or close family member who knows the person being impersonated. If interrogated/questioned, they must successfully roll after every three questions or be revealed as an impostor. A failed roll means the impersonation has failed and they may be in immediate danger.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+10% to the Undercover Ops skill.`;
+        this.bonus = `+10% to the Undercover Ops skill.
++5% to this skill if Performance is also taken.
++2% to this skill if Wardrobe & Grooming are taken.`;
         this.required = ``;
         this.perLvl = `4`;
         this.baseTwo = `16`;
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'performance') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+            if(skill === 'wardrobeandGrooming') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
     }
 }
 

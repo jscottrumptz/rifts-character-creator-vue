@@ -18,6 +18,14 @@ class TVOrVideo extends Skill {
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'opticSystems') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
+    }
 }
 
 module.exports = TVOrVideo;

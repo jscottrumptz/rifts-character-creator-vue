@@ -73,6 +73,7 @@ class Skill {
         this.skillBonus = skillBonus
     }
     rollSecondary() {
+        // set an empty return in case method is called in an array even though it isn't needed
         return
     }
 }

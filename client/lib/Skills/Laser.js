@@ -11,7 +11,7 @@ class Laser extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Radio: Basic, Electrical Engineer, Computer Operation`;
+        this.required = `Radio: Basic [Communication], Electrical Engineer [Electrical], Computer Operation [Technical]`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;

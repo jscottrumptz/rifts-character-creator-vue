@@ -27,7 +27,7 @@
         </div>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
-            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} ({{ skills.group }})</li>
+            <li v-for="(skills,index) in selectedSkills" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ skills.name }} <span class="text-gray-500">[{{ skills.group }}]</span></li>
           </ul>
         </div>
         <!-- Determine what button is active depending on prerequisites and previously known skills-->
@@ -730,6 +730,7 @@ export default {
           this.selectedSkills[skillKey].preq.forEach(preq => {
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              // check for skill property and exclude the picked skill
               if (preqKey.includes(preq) && skillKey !== preqKey) {
                 this.selectedSkills[preqKey].canRemove = false
               }
@@ -738,6 +739,7 @@ export default {
           this.selectedSkills[skillKey].preqOr.forEach(preqOr => {
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
+              // check for skill property and exclude the picked skill
               if (preqKey.includes(preqOr) && skillKey !== preqKey) {
                 this.selectedSkills[preqKey].canRemove = false
               }

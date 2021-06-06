@@ -15,8 +15,14 @@ class Fishing extends Skill {
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `40`;
-        this.takeTwiceBonus = `10`;
+        this.takeTwiceBonus = `+10%`;
         this.takeTwice = `true`;
+    }
+
+    rollSecondary() {
+        if (this.takenTwice) {
+            this.skillBonus = this.skillBonus + 10;
+        }
     }
 }
 

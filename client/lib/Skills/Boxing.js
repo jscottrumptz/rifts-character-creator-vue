@@ -27,8 +27,7 @@ Natural 20 punch (even undeclared) automatically causes knockout on opponent. (v
         this.takeTwice = ``;
     }
 
-    rollSecondary(character, list) {
-        console.log(list)
+    rollSecondary(character) {
         character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 2;
         character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(6,3).reduce((a, b) => a + b, 0)
         character.bonuses.parry.skillsBonus = character.bonuses.parry.skillsBonus +2;

@@ -7,7 +7,7 @@ const EntomologicalMedicine = require('./EntomologicalMedicine');
 const FieldSurgery = require('./FieldSurgery');
 const FirstAid = require('./FirstAid');
 const Forensics = require('./Forensics');
-const HollisticMedicine = require('./HollisticMedicine');
+const HolisticMedicine = require('./HolisticMedicine');
 const MedicalDoctor = require('./MedicalDoctor');
 const Paramedic = require('./Paramedic');
 const Pathology = require('./Pathology');
@@ -25,7 +25,7 @@ class Medical {
         fieldSurgery = new FieldSurgery,
         firstAid = new FirstAid,
         forensics = new Forensics,
-        hollisticMedicine = new HollisticMedicine,
+        holisticMedicine = new HolisticMedicine,
         medicalDoctor = new MedicalDoctor,
         paramedic = new Paramedic,
         pathology = new Pathology,
@@ -41,7 +41,7 @@ class Medical {
         this.fieldSurgery = fieldSurgery;
         this.firstAid = firstAid;
         this.forensics = forensics;
-        this.hollisticMedicine = hollisticMedicine;
+        this.holisticMedicine = holisticMedicine;
         this.medicalDoctor = medicalDoctor;
         this.paramedic = paramedic;
         this.pathology = pathology;
