@@ -10,14 +10,22 @@ class VeterinaryScience extends Skill {
         this.description = `The doctor who specializes in the medical care and treatment of wild and domestic animals. Areas of study are biology (specifically animal), reproduction, breeding, animal anatomy, physiology, pathology, toxicology, surgery, suturing wounds, setting bones, disease, medical care and other applications and techniques in the medical treatment of animals.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
-        this.required = `Biology and Animal Husbandry.`;
+        this.bonus = `+10% to this skill if Zoology [Science] is also taken.`;
+        this.required = `Biology [Science] and Animal Husbandry [Medical].`;
         this.perLvl = `4`;
         this.baseTwo = ``;
         this.base = `50`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
         this.preq = ['biology', 'animalHusbandry']
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'zoology') {
+                this.skillBonus = this.skillBonus + 10;
+            }
+        })
     }
 }
 

@@ -10,13 +10,21 @@ class HerdingCattle extends Skill {
         this.description = `The techniques and methods of leading, directing and controlling cattle in a contained and orderly herd. Also includes keeping animals calm, basic care and feeding, how to tend cattle, recognize disease and illness, give birth to young, how to survive and regain control of a stampede, gather strays, how best to pen ad corral livestock, mend fences, etc.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Zoology [Science] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'zoology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
     }
 }
 

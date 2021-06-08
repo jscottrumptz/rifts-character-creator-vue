@@ -10,7 +10,7 @@ class TVOrVideo extends Skill {
         this.description = `The in-depth training in the use of video, digital and audio recording equipment as well as filing, editing, dubbing, title making, duplication, and transmission. Includes the use of field equipment; i.e. portable video or digital camera and studio equipment.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to this skill if Optic Systems is also selected`;
+        this.bonus = `+5% to this skill if Optic Systems [Communication] is also taken`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;

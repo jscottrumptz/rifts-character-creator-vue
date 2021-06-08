@@ -11,7 +11,7 @@ class Astrophysics extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Mathematics: Advanced.`;
+        this.required = `Mathematics: Advanced [Science].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;

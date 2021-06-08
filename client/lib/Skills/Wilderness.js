@@ -3,12 +3,12 @@ const Carpentry = require('./Carpentry');
 const Dowsing = require('./Dowsing');
 const Fasting = require('./Fasting');
 const Hunting = require('./Hunting');
-const IdentifyPlantsandFruits = require('./IdentifyPlantsandFruits');
+const IdentifyPlantsAndFruits = require('./IdentifyPlantsAndFruits');
 const LandNavigation = require('./LandNavigation');
 const PreserveFood = require('./PreserveFood');
-const SkinandPrepareAnimalHides = require('./SkinandPrepareAnimalHides');
+const SkinAndPrepareAnimalHides = require('./SkinAndPrepareAnimalHides');
 const Spelunking = require('./Spelunking');
-const TrackandTrapAnimals = require('./TrackandTrapAnimals');
+const TrackAndTrapAnimals = require('./TrackAndTrapAnimals');
 const WildernessSurvivalWilderness = require('./WildernessSurvivalWilderness');
 
 class Wilderness {
@@ -18,12 +18,12 @@ class Wilderness {
         dowsing = new Dowsing,
         fasting = new Fasting,
         hunting = new Hunting,
-        identifyPlantsandFruits = new IdentifyPlantsandFruits,
+        identifyPlantsAndFruits = new IdentifyPlantsAndFruits,
         landNavigation = new LandNavigation,
         preserveFood = new PreserveFood,
-        skinandPrepareAnimalHides = new SkinandPrepareAnimalHides,
+        skinAndPrepareAnimalHides = new SkinAndPrepareAnimalHides,
         spelunking = new Spelunking,
-        trackandTrapAnimals = new TrackandTrapAnimals,
+        trackAndTrapAnimals = new TrackAndTrapAnimals,
         wildernessSurvivalWilderness = new WildernessSurvivalWilderness
     ) {
         this.boatBuilding = boatBuilding;
@@ -31,12 +31,12 @@ class Wilderness {
         this.dowsing = dowsing;
         this.fasting = fasting;
         this.hunting = hunting;
-        this.identifyPlantsandFruits = identifyPlantsandFruits;
+        this.identifyPlantsAndFruits = identifyPlantsAndFruits;
         this.landNavigation = landNavigation;
         this.preserveFood = preserveFood;
-        this.skinandPrepareAnimalHides = skinandPrepareAnimalHides;
+        this.skinAndPrepareAnimalHides = skinAndPrepareAnimalHides;
         this.spelunking = spelunking;
-        this.trackandTrapAnimals = trackandTrapAnimals;
+        this.trackAndTrapAnimals = trackAndTrapAnimals;
         this.wildernessSurvivalWilderness = wildernessSurvivalWilderness;
     }
 }

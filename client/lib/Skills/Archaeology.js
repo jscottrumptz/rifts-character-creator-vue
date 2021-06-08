@@ -14,8 +14,8 @@ Like the anthropologist, the archaeologist is one of the few who is well versed 
 The first percentile number applies to the character's historical and archaeological capabilities, the second is their ability to figure out the purpose of the item through examination alone (i.e. without seeing it used in action).`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+2% to all Lore skills.
-+10% to History.`;
+        this.bonus = `+2% to any Lore [Technical] skills if this skill is taken.
++10% to any History [Technical] skills if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = `20`;

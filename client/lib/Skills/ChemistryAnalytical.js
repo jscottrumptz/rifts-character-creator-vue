@@ -11,7 +11,7 @@ class ChemistryAnalytical extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Chemistry, Mathematics: Advanced, and Literacy. Computer Operation is strongly suggested but not essential.`;
+        this.required = `Chemistry [Science], Mathematics: Advanced [Science], and Literacy [Communication]. Computer Operation [Technical] is strongly suggested but not essential.`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;

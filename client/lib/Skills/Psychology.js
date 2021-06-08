@@ -11,7 +11,7 @@ class Psychology extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Biology, Chemistry, and Literacy.`;
+        this.required = `Biology [Science], Chemistry [Science], and Literacy [Communication].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `35`;

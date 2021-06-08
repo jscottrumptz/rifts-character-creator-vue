@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class GeneralRepairandMaintenance extends Skill {
+class GeneralRepairAndMaintenance extends Skill {
     constructor() {
         super();
         this.name = `General Repair & Maintenance`;
@@ -22,4 +22,4 @@ Reduce skill proficiency by half if the item is extremely damaged, complex, high
     }
 }
 
-module.exports = GeneralRepairandMaintenance;
+module.exports = GeneralRepairAndMaintenance;

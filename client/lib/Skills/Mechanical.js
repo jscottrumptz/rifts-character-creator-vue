@@ -5,7 +5,7 @@ const BiowareMechanics = require('./BiowareMechanics');
 const Locksmith = require('./Locksmith');
 const MechanicalEngineer = require('./MechanicalEngineer');
 const RobotMechanics = require('./RobotMechanics');
-const VehicleArmourer = require('./VehicleArmourer');
+const VehicleArmorer = require('./VehicleArmorer');
 const WeaponsEngineer = require('./WeaponsEngineer');
 
 class Mechanical {
@@ -17,7 +17,7 @@ class Mechanical {
         locksmith = new Locksmith,
         mechanicalEngineer = new MechanicalEngineer,
         robotMechanics = new RobotMechanics,
-        vehicleArmourer = new VehicleArmourer,
+        vehicleArmorer = new VehicleArmorer,
         weaponsEngineer = new WeaponsEngineer
     ) {
         this.aircraftMechanics = aircraftMechanics;
@@ -27,7 +27,7 @@ class Mechanical {
         this.locksmith = locksmith;
         this.mechanicalEngineer = mechanicalEngineer;
         this.robotMechanics = robotMechanics;
-        this.vehicleArmourer = vehicleArmourer;
+        this.vehicleArmorer = vehicleArmorer;
         this.weaponsEngineer = weaponsEngineer;
     }
 }

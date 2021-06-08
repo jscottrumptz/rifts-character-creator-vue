@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class ForcedMarchPhysical extends Skill {
     constructor() {
@@ -20,6 +22,12 @@ x5 Normal physical endurance rate for maintaining forced marches and traveling a
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 2;
+        character.attributes.spd.skillsBonus = character.attributes.spd.skillsBonus + random.die(4)
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(6,2).reduce((a, b) => a + b, 0)
     }
 }
 

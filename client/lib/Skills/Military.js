@@ -2,7 +2,7 @@ const Camouflage = require('./Camouflage');
 const Demolitions = require('./Demolitions');
 const DemolitionsDisposal = require('./DemolitionsDisposal');
 const DemolitionsUnderwater = require('./DemolitionsUnderwater');
-const FieldArmourerandMunitions = require('./FieldArmourerandMunitions');
+const FieldArmorerAndMunitions = require('./FieldArmorerAndMunitions');
 const FindContrabandMilitary = require('./FindContrabandMilitary');
 const ForcedMarchMilitary = require('./ForcedMarchMilitary');
 const MilitaryEtiquette = require('./MilitaryEtiquette');
@@ -20,7 +20,7 @@ class Military {
         demolitions = new Demolitions,
         demolitionsDisposal = new DemolitionsDisposal,
         demolitionsUnderwater = new DemolitionsUnderwater,
-        fieldArmourerandMunitions = new FieldArmourerandMunitions,
+        fieldArmorerAndMunitions = new FieldArmorerAndMunitions,
         findContrabandMilitary = new FindContrabandMilitary,
         forcedMarchMilitary = new ForcedMarchMilitary,
         militaryEtiquette = new MilitaryEtiquette,
@@ -36,7 +36,7 @@ class Military {
         this.demolitions = demolitions;
         this.demolitionsDisposal = demolitionsDisposal;
         this.demolitionsUnderwater = demolitionsUnderwater;
-        this.fieldArmourerandMunitions = fieldArmourerandMunitions;
+        this.fieldArmorerAndMunitions = fieldArmorerAndMunitions;
         this.findContrabandMilitary = findContrabandMilitary;
         this.forcedMarchMilitary = forcedMarchMilitary;
         this.militaryEtiquette = militaryEtiquette;

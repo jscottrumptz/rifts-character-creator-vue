@@ -6,12 +6,8 @@ class AppraiseGoods extends Skill {
         this.name = `Appraise Goods`;
         this.group = `Technical`;
         this.isSecondary = `true`;
-        this.note = `Does not include the following categories:-
-Military goods:-
-Weapons
-Body armour
-Power armour
-Combat vehicles
+        this.note = `Does not include the following categories:
+Military goods: ( Weapons, Body Armor, Power Armor, Combat Vehicles)
 Bionics
 Technology
 Magic items
@@ -32,6 +28,12 @@ The character knows how much they can get by pawning the item as well as what it
         this.base = `30`;
         this.takeTwiceBonus = ``;
         this.takeTwice = `true`;
+    }
+
+    rollSecondary() {
+        if (this.takenTwice) {
+            this.skillBonus = this.skillBonus + 15;
+        }
     }
 }
 

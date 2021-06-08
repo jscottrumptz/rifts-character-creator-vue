@@ -1,7 +1,7 @@
 const Airplane = require('./Airplane');
 const Automobile = require('./Automobile');
 const Bicycling = require('./Bicycling');
-const BoatsMotorandHydrofoils = require('./BoatsMotorandHydrofoils');
+const BoatsMotorAndHydrofoils = require('./BoatsMotorAndHydrofoils');
 const BoatsPaddleTypes = require('./BoatsPaddleTypes');
 const BoatsSailTypes = require('./BoatsSailTypes');
 const BoatsShips = require('./BoatsShips');
@@ -16,23 +16,23 @@ const JumpBikeCombat = require('./JumpBikeCombat');
 const MilitaryCombatHelicopter = require('./MilitaryCombatHelicopter');
 const MilitaryJetFighter = require('./MilitaryJetFighter');
 const MilitarySubmersibles = require('./MilitarySubmersibles');
-const MilitaryTanksandApcs = require('./MilitaryTanksandApcs');
-const MilitaryWarshipsandPatrolBoats = require('./MilitaryWarshipsandPatrolBoats');
-const MotorcyclesandSnowmobiles = require('./MotorcyclesandSnowmobiles');
-const RobotsandPowerArmour = require('./RobotsandPowerArmour');
+const MilitaryTanksAndApcs = require('./MilitaryTanksAndApcs');
+const MilitaryWarshipsAndPatrolBoats = require('./MilitaryWarshipsAndPatrolBoats');
+const MotorcyclesAndSnowmobiles = require('./MotorcyclesAndSnowmobiles');
+const RobotsAndPowerArmor = require('./RobotsAndPowerArmor');
 const RobotCombatBasic = require('./RobotCombatBasic');
 const RobotCombatElite = require('./RobotCombatElite');
-const TrackedandConstructionVehicles = require('./TrackedandConstructionVehicles');
+const TrackedAndConstructionVehicles = require('./TrackedAndConstructionVehicles');
 const Truck = require('./Truck');
 const WaterScooters = require('./WaterScooters');
-const WaterSkiingandSurfing = require('./WaterSkiingandSurfing');
+const WaterSkiingAndSurfing = require('./WaterSkiingAndSurfing');
 
 class Pilot {
     constructor(
         airplane = new Airplane,
         automobile = new Automobile,
         bicycling = new Bicycling,
-        boatsMotorandHydrofoils = new BoatsMotorandHydrofoils,
+        boatsMotorAndHydrofoils = new BoatsMotorAndHydrofoils,
         boatsPaddleTypes = new BoatsPaddleTypes,
         boatsSailTypes = new BoatsSailTypes,
         boatsShips = new BoatsShips,
@@ -47,21 +47,21 @@ class Pilot {
         militaryCombatHelicopter = new MilitaryCombatHelicopter,
         militaryJetFighter = new MilitaryJetFighter,
         militarySubmersibles = new MilitarySubmersibles,
-        militaryTanksandApcs = new MilitaryTanksandApcs,
-        militaryWarshipsandPatrolBoats = new MilitaryWarshipsandPatrolBoats,
-        motorcyclesandSnowmobiles = new MotorcyclesandSnowmobiles,
-        robotsandPowerArmour = new RobotsandPowerArmour,
+        militaryTanksAndApcs = new MilitaryTanksAndApcs,
+        militaryWarshipsAndPatrolBoats = new MilitaryWarshipsAndPatrolBoats,
+        motorcyclesAndSnowmobiles = new MotorcyclesAndSnowmobiles,
+        robotsAndPowerArmor = new RobotsAndPowerArmor,
         robotCombatBasic = new RobotCombatBasic,
         robotCombatElite = new RobotCombatElite,
-        trackedandConstructionVehicles = new TrackedandConstructionVehicles,
+        trackedAndConstructionVehicles = new TrackedAndConstructionVehicles,
         truck = new Truck,
         waterScooters = new WaterScooters,
-        waterSkiingandSurfing = new WaterSkiingandSurfing
+        waterSkiingAndSurfing = new WaterSkiingAndSurfing
     ) {
         this.airplane = airplane;
         this.automobile = automobile;
         this.bicycling = bicycling;
-        this.boatsMotorandHydrofoils = boatsMotorandHydrofoils;
+        this.boatsMotorAndHydrofoils = boatsMotorAndHydrofoils;
         this.boatsPaddleTypes = boatsPaddleTypes;
         this.boatsSailTypes = boatsSailTypes;
         this.boatsShips = boatsShips;
@@ -76,16 +76,16 @@ class Pilot {
         this.militaryCombatHelicopter = militaryCombatHelicopter;
         this.militaryJetFighter = militaryJetFighter;
         this.militarySubmersibles = militarySubmersibles;
-        this.militaryTanksandApcs = militaryTanksandApcs;
-        this.militaryWarshipsandPatrolBoats = militaryWarshipsandPatrolBoats;
-        this.motorcyclesandSnowmobiles = motorcyclesandSnowmobiles;
-        this.robotsandPowerArmour = robotsandPowerArmour;
+        this.militaryTanksAndApcs = militaryTanksAndApcs;
+        this.militaryWarshipsAndPatrolBoats = militaryWarshipsAndPatrolBoats;
+        this.motorcyclesAndSnowmobiles = motorcyclesAndSnowmobiles;
+        this.robotsAndPowerArmor = robotsAndPowerArmor;
         this.robotCombatBasic = robotCombatBasic;
         this.robotCombatElite = robotCombatElite;
-        this.trackedandConstructionVehicles = trackedandConstructionVehicles;
+        this.trackedAndConstructionVehicles = trackedAndConstructionVehicles;
         this.truck = truck;
         this.waterScooters = waterScooters;
-        this.waterSkiingandSurfing = waterSkiingandSurfing;
+        this.waterSkiingAndSurfing = waterSkiingAndSurfing;
     }
 }
 

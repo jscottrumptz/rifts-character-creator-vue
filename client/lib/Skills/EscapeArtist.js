@@ -10,7 +10,7 @@ class EscapeArtist extends Skill {
         this.description = `The methods, principles, and tricks of escape artists. The character can try slipping out of handcuffs, ropes, straitjacket, etc., using techniques that include hand positioning, tensing and relaxing muscles, keeping hand and wrist joints flexible, popping joints in and out, the study of knots, and one or more hidden lock picking tools concealed on their body.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% Pick Locks.`;
+        this.bonus = `+5% to the Pick Locks [Rogue, Espionage] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;

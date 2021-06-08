@@ -31,13 +31,13 @@ Ground-Based Power Armour
 Heavy Vehicular Robots
 Heavy Ground Robots
 Light Ground Robots`;
-        this.required = `Pilot: Robots & Power Armour.`;
+        this.required = `Robots & Power Armour [Pilot].`;
         this.perLvl = ``;
         this.baseTwo = ``;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
-        this.preq = ['robotsandPower']
+        this.preq = ['robotsAndPower']
     }
 }
 

@@ -11,7 +11,7 @@ class Cryptography extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Literacy`;
+        this.required = `Literacy [Communication]`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;

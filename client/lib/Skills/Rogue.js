@@ -5,7 +5,7 @@ const FindContrabandRogue = require('./FindContrabandRogue');
 const GamblingStandard = require('./GamblingStandard');
 const GamblingDirtyTricks = require('./GamblingDirtyTricks');
 const IDUndercoverAgents = require('./IDUndercoverAgents');
-const ImitateVoicesandSounds = require('./ImitateVoicesandSounds');
+const ImitateVoicesAndSounds = require('./ImitateVoicesAndSounds');
 const Palming = require('./Palming');
 const PickLocksRogue = require('./PickLocksRogue');
 const PickPocketsRogue = require('./PickPocketsRogue');
@@ -25,7 +25,7 @@ class Rogue {
         gamblingStandard = new GamblingStandard,
         gamblingDirtyTricks = new GamblingDirtyTricks,
         iDUndercoverAgents = new IDUndercoverAgents,
-        imitateVoicesandSounds = new ImitateVoicesandSounds,
+        imitateVoicesAndSounds = new ImitateVoicesAndSounds,
         palming = new Palming,
         pickLocksRogue = new PickLocksRogue,
         pickPocketsRogue = new PickPocketsRogue,
@@ -43,7 +43,7 @@ class Rogue {
         this.gamblingStandard = gamblingStandard;
         this.gamblingDirtyTricks = gamblingDirtyTricks;
         this.iDUndercoverAgents = iDUndercoverAgents;
-        this.imitateVoicesandSounds = imitateVoicesandSounds;
+        this.imitateVoicesAndSounds = imitateVoicesAndSounds;
         this.palming = palming;
         this.pickLocksRogue = pickLocksRogue;
         this.pickPocketsRogue = pickPocketsRogue;

@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class TrackandTrapAnimals extends Skill {
+class TrackAndTrapAnimals extends Skill {
     constructor() {
         super();
         this.name = `Track & Trap Animals`;
@@ -12,7 +12,7 @@ class TrackandTrapAnimals extends Skill {
 Tracking humans with this skill is also possible, but is done with a penalty of -20%. Disarming any traps meant for use against humans is done at half the character's normal skill ability for using animal traps.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Zoology [Science] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = `30`;
@@ -20,6 +20,14 @@ Tracking humans with this skill is also possible, but is done with a penalty of 
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'zoology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
+    }
 }
 
-module.exports = TrackandTrapAnimals;
+module.exports = TrackAndTrapAnimals;

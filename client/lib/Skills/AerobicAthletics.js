@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class AerobicAthletics extends Skill {
     constructor() {
@@ -21,6 +23,11 @@ Sense of Balance - 30%, +5% per level of experience.`;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.bonuses.pull.skillsBonus = character.bonuses.pull.skillsBonus + 1;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(4,2).reduce((a, b) => a + b, 0)
     }
 }
 

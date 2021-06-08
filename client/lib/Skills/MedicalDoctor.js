@@ -14,8 +14,8 @@ Surgery includes the precision use of knives and scalpels for medical purposes, 
 The first percentage is the doctor's ability to accurately diagnose the problem. The second percentage is the doctor's skill at successfully treating the problem.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
-        this.required = `Pathology and Basic or Advanced Mathematics.`;
+        this.bonus = `+14% to the Field Surgery [Medical] skill if this skill is taken.`;
+        this.required = `Pathology [Medical] and Basic or Advanced Mathematics [Science].`;
         this.perLvl = `5`;
         this.baseTwo = `50`;
         this.base = `60`;

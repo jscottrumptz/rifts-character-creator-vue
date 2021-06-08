@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class SkinandPrepareAnimalHides extends Skill {
+class SkinAndPrepareAnimalHides extends Skill {
     constructor() {
         super();
         this.name = `Skin & Prepare Animal Hides`;
@@ -10,8 +10,8 @@ class SkinandPrepareAnimalHides extends Skill {
         this.description = `Training in the methods and techniques in skinning, tanning, stretching, and preserving animal hides as fur or leather.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `Sewing +5%
-Leather Working +5%`;
+        this.bonus = `+5% to the Sewing [Domestic] skill if this skill is taken.
++5% to the Leather Working [Technical] skill if this skill is taken`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
@@ -21,4 +21,4 @@ Leather Working +5%`;
     }
 }
 
-module.exports = SkinandPrepareAnimalHides;
+module.exports = SkinAndPrepareAnimalHides;

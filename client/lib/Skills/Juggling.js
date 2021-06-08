@@ -18,6 +18,9 @@ class Juggling extends Skill {
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+    rollSecondary(character) {
+        character.bonuses.initiative.skillsBonus = character.bonuses.initiative.skillsBonus + 1;
+    }
 }
 
 module.exports = Juggling;

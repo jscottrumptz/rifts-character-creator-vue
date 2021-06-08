@@ -12,8 +12,8 @@ The first percentile indicates the chance of success (a failed roll means an und
         this.description = `The making of fermented alcoholic beverages from grains or fruits and specifically includes wine, mead, ale, beer, and moonshine, as well as common teas, coffee, lemonade, and similar types of prepared drinks.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to Holistic Medicine skill.
-+10% to this skill if Holistic Medicine is taken`;
+        this.bonus = `+5% to Holistic Medicine [Medical] skill if this skill is taken.
++10% to this skill if Holistic Medicine [Medical] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = `30`;

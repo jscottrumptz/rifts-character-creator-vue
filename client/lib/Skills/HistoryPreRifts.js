@@ -14,13 +14,26 @@ The second percentile number indicates a more in-depth knowledge of a particular
 The History skill may be taken repeatedly to cover multiple regions of the world or various subjects. Thus, a character who takes this skill three times might apply it to North America, Western Europe, and Russia. The two base skill percentages indicate the approximate degree of information the character has learned or can remember accurately; remember, the first number is for a general knowledge of world history before the Great Cataclysm, the second for a more specific subject.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Anthropology [Science] is also taken.
++5% to this skill if Research [Technical] is also taken.
++2% to this skill if Archaeology [Science] is also taken.`;
         this.required = ``;
         this.perLvl = `4`;
         this.baseTwo = `24`;
         this.base = `32`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'anthropology' || skill === 'research') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+            if(skill === 'archaeology') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
     }
 }
 

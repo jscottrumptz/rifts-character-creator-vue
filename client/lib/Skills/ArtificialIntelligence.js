@@ -14,8 +14,11 @@ A.I.s range from simple thinking computers and devices with problem solving capa
 A character with this Science skill understands the many principles and theories behind artificial intelligences, how they 'think' and 'understand' the world around them, how to communicate with them and how to reprogram them, either directly or by argument.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to all other computer skills, including programming and hacking skills.`;
-        this.required = `Computer Operation.`;
+        this.bonus = `+5% to the Computer Operation [Technical] skill if this skill is taken. 
++5% to the Computer Programming [Technical] skill if this skill is taken. 
++5% to the Computer Hacking [Rogue] skill if this skill is taken.
++5% to the Computer Repair [Electrical] skill if this skill is taken. `;
+        this.required = `Computer Operation [Technical].`;
         this.perLvl = `3`;
         this.baseTwo = ``;
         this.base = `30`;

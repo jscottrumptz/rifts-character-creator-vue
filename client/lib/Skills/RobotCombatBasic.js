@@ -29,13 +29,13 @@ All bonuses (below) are in addition to the pilot's own hand to hand combat train
 +1 to dodge.
 +1 to roll with impact.
 Critical strike is same as pilot's hand to hand skill.`;
-        this.required = `Pilot: Robots & Power Armour.`;
+        this.required = `Robots & Power Armor [Pilot].`;
         this.perLvl = ``;
         this.baseTwo = ``;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
-        this.preq = ['robotsandPower']
+        this.preq = ['robotsAndPower']
     }
 }
 

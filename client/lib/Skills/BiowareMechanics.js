@@ -15,7 +15,7 @@ The character is -20% when working with sophisticated bionic systems including b
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Mechanical Engineer`;
+        this.required = `Mechanical Engineer [Mechanical]`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;

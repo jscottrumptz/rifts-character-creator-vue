@@ -16,10 +16,11 @@ A failed roll means the treatment or concoction did not work. Can not perform su
 The student of herbology also has a good knowledge of plant lore and when and where to find healing plants, edible fruit, roots, and bark, as well as how to use and/or avoid dangerous flora. The character can also preserve foods and knows how to set bones, bandage wounds, and suture cuts.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to this skill if Brewing skill is taken.
-+10% to Brewing skill.
-+10% to Identify Plants & Fruits skill.
-+10% to Preserve Food skill.
+        this.bonus = `+5% to this skill if Brewing [Domestic] skill is also taken.
++5% to this skill if Brewing: Medicinal [Medical] skill is also taken.
++10% to Brewing [Domestic] skill if this skill is taken.
++10% to Identify Plants & Fruits [Wilderness] skill if this skill is taken.
++10% to Preserve Food [Wilderness] skill if this skill is taken.
 -5% to cauterize.
 -10% to treat disease/infection/poison/internal injuries.
 -30% to treat alien creatures.`;
@@ -33,7 +34,7 @@ The student of herbology also has a good knowledge of plant lore and when and wh
 
     rollSecondary(character, list) {
         list.forEach(skill => {
-            if(skill === 'brewing') {
+            if(skill === 'brewing' || skill === 'brewingMedicinal' ) {
                 this.skillBonus = this.skillBonus + 5;
             }
         })

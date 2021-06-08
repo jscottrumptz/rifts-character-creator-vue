@@ -13,7 +13,7 @@ Jamming military or police communications can cause unit confusion and disrupt c
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Radio: Basic`;
+        this.required = `Radio: Basic [Communication]`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `30`;

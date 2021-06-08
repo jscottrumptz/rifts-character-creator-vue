@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class LoreDemonsandMonsters extends Skill {
+class LoreDemonsAndMonsters extends Skill {
     constructor() {
         super();
         this.name = `Lore: Demons & Monsters`;
@@ -12,7 +12,9 @@ class LoreDemonsandMonsters extends Skill {
 This skill can be taken repeatedly to know about demons common to other lands (England, Europe, Asia, South America, etc.), but each demographic location counts as one of the character's skill selections.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Anthropology [Science] is also taken.
++2% to this skill if Archaeology [Science] is also taken.
++5% to this skill if Mythology [Technical] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
@@ -20,6 +22,17 @@ This skill can be taken repeatedly to know about demons common to other lands (E
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
     }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'anthropology' || skill === 'mythology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+            if(skill === 'archaeology') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
+    }
 }
 
-module.exports = LoreDemonsandMonsters;
+module.exports = LoreDemonsAndMonsters;

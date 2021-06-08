@@ -11,7 +11,7 @@ class TrickRiding extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Must have one of the Horsemanship skills.`;
+        this.required = `Must have one of the Horsemanship [Horsemanship] skills.`;
         this.perLvl = ``;
         this.baseTwo = ``;
         this.base = `Equal to the first (larger) Horsemanship skill percentage; roll for each trick/stunt attempt.`;

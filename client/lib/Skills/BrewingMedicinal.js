@@ -12,7 +12,7 @@ class BrewingMedicinal extends Skill {
 The first percentile number indicates the chance of success (a failed roll means an undrinkable concoction). the second percentile indicates the quality of the brew, the higher the number, the tastier the brew.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% Holistic Medicine.`;
+        this.bonus = `+5% to the Holistic Medicine [Medical] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = `30`;

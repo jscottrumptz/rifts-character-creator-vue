@@ -13,7 +13,7 @@ The first percentile number is for small sailing vessels and general sailing kno
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Sewing and Rope Works.`;
+        this.required = `Sewing [Domestic] and Rope Works [Technical].`;
         this.perLvl = `5`;
         this.baseTwo = `40`;
         this.base = `45`;

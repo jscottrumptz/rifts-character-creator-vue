@@ -16,13 +16,21 @@ After this time, the skill roll is made. If unsuccessful, the lock is not opened
         this.description = `The study of lock designs and the ability to repair, build, modify, and open locks. The methods, techniques, and tools of lock picking include the old-style key and tumbler, combination, and modern electrical locking systems.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
-        this.required = `None for any non-electrical lock. Basic Electronics for electrical systems, with a -10% penalty to this skill when working on complex or high-tech locks, or Electrical Engineer with a +5% bonus.`;
+        this.bonus = `+5% to this skill if Mechanical Engineer [Mechanical] is also taken.`;
+        this.required = `None for any non-electrical lock. Basic Electronics [Electrical] for electrical systems, with a -10% penalty to this skill when working on complex or high-tech locks, or Electrical Engineer with a +5% bonus.`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'mechanicalEngineer') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
     }
 }
 

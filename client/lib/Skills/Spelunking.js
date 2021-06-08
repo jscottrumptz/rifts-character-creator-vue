@@ -12,13 +12,22 @@ class Spelunking extends Skill {
 Unskilled characters wandering about in a large series of natural caverns have about the same chance of survival as unskilled climbers attempting to scale a major mountain without guidance or equipment.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to this skill if the character also has Climbing.`;
+        this.bonus = `+5% to this skill if Climbing [Physical] is also taken.
++5% to this skill if Excavation [Technical] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `35`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'climbing' || skill == 'excavation') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
     }
 }
 

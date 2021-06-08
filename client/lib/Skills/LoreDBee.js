@@ -12,13 +12,25 @@ class LoreDBee extends Skill {
 D-Bee lore is the general study of common alien humanoids, their most notable beliefs, customs, habits, inhuman abilities, and the rumors, myths and legends about how they came to Earth, their home world, secret agendas etc. The skill is often limited to D-Bees living in a specific geographic region, where the character originates, i.e. D-Bees known to live in North America are known by characters living in North America. The region may be limited to smaller geographic locations, such as D-Bees of Western America, Midwest, East, Coalition States and so on, to get a +10% skill bonus, and the skill may be selected more than once when focusing on smaller regions. D-Bee lore is not a science,and is not always accurate, complete, or in-depth. See the Anthropology skill for an in-depth approach to behavioral science.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Anthropology [Science] is also taken.
++2% to this skill if Archaeology [Science] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'anthropology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+            if(skill === 'archaeology') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
     }
 }
 

@@ -12,7 +12,7 @@ class ChemistryPharmaceutical extends Skill {
 A failed roll (by the DM) means the drug is improperly administered or prepared, and has no effect.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+10% to Lore: Juicer.`;
+        this.bonus = `+10% to the Lore: Juicer [Technical] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;

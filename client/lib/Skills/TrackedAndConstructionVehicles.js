@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class TrackedandConstructionVehicles extends Skill {
+class TrackedAndConstructionVehicles extends Skill {
     constructor() {
         super();
         this.name = `Tracked & Construction Vehicles`;
@@ -22,4 +22,4 @@ Can pilot tanks and APC's but at -15% penalty and -1 attack per melee round.`;
     }
 }
 
-module.exports = TrackedandConstructionVehicles;
+module.exports = TrackedAndConstructionVehicles;

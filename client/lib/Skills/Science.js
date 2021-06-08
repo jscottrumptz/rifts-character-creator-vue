@@ -1,7 +1,7 @@
 const Anthropology = require('./Anthropology');
 const Archaeology = require('./Archaeology');
 const ArtificialIntelligence = require('./ArtificialIntelligence');
-const AstronomyandNavigation = require('./AstronomyandNavigation');
+const AstronomyAndNavigation = require('./AstronomyAndNavigation');
 const Astrophysics = require('./Astrophysics');
 const Biology = require('./Biology');
 const Botany = require('./Botany');
@@ -12,13 +12,14 @@ const MathematicsAdvanced = require('./MathematicsAdvanced');
 const MathematicsBasic = require('./MathematicsBasic');
 const Xenology = require('./Xenology');
 const Zoology = require('./Zoology');
+const ZoologySpecialized = require('./ZoologySpecialized');
 
 class Science {
     constructor(
         anthropology = new Anthropology,
         archaeology = new Archaeology,
         artificialIntelligence = new ArtificialIntelligence,
-        astronomyandNavigation = new AstronomyandNavigation,
+        astronomyAndNavigation = new AstronomyAndNavigation,
         astrophysics = new Astrophysics,
         biology = new Biology,
         botany = new Botany,
@@ -28,12 +29,13 @@ class Science {
         mathematicsAdvanced = new MathematicsAdvanced,
         mathematicsBasic = new MathematicsBasic,
         xenology = new Xenology,
-        zoology = new Zoology
+        zoology = new Zoology,
+        zoologySpecialized = new ZoologySpecialized
     ) {
         this.anthropology = anthropology;
         this.archaeology = archaeology;
         this.artificialIntelligence = artificialIntelligence;
-        this.astronomyandNavigation = astronomyandNavigation;
+        this.astronomyAndNavigation = astronomyAndNavigation;
         this.astrophysics = astrophysics;
         this.biology = biology;
         this.botany = botany;
@@ -44,6 +46,7 @@ class Science {
         this.mathematicsBasic = mathematicsBasic;
         this.xenology = xenology;
         this.zoology = zoology;
+        this.zoologySpecialized = zoologySpecialized;
     }
 }
 

@@ -11,7 +11,7 @@ class Navigation extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Mathematics: Basic, Sensory Equipment, and Literacy.`;
+        this.required = `Mathematics: Basic [Science], Sensory Equipment [Communication], and Literacy [Communication].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `40`;

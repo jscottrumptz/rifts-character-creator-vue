@@ -14,13 +14,25 @@ The second percentile number indicates a more in-depth knowledge of a particular
 The history skill may be taken repeatedly to cover multiple regions/nations/kingdoms of the world or various subjects (Techno-Wizardry, Magic, Juicers, D-Bees, etc., in that part of the world). The base skill percentages indicate the approximate degree of information the character has learned or can remember accurately; remember, the first number is for a general knowledge of the character's native continent, the second on a more specific subject, all from a historical (event driven) point of view.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Research [Technical] is also taken.
++2% to this skill if Archaeology [Science] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = `30`;
         this.base = `35`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'archaeology') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+            if(skill === 'research') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
     }
 }
 

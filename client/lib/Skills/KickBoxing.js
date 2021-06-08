@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class KickBoxing extends Skill {
     constructor() {
@@ -23,6 +25,12 @@ Leap Kick: 3D8 damage (counts as two melee attacks).`;
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 1;
+        character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 1;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.die(10);
     }
 }
 

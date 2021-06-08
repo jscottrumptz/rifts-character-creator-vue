@@ -12,8 +12,8 @@ class Anthropology extends Skill {
 This skill can also be used to examine artifacts and ancient or alien ruins to identify the probable people/race, purpose, culture and technological level. The character can identify the period of time the item was used (contemporary or ancient), and whether it is human or alien, but is not skilled enough to tell whether an artifact is authentic or a forgery.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to all Lore skills.
-+5% to pre-Rifts History.`;
+        this.bonus = `+5% to any Lore [Technical] skills if this skill is taken.
++5% to History:Pre-Rifts [Technical] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;

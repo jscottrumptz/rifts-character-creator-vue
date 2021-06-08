@@ -14,13 +14,27 @@ This area of study provides general knowledge, theories and historical reference
         this.penalty = ``;
         this.bonus = `Recognize Magic Symbols, Runes and Circles: 15%, +5% per level of experience.
 Recognize Enchantment: 10%, +5%per level of experience. (People under the influence of magic charms, possession, curses, mind control, and similar.)
-Identify Magic Artifact: -15% to Lore: Magic skill. (This will impart general information about a magical artifact. How much information will depend upon the specific item, i.e. how famous/notorious it is, how recognizable it is, and so on.)`;
+Identify Magic Artifact: -15% to Lore: Magic skill. (This will impart general information about a magical artifact. How much information will depend upon the specific item, i.e. how famous/notorious it is, how recognizable it is, and so on.)
++5% to this skill if Anthropology [Science] is also taken.
++2% to this skill if Archaeology [Science] is also taken.
++5% to this skill if Mythology [Technical] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'anthropology' || skill === 'mythology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+            if(skill === 'archaeology') {
+                this.skillBonus = this.skillBonus + 2;
+            }
+        })
     }
 }
 

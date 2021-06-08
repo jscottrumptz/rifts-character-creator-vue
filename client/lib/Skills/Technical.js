@@ -9,20 +9,20 @@ const CyberneticsBasic = require('./CyberneticsBasic');
 const Excavation = require('./Excavation');
 const Firefighting = require('./Firefighting');
 const Gemology = require('./Gemology');
-const GeneralRepairandMaintenance = require('./GeneralRepairandMaintenance');
+const GeneralRepairAndMaintenance = require('./GeneralRepairAndMaintenance');
 const HistoryPostApocalypse = require('./HistoryPostApocalypse');
 const HistoryPreRifts = require('./HistoryPreRifts');
 const JuryRig = require('./JuryRig');
 const LawGeneral = require('./LawGeneral');
 const LeatherWorking = require('./LeatherWorking');
 const LoreAmericanIndiansTechnical = require('./LoreAmericanIndiansTechnical');
-const LoreCattleandAnimals = require('./LoreCattleandAnimals');
+const LoreCattleAndAnimals = require('./LoreCattleAndAnimals');
 const LoreDBee = require('./LoreDBee');
-const LoreDemonsandMonsters = require('./LoreDemonsandMonsters');
-const LoreFaerieandCreaturesOfMagic = require('./LoreFaerieandCreaturesOfMagic');
+const LoreDemonsAndMonsters = require('./LoreDemonsAndMonsters');
+const LoreFaerieAndCreaturesOfMagic = require('./LoreFaerieAndCreaturesOfMagic');
 const LoreJuicers = require('./LoreJuicers');
 const LoreMagic = require('./LoreMagic');
-const LorePsychicsandPsionics = require('./LorePsychicsandPsionics');
+const LorePsychicsAndPsionics = require('./LorePsychicsAndPsionics');
 const Masonry = require('./Masonry');
 const Mining = require('./Mining');
 const Mythology = require('./Mythology');
@@ -34,7 +34,7 @@ const Research = require('./Research');
 const RopeWorks = require('./RopeWorks');
 const Salvage = require('./Salvage');
 const Ventriloquism = require('./Ventriloquism');
-const WhittlingandSculpting = require('./WhittlingandSculpting');
+const WhittlingAndSculpting = require('./WhittlingAndSculpting');
 
 class Technical {
     constructor(
@@ -49,20 +49,20 @@ class Technical {
         excavation = new Excavation,
         firefighting = new Firefighting,
         gemology = new Gemology,
-        generalRepairandMaintenance = new GeneralRepairandMaintenance,
+        generalRepairAndMaintenance = new GeneralRepairAndMaintenance,
         historyPostApocalypse = new HistoryPostApocalypse,
         historyPreRifts = new HistoryPreRifts,
         juryRig = new JuryRig,
         lawGeneral = new LawGeneral,
         leatherWorking = new LeatherWorking,
         loreAmericanIndiansTechnical = new LoreAmericanIndiansTechnical,
-        loreCattleandAnimals = new LoreCattleandAnimals,
+        loreCattleAndAnimals = new LoreCattleAndAnimals,
         loreDBee = new LoreDBee,
-        loreDemonsandMonsters = new LoreDemonsandMonsters,
-        loreFaerieandCreaturesOfMagic = new LoreFaerieandCreaturesOfMagic,
+        loreDemonsAndMonsters = new LoreDemonsAndMonsters,
+        loreFaerieAndCreaturesOfMagic = new LoreFaerieAndCreaturesOfMagic,
         loreJuicers = new LoreJuicers,
         loreMagic = new LoreMagic,
-        lorePsychicsandPsionics = new LorePsychicsandPsionics,
+        lorePsychicsAndPsionics = new LorePsychicsAndPsionics,
         masonry = new Masonry,
         mining = new Mining,
         mythology = new Mythology,
@@ -74,7 +74,7 @@ class Technical {
         ropeWorks = new RopeWorks,
         salvage = new Salvage,
         ventriloquism = new Ventriloquism,
-        whittlingandSculpting = new WhittlingandSculpting
+        whittlingAndSculpting = new WhittlingAndSculpting
     ) {
         this.appraiseGoods = appraiseGoods;
         this.art = art;
@@ -87,20 +87,20 @@ class Technical {
         this.excavation = excavation;
         this.firefighting = firefighting;
         this.gemology = gemology;
-        this.generalRepairandMaintenance = generalRepairandMaintenance;
+        this.generalRepairAndMaintenance = generalRepairAndMaintenance;
         this.historyPostApocalypse = historyPostApocalypse;
         this.historyPreRifts = historyPreRifts;
         this.juryRig = juryRig;
         this.lawGeneral = lawGeneral;
         this.leatherWorking = leatherWorking;
         this.loreAmericanIndiansTechnical = loreAmericanIndiansTechnical;
-        this.loreCattleandAnimals = loreCattleandAnimals;
+        this.loreCattleAndAnimals = loreCattleAndAnimals;
         this.loreDBee = loreDBee;
-        this.loreDemonsandMonsters = loreDemonsandMonsters;
-        this.loreFaerieandCreaturesOfMagic = loreFaerieandCreaturesOfMagic;
+        this.loreDemonsAndMonsters = loreDemonsAndMonsters;
+        this.loreFaerieAndCreaturesOfMagic = loreFaerieAndCreaturesOfMagic;
         this.loreJuicers = loreJuicers;
         this.loreMagic = loreMagic;
-        this.lorePsychicsandPsionics = lorePsychicsandPsionics;
+        this.lorePsychicsAndPsionics = lorePsychicsAndPsionics;
         this.masonry = masonry;
         this.mining = mining;
         this.mythology = mythology;
@@ -112,7 +112,7 @@ class Technical {
         this.ropeWorks = ropeWorks;
         this.salvage = salvage;
         this.ventriloquism = ventriloquism;
-        this.whittlingandSculpting = whittlingandSculpting;
+        this.whittlingAndSculpting = whittlingAndSculpting;
     }
 }
 

@@ -2,7 +2,7 @@ const WPHandguns = require('./WPHandguns');
 const WPBoltActionRifleHuntingOrSnipingOrShotguns = require('./WPBoltActionRifleHuntingOrSnipingOrShotguns');
 const WPEnergyPistol = require('./WPEnergyPistol');
 const WPEnergyRifle = require('./WPEnergyRifle');
-const WPHarpoonandSpeargun = require('./WPHarpoonandSpeargun');
+const WPHarpoonAndSpeargun = require('./WPHarpoonAndSpeargun');
 const WPHeavyMilitary = require('./WPHeavyMilitary');
 const WPHeavyMD = require('./WPHeavyMD');
 const WPMilitaryFlamethrowers = require('./WPMilitaryFlamethrowers');
@@ -17,7 +17,7 @@ class WeaponProficienciesModern {
         wPBoltActionRifleHuntingOrSnipingOrShotguns = new WPBoltActionRifleHuntingOrSnipingOrShotguns,
         wPEnergyPistol = new WPEnergyPistol,
         wPEnergyRifle = new WPEnergyRifle,
-        wPHarpoonandSpeargun = new WPHarpoonandSpeargun,
+        wPHarpoonAndSpeargun = new WPHarpoonAndSpeargun,
         wPHeavyMilitary = new WPHeavyMilitary,
         wPHeavyMD = new WPHeavyMD,
         wPMilitaryFlamethrowers = new WPMilitaryFlamethrowers,
@@ -30,7 +30,7 @@ class WeaponProficienciesModern {
         this.wPBoltActionRifleHuntingOrSnipingOrShotguns = wPBoltActionRifleHuntingOrSnipingOrShotguns;
         this.wPEnergyPistol = wPEnergyPistol;
         this.wPEnergyRifle = wPEnergyRifle;
-        this.wPHarpoonandSpeargun = wPHarpoonandSpeargun;
+        this.wPHarpoonAndSpeargun = wPHarpoonAndSpeargun;
         this.wPHeavyMilitary = wPHeavyMilitary;
         this.wPHeavyMD = wPHeavyMD;
         this.wPMilitaryFlamethrowers = wPMilitaryFlamethrowers;

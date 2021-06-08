@@ -17,7 +17,7 @@ The character can hot-wire any vehicle without penalty but it takes 1D4 melee ro
         this.reqOCCGroup = ``;
         this.penalty = `There is a -30% penalty when working on alien or extremely unfamiliar electronics including Techno-Wizard and Bio-Wizard devices. The electrician may be able to puzzle out some basic aspects of such a device, and may be able to figure out how to operate the machine, but is unable to completely fathom how it works or how to repair it.`;
         this.bonus = ``;
-        this.required = `Mathematics: Advanced and Literacy.`;
+        this.required = `Mathematics: Advanced [Science] and Literacy [Communication].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `35`;

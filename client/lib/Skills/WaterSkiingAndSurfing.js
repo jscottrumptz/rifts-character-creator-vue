@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class WaterSkiingandSurfing extends Skill {
+class WaterSkiingAndSurfing extends Skill {
     constructor() {
         super();
         this.name = `Water Skiing & Surfing`;
@@ -20,4 +20,4 @@ class WaterSkiingandSurfing extends Skill {
     }
 }
 
-module.exports = WaterSkiingandSurfing;
+module.exports = WaterSkiingAndSurfing;

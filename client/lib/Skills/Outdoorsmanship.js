@@ -1,9 +1,11 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
-class Outdoormanship extends Skill {
+class Outdoorsmanship extends Skill {
     constructor() {
         super();
-        this.name = `Outdoormanship`;
+        this.name = `Outdoorsmanship`;
         this.group = `Physical`;
         this.isSecondary = `false`;
         this.note = ``;
@@ -12,10 +14,10 @@ class Outdoormanship extends Skill {
         this.penalty = ``;
         this.bonus = `+1 to P.E.
 +2D6 to S.D.C.
-+5% to Dowsing.
-+5% to Fasting.
-+5% to Identify Plants & Fruit
-+5% to Wilderness Survival.`;
++5% to the Dowsing [Wilderness] skill if this skill is taken..
++5% to the Fasting [Wilderness] skill if this skill is taken..
++5% to the Identify Plants & Fruit [Wilderness] skill if this skill is taken.
++5% to the Wilderness Survival [Espionage, Wilderness] skill if this skill is taken.`;
         this.required = `Wilderness Survival.`;
         this.perLvl = ``;
         this.baseTwo = ``;
@@ -24,6 +26,11 @@ class Outdoormanship extends Skill {
         this.takeTwice = ``;
         this.preq = ['wildernessSurvival']
     }
+
+    rollSecondary(character) {
+        character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 1;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(6,2).reduce((a, b) => a + b, 0);
+    }
 }
 
-module.exports = Outdoormanship;
+module.exports = Outdoorsmanship;

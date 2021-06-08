@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class ImitateVoicesandSounds extends Skill {
+class ImitateVoicesAndSounds extends Skill {
     constructor() {
         super();
         this.name = `Imitate Voices & Sounds`;
@@ -12,7 +12,7 @@ class ImitateVoicesandSounds extends Skill {
 The second number indicates the ability to duplicate various calls, screams, chirps, and buzzes that are found in the wilderness. Distinctive calls are often used as signals during sneak attacks, with different calls meaning to the people who know them 'all is calm/quiet,' 'guard on watch,' 'move cautiously,' 'danger,' and 'attack!'`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to the Impersonation skill.`;
+        this.bonus = `+5% to the Impersonation [Espionage] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `4`;
         this.baseTwo = `36`;
@@ -22,4 +22,4 @@ The second number indicates the ability to duplicate various calls, screams, chi
     }
 }
 
-module.exports = ImitateVoicesandSounds;
+module.exports = ImitateVoicesAndSounds;

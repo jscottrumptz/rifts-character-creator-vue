@@ -14,9 +14,9 @@ class Acrobatics extends Skill {
         this.penalty = ``;
         this.bonus = `Automatic Kick attack at first level; 1D8 damage.
 Back Flip - 60% +5% per level.
-Climb Skill 40% (if skill not already taken) or +15% to Climb Skill (if already taken).
+Climb Skill 40% (if skill not already taken) or +15% to Climb [Physical] if also taken.
 Climb Rope - 80% +2% per level.
-Prowl Skill 30% (if skill not already taken) or +5% to Prowl Skill (if already taken).
+Prowl Skill 30% (if skill not already taken) or +5% to Prowl [Physical or Rogue] if also taken.
 +1 P.E.
 +1 P.P..
 +1 P.S.
@@ -36,9 +36,8 @@ Walk Tightrope or High Wire - 60% +5% per level.`;
         character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 1;
         character.attributes.pp.skillsBonus = character.attributes.pp.skillsBonus + 1;
         character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 1;
-        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus + 1;
+        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus + 2;
         character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.die(6)
-
     }
 }
 

@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class WardrobeandGrooming extends Skill {
+class WardrobeAndGrooming extends Skill {
     constructor() {
         super();
         this.name = `Wardrobe & Grooming`;
@@ -31,4 +31,4 @@ class WardrobeandGrooming extends Skill {
     }
 }
 
-module.exports = WardrobeandGrooming;
+module.exports = WardrobeAndGrooming;

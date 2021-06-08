@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class WhittlingandSculpting extends Skill {
+class WhittlingAndSculpting extends Skill {
     constructor() {
         super();
         this.name = `Whittling & Sculpting`;
@@ -15,9 +15,15 @@ class WhittlingandSculpting extends Skill {
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `35`;
-        this.takeTwiceBonus = `10`;
+        this.takeTwiceBonus = `+10%`;
         this.takeTwice = `true`;
+    }
+
+    rollSecondary() {
+        if (this.takenTwice) {
+            this.skillBonus = this.skillBonus + 10;
+        }
     }
 }
 
-module.exports = WhittlingandSculpting;
+module.exports = WhittlingAndSculpting;

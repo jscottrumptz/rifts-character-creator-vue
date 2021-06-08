@@ -10,7 +10,7 @@ class OpticSystems extends Skill {
         this.description = `This skill provides training in the use of special optic enhancement equipment such as telescopic lenses, laser targeting, thermal imagers, passive light intensifiers, infrared and ultraviolet systems, polarization, light filters, optical scanners, video and digital cameras, holograms, and related devices.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% TV/Video skill if both are selected.`;
+        this.bonus = `+5% to the TV/Video [Communication] skill if this skill is taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;

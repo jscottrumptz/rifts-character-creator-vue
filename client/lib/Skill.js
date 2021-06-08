@@ -42,7 +42,8 @@ class Skill {
         perLvl = 0,
         raceBonus = 0,
         occBonus = 0,
-        skillBonus = 0
+        skillBonus = 0,
+        attributeBonus = 0
     )
     {
         this.name = name;
@@ -71,6 +72,7 @@ class Skill {
         this.raceBonus = raceBonus;
         this.occBonus = occBonus;
         this.skillBonus = skillBonus
+        this.attributeBonus = attributeBonus;
     }
     rollSecondary() {
         // set an empty return in case method is called in an array even though it isn't needed

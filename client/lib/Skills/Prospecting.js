@@ -12,13 +12,21 @@ class Prospecting extends Skill {
 Furthermore, the character can identify and appraise the value of precious metals (silver, gold, etc.) and stones (diamonds, rubies, etc.) and to identify fakes, but at a penalty of -10%. A failed roll (by the DM) means the character can not tell whether or not the item is fake or real, or they grossly under or overestimates its value.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Gemology [Technical] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `20`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'gemology') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
     }
 }
 

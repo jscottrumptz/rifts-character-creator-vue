@@ -1,9 +1,9 @@
 const Skill = require('../Skill');
 
-class VehicleArmourer extends Skill {
+class VehicleArmorer extends Skill {
     constructor() {
         super();
-        this.name = `Vehicle Armourer`;
+        this.name = `Vehicle Armorer`;
         this.group = `Mechanical`;
         this.isSecondary = `false`;
         this.note = `Extra Armour
@@ -43,4 +43,4 @@ Drive/operate military vehicles and trucks at the base skill for that vehicle ty
     }
 }
 
-module.exports = VehicleArmourer;
+module.exports = VehicleArmorer;

@@ -14,15 +14,15 @@ Anyone who has been successfully seduced is distracted, skill performance is hal
 Characters with high M.S. and/or P.B. gains bonuses as indicated below. [Example: a character with a M.S. of 24 (+4) and a P.B. of 23 (+3%) would be +7% to successfully seduce.]`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = `+5% to this skill if target is intoxicated or drugged.
-+1% for each M.S. point over 20.
+        this.bonus = `+2% to this skill if Wardrobe & Grooming [Domestic] is taken.
++5% to this skill if target is intoxicated or drugged.
++1% for each M.A. point over 20.
 +1% for each two P.B. points over 17 (round up).
-+5 to Pick Pockets/Palming/plant things on victim.
-+5% to Cardsharp [Rogue] if this skill is taken.
-+5% to Sing [Domestic or Communication] if this skill is taken.
-+5% to Dance [Domestic] if this skill is taken.
-+1 additional target of seduction every 3 levels of experience.
-+2% to this skill if Wardrobe & Grooming is taken.`;
++5% to the Pick Pockets [Espionage, Rogue] skill, Palming [Rogue] skill or to plant things on victim.
++5% to the Cardsharp [Rogue] skill if this skill is taken.
++5% to the Sing [Domestic or Communication] skill if this skill is taken.
++5% to the Dance [Domestic] skill if this skill is taken.
++1 additional target of seduction every 3 levels of experience.`;
         this.required = ``;
         this.perLvl = `3`;
         this.baseTwo = ``;
@@ -33,10 +33,16 @@ Characters with high M.S. and/or P.B. gains bonuses as indicated below. [Example
 
     rollSecondary(character, list) {
         list.forEach(skill => {
-            if(skill === 'wardrobeandGrooming') {
+            if(skill === 'wardrobeAndGrooming') {
                 this.skillBonus = this.skillBonus + 2;
             }
         })
+        if (character.attributes.ma.total > 20) {
+            this.attributeBonus = this.attributeBonus + character.attributes.ma.total - 20;
+        }
+        if (character.attributes.pb.total > 17) {
+            this.attributeBonus = this.attributeBonus + Math.ceil(((character.attributes.pb.total - 17)/2));
+        }
     }
 }
 

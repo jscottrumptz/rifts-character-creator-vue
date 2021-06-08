@@ -17,7 +17,7 @@ This skill does not provide the ability to recite written words with any level o
         this.reqOCCGroup = ``;
         this.penalty = `Write songs at -15%`;
         this.bonus = ``;
-        this.required = `Literacy`;
+        this.required = `Literacy [Communication]`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `25`;

@@ -11,13 +11,17 @@ class CrimeSceneInvestigation extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = `+1 to Perception rolls.`;
-        this.required = `Biology and Chemistry: Analytical`;
+        this.required = `Biology [Science] and Chemistry: Analytical [Science].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `35`;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
         this.preq = ['biology', 'chemistryAnalytical']
+    }
+
+    rollSecondary(character) {
+        character.bonuses.perception.skillsBonus = character.bonuses.perception.skillsBonus +1;
     }
 }
 

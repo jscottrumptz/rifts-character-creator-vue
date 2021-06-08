@@ -8,7 +8,7 @@ const PlayMusicalInstrument = require('./PlayMusicalInstrument');
 const RecycleDomestic = require('./RecycleDomestic');
 const SewingOrTailoring = require('./SewingOrTailoring');
 const SingDomestic = require('./SingDomestic');
-const WardrobeandGrooming = require('./WardrobeandGrooming');
+const WardrobeAndGrooming = require('./WardrobeAndGrooming');
 
 class Domestic {
     constructor(
@@ -22,7 +22,7 @@ class Domestic {
         recycleDomestic = new RecycleDomestic,
         sewingOrTailoring = new SewingOrTailoring,
         singDomestic = new SingDomestic,
-        wardrobeandGrooming = new WardrobeandGrooming
+        wardrobeAndGrooming = new WardrobeAndGrooming
     ) {
         this.brewing = brewing;
         this.cook = cook;
@@ -34,7 +34,7 @@ class Domestic {
         this.recycleDomestic = recycleDomestic;
         this.sewingOrTailoring = sewingOrTailoring;
         this.singDomestic = singDomestic;
-        this.wardrobeandGrooming = wardrobeandGrooming;
+        this.wardrobeAndGrooming = wardrobeAndGrooming;
 
     }
 }

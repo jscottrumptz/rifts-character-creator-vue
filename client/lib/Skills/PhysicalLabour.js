@@ -1,4 +1,6 @@
 const Skill = require('../Skill');
+const { Random } = require('random-js');
+const random = new Random;
 
 class PhysicalLabour extends Skill {
     constructor() {
@@ -19,6 +21,12 @@ class PhysicalLabour extends Skill {
         this.base = ``;
         this.takeTwiceBonus = ``;
         this.takeTwice = ``;
+    }
+
+    rollSecondary(character) {
+        character.attributes.ps.skillsBonus = character.attributes.ps.skillsBonus + 2;
+        character.attributes.pe.skillsBonus = character.attributes.pe.skillsBonus + 1;
+        character.secondaryStats.sdc.skillsBonus = character.secondaryStats.sdc.skillsBonus + random.dice(8,2).reduce((a, b) => a + b, 0);
     }
 }
 

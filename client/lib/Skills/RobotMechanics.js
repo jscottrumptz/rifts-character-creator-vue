@@ -11,7 +11,7 @@ class RobotMechanics extends Skill {
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Mechanical Engineer and Electrical Engineer.`;
+        this.required = `Mechanical Engineer [Mechanical] and Electrical Engineer [Electrical].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `20`;

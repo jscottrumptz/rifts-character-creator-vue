@@ -12,7 +12,7 @@ class SewingOrTailoring extends Skill {
 This is not a tailoring ability, but can become tailoring if this skill is selected twice (if so make skill Sewing: Tailoring).`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
-        this.bonus = ``;
+        this.bonus = `+5% to this skill if Skin & Prepare Animal Hides [Wilderness] is also taken.`;
         this.required = ``;
         this.perLvl = `5`;
         this.baseTwo = ``;
@@ -21,7 +21,13 @@ This is not a tailoring ability, but can become tailoring if this skill is selec
         this.takeTwice = `true`;
     }
 
-    rollSecondary() {
+    rollSecondary(character, list) {
+        list.forEach(skill => {
+            if(skill === 'skinAndPrepareAnimalHides') {
+                this.skillBonus = this.skillBonus + 5;
+            }
+        })
+
         if (this.takenTwice) {
             this.skillBonus = this.skillBonus + 10;
         }

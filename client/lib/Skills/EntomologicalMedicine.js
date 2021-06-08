@@ -17,7 +17,7 @@ In its more advanced application, the character understands and can treat 'insec
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;
-        this.required = `Chemistry: Analytical OR Mathematics: Basic and Chemistry.`;
+        this.required = `Chemistry: Analytical [Science] OR Mathematics: Basic [Science] and Chemistry [Science].`;
         this.perLvl = `5`;
         this.baseTwo = `20`;
         this.base = `40`;

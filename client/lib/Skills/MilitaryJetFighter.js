@@ -7,7 +7,7 @@ class MilitaryJetFighter extends Skill {
         this.group = `Pilot`;
         this.isSecondary = `false`;
         this.note = ``;
-        this.description = `The training includes flying, manoeuvering, aerial combat strategies, and typical fighter jet weapon systems.`;
+        this.description = `The training includes flying, manoeuvring, aerial combat strategies, and typical fighter jet weapon systems.`;
         this.reqOCCGroup = ``;
         this.penalty = ``;
         this.bonus = ``;

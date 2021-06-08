@@ -1,6 +1,6 @@
 const Skill = require('../Skill');
 
-class WPHarpoonandSpeargun extends Skill {
+class WPHarpoonAndSpeargun extends Skill {
     constructor() {
         super();
         this.name = `W.P. Harpoon & Speargun`;
@@ -22,4 +22,4 @@ Recognise Weapon Quality: -30% at level 1, +6% per level of experience.`;
     }
 }
 
-module.exports = WPHarpoonandSpeargun;
+module.exports = WPHarpoonAndSpeargun;

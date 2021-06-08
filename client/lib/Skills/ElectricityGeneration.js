@@ -13,7 +13,7 @@ Electricity is generated in a variety of ways: from sunlight, wind and hydro sys
         this.reqOCCGroup = ``;
         this.penalty = `-40% penalty when working on alien, Techno-Wizard, or magical systems.`;
         this.bonus = ``;
-        this.required = `Basic Electronics, Basic Mechanics, and Mathematics: Basic.`;
+        this.required = `Basic Electronics [Electrical], Basic Mechanics [Mechanical], and Mathematics: Basic [Science].`;
         this.perLvl = `5`;
         this.baseTwo = ``;
         this.base = `50`;

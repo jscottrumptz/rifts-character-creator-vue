@@ -1,7 +1,7 @@
 const Acrobatics = require('./Acrobatics');
 const AerobicAthletics = require('./AerobicAthletics');
 const AthleticsGeneral = require('./AthleticsGeneral');
-const BodyBuildingandWeightLifting = require('./BodyBuildingandWeightLifting');
+const BodyBuildingAndWeightLifting = require('./BodyBuildingAndWeightLifting');
 const Boxing = require('./Boxing');
 const Climb = require('./Climb');
 const Fencing = require('./Fencing');
@@ -15,7 +15,7 @@ const HandToHandMartialArts = require('./HandToHandMartialArts');
 const Juggling = require('./Juggling');
 const KickBoxing = require('./KickBoxing');
 const NoHandToHandSkill = require('./NoHandToHandSkill');
-const Outdoormanship = require('./Outdoormanship');
+const Outdoorsmanship = require('./Outdoorsmanship');
 const PhysicalLabour = require('./PhysicalLabour');
 const ProwlPhysical = require('./ProwlPhysical');
 const Running = require('./Running');
@@ -28,7 +28,7 @@ class Physical {
         acrobatics = new Acrobatics,
         aerobicAthletics = new AerobicAthletics,
         athleticsGeneral = new AthleticsGeneral,
-        bodyBuildingandWeightLifting = new BodyBuildingandWeightLifting,
+        bodyBuildingAndWeightLifting = new BodyBuildingAndWeightLifting,
         boxing = new Boxing,
         climb = new Climb,
         fencing = new Fencing,
@@ -42,7 +42,7 @@ class Physical {
         juggling = new Juggling,
         kickBoxing = new KickBoxing,
         noHandToHandSkill = new NoHandToHandSkill,
-        outdoormanship = new Outdoormanship,
+        outdoorsmanship = new Outdoorsmanship,
         physicalLabour = new PhysicalLabour,
         prowlPhysical = new ProwlPhysical,
         running = new Running,
@@ -53,7 +53,7 @@ class Physical {
         this.acrobatics = acrobatics;
         this.aerobicAthletics = aerobicAthletics;
         this.athleticsGeneral = athleticsGeneral;
-        this.bodyBuildingandWeightLifting = bodyBuildingandWeightLifting;
+        this.bodyBuildingAndWeightLifting = bodyBuildingAndWeightLifting;
         this.boxing = boxing;
         this.climb = climb;
         this.fencing = fencing;
@@ -67,7 +67,7 @@ class Physical {
         this.juggling = juggling;
         this.kickBoxing = kickBoxing;
         this.noHandToHandSkill = noHandToHandSkill;
-        this.outdoormanship = outdoormanship;
+        this.outdoorsmanship = outdoorsmanship;
         this.physicalLabour = physicalLabour;
         this.prowlPhysical = prowlPhysical;
         this.running = running;

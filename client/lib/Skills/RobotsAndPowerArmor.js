@@ -1,9 +1,9 @@
 const Skill = require('../Skill');
 
-class RobotsandPowerArmour extends Skill {
+class RobotsAndPowerArmor extends Skill {
     constructor() {
         super();
-        this.name = `Robots & Power Armour`;
+        this.name = `Robots & Power Armor`;
         this.group = `Pilot`;
         this.isSecondary = `false`;
         this.note = ``;
@@ -33,4 +33,4 @@ In fact, the use of weapons and special combat features (targeting, radar, etc.)
     }
 }
 
-module.exports = RobotsandPowerArmour;
+module.exports = RobotsAndPowerArmor;
