@@ -5,20 +5,13 @@ class LoreJuicers extends Skill {
         super();
         this.name = `Lore: Juicers`;
         this.group = `Technical`;
-        this.isSecondary = `true`;
-        this.note = ``;
+        this.isSecondary = true;
         this.description = `All there is to know about the Juicer culture, different juicer variants, what powers they possess, Juicer lore and myths,drug side-effects, last call, Juicer wannabes/cults, infamous Juicers in history, current famous Juicer leaders, notorious Juicer gangs, and similar facts. The character can recognize Juicers by their armour and abilities.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+5% to this skill if Anthropology [Science] is also taken.
 +2% to this skill if Archaeology [Science] is also taken.
 +10% to this skill if Chemistry: Pharmaceutical [Science] is also taken.`;
-        this.required = ``;
-        this.perLvl = `5`;
-        this.baseTwo = ``;
-        this.base = `30`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 5;
+        this.base = 30;
     }
 
     rollSecondary(character, list) {

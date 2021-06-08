@@ -5,11 +5,8 @@ class HorsemanshipCowboyCowboy extends Skill {
         super();
         this.name = `Horsemanship: Cowboy`;
         this.group = `Cowboy`;
-        this.isSecondary = `false`;
-        this.note = ``;
+        this.isSecondary = false;
         this.description = `This skill is not available to most O.C.C.s. The American cowboy is, arguably, the most skilled and versatile horseman in the world, especially when riding combined with skills such as Roping and Herding as part of the cowboy's repertoire of horsemanship related skills, skills not normally available to other horsemen such as knights. Only the Cossack is on par with a cowboy.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+1 Initiative (while on horseback) at levels 2, 5, 10, & 15.
 +2 Parry (while on horseback).
 +2 Dodge (while on horseback).
@@ -32,12 +29,9 @@ Racing (2nd percentile is success ratio of getting maximum speed while racing at
 +2 Dodge (while on horseback).
 +2 Rope/Ensnare/Entangle (while on horseback).
 +2 Roll with Fall/Impact (when knocked/thrown from a horse).`;
-        this.required = ``;
-        this.perLvl = `3`;
-        this.baseTwo = `50`;
-        this.base = `66`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 3;
+        this.baseTwo = 50;
+        this.base = 66;
     }
 }
 

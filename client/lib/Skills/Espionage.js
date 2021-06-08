@@ -9,7 +9,7 @@ const Interrogation = require('./Interrogation');
 const PickLocksEspionage = require('./PickLocksEspionage');
 const PickPocketsEspionage = require('./PickPocketsEspionage');
 const Sniper = require('./Sniper');
-const TrackingHumansandRobots = require('./TrackingHumansandRobots');
+const TrackingHumansAndRobots = require('./TrackingHumansAndRobots');
 const UndercoverOps = require('./UndercoverOps');
 const WildernessSurvivalEspionage = require('./WildernessSurvivalEspionage');
 
@@ -26,7 +26,7 @@ class Espionage {
         pickLocksEspionage = new PickLocksEspionage,
         pickPocketsEspionage = new PickPocketsEspionage,
         sniper = new Sniper,
-        trackingHumansandRobots = new TrackingHumansandRobots,
+        trackingHumansAndRobots = new TrackingHumansAndRobots,
         undercoverOps = new UndercoverOps,
         wildernessSurvivalEspionage = new WildernessSurvivalEspionage
     ) {
@@ -41,7 +41,7 @@ class Espionage {
         this.pickLocksEspionage = pickLocksEspionage;
         this.pickPocketsEspionage = pickPocketsEspionage;
         this.sniper = sniper;
-        this.trackingHumansandRobots = trackingHumansandRobots;
+        this.trackingHumansAndRobots = trackingHumansAndRobots;
         this.undercoverOps = undercoverOps;
         this.wildernessSurvivalEspionage = wildernessSurvivalEspionage;
     }

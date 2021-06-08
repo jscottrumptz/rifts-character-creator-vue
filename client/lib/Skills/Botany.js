@@ -5,18 +5,10 @@ class Botany extends Skill {
         super();
         this.name = `Botany`;
         this.group = `Science`;
-        this.isSecondary = `false`;
-        this.note = ``;
+        this.isSecondary = false;
         this.description = `The plants, their categories and functions, are studied extensively. Characters will know the basics of cross-fertilization and germination, as well as growing experimental plants.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
-        this.bonus = ``;
-        this.required = ``;
-        this.perLvl = `5`;
-        this.baseTwo = ``;
-        this.base = `25`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 5;
+        this.base = 25;
     }
 }
 

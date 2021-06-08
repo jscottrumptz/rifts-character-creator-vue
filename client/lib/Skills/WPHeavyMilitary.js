@@ -5,7 +5,7 @@ class WPHeavyMilitary extends Skill {
         super();
         this.name = `W.P. Heavy Military`;
         this.group = `Weapon Proficiencies Modern`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Training: Enables the character to easily reload, dissasemble, unjam, clean, or otherwise maintain the weapon.
 
 Recognise Weapon Quality: -30% at level 1, +6% per level of experience.
@@ -42,15 +42,7 @@ Range - typically, 4000 feet (1219m).
 
 Payload - one round.`;
         this.description = `This modern weapon proficiency includes machineguns, bazookas, LAWS, grenade launchers, mini-guns, mortars, and S.D.C. and equivalent light M.D. weapon turrets.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+1 to strike at levels1, 3, 6, 10, and 14.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 }
 

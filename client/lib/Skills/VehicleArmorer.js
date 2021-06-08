@@ -5,7 +5,7 @@ class VehicleArmorer extends Skill {
         super();
         this.name = `Vehicle Armorer`;
         this.group = `Mechanical`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Extra Armour
 Replace S.D.C. body with M.D.C. body or add more M.D.C. to M.D.C. armour at:-
 12 M.D.C. per level of experience to military/combat vehicles, full-sized vans and large trucks. Reduce speed by 5% for every extra 24 M.D.C. of armour on military vehicles.
@@ -29,17 +29,11 @@ Add a roof mounted turret (1D4x10+15 M.D.C.).
 Add or repair weapon mounts for heavy vehicle-mounted weapons (rail guns, machine-guns, mini-missile launchers, heavy lasers, flame throwers, etc.) but can not hook up the weapon or ammo drum or modify the actual weapon unless they also have the Weapon Systems skill.
 Note that all the above is illegal in the Coalition States and some other kingdoms and communities(park your vehicle on the outskirts of town), and perfectly legal at others, especially those that cater to mercenaries (Kingsdale, MercTown, Arzno, etc.). Acquiring military grade weapons, ammo, parts, and vehicles can also be a challenge (see Find Contraband skill).`;
         this.description = `This skill is usually reserved for the Military Technical Officer O.C.C. (Engineers and Mechanics) and Operator O.C.C. (probably working for the Black Market, weapon manufacturers like Northern Gun, military contractors, or somebody's military). The specialized skill in which the character can do more than just tinker with the mechanics of a vehicle.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Automatically gets Basic Mechanics skill at +20% as part of this skill.
 +10% to Automotive Mechanics skill.
 Drive/operate military vehicles and trucks at the base skill for that vehicle type.`;
-        this.required = ``;
-        this.perLvl = `5`;
-        this.baseTwo = ``;
-        this.base = `30`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 5;
+        this.base = 30;
     }
 }
 

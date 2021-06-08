@@ -5,13 +5,11 @@ class HandToHandCommando extends Skill {
         super();
         this.name = `Hand to Hand: Commando`;
         this.group = `Physical`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Commando combat training enables the character to use any basic/common attacks, including Punch, Elbow, Kick, Knee, Disarm, Dodge, Entangle, Body Block/Tackle, Body Flip/Throw, Roll with Impact, Power Punch, Power Kick, and Pull Punch, and even many martial art moves, but unless noted below, the character does not have special martial art moves.`;
         this.description = `This is an advanced form of military combat that includes martial arts techniques with an emphasis on immobilizing or killing one's opponent quickly. Restricted to certain O.C.C.s and is only available when the O.C.C./R.C.C. says so.
 
 This style of combat is a quick and dirty form of martial arts typically available only to members of the military, and even then, only to special operations teams such as Commandos, Navy Seals, Special Forces, and Military Specialists.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Level 1:
 Starts with 4 Hand to Hand attack/actions per melee round.
 W.P. Paired Weapons.
@@ -74,12 +72,6 @@ Perform Holds.
 +1 Initiative.
 Level 15:
 Critical Strike on natural 17-20.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 }
 

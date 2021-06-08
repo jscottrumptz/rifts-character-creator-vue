@@ -5,18 +5,10 @@ class DemolitionsDisposal extends Skill {
         super();
         this.name = `Demolitions Disposal`;
         this.group = `Military`;
-        this.isSecondary = `false`;
-        this.note = ``;
+        this.isSecondary = false;
         this.description = `The skill to safely defuse unexploded mines,bombs, explosive traps, dud artillery rounds, dud explosive charges, or any other type of explosive device.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
-        this.bonus = ``;
-        this.required = ``;
-        this.perLvl = `3`;
-        this.baseTwo = ``;
-        this.base = `60`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 3;
+        this.base = 60;
     }
 }
 

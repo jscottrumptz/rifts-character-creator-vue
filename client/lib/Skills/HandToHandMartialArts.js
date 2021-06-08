@@ -5,13 +5,11 @@ class HandToHandMartialArts extends Skill {
         super();
         this.name = `Hand to Hand: Martial Arts`;
         this.group = `Physical`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Martial Arts combat training enables the character to use any basic/common attacks, including Punch, Elbow, Kick, Knee, Disarm, Dodge, Entangle, Body Block/Tackle, Body Flip/Throw, Roll with Impact, Power Punch, Power Kick, and Pull Punch, as well as the martial arts moves listed below.`;
         this.description = `This is some form of Oriental fighting skill (karate, kung-fu, etc.) that teaches advanced hand to hand combat. It costs three of the character's skill selections to learn.
 
 A form of martial arts that takes and mixes techniques from many different sources.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Level 1:
 Starts with 4 Hand to Hand attack/actions per melee round.
 +3 Pull Punch.
@@ -57,12 +55,6 @@ Level 14:
 +1 Additional attack/action per melee round.
 Level 15:
 Death Blow on roll of natural 20.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
         this.skillCost = 2;
     }
 }

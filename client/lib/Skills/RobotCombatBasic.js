@@ -5,7 +5,7 @@ class RobotCombatBasic extends Skill {
         super();
         this.name = `Robot Combat: Basic`;
         this.group = `Pilot`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Damage: 
 As per Robot P.S. Each power armour description will list the damage under the damage under the 'Elite' hand to hand stat block. The basic skill, however, only lets the pilot do a Restrained Punch and Full Strength Punch and an ordinary Kick, no Leap Kick, Stomp, or special attacks.
 
@@ -21,8 +21,6 @@ Characters with this skill are taught the fundamentals of operating all types of
 The emphasis of training is on piloting, not combat, hence the low bonuses, but the individual is able to operate all types of robots and power armour on a basic level. To get superiour combat bonuses requires the Robot Combat: Elite skill.
 
 All bonuses (below) are in addition to the pilot's own hand to hand combat training and attribute bonuses. They do not apply to the pilot's physical abilities outside the power armour or robot vehicle. Strike bonuses for built-in weapons are limited to bonuses the pilot may have from the skills: Weapon Systems and/or W.P. Heavy Mega-Damage Weapons (applies to rail guns and missile launchers as well).`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+1 extra attack/action per melee round (plus those of the pilot).
 +1 to strike in hand to hand combat.
 +1 to parry in hand to hand combat.
@@ -30,12 +28,7 @@ All bonuses (below) are in addition to the pilot's own hand to hand combat train
 +1 to roll with impact.
 Critical strike is same as pilot's hand to hand skill.`;
         this.required = `Robots & Power Armor [Pilot].`;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
-        this.preq = ['robotsAndPower']
+        this.preq = ['robotsAndPower'];
     }
 }
 

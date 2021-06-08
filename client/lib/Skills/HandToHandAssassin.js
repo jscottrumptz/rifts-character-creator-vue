@@ -5,13 +5,11 @@ class HandToHandAssassin extends Skill {
         super();
         this.name = `Hand to Hand: Assassin`;
         this.group = `Physical`;
-        this.isSecondary = `false`;
+        this.isSecondary = false;
         this.note = `Assassin combat training enables the character to use any basic/common attacks, including Punch, Elbow, Kick, Knee, Disarm, Dodge, Entangle, Body Block/Tackle, Body Flip/Throw, Roll with Impact, Power Punch, Power Kick, and Pull Punch, and even many martial arts moves listed below, but unless noted blow, the character does not have the special martial art moves.`;
         this.description = `This is an advanced form of combat with an emphasis on immobilizing or killing one's opponent quickly. It costs three of the character's skill selections to learn.
 
 This style of fighting is a specialized science of killing generally taught by secret organizations such as organized crime cartels, secret government 'wet working' bureaus, military black ops, and so on.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Level 1:
 Starts with 3 Hand to Hand attack/actions per melee round.
 +2 Strike.
@@ -64,11 +62,6 @@ Level 15:
 +2 Strike in hand to hand.
 +1 Strike with guns.`;
         this.required = `Character must be an Evil alignment`;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
         this.skillCost = 3;
     }
 }

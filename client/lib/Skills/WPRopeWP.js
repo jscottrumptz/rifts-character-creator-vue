@@ -5,8 +5,7 @@ class WPRopeWP extends Skill {
         super();
         this.name = `W.P. Rope`;
         this.group = `Weapon Proficiencies Ancient`;
-        this.isSecondary = `true`;
-        this.note = ``;
+        this.isSecondary = true;
         this.description = `This is trained use of a lariat or lasso for combat as well as using the lasso to snare and hook onto a sturdy object or limb for climbing, scaling walls, boarding vessels, and swinging across openings. As a weapons, the rope and lasso is used to encircle the shoulders,arms, waist or feet to snare, trip and otherwise pin and incapacitate an opponent. The lasso can also ensnare the neck and strangle opponents.
 
 Trip Attacks: A successful roll to strike knocks the victim to the ground and they lose initiative and one melee attack/action. If the attacker is on horseback, in a vehicle, or super strong, they may pull or drag the victim.
@@ -31,16 +30,9 @@ It takes 1D4 melee actions to cut through an S.D.C. lasso with a S.D.C. knife, o
 
 W.P. Rope can not be used to parry. Does not require Rope Skill to use as a weapon, but when the Cowboy and Saddle Tramp O.C.C.'s do select both skills they gain an additional bonus of +2 to strike and disarm when using the lasso against humanoid opponents.`;
         this.reqOCCGroup = `This W.P. is only available to characters who can select Cowboy Skills.`;
-        this.penalty = ``;
         this.bonus = `+1 to strike at levels 1, 4, 8, 12, and 15 (when rope/lasso is used in combat or for boarding).
 +1 to entangle.
 +1 to disarm.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 }
 

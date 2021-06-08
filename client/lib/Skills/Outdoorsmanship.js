@@ -7,11 +7,8 @@ class Outdoorsmanship extends Skill {
         super();
         this.name = `Outdoorsmanship`;
         this.group = `Physical`;
-        this.isSecondary = `false`;
-        this.note = ``;
+        this.isSecondary = false;
         this.description = `Being an avid outdoors man and survivalist, this character has spent a significant portion of their life living off the land or in the wild. As a result, the character is hardened to the rigours of outdoor life.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+1 to P.E.
 +2D6 to S.D.C.
 +5% to the Dowsing [Wilderness] skill if this skill is taken..
@@ -19,12 +16,7 @@ class Outdoorsmanship extends Skill {
 +5% to the Identify Plants & Fruit [Wilderness] skill if this skill is taken.
 +5% to the Wilderness Survival [Espionage, Wilderness] skill if this skill is taken.`;
         this.required = `Wilderness Survival.`;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
-        this.preq = ['wildernessSurvival']
+        this.preq = ['wildernessSurvival'];
     }
 
     rollSecondary(character) {

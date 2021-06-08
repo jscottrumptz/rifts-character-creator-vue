@@ -5,7 +5,7 @@ class WPTargeting extends Skill {
         super();
         this.name = `W.P. Targeting`;
         this.group = `Weapon Proficiencies Ancient`;
-        this.isSecondary = `true`;
+        this.isSecondary = true;
         this.note = `The character loses all bonuses and the rate of fire is halved when:-
 Running and shooting.
 Running and throwing.
@@ -30,19 +30,12 @@ A thrown weapon is considered a ranged attack, however, the P.P. attribute bonus
 A natural 19 or 20 does double damage. If the attack was an Aimed/Called Shot to Disarm, the attack is an automatic success. The only way for this attack to be parried or dodged by an opponent is for the defender to match or better the roll with their own natural, unmodified roll.
 
 Unless stated otherwise, each thrown items counts as one melee attack/action. Thus, if a character normally has 4 hand to hand attacks per melee, they can throw four knives or darts per round. Some exotic weapons may require a spinning action or time to throw that takes up two or more melee attacks/actions.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+1 to strike at levels 1, 3, 7, and 10.
 +30% Effective throwing range with augmented P.S..
 +50% Effective throwing range with Robotic P.S..
 x3 Effective throwing range with Supernatural P.S..
 x4 Effective throwing range if Supernatural P.S. is 31+.`;
         this.required = `Any one W.P. for a missile weapon such as a spear.`;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 }
 

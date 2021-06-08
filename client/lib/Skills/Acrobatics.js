@@ -7,11 +7,8 @@ class Acrobatics extends Skill {
         super();
         this.name = `Acrobatics`;
         this.group = `Physical`;
-        this.isSecondary = `false`;
-        this.note = ``;
+        this.isSecondary = false;
         this.description = `Aerial feats of agility and strength, such as walking a tightrope, high wire, trapeze, and stunts performed above ground. Other physical abilities include rolls, somersaults, leaps, and falls. Provides all the abilities and skills listed under Bonuses. Characters with this skill have no fear of heights.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Automatic Kick attack at first level; 1D8 damage.
 Back Flip - 60% +5% per level.
 Climb Skill 40% (if skill not already taken) or +15% to Climb [Physical] if also taken.
@@ -24,12 +21,6 @@ Prowl Skill 30% (if skill not already taken) or +5% to Prowl [Physical or Rogue]
 +1D6 S.D.C.
 Sense of Balance - 60% +5% per level.
 Walk Tightrope or High Wire - 60% +5% per level.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 
     rollSecondary(character) {

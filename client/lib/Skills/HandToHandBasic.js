@@ -5,11 +5,9 @@ class HandToHandBasic extends Skill {
         super();
         this.name = `Hand to Hand: Basic`;
         this.group = `Physical`;
-        this.isSecondary = `true`;
+        this.isSecondary = true;
         this.note = `Basic combat training enables the character to use any basic/common attacks, including Punch, Elbow, Kick, Knee, Disarm, Dodge, Entangle, Body Block/Tackle, Body Flip/Throw, Roll with Impact, Power Punch (but not Power Kick), and Pull Punch. But no special moves or martial art attacks such as Automatic Dodge, Back Flip, Holds, Karate Punches, Leap Kicks, or other moves.`;
         this.description = `This skill provides elementary fighting techniques and methods of attack and self-defense as taught in military basic training or in self-defense classes. Though it hardly stacks up against some of the more advanced forms of fighting, one who has trained in Hand To Hand: Basic still fights with combat skill compared to the simple everyday folk without training.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `Level 1:
 Starts with 4 Hand to Hand attack/actions per melee round.
 +2 Pull Punch.
@@ -46,12 +44,6 @@ Level 14:
 +2 Damage.
 Level 15:
 +1 Additional attack/action per melee round.`;
-        this.required = ``;
-        this.perLvl = ``;
-        this.baseTwo = ``;
-        this.base = ``;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
     }
 }
 

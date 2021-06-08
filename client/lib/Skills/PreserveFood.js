@@ -5,18 +5,11 @@ class PreserveFood extends Skill {
         super();
         this.name = `Preserve Food`;
         this.group = `Wilderness`;
-        this.isSecondary = `true`;
-        this.note = ``;
+        this.isSecondary = true;
         this.description = `The knowledge in the preparation of foods for storage and later consumption. Includes canning fresh fruit and vegetables, making jams and honey, drying fruit, vegetables, and herbs, drying meat and fish, plus various smoking, salting, and pickling methods.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
         this.bonus = `+10% to this skill if Holistic Medicine [Medical] is also taken`;
-        this.required = ``;
-        this.perLvl = `5`;
-        this.baseTwo = ``;
-        this.base = `30`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 5;
+        this.base = 30;
     }
 
     rollSecondary(character, list) {

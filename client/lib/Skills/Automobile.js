@@ -5,18 +5,10 @@ class Automobile extends Skill {
         super();
         this.name = `Automobile`;
         this.group = `Pilot`;
-        this.isSecondary = `true`;
-        this.note = ``;
+        this.isSecondary = true;
         this.description = `The skill in automatic and manual transmission; includes dune buggies, jeeps, and small trucks.`;
-        this.reqOCCGroup = ``;
-        this.penalty = ``;
-        this.bonus = ``;
-        this.required = ``;
-        this.perLvl = `2`;
-        this.baseTwo = ``;
-        this.base = `60`;
-        this.takeTwiceBonus = ``;
-        this.takeTwice = ``;
+        this.perLvl = 2;
+        this.base = 60;
     }
 }
 

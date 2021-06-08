@@ -220,7 +220,7 @@
           <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
           <span v-show="displaySkill[0].occBonus" class="font-medium text-gray-200">O.C.C. Bonus: <span class="font-normal">+{{displaySkill[0].occBonus}}%</span><br></span>
           <span v-show="displaySkill[0].base && newCharacter.skills.bonus.attributeBonus" class="font-medium text-gray-200">I.Q. Bonus: <span class="font-normal">+{{newCharacter.skills.bonus.attributeBonus}}%</span><br></span>
-          <span v-show="displaySkill[0].isSecondary === 'true'" class="font-medium text-gray-200">Secondary Skill: <span class="font-normal">This skill may be taken later as a secondary skill without the O.C.C. bonus.</span><br></span>
+          <span v-show="displaySkill[0].isSecondary === true" class="font-medium text-gray-200">Secondary Skill: <span class="font-normal">This skill may be taken later as a secondary skill without the O.C.C. bonus.</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-line overflow-y-auto max-h-96">
