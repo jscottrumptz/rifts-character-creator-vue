@@ -31,6 +31,7 @@
                 <span v-if="skill.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skill.occBonus}}% </span><br></span>
                 <span v-if="skill.takenTwice && skill.takeTwiceBonus" class="text-xs">Taken Twice Bonus: <span class="font-normal">{{skill.takeTwiceBonus}} </span><br></span>
                 <span v-if="skill.base && skills.bonus.attributeBonus" class="text-xs">IQ Bonus: <span class="font-normal">+{{skills.bonus.attributeBonus}}% </span><br></span>
+                <span v-if="skill.base && skill.skillBonus" class="text-xs">Bonus from Other Skills: <span class="font-normal">+{{skill.skillBonus}}% </span><br></span>
               </p>
             </div>
           </div>

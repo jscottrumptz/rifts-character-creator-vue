@@ -646,6 +646,7 @@ export default {
       for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
         this.newCharacter.skills.known[skill].rollSecondary(this.newCharacter, skillList)
       }
+      this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
       // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.secondary = true
     },
