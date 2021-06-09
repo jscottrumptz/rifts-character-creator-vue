@@ -15,7 +15,7 @@
         <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
         <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
         <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Can Not Remove</button>
       </div>
 
       <!-- Finalize Selections -->
@@ -415,6 +415,21 @@ export default {
       }
       // make sure something is selected
       if (skill){
+        //see if it ia s hand to hand combat skill
+        if(skill.name.includes('Hand to Hand')) {
+          // we need to find the previously selected hand to hand skill and remove it
+          for (const [key] of Object.entries(this.selectedSkills)) {
+            if (key.includes('andToHand')) {
+              // return the skill to it's list
+              this.physical[key] = this.selectedSkills[key]
+              // update the skill count
+              this.skillPicked = this.skillPicked - this.selectedSkills[key].skillCost;
+              // remove the skill from the lists
+              delete this.selectedSkills[key]
+              delete this.newCharacter.skills.known[key]
+            }
+          }
+        }
         // create the same object property in selectedSkills and copy the selected object to it
         this.selectedSkills[prop] = skill
         // create the same object property in newCharacter's known skills and copy the selected object to it
@@ -542,6 +557,23 @@ export default {
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
 
+      // set up a variable to count selected skill that are not hand to hand
+      let handToHand = false
+      // look through all the selected skills
+      for (const [key] of Object.entries(this.selectedSkills)) {
+        if (key.includes('andToHand')) {
+          handToHand = true
+        }
+      }
+      // give character the no hand to hand skill if they haven't selected one
+      if (!handToHand) {
+        this.selectedSkills.noHandToHandSkill = this.physical.noHandToHandSkill
+        this.newCharacter.skills.known.noHandToHandSkill = this.physical.noHandToHandSkill
+        this.selectedSkills.noHandToHandSkill.canRemove = false
+        // remove it from physical group list
+        delete this.physical.noHandToHandSkill
+      }
+
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
@@ -663,8 +695,14 @@ export default {
       }
       // only load secondary skills
       for (const [key] of Object.entries(groupList)) {
-        if (groupList[key].isSecondary === 'false' ) {
+        if (groupList[key].isSecondary === false ) {
           delete groupList[key]
+        }
+      }
+      // remove hand to hand basic if it, or a better skill exists
+      for (const [key] of Object.entries(this.newCharacter.skills.known)) {
+        if (key.includes('handToHand')) {
+          delete this.physical.handToHandBasic
         }
       }
     },

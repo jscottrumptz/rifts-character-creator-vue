@@ -36,6 +36,7 @@ class OCC {
         occRelatedAtLevel = [],
         secondaryNumber = 0,
         secondaryAtLevel = [],
+        startingHandToHand = 'noHandToHandSkill',
 
         // ATTRIBUTES
         iqBonus = new StatRoll,
@@ -144,6 +145,7 @@ class OCC {
         this.secondaryNumber = secondaryNumber,
         this.occRelatedAtLevel = occRelatedAtLevel;
         this.secondaryAtLevel = secondaryAtLevel;
+        this.startingHandToHand = startingHandToHand;
 
         // ATTRIBUTES
         this.iqBonus = iqBonus;

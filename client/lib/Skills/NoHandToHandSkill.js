@@ -19,6 +19,7 @@ Level 6:
 Level 9:
 +1 attack per melee round (for a total of three 'attacks' per round - each attack counts as 2 melee actions for this character).
 +1 Non-combat melee action (for a total of 6 melee 'actions').`;
+        this.skillCost = 0;
     }
 }
 
