@@ -1,6 +1,10 @@
 const Race = require('../Race');
 const { Random } = require('random-js');
 const random = new Random;
+const Art = require('../Skills/Art');
+const Anthropology = require('../Skills/Anthropology');
+const MathematicsBasic = require('../Skills/MathematicsBasic');
+const MathematicsAdvanced = require('../Skills/MathematicsAdvanced');
 
 class Dnorr extends Race {
     constructor() {
@@ -67,6 +71,18 @@ Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess 
             ma.attributeRoll.push(random.die(6));
             ma.raceTotal = ma.attributeRoll.reduce((a, b) => a + b, 0) + ma.bonus;
         }
+
+        character.skills.known.art = new Art;
+        character.skills.known.art.raceBonus = 20;
+
+        character.skills.known.anthropology = new Anthropology;
+        character.skills.known.anthropology.raceBonus = 10;
+
+        character.skills.known.mathematicsBasic = new MathematicsBasic;
+        character.skills.known.mathematicsBasic.raceBonus = 15;
+
+        character.skills.known.mathematicsAdvanced = new MathematicsAdvanced;
+        character.skills.known.mathematicsAdvanced.raceBonus = 15;
     }
 }
 

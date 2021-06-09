@@ -34,7 +34,7 @@
         <button v-if="this.pickedSkill && this.pickedSkill.canRemove && !this.pickedSkill.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
         <button v-if="this.pickedSkill && !this.pickedSkill.canRemove && !this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Skill</button>
         <button v-if="!this.pickedSkill" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
-        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-green-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Can't Remove O.C.C. Skills</button>
+        <button v-if="this.pickedSkill && this.pickedSkill.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Cannot Remove</button>
       </div>
 
       <!-- Finalize Selections -->
@@ -217,6 +217,7 @@
           <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
           <span v-show="displaySkill[0].perLvl"> + {{displaySkill[0].perLvl}}% per level<br></span></span>
           <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
+          <span v-show="displaySkill[0].raceBonus" class="font-medium text-gray-200">Race Bonus: <span class="font-normal">+{{displaySkill[0].raceBonus}}%</span><br></span>
           <span v-show="displaySkill[0].occBonus" class="font-medium text-gray-200">O.C.C. Bonus: <span class="font-normal">+{{displaySkill[0].occBonus}}%</span><br></span>
           <span v-show="displaySkill[0].base && newCharacter.skills.bonus.attributeBonus" class="font-medium text-gray-200">I.Q. Bonus: <span class="font-normal">+{{newCharacter.skills.bonus.attributeBonus}}%</span><br></span>
           <span v-show="displaySkill[0].isSecondary === true" class="font-medium text-gray-200">Secondary Skill: <span class="font-normal">This skill may be taken later as a secondary skill without the O.C.C. bonus.</span><br></span>
@@ -721,9 +722,6 @@ export default {
       this.weaponProficienciesModernRemaining = Math.max(0, this.weaponProficienciesModernRequired - this.weaponProficienciesModernCount)
       this.wildernessRemaining = Math.max(0, this.wildernessRequired - this.wildernessCount)
 
-      // either show the finished button or the tabs
-      this.tabsActive = availablePicks !== 0;
-
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
@@ -897,6 +895,31 @@ export default {
       } else
         Object.keys(this.wilderness).length > 0 && this.remaining !== 0 ?
             this.wildernessActive = true : this.wildernessActive = false
+
+      // either show the finished button or the tabs
+      // if the user is out of picks set tabs active to false and let them finalize selections
+      this.tabsActive = availablePicks !== 0
+      // if there is nothing left to pick, let the user finalize selections
+      this.tabsActive = !(
+          !this.communicationActive &&
+          !this.cowboyActive &&
+          !this.domesticActive &&
+          !this.electricalActive &&
+          !this.espionageActive &&
+          !this.horsemanshipActive &&
+          !this.mechanicalActive &&
+          !this.medicalActive &&
+          !this.militaryActive &&
+          !this.physicalActive &&
+          !this.pilotActive &&
+          !this.pilotRelatedActive &&
+          !this.rogueActive &&
+          !this.scienceActive &&
+          !this.technicalActive &&
+          !this.weaponProficienciesAncientActive &&
+          !this.weaponProficienciesModernActive &&
+          !this.wildernessActive
+          )
     },
     // controls the background color on the skill group lists
     selectedBg: function (newId){
@@ -915,18 +938,23 @@ export default {
     },
     // prepares skill lists
     skillLoader: function (groupList, occList) {
-      // handle known skills
+      // handle free OCC skills
       if (occList.free) {
         occList.free.forEach(skill => {
           for (const [key] of Object.entries(groupList)) {
-            if (key === skill.name) {
+            // if the skill isn't already known, create it and add the OCC bonus and base
+            if (key === skill.name && !this.newCharacter.skills.known[key]) {
               this.newCharacter.skills.known[key] = groupList[key]
-              this.newCharacter.skills.known[key].known = true;
               this.newCharacter.skills.known[key].occBonus = skill.occBonus
               if (skill.base) {
                 this.newCharacter.skills.known[key].base = skill.base
               }
-              delete groupList[key]
+              // if the skill is already known, just add the OCC bonus and base
+            } else if (key === skill.name && this.newCharacter.skills.known[key]) {
+              this.newCharacter.skills.known[key].occBonus = skill.occBonus
+              if (skill.base) {
+                this.newCharacter.skills.known[key].base = skill.base
+              }
             }
           }
         })
@@ -979,8 +1007,16 @@ export default {
                 }
               }
             }
-
         })
+      }
+      // remove already known skills
+      for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
+        this.newCharacter.skills.known[skill].known = true;
+        for (const [key] of Object.entries(groupList)) {
+          if (groupList[key].name === this.newCharacter.skills.known[skill].name) {
+            delete groupList[key]
+          }
+        }
       }
     },
     // gathers the necessary initial occ and character skill data

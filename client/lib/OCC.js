@@ -6,6 +6,7 @@ const random = new Random();
 
 class OCC {
     constructor(
+        // DESCRIPTIONS
         name = '',
         group = '',
         description = '',
@@ -36,6 +37,7 @@ class OCC {
         occRelatedAtLevel = [],
         secondaryNumber = 0,
         secondaryAtLevel = [],
+        // the character's default Hand to Hand skill (used during Related OCC skill selection)
         startingHandToHand = 'noHandToHandSkill',
 
         // ATTRIBUTES
@@ -115,6 +117,7 @@ class OCC {
         tradableItems = new StatRoll
 
     ) {
+        // DESCRIPTIONS
         this.name = name;
         this.group = group;
         this.description = description;
