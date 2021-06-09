@@ -28,6 +28,7 @@
                 <span v-if="skill.base" class="text-xs">Base Skill: <span class="font-normal"> {{skill.base}}% </span>
                 <span v-if="skill.baseTwo" class="font-normal"> / {{skill.baseTwo}}% </span>
                 <span v-if="skill.perLvl" class="font-normal">+ {{skill.perLvl}}% per lvl</span><br></span>
+                <span v-if="skill.raceBonus" class="text-xs">Race Bonus: <span class="font-normal">+{{skill.raceBonus}}% </span><br></span>
                 <span v-if="skill.occBonus" class="text-xs">OCC Bonus: <span class="font-normal">+{{skill.occBonus}}% </span><br></span>
                 <span v-if="skill.takenTwice && skill.takeTwiceBonus" class="text-xs">Taken Twice Bonus: <span class="font-normal">{{skill.takeTwiceBonus}} </span><br></span>
                 <span v-if="skill.base && skills.bonus.attributeBonus" class="text-xs">IQ Bonus: <span class="font-normal">+{{skills.bonus.attributeBonus}}% </span><br></span>
