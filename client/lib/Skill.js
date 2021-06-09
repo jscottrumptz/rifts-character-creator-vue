@@ -43,7 +43,11 @@ class Skill {
         raceBonus = 0,
         occBonus = 0,
         skillBonus = 0,
-        attributeBonus = 0
+        attributeBonus = 0,
+        // text box fore lore, literacy, languages, etc.
+        textEntry = '',
+        // should this skill be removed from group selections once it is picked?
+        removePostPick = true
     )
     {
         this.name = name;
@@ -73,6 +77,8 @@ class Skill {
         this.occBonus = occBonus;
         this.skillBonus = skillBonus
         this.attributeBonus = attributeBonus;
+        this.textEntry = textEntry;
+        this.removePostPick = removePostPick;
     }
     rollSecondary() {
         // set an empty return in case method is called in an array even though it isn't needed
