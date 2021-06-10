@@ -160,10 +160,11 @@
         </div>
         <!-- Add Selected Button -->
         <button v-if="(this.selectedSkill && canAdd && enoughPicks && !displaySkill[0].textEntry) ||
-          (this.selectedSkill && canAdd && enoughPicks && displaySkill[0].textEntry && hasText) " v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+          (this.selectedSkill && canAdd && enoughPicks && displaySkill[0].textEntry && hasText && !duplicateSkill) " v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
         <button v-if="this.selectedSkill && !canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Prerequisites Not Met</button>
         <button v-if="this.selectedSkill && !enoughPicks" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Not Enough Picks Remaining</button>
-        <button v-if="this.selectedSkill && !hasText && displaySkill[0].textEntry !== ''" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">{{displaySkill[0].textEntry}}</button>
+        <button v-if="this.selectedSkill && !hasText && displaySkill[0].textEntry !== '' && !duplicateSkill" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">{{displaySkill[0].textEntry}}</button>
+        <button v-if="this.selectedSkill && duplicateSkill" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Appears to be a Duplicate</button>
         <button v-if="!this.selectedSkill" class="bg-gray-700 font-medium rounded m-7 text-xs px-3 py-2 text-white">Select a Skill</button>
       </div>
 
@@ -256,6 +257,8 @@ export default {
       hasText: false,
       // display textbox value
       displayTextBox: '',
+      // duplicate toggle for textbox skills
+      duplicateSkill: false,
       //
       // create skill groups
       communication: new Communication,
@@ -566,9 +569,18 @@ export default {
         this.selectedSkill.skillCost <= this.remaining ? this.enoughPicks = true : this.enoughPicks = false
       }
     },
-    // Check if there is enough text in the display text box
+    // checks the textbox as the user types
     textCheck: function (){
+      // Check if there is enough text in the display text box
       this.selectedSkill.textEntry !== '' && this.displayTextBox.length < 3 ? this.hasText = false : this.hasText = true;
+      // try and make sure it isn't a duplicate
+      let duplicated = 0
+      for (const [name] of Object.entries(this.selectedSkills)) {
+        if (name.toLowerCase() === (this.selectedSkill.constructor.name.toLowerCase() + this.displayTextBox.toLowerCase()) && this.displayTextBox.length > 2 ) {
+          duplicated++
+        }
+      }
+      duplicated > 0 ? this.duplicateSkill = true : this.duplicateSkill = false
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {

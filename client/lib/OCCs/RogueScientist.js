@@ -83,25 +83,27 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                         base: 96
                     },
                     {
-                        name:'languageOther',
-                        occBonus: 20
-                    },
-                    {
-                        name:'literacyOther',
-                        occBonus: 35
-                    },
-                    {
-                        name:'literacyNativeTongue',
-                        occBonus: 35
-                    },
-                    {
                         name:'radioBasic',
                         occBonus: 10
                     }
                 ],
                 choice: [
                     {
-                        amount: 0
+                        amount: 5,
+                        or: [
+                            {
+                                name:'languageOther',
+                                occBonus: 20
+                            },
+                            {
+                                name:'literacyOther',
+                                occBonus: 35
+                            },
+                            {
+                                name:'literacyNativeTongue',
+                                occBonus: 35
+                            }
+                        ]
                     }
                 ],
                 available: [
@@ -372,7 +374,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 number: 3,
                 free: [
                     {
-                        name: 'astronomyandNavigation',
+                        name: 'astronomyAndNavigation',
                         occBonus: 20
                     },
                     {
