@@ -184,8 +184,8 @@
           (this.selectedSkill && canAdd && enoughPicks && displaySkill[0].textEntry && hasText && !duplicateSkill) " v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
         <button v-if="this.selectedSkill && !canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Prerequisites Not Met</button>
         <button v-if="this.selectedSkill && !enoughPicks" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Not Enough Picks Remaining</button>
-        <button v-if="this.selectedSkill && !hasText && displaySkill[0].textEntry !== '' && !duplicateSkill" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">{{displaySkill[0].textEntry}}</button>
-        <button v-if="this.selectedSkill && duplicateSkill" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Appears to be a Duplicate</button>
+        <button v-if="this.selectedSkill && !hasText && displaySkill[0].textEntry !== '' && !duplicateSkill && canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">{{displaySkill[0].textEntry}}</button>
+        <button v-if="this.selectedSkill && duplicateSkill && canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Appears to be a Duplicate</button>
         <button v-if="!this.selectedSkill" class="bg-gray-700 font-medium rounded m-7 text-xs px-3 py-2 text-white">Select a Skill</button>
       </div>
 
