@@ -179,16 +179,19 @@
           </ul>
         </div>
         <!-- Add Selected Button -->
-        <button v-if="this.selectedSkill && canAdd && enoughPicks" v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
+        <button v-if="(this.selectedSkill && canAdd && enoughPicks && !displaySkill[0].textEntry) ||
+          (this.selectedSkill && canAdd && enoughPicks && displaySkill[0].textEntry && hasText) " v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
         <button v-if="this.selectedSkill && !canAdd" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Prerequisites Not Met</button>
         <button v-if="this.selectedSkill && !enoughPicks" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">Not Enough Picks Remaining</button>
+        <button v-if="this.selectedSkill && !hasText && displaySkill[0].textEntry !== ''" class="bg-yellow-500 font-medium rounded m-7 text-xs px-3 py-2 text-gray-900">{{displaySkill[0].textEntry}}</button>
         <button v-if="!this.selectedSkill" class="bg-gray-700 font-medium rounded m-7 text-xs px-3 py-2 text-white">Select a Skill</button>
       </div>
 
       <!-- Info Section -->
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
-          <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}
+          <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}<br/>
+            <input v-on:input="textCheck()" v-show="displaySkill[0].textEntry !== '' && this.selectedSkill" v-model="displayTextBox" type="text" :placeholder="displaySkill[0].textEntry" name="displayTextBox" id="displayTextBox" class="ml-2 py-1 px-2 block w-full shadow-sm text-gray-900 focus:ring-teal-500 focus:border-teal-500 border-warm-gray-300 rounded-md" />
             <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="my-auto text-xs px-5">
               <input v-on:click="takeChecked()" id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
               (take twice)
@@ -270,6 +273,10 @@ export default {
       componentKey: 0,
       // toggle to see if prerequisites are met
       canAdd: true,
+      // toggle to make sure text is there
+      hasText: false,
+      // display textbox value
+      displayTextBox: '',
       //
       // create skill groups
       communication: new Communication,
@@ -471,6 +478,8 @@ export default {
       }
       // set pickedSkill to null since the user is now in the skill group list
       this.pickedSkill = null;
+      this.displayTextBox = '';
+      this.hasText = false;
     },
     // handles what skill from the selected skill list is currently selected
     picked: function (index){
@@ -487,6 +496,8 @@ export default {
       this.selectedBg(listId)
       // set selectedSkill to null since the user is now in the selected skills list
       this.selectedSkill = null;
+      this.displayTextBox = '';
+      this.hasText = false;
     },
     // adds a skill from the skill group to the selected list
     addSelected: function (){
@@ -502,12 +513,22 @@ export default {
       }
       // make sure something is selected
       if (skill){
-        // create the same object property in selectedSkills and copy the selected object to it
-        this.selectedSkills[prop] = skill
-        // create the same object property in newCharacter's known skills and copy the selected object to it
-        this.newCharacter.skills.known[prop] = skill
-        // remove from group list
-        delete this[group][prop]
+        // check to see if you need to remove the skill from the group list
+        if (this[group][prop].removePostPick) {
+          // create the same object property in selectedSkills and copy the selected object to it
+          this.selectedSkills[prop] = skill;
+          // create the same object property in newCharacter's known skills and copy the selected object to it
+          this.newCharacter.skills.known[prop] = skill;
+          // go ahead and delete it
+          delete this[group][prop]
+        } else {
+          let skillClone = {...skill}
+          // create the same object property in selectedSkills and copy the selected object to it
+          this.selectedSkills[prop + this.displayTextBox] = skillClone;
+          // create the same object property in newCharacter's known skills and copy the selected object to it
+          this.newCharacter.skills.known[prop + this.displayTextBox] = skillClone;
+          skillClone.name  = skillClone.name + this.displayTextBox;
+        }
         // increase group counts
         this[groupCount] = this[groupCount] + skill.skillCost;
         // increase skill count
@@ -515,6 +536,8 @@ export default {
         // clear selected values
         this.selectedSkill = null;
         this.selectedProperty = null;
+        // fix background color
+        document.getElementById(this.selectedId).removeAttribute('style')
         this.selectedId = null;
         // reinitialize logic
         this.init();
@@ -656,6 +679,10 @@ export default {
         }
       }
     },
+    // Check if there is enough text in the display text box
+    textCheck: function (){
+      this.selectedSkill.textEntry !== '' && this.displayTextBox.length < 3 ? this.hasText = false : this.hasText = true;
+    },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
       // get required occ picks
@@ -722,25 +749,30 @@ export default {
       this.weaponProficienciesModernRemaining = Math.max(0, this.weaponProficienciesModernRequired - this.weaponProficienciesModernCount)
       this.wildernessRemaining = Math.max(0, this.wildernessRequired - this.wildernessCount)
 
+
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
           // check for prerequisites
           this.selectedSkills[skillKey].preq.forEach(preq => {
+            let preqFound = false;
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
               // check for skill property and exclude the picked skill
-              if (preqKey.includes(preq) && skillKey !== preqKey) {
+              if (preqKey.includes(preq) && skillKey !== preqKey && !preqFound) {
                 this.selectedSkills[preqKey].canRemove = false
+                preqFound = true;
               }
             }
           })
           this.selectedSkills[skillKey].preqOr.forEach(preqOr => {
+            let preqFound = false;
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
               // check for skill property and exclude the picked skill
-              if (preqKey.includes(preqOr) && skillKey !== preqKey) {
+              if (preqKey.includes(preqOr) && skillKey !== preqKey && !preqFound) {
                 this.selectedSkills[preqKey].canRemove = false
+                preqFound = true;
               }
             }
           })
@@ -1013,7 +1045,7 @@ export default {
       for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
         this.newCharacter.skills.known[skill].known = true;
         for (const [key] of Object.entries(groupList)) {
-          if (groupList[key].name === this.newCharacter.skills.known[skill].name) {
+          if (groupList[key].name === this.newCharacter.skills.known[skill].name && groupList[key].removePostPick) {
             delete groupList[key]
           }
         }

@@ -554,6 +554,7 @@ export default {
         // clear selected values
         this.selectedSkill = null;
         this.selectedProperty = null;
+        // fix background color
         document.getElementById(this.selectedId).removeAttribute('style')
         this.selectedId = null;
         // reinitialize logic
@@ -697,16 +698,10 @@ export default {
         }
       }
     },
-    // Check if there is text
+    // Check if there is enough text in the display text box
+// Check if there is enough text in the display text box
     textCheck: function (){
-      if (this.selectedSkill.textEntry !== '' && this.displayTextBox.length < 3) {
-        this.hasText = false;
-      } else {
-        this.hasText = true;
-      }
-    },
-    renameSkill: function (skill){
-      skill.name = skill.name + this.displaySkill
+      this.selectedSkill.textEntry !== '' && this.displayTextBox.length < 3 ? this.hasText = false : this.hasText = true;
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
@@ -783,20 +778,24 @@ export default {
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
           // check for prerequisites
           this.selectedSkills[skillKey].preq.forEach(preq => {
+            let preqFound = false;
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
               // check for skill property and exclude the picked skill
-              if (preqKey.includes(preq) && skillKey !== preqKey) {
+              if (preqKey.includes(preq) && skillKey !== preqKey && !preqFound) {
                 this.selectedSkills[preqKey].canRemove = false
+                preqFound = true;
               }
             }
           })
           this.selectedSkills[skillKey].preqOr.forEach(preqOr => {
+            let preqFound = false;
             // make prerequisites un-removable
             for (const [preqKey] of Object.entries(this.selectedSkills)) {
               // check for skill property and exclude the picked skill
-              if (preqKey.includes(preqOr) && skillKey !== preqKey) {
+              if (preqKey.includes(preqOr) && skillKey !== preqKey && !preqFound) {
                 this.selectedSkills[preqKey].canRemove = false
+                preqFound = true;
               }
             }
           })
