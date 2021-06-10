@@ -172,7 +172,7 @@
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}<br/>
-            <input v-on:input="textCheck()" v-show="displaySkill[0].textEntry !== '' && this.selectedSkill" v-model="displayTextBox" type="text" :placeholder="displaySkill[0].textEntry" name="displayTextBox" id="displayTextBox" class="ml-2 py-1 px-2 block w-full shadow-sm text-gray-900 focus:ring-teal-500 focus:border-teal-500 border-warm-gray-300 rounded-md" />
+            <input v-on:input="textCheck()" v-show="displaySkill[0].textEntry !== '' && this.selectedSkill" v-model="displayTextBox" type="text" :placeholder="displaySkill[0].textEntry" name="displayTextBox" id="displayTextBox" class="ml-2 py-1 px-2 block max-h-10 w-full shadow-sm text-gray-900 focus:ring-teal-500 focus:border-teal-500 border-warm-gray-300 rounded-md" />
             <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="my-auto text-xs px-5">
               <input v-on:click="takeChecked()" id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
               (take twice)
@@ -398,6 +398,7 @@ export default {
       this.pickedSkill = null;
       this.displayTextBox = '';
       this.hasText = false;
+      this.duplicateSkill = false;
     },
     // handles what skill from the selected skill list is currently selected
     picked: function (index){
@@ -423,6 +424,8 @@ export default {
       const skill = this.selectedSkill
       // get group property from group name
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
+      // reset take twice toggle before checking
+      skill.takenTwice = false;
       // check to see if take twice box is checked, if so double the cost before adding
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
         skill.skillCost = skill.skillCost * 2
@@ -463,6 +466,12 @@ export default {
         }
         // increase skill count
         this.skillPicked = this.skillPicked + skill.skillCost;
+        // restore the original skill cost
+        if (this[group][prop]) {
+          if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
+            this[group][prop].skillCost = this[group][prop].skillCost / 2
+          }
+        }
         // clear selected values
         this.selectedSkill = null;
         this.selectedProperty = null;
@@ -482,8 +491,10 @@ export default {
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
       // make sure something is selected
       if (skill){
-        // return the skill to it's list
-        this[group][prop] = skill
+        // check to see if you need to return the skill to it's list
+        if (skill.removePostPick) {
+          this[group][prop] = skill
+        }
         // update the skill count
         this.skillPicked = this.skillPicked - skill.skillCost;
         // check if the skill was taken twice, if so cut the points in half before returning
@@ -721,7 +732,14 @@ export default {
       }
       // roll bonuses
       for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
-       if (skill.includes('literacy') || skill.includes('language')) {
+        // make an exception for skills I had to clone
+        // need a better solution, but so far this works ok
+       if (
+           skill.includes('literacy') ||
+           skill.includes('language') ||
+           skill.includes('playMusicalInstrument') ||
+           skill.includes('zoologySpecialized')
+       ) {
           console.log(skill);
         } else {
          this.newCharacter.skills.known[skill].rollSecondary(this.newCharacter, skillList);
@@ -736,6 +754,8 @@ export default {
       // remove already known skills
       for (const [skill] of Object.entries(this.newCharacter.skills.known)) {
         this.newCharacter.skills.known[skill].known = true;
+        this.newCharacter.skills.known[skill].preq = [];
+        this.newCharacter.skills.known[skill].preqOr = [];
         for (const [key] of Object.entries(groupList)) {
           // check to see if you need to remove the skill from the group list
           if (groupList[key].name === this.newCharacter.skills.known[skill].name && groupList[key].removePostPick) {

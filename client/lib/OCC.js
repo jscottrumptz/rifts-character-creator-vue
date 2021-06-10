@@ -37,6 +37,8 @@ class OCC {
         occRelatedAtLevel = [],
         secondaryNumber = 0,
         secondaryAtLevel = [],
+        languages = 0,
+        literacies = 0,
         // the character's default Hand to Hand skill (used during Related OCC skill selection)
         startingHandToHand = 'noHandToHandSkill',
 
@@ -148,6 +150,8 @@ class OCC {
         this.secondaryNumber = secondaryNumber,
         this.occRelatedAtLevel = occRelatedAtLevel;
         this.secondaryAtLevel = secondaryAtLevel;
+        this.languages = languages;
+        this.literacies = literacies;
         this.startingHandToHand = startingHandToHand;
 
         // ATTRIBUTES

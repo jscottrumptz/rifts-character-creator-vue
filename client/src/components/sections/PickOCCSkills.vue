@@ -6,24 +6,26 @@
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
         <p class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements.</p>
         <div class="pl-10 pb-5">
-          <h2 v-if="communicationRemaining > 0" class="text-white pl-5">Communication Picks Needed: {{communicationRemaining}}</h2>
-          <h2 v-if="cowboyRemaining > 0" class="text-white pl-5">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
-          <h2 v-if="domesticRemaining > 0" class="text-white pl-5">Domestic Picks Needed: {{domesticRemaining}}</h2>
-          <h2 v-if="electricalRemaining > 0" class="text-white pl-5">Electrical Picks Needed: {{electricalRemaining}}</h2>
-          <h2 v-if="espionageRemaining > 0" class="text-white ">Espionage Picks Needed: {{espionageRemaining}}</h2>
-          <h2 v-if="horsemanshipRemaining > 0" class="text-white ">Horsemanship Picks Needed: {{horsemanshipRemaining}}</h2>
-          <h2 v-if="mechanicalRemaining > 0" class="text-white ">Mechanical Picks Needed: {{mechanicalRemaining}}</h2>
-          <h2 v-if="medicalRemaining > 0" class="text-white ">Medical Picks Needed: {{medicalRemaining}}</h2>
-          <h2 v-if="militaryRemaining > 0" class="text-white ">Military Picks Needed: {{militaryRemaining}}</h2>
-          <h2 v-if="physicalRemaining > 0" class="text-white ">Physical Picks Needed: {{physicalRemaining}}</h2>
-          <h2 v-if="pilotRemaining > 0" class="text-white ">Pilot Picks Needed: {{pilotRemaining}}</h2>
-          <h2 v-if="pilotRelatedRemaining > 0" class="text-white ">Pilot Related Picks Needed: {{pilotRelatedRemaining}}</h2>
-          <h2 v-if="rogueRemaining > 0" class="text-white ">Rogue Picks Needed: {{rogueRemaining}}</h2>
-          <h2 v-if="scienceRemaining > 0" class="text-white ">Science Picks Needed: {{scienceRemaining}}</h2>
-          <h2 v-if="technicalRemaining > 0" class="text-white ">Technical Picks Needed: {{technicalRemaining}}</h2>
-          <h2 v-if="weaponProficienciesAncientRemaining > 0" class="text-white ">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
-          <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white ">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
-          <h2 v-if="wildernessRemaining > 0" class="text-white ">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
+          <h2 v-if="communicationRemaining > 0" class="text-white">Communication Picks Needed: {{communicationRemaining}}</h2>
+          <h2 v-if="languageRemaining > 0" class="text-gray-400 pl-5">Language Picks Needed: {{languageRemaining}}</h2>
+          <h2 v-if="literacyRemaining > 0" class="text-gray-400 pl-5">Literacy Picks Needed: {{literacyRemaining}}</h2>
+          <h2 v-if="cowboyRemaining > 0" class="text-white">Cowboy Picks Needed: {{cowboyRemaining}}</h2>
+          <h2 v-if="domesticRemaining > 0" class="text-white">Domestic Picks Needed: {{domesticRemaining}}</h2>
+          <h2 v-if="electricalRemaining > 0" class="text-white">Electrical Picks Needed: {{electricalRemaining}}</h2>
+          <h2 v-if="espionageRemaining > 0" class="text-white">Espionage Picks Needed: {{espionageRemaining}}</h2>
+          <h2 v-if="horsemanshipRemaining > 0" class="text-white">Horsemanship Picks Needed: {{horsemanshipRemaining}}</h2>
+          <h2 v-if="mechanicalRemaining > 0" class="text-white">Mechanical Picks Needed: {{mechanicalRemaining}}</h2>
+          <h2 v-if="medicalRemaining > 0" class="text-white">Medical Picks Needed: {{medicalRemaining}}</h2>
+          <h2 v-if="militaryRemaining > 0" class="text-white">Military Picks Needed: {{militaryRemaining}}</h2>
+          <h2 v-if="physicalRemaining > 0" class="text-white">Physical Picks Needed: {{physicalRemaining}}</h2>
+          <h2 v-if="pilotRemaining > 0" class="text-white">Pilot Picks Needed: {{pilotRemaining}}</h2>
+          <h2 v-if="pilotRelatedRemaining > 0" class="text-white">Pilot Related Picks Needed: {{pilotRelatedRemaining}}</h2>
+          <h2 v-if="rogueRemaining > 0" class="text-white">Rogue Picks Needed: {{rogueRemaining}}</h2>
+          <h2 v-if="scienceRemaining > 0" class="text-white">Science Picks Needed: {{scienceRemaining}}</h2>
+          <h2 v-if="technicalRemaining > 0" class="text-white">Technical Picks Needed: {{technicalRemaining}}</h2>
+          <h2 v-if="weaponProficienciesAncientRemaining > 0" class="text-white">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
+          <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
+          <h2 v-if="wildernessRemaining > 0" class="text-white">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 max-h-96 overflow-y-auto divide-y divide-gray-600 ">
@@ -192,7 +194,7 @@
       <div class="col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-2 border border-gray-700 rounded-lg hover:border-indigo-300">
         <div v-if="selectedId != null" class="text-gray-300 m-10">
           <h2 class="inline-flex font-medium text-2xl">{{displaySkill[0].name}}<br/>
-            <input v-on:input="textCheck()" v-show="displaySkill[0].textEntry !== '' && this.selectedSkill" v-model="displayTextBox" type="text" :placeholder="displaySkill[0].textEntry" name="displayTextBox" id="displayTextBox" class="ml-2 py-1 px-2 block w-full shadow-sm text-gray-900 focus:ring-teal-500 focus:border-teal-500 border-warm-gray-300 rounded-md" />
+            <input v-on:input="textCheck()" v-show="displaySkill[0].textEntry !== '' && this.selectedSkill" v-model="displayTextBox" type="text" :placeholder="displaySkill[0].textEntry" name="displayTextBox" id="displayTextBox" class="ml-2 py-1 px-2 block max-h-10 w-full shadow-sm text-gray-900 focus:ring-teal-500 focus:border-teal-500 border-warm-gray-300 rounded-md" />
             <span v-if="this.selectedSkill && this.selectedSkill.takeTwice" class="my-auto text-xs px-5">
               <input v-on:click="takeChecked()" id="takeTwice" name="takeTwice" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 mx-1 text-indigo-600 border-gray-300 rounded" />
               (take twice)
@@ -346,6 +348,9 @@ export default {
       //
       // toggle to determine if the skill list tabs are active or the finalize button
       tabsActive: true,
+      // keep track of literacy and language picks because there are so commonly multiple
+      languageCount: 0,
+      literacyCount: 0,
       //
       // number of currently selected skills from a group
       communicationCount: 0,
@@ -367,6 +372,10 @@ export default {
       weaponProficienciesModernCount: 0,
       wildernessCount: 0,
       //
+      //Get the amount of language and literacy pick
+      languageRequired: 0,
+      literacyRequired:0,
+      //
       // number of required skill picks by occ
       communicationRequired: 0,
       cowboyRequired: 0,
@@ -386,6 +395,10 @@ export default {
       weaponProficienciesAncientRequired: 0,
       weaponProficienciesModernRequired: 0,
       wildernessRequired: 0,
+      //
+      //Get the amount of language and literacy pick
+      languageRemaining: 0,
+      literacyRemaining:0,
       //
       // number of required occ skill picks remaining
       communicationRemaining: 0,
@@ -483,6 +496,7 @@ export default {
       this.pickedSkill = null;
       this.displayTextBox = '';
       this.hasText = false;
+      this.duplicateSkill = false;
     },
     // handles what skill from the selected skill list is currently selected
     picked: function (index){
@@ -509,6 +523,8 @@ export default {
       // get group property from group name
       const group = skill.group.charAt(0).toLowerCase() + skill.group.slice(1).replace(/\s+/g, '');
       const groupCount = group + 'Count'
+      // reset take twice toggle before checking
+      skill.takenTwice = false;
       // check to see if take twice box is checked, if so double the cost before adding
       if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
         skill.skillCost = skill.skillCost * 2
@@ -532,10 +548,23 @@ export default {
           this.newCharacter.skills.known[prop + this.displayTextBox] = skillClone;
           skillClone.name  = skillClone.name + this.displayTextBox;
         }
+        // update literacy and language counts
+        if(skill.name.includes('iteracy')){
+          this.literacyCount++
+        }
+        if(skill.name.includes('anguage')){
+          this.languageCount++
+        }
         // increase group counts
         this[groupCount] = this[groupCount] + skill.skillCost;
         // increase skill count
         this.skillPicked = this.skillPicked + skill.skillCost;
+        // restore the original skill cost
+        if (this[group][prop]) {
+          if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
+            this[group][prop].skillCost = this[group][prop].skillCost / 2
+          }
+        }
         // clear selected values
         this.selectedSkill = null;
         this.selectedProperty = null;
@@ -556,8 +585,17 @@ export default {
       const groupCount = group + 'Count'
       // make sure something is selected
       if (skill){
-        // return the skill to it's list
-        this[group][prop] = skill
+        // check to see if you need to return the skill to it's list
+        if (skill.removePostPick) {
+          this[group][prop] = skill
+        }
+        // update literacy and language counts
+        if(skill.name.includes('iteracy')){
+          this.literacyCount--
+        }
+        if(skill.name.includes('anguage')){
+          this.languageCount--
+        }
         // update the group count
         this[groupCount] = this[groupCount] - skill.skillCost;
         // update the skill count
@@ -716,6 +754,9 @@ export default {
       this.weaponProficienciesAncientRequired = this.newCharacter.occ.occSkills.weaponProficienciesAncient.choice[0].amount;
       this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.choice[0].amount;
       this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.choice[0].amount;
+      // get literacy and language counts as well
+      this.languageRequired = this.newCharacter.occ.languages
+      this.literacyRequired = this.newCharacter.occ.literacies
 
       // OCC or RCC related skills to be picked by user
       const skillStart =
@@ -760,8 +801,32 @@ export default {
       this.weaponProficienciesAncientRemaining = Math.max(0, this.weaponProficienciesAncientRequired - this.weaponProficienciesAncientCount)
       this.weaponProficienciesModernRemaining = Math.max(0, this.weaponProficienciesModernRequired - this.weaponProficienciesModernCount)
       this.wildernessRemaining = Math.max(0, this.wildernessRequired - this.wildernessCount)
-
-
+      // get current pick totals
+      this.languageRemaining = Math.max(0, this.languageRequired - this.languageCount)
+      this.literacyRemaining = Math.max(0, this.literacyRequired - this.literacyCount)
+      // handle language and literacy remaining at 0
+      if (this.languageRemaining < 1 ) {
+        document.getElementById('communication-languageOther').style.visibility = "hidden";
+        if (document.getElementById('communication-languageNativeTongue')){
+          document.getElementById('communication-languageNativeTongue').style.visibility = "hidden"
+        }
+      } else {
+        document.getElementById('communication-languageOther').style.visibility = "visible";
+        if (document.getElementById('communication-languageNativeTongue')){
+          document.getElementById('communication-languageNativeTongue').style.visibility = "visible"
+        }
+      }
+      if (this.literacyRemaining < 1) {
+        document.getElementById('communication-literacyOther').style.visibility = "hidden";
+        if (document.getElementById('communication-literacyNativeTongue')){
+          document.getElementById('communication-literacyNativeTongue').style.visibility = "hidden"
+        }
+      } else {
+        document.getElementById('communication-literacyOther').style.visibility = "visible";
+        if (document.getElementById('communication-literacyNativeTongue')){
+          document.getElementById('communication-literacyNativeTongue').style.visibility = "visible"
+        }
+      }
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
@@ -988,14 +1053,18 @@ export default {
           for (const [key] of Object.entries(groupList)) {
             // if the skill isn't already known, create it and add the OCC bonus and base
             if (key === skill.name && !this.newCharacter.skills.known[key]) {
-              this.newCharacter.skills.known[key] = groupList[key]
-              this.newCharacter.skills.known[key].occBonus = skill.occBonus
+              this.newCharacter.skills.known[key] = groupList[key];
+              this.newCharacter.skills.known[key].occBonus = skill.occBonus;
+              this.newCharacter.skills.known[key].preq = [];
+              this.newCharacter.skills.known[key].preqOr = [];
               if (skill.base) {
                 this.newCharacter.skills.known[key].base = skill.base
               }
               // if the skill is already known, just add the OCC bonus and base
             } else if (key === skill.name && this.newCharacter.skills.known[key]) {
               this.newCharacter.skills.known[key].occBonus = skill.occBonus
+              this.newCharacter.skills.known[key].preq = [];
+              this.newCharacter.skills.known[key].preqOr = [];
               if (skill.base) {
                 this.newCharacter.skills.known[key].base = skill.base
               }

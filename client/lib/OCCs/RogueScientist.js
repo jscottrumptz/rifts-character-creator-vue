@@ -70,10 +70,10 @@ Find the Exotic. +20% bonus to Find Contraband related to scientific equipment, 
 
 Recognize Scientific Authenticity and Quality
 An exclusive skill that enables the Rogue Scientist to tell if scientific equipment is new or used, defective, low or high quality, and if a chemical, drug, specimen or sample is genuine, a fair price and if it is exactly what he needs or not. Reduce this skill by half when dealing with unknown alien items, bionics, electronics and mechanical items. Not applicable to magic items.`
-        this.occSkills = [];
-        this.reqOcc = [];
         this.occRelatedNumber = 15;
         this.secondaryNumber = 4;
+        this.languages = 3;
+        this.literacies = 2;
         this.occSkills = {
             communication: {
                 number: 0,
@@ -90,7 +90,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 choice: [
                     {
                         amount: 5,
-                        or: [
+                        available: [
                             {
                                 name:'languageOther',
                                 occBonus: 20
@@ -102,6 +102,47 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                             {
                                 name:'literacyNativeTongue',
                                 occBonus: 35
+                            }
+                        ],
+                        unavailable: [
+                            {
+                                name:'barter'
+                            },
+                            {
+                                name:'creativeWriting'
+                            },
+                            {
+                                name:'cryptography'
+                            },
+                            {
+                                name:'electronicCountermeasures'
+                            },
+                            {
+                                name:'laser'
+                            },
+                            {
+                                name:'opticSystems'
+                            },
+                            {
+                                name:'performance'
+                            },
+                            {
+                                name:'publicSpeaking'
+                            },
+                            {
+                                name:'sensoryEquipmentCommunication'
+                            },
+                            {
+                                name:'signLanguage'
+                            },
+                            {
+                                name:'singCommunication'
+                            },
+                            {
+                                name:'surveillance'
+                            },
+                            {
+                                name:'tVOrVideo'
                             }
                         ]
                     }
