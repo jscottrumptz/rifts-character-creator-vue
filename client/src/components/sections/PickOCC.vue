@@ -358,6 +358,12 @@
                             <span v-if="occ.pullBonus.bonus > 0">+</span>{{occ.pullBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Disarm -->
+                  <span v-if="occ.disarmBonus.bonus" class="inline-flex items-center px-1">Disarm:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="occ.disarmBonus.bonus > 0">+</span>{{occ.disarmBonus.bonus}}
+                          </span>
+                        </span>
                   <!-- Attacks -->
                   <span v-if="occ.attacksBonus.bonus" class="inline-flex items-center px-1">Attacks per Melee:
                           <span class="pr-2 text-sm font-normal text-gray-500">

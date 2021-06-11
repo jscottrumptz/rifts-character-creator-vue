@@ -300,6 +300,12 @@
                             <span v-if="race.pullBonus.bonus > 0">+</span>{{race.pullBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Disarm -->
+                  <span v-if="race.disarmBonus.bonus" class="inline-flex items-center px-1">Disarm:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="race.disarmBonus.bonus > 0">+</span>{{race.disarmBonus.bonus}}
+                          </span>
+                        </span>
                   <!-- Attacks -->
                   <span v-if="race.attacksBonus.bonus" class="inline-flex items-center px-1">Attacks per Melee:
                           <span class="pr-2 text-sm font-normal text-gray-500">
