@@ -1,4 +1,5 @@
 const AppraiseGoods = require('./AppraiseGoods');
+const AppraiseGoodsSpecialized = require('./AppraiseGoodsSpecialized')
 const Art = require('./Art');
 const Begging = require('./Begging');
 const BreedDogs = require('./BreedDogs');
@@ -39,6 +40,7 @@ const WhittlingAndSculpting = require('./WhittlingAndSculpting');
 class Technical {
     constructor(
         appraiseGoods = new AppraiseGoods,
+        appraiseGoodsSpecialized = new AppraiseGoodsSpecialized,
         art = new Art,
         begging = new Begging,
         breedDogs = new BreedDogs,
@@ -77,6 +79,7 @@ class Technical {
         whittlingAndSculpting = new WhittlingAndSculpting
     ) {
         this.appraiseGoods = appraiseGoods;
+        this.appraiseGoodsSpecialized = appraiseGoodsSpecialized;
         this.art = art;
         this.begging = begging;
         this.breedDogs = breedDogs;

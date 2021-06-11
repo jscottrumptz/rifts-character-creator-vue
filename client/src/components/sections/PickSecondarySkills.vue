@@ -743,7 +743,8 @@ export default {
            skill.includes('literacy') ||
            skill.includes('language') ||
            skill.includes('playMusicalInstrument') ||
-           skill.includes('zoologySpecialized')
+           skill.includes('zoologySpecialized') ||
+           skill.includes('appraiseGoodsSpecialized')
        ) {
           console.log(skill);
         } else {
