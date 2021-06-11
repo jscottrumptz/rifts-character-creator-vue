@@ -107,40 +107,45 @@
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- HP -->
-                  <span v-if="race.hp.amount" class="inline-flex items-center px-1">Hit Points:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{race.hp.amount}}D{{race.hp.sides}}
-                            <span v-if="race.hp.multiplier">x</span>{{race.hp.multiplier}}
-                            <span v-if="race.hp.bonus">+</span>{{race.hp.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="race.hp.amount || race.hp.bonus" class="inline-flex items-center px-1">HP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="race.hp.amount">{{race.hp.amount}}D{{race.hp.sides}}</span>
+                      <span v-if="race.hp.multiplier">x</span>{{race.hp.multiplier}}
+                      <span v-if="race.hp.bonus">+</span>{{race.hp.bonus}}
+                    </span>
+                  </span>
                   <!-- SDC -->
-                  <span v-if="race.sdc.amount" class="inline-flex items-center px-1">SDC:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{race.sdc.amount}}D{{race.sdc.sides}}
-                            <span v-if="race.sdc.multiplier">x</span>{{race.sdc.multiplier}}
-                            <span v-if="race.sdc.bonus">+</span>{{race.sdc.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="race.sdc.amount || race.sdc.bonus" class="inline-flex items-center px-1">SDC:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="race.sdc.amount">{{race.sdc.amount}}D{{race.sdc.sides}}</span>
+                      <span v-if="race.sdc.multiplier">x</span>{{race.sdc.multiplier}}
+                      <span v-if="race.sdc.bonus">+</span>{{race.sdc.bonus}}
+                    </span>
+                  </span>
                   <!-- MDC -->
-                  <span v-if="race.mdc.amount" class="inline-flex items-center px-1">MDC:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{race.mdc.amount}}D{{race.mdc.sides}}
-                            <span v-if="race.mdc.multiplier">x</span>{{race.mdc.multiplier}}
-                            <span v-if="race.mdc.bonus">+</span>{{race.mdc.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="race.mdc.amount || race.mdc.bonus" class="inline-flex items-center px-1">MDC:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="race.mdc.amount">{{race.mdc.amount}}D{{race.mdc.sides}}</span>
+                      <span v-if="race.mdc.multiplier">x</span>{{race.mdc.multiplier}}
+                      <span v-if="race.mdc.bonus">+</span>{{race.mdc.bonus}}
+                    </span>
+                  </span>
                   <!-- PPE -->
-                  <span v-if="race.ppe.amount" class="inline-flex items-center px-1">PPE:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{race.ppe.amount}}D{{race.ppe.sides}}
-                            <span v-if="race.ppe.multiplier">x</span>{{race.ppe.multiplier}}
-                            <span v-if="race.ppe.bonus">+</span>{{race.ppe.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="race.ppe.amount || race.ppe.bonus" class="inline-flex items-center px-1">PPE:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="race.ppe.amount">{{race.ppe.amount}}D{{race.ppe.sides}}</span>
+                      <span v-if="race.ppe.multiplier">x</span>{{race.ppe.multiplier}}
+                      <span v-if="race.ppe.bonus">+</span>{{race.ppe.bonus}}
+                    </span>
+                  </span>
                   <!-- ISP -->
-                  <span v-if="race.isp.amount" class="inline-flex items-center px-1">ISP:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{race.isp.amount}}D{{race.isp.sides}}
-                            <span v-if="race.isp.multiplier">x</span>{{race.isp.multiplier}}
-                            <span v-if="race.isp.bonus">+</span>{{race.isp.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="race.isp.amount || race.isp.bonus" class="inline-flex items-center px-1">ISP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="race.isp.amount">{{race.isp.amount}}D{{race.isp.sides}}</span>
+                      <span v-if="race.isp.multiplier">x</span>{{race.isp.multiplier}}
+                      <span v-if="race.isp.bonus">+</span>{{race.isp.bonus}}
+                    </span>
+                  </span>
                   <!-- Horror -->
                   <span v-if="race.horror.bonus" class="inline-flex items-center px-1">Horror:
                           <span class="pr-2 text-sm font-normal text-gray-500">{{race.horror.bonus}}</span>

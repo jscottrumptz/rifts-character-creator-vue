@@ -29,6 +29,7 @@
         <div class="m-3">
           <label for="tabs" class="sr-only">Select a tab</label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+            <option value="default" selected disabled> Select a Skill Group... </option>
             <option v-if="communicationActive" value="communication">Communication Skills</option>
             <option v-if="cowboyActive" value="cowboy">Cowboy Skills</option>
             <option v-if="domesticActive" value="domestic">Domestic Skills</option>
@@ -712,6 +713,10 @@ export default {
       // wilderness tab
       Object.keys(this.wilderness).length > 0 && this.remaining === 0 ?
             this.wildernessActive = true : this.wildernessActive = false
+
+      // reset tab to default if the skill group is no longer active
+      let tabValue = document.getElementById('tabs').value
+      this[tabValue + 'Active'] === false ? this.toggle = 'default' : this.toggle = tabValue
     },
     // controls the background color on the skill group lists
     selectedBg: function (newId){

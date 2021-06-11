@@ -84,6 +84,7 @@ Additional +2 when the Perception Roll involves making an observation about a me
 
 W.P. Knife Bonus
 Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
+        this.alignment = `Any, but tends to be Principled, Scrupulous, Unprincipled or Aberrant.`
         this.occRelatedNumber = 11;
         this.secondaryNumber = 6;
         this.languages = 2;
@@ -474,7 +475,7 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
                 only:[
                     {
                         name: 'streetwise',
-                        bonus: 4
+                        occBonus: 4
                     }
                 ]
             },

@@ -23,8 +23,9 @@
           <h2 v-if="rogueRemaining > 0" class="text-white">Rogue Picks Needed: {{rogueRemaining}}</h2>
           <h2 v-if="scienceRemaining > 0" class="text-white">Science Picks Needed: {{scienceRemaining}}</h2>
           <h2 v-if="technicalRemaining > 0" class="text-white">Technical Picks Needed: {{technicalRemaining}}</h2>
-          <h2 v-if="weaponProficienciesAncientRemaining > 0" class="text-white">Weapon Proficiencies Ancient Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
-          <h2 v-if="weaponProficienciesModernRemaining > 0" class="text-white">Weapon Proficiencies Modern Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
+          <h2 v-if="weaponProficienciesAncientRemaining > 0 && wpRequired === 0" class="text-white">Ancient Weapon Proficiency Picks Needed: {{weaponProficienciesAncientRemaining}}</h2>
+          <h2 v-if="weaponProficienciesModernRemaining > 0 && wpRequired === 0" class="text-white">Modern Weapon Proficiency Picks Needed: {{weaponProficienciesModernRemaining}}</h2>
+          <h2 v-if="wpRemaining > 0" class="text-white">Weapon Proficiency Picks Needed: {{wpRemaining}}</h2>
           <h2 v-if="wildernessRemaining > 0" class="text-white">Wilderness Picks Needed: {{wildernessRemaining}}</h2>
         </div>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
@@ -50,7 +51,7 @@
         <div class="m-3">
           <label for="tabs" class="sr-only"></label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-            <option selected disabled> Select a Skill Group... </option>
+            <option value="default" selected disabled> Select a Skill Group... </option>
             <option v-if="communicationActive" value="communication">Communication Skills</option>
             <option v-if="cowboyActive" value="cowboy">Cowboy Skills</option>
             <option v-if="domesticActive" value="domestic">Domestic Skills</option>
@@ -351,6 +352,7 @@ export default {
       // keep track of literacy and language picks because there are so commonly multiple
       languageCount: 0,
       literacyCount: 0,
+      wpCount: 0,
       //
       // number of currently selected skills from a group
       communicationCount: 0,
@@ -375,6 +377,7 @@ export default {
       //Get the amount of language and literacy pick
       languageRequired: 0,
       literacyRequired:0,
+      wpRequired:0,
       //
       // number of required skill picks by occ
       communicationRequired: 0,
@@ -399,6 +402,7 @@ export default {
       //Get the amount of language and literacy pick
       languageRemaining: 0,
       literacyRemaining:0,
+      wpRemaining:0,
       //
       // number of required occ skill picks remaining
       communicationRemaining: 0,
@@ -555,10 +559,22 @@ export default {
         if(skill.name.includes('anguage')){
           this.languageCount++
         }
-        // increase group counts
-        this[groupCount] = this[groupCount] + skill.skillCost;
-        // increase skill count
-        this.skillPicked = this.skillPicked + skill.skillCost;
+        // see if there is a shared wp count
+        if (this.wpRequired > 0 && group.includes('eaponProfic'))
+        {
+          // increase group counts
+          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount + skill.skillCost;
+          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount + skill.skillCost;
+          // increase wp count
+          this.wpCount = this.wpCount + skill.skillCost;
+          // increase skill count
+          this.skillPicked = this.skillPicked + (skill.skillCost * 2);
+        } else {
+          // increase group counts
+          this[groupCount] = this[groupCount] + skill.skillCost;
+          // increase skill count
+          this.skillPicked = this.skillPicked + skill.skillCost;
+        }
         // restore the original skill cost
         if (this[group][prop]) {
           if (document.getElementById("takeTwice") && document.getElementById("takeTwice").checked === true) {
@@ -596,10 +612,22 @@ export default {
         if(skill.name.includes('anguage')){
           this.languageCount--
         }
-        // update the group count
-        this[groupCount] = this[groupCount] - skill.skillCost;
-        // update the skill count
-        this.skillPicked = this.skillPicked - skill.skillCost;
+        // see if there is a shared wp count
+        if (this.wpRequired > 0 && group.includes('eaponProfic'))
+        {
+          // increase group counts
+          this.weaponProficienciesAncientCount = this.weaponProficienciesAncientCount - skill.skillCost;
+          this.weaponProficienciesModernCount = this.weaponProficienciesModernCount - skill.skillCost;
+          // increase wp count
+          this.wpCount = this.wpCount - skill.skillCost;
+          // increase skill count
+          this.skillPicked = this.skillPicked - (skill.skillCost * 2);
+        } else {
+          // increase group counts
+          this[groupCount] = this[groupCount] - skill.skillCost;
+          // increase skill count
+          this.skillPicked = this.skillPicked - skill.skillCost;
+        }
         // check if the skill was taken twice, if so cut the points in half before returning
         if (skill.takenTwice === true) {
           skill.skillCost = skill.skillCost / 2
@@ -755,8 +783,9 @@ export default {
       this.weaponProficienciesModernRequired = this.newCharacter.occ.occSkills.weaponProficienciesModern.choice[0].amount;
       this.wildernessRequired = this.newCharacter.occ.occSkills.wilderness.choice[0].amount;
       // get literacy and language counts as well
-      this.languageRequired = this.newCharacter.occ.languages
-      this.literacyRequired = this.newCharacter.occ.literacies
+      this.languageRequired = this.newCharacter.occ.languages;
+      this.literacyRequired = this.newCharacter.occ.literacies;
+      this.wpRequired = this.newCharacter.occ.totalWP;
 
       // OCC or RCC related skills to be picked by user
       const skillStart =
@@ -804,6 +833,7 @@ export default {
       // get current pick totals
       this.languageRemaining = Math.max(0, this.languageRequired - this.languageCount)
       this.literacyRemaining = Math.max(0, this.literacyRequired - this.literacyCount)
+      this.wpRemaining = Math.max(0, this.wpRequired - this.wpCount)
       // handle language and literacy remaining at 0
       if (this.languageRemaining < 1 ) {
         document.getElementById('communication-languageOther').style.visibility = "hidden";
@@ -827,6 +857,7 @@ export default {
           document.getElementById('communication-literacyNativeTongue').style.visibility = "visible"
         }
       }
+      console.log(this.wpRemaining)
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {
@@ -1005,6 +1036,10 @@ export default {
         Object.keys(this.wilderness).length > 0 && this.remaining !== 0 ?
             this.wildernessActive = true : this.wildernessActive = false
 
+      // rest tab to default if the skill group is no longer active
+      let tabValue = document.getElementById('tabs').value
+      this[tabValue + 'Active'] === false ? this.toggle = 'default' : this.toggle = tabValue
+
       // either show the finished button or the tabs
       // if the user is out of picks set tabs active to false and let them finalize selections
       this.tabsActive = availablePicks !== 0
@@ -1029,6 +1064,15 @@ export default {
           !this.weaponProficienciesModernActive &&
           !this.wildernessActive
           )
+      // handle wpRemaining
+      if (this.wpRequired > 0 && this.wpRemaining < 1) {
+        this.weaponProficienciesAncientActive = false;
+        this.weaponProficienciesModernActive = false;
+      }
+      if (this.wpRequired > 0 && this.wpRemaining > 0) {
+        this.weaponProficienciesAncientActive = true;
+        this.weaponProficienciesModernActive = true;
+      }
     },
     // controls the background color on the skill group lists
     selectedBg: function (newId){

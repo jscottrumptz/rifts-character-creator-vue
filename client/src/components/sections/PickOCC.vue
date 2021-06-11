@@ -108,51 +108,67 @@
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- IQ -->
-                  <span  v-if="occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
+                  <span  v-if="occ.iqBonus.amount || occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.iqBonus.bonus}}
+                      <span v-if="occ.iqBonus.amount">{{occ.iqBonus.amount}}D{{occ.iqBonus.sides}}</span>
+                      <span v-if="occ.iqBonus.multiplier">x</span>{{occ.iqBonus.multiplier}}
+                      <span v-if="occ.iqBonus.bonus">+</span>{{occ.iqBonus.bonus}}
                     </span>
                   </span>
                   <!-- ME -->
-                  <span  v-if="occ.meBonus.bonus" class="inline-flex items-center px-1">ME:
+                  <span  v-if="occ.meBonus.amount || occ.meBonus.bonus" class="inline-flex items-center px-1">ME:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.meBonus.bonus}}
+                      <span v-if="occ.meBonus.amount">{{occ.meBonus.amount}}D{{occ.meBonus.sides}}</span>
+                      <span v-if="occ.meBonus.multiplier">x</span>{{occ.meBonus.multiplier}}
+                      <span v-if="occ.meBonus.bonus">+</span>{{occ.meBonus.bonus}}
                     </span>
                   </span>
                   <!-- MA -->
-                  <span  v-if="occ.maBonus.bonus" class="inline-flex items-center px-1">MA:
+                  <span  v-if="occ.maBonus.amount || occ.maBonus.bonus" class="inline-flex items-center px-1">MA:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.maBonus.bonus}}
+                      <span v-if="occ.maBonus.amount">{{occ.maBonus.amount}}D{{occ.maBonus.sides}}</span>
+                      <span v-if="occ.maBonus.multiplier">x</span>{{occ.maBonus.multiplier}}
+                      <span v-if="occ.maBonus.bonus">+</span>{{occ.maBonus.bonus}}
                     </span>
                   </span>
                   <!-- PS -->
-                  <span  v-if="occ.psBonus.bonus" class="inline-flex items-center px-1">PS:
+                  <span  v-if="occ.psBonus.amount || occ.psBonus.bonus" class="inline-flex items-center px-1">PS:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.psBonus.bonus}}
+                      <span v-if="occ.psBonus.amount">{{occ.psBonus.amount}}D{{occ.psBonus.sides}}</span>
+                      <span v-if="occ.psBonus.multiplier">x</span>{{occ.psBonus.multiplier}}
+                      <span v-if="occ.psBonus.bonus">+</span>{{occ.psBonus.bonus}}
                     </span>
                   </span>
                   <!-- PP -->
-                  <span  v-if="occ.ppBonus.bonus" class="inline-flex items-center px-1">PP:
+                  <span  v-if="occ.ppBonus.amount || occ.ppBonus.bonus" class="inline-flex items-center px-1">PP:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.ppBonus.bonus}}
+                      <span v-if="occ.ppBonus.amount">{{occ.ppBonus.amount}}D{{occ.ppBonus.sides}}</span>
+                      <span v-if="occ.ppBonus.multiplier">x</span>{{occ.ppBonus.multiplier}}
+                      <span v-if="occ.ppBonus.bonus">+</span>{{occ.ppBonus.bonus}}
                     </span>
                   </span>
                   <!-- PE -->
-                  <span  v-if="occ.peBonus.bonus" class="inline-flex items-center px-1">PE:
+                  <span  v-if="occ.peBonus.amount || occ.peBonus.bonus" class="inline-flex items-center px-1">PE:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.peBonus.bonus}}
+                      <span v-if="occ.peBonus.amount">{{occ.peBonus.amount}}D{{occ.peBonus.sides}}</span>
+                      <span v-if="occ.peBonus.multiplier">x</span>{{occ.peBonus.multiplier}}
+                      <span v-if="occ.peBonus.bonus">+</span>{{occ.peBonus.bonus}}
                     </span>
                   </span>
                   <!-- PB -->
-                  <span  v-if="occ.pbBonus.bonus" class="inline-flex items-center px-1">PB:
+                  <span  v-if="occ.pbBonus.amount || occ.pbBonus.bonus" class="inline-flex items-center px-1">PB:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.pbBonus.bonus}}
+                      <span v-if="occ.pbBonus.amount">{{occ.pbBonus.amount}}D{{occ.pbBonus.sides}}</span>
+                      <span v-if="occ.pbBonus.multiplier">x</span>{{occ.pbBonus.multiplier}}
+                      <span v-if="occ.pbBonus.bonus">+</span>{{occ.pbBonus.bonus}}
                     </span>
                   </span>
                   <!-- Spd -->
-                  <span  v-if="occ.spdBonus.bonus" class="inline-flex items-center px-1">Spd:
+                  <span  v-if="occ.spdBonus.amount || occ.spdBonus.bonus" class="inline-flex items-center px-1">Spd:
                     <span class="pr-2 text-sm font-normal text-gray-500">
-                      +{{occ.spdBonus.bonus}}
+                      <span v-if="occ.spdBonus.amount">{{occ.spdBonus.amount}}D{{occ.spdBonus.sides}}</span>
+                      <span v-if="occ.spdBonus.multiplier">x</span>{{occ.spdBonus.multiplier}}
+                      <span v-if="occ.spdBonus.bonus">+</span>{{occ.spdBonus.bonus}}
                     </span>
                   </span>
                 </td>
@@ -165,40 +181,45 @@
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
                   <!-- HP -->
-                  <span v-if="occ.hp.amount" class="inline-flex items-center px-1">Hit Points:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.hp.amount}}D{{occ.hp.sides}}
-                            <span v-if="occ.hp.multiplier">x</span>{{occ.hp.multiplier}}
-                            <span v-if="occ.hp.bonus">+</span>{{occ.hp.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="occ.hp.amount || occ.hp.bonus" class="inline-flex items-center px-1">HP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.hp.amount">{{occ.hp.amount}}D{{occ.hp.sides}}</span>
+                      <span v-if="occ.hp.multiplier">x</span>{{occ.hp.multiplier}}
+                      <span v-if="occ.hp.bonus">+</span>{{occ.hp.bonus}}
+                    </span>
+                  </span>
                   <!-- SDC -->
-                  <span v-if="occ.sdc.amount" class="inline-flex items-center px-1">SDC:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.sdc.amount}}D{{occ.sdc.sides}}
-                            <span v-if="occ.sdc.multiplier">x</span>{{occ.sdc.multiplier}}
-                            <span v-if="occ.sdc.bonus">+</span>{{occ.sdc.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="occ.sdc.amount || occ.sdc.bonus" class="inline-flex items-center px-1">SDC:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.sdc.amount">{{occ.sdc.amount}}D{{occ.sdc.sides}}</span>
+                      <span v-if="occ.sdc.multiplier">x</span>{{occ.sdc.multiplier}}
+                      <span v-if="occ.sdc.bonus">+</span>{{occ.sdc.bonus}}
+                    </span>
+                  </span>
                   <!-- MDC -->
-                  <span v-if="occ.mdc.amount" class="inline-flex items-center px-1">MDC:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.mdc.amount}}D{{occ.mdc.sides}}
-                            <span v-if="occ.mdc.multiplier">x</span>{{occ.mdc.multiplier}}
-                            <span v-if="occ.mdc.bonus">+</span>{{occ.mdc.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="occ.mdc.amount || occ.mdc.bonus" class="inline-flex items-center px-1">MDC:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.mdc.amount">{{occ.mdc.amount}}D{{occ.mdc.sides}}</span>
+                      <span v-if="occ.mdc.multiplier">x</span>{{occ.mdc.multiplier}}
+                      <span v-if="occ.mdc.bonus">+</span>{{occ.mdc.bonus}}
+                    </span>
+                  </span>
                   <!-- PPE -->
-                  <span v-if="occ.ppe.amount" class="inline-flex items-center px-1">PPE:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.ppe.amount}}D{{occ.ppe.sides}}
-                            <span v-if="occ.ppe.multiplier">x</span>{{occ.ppe.multiplier}}
-                            <span v-if="occ.ppe.bonus">+</span>{{occ.ppe.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="occ.ppe.amount || occ.ppe.bonus" class="inline-flex items-center px-1">PPE:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.ppe.amount">{{occ.ppe.amount}}D{{occ.ppe.sides}}</span>
+                      <span v-if="occ.ppe.multiplier">x</span>{{occ.ppe.multiplier}}
+                      <span v-if="occ.ppe.bonus">+</span>{{occ.ppe.bonus}}
+                    </span>
+                  </span>
                   <!-- ISP -->
-                  <span v-if="occ.isp.amount" class="inline-flex items-center px-1">ISP:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.isp.amount}}D{{occ.isp.sides}}
-                            <span v-if="occ.isp.multiplier">x</span>{{occ.isp.multiplier}}
-                            <span v-if="occ.isp.bonus">+</span>{{occ.isp.bonus}}
-                          </span>
-                        </span>
+                  <span  v-if="occ.isp.amount || occ.isp.bonus" class="inline-flex items-center px-1">ISP:
+                    <span class="pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.isp.amount">{{occ.isp.amount}}D{{occ.isp.sides}}</span>
+                      <span v-if="occ.isp.multiplier">x</span>{{occ.isp.multiplier}}
+                      <span v-if="occ.isp.bonus">+</span>{{occ.isp.bonus}}
+                    </span>
+                  </span>
                   <!-- Horror -->
                   <span v-if="occ.horror.bonus" class="inline-flex items-center px-1">Horror:
                           <span class="pr-2 text-sm font-normal text-gray-500">{{occ.horror.bonus}}</span>

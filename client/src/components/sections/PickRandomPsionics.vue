@@ -26,6 +26,7 @@
         <div class="sm:hidden m-3">
           <label for="tabs" class="sr-only">Select a tab</label>
           <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+            <option value="default" selected disabled> Select a Psionics Group... </option>
             <option v-if="healingActive" value="healing">Healing Psionics</option>
             <option v-if="physicalActive" value="physical">Physical Psionics</option>
             <option v-if="sensitiveActive" value="sensitive">Sensitive Psionics</option>
@@ -246,6 +247,9 @@ export default {
         this.healingActive = true;
         this.sensitiveActive = true;
       }
+      // reset tab to default if the skill group is no longer active
+      let tabValue = document.getElementById('tabs').value
+      this[tabValue + 'Active'] === false ? this.toggle = 'default' : this.toggle = tabValue
 
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
