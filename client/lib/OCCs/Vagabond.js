@@ -1,96 +1,95 @@
 const OCC = require('../OCC');
 
-class CityRat extends OCC {
+class Vagabond extends OCC {
     constructor() {
         super();
-        this.name = 'City Rat';
+        this.name = 'Vagabond';
         this.group = 'Adventurers & Scholars';
-        this.occQuote = `    "The CS may think they own this place, and adults may run the show, but we 're the Kings and Queens of the streets. We know everything."`;
-        this.description = `    City Rats are the denizens of the 'Burbs and big cities. In the fortress cities modeled after Chi-Town, those who live in the lower levels of such a metropolis are generally nicknamed "Downsiders," but "City Rat" is a designation for a Downsider troublemaker and the street urchins who run amok in the 'Burbs. They exist in most urban environments, but absolutely thrive in the ' Burbs and the lower levels, tunnels, and sewers of Chi-Town, Iron Heart and other mega-cities of the Coalition States, the New German Republic, Mexico and Japan. Most have never been beyond the city limits and have no desire to go adventuring beyond the urban sprawl. These are "city people" through and through. They know little about the outside world except what they read or hear on the street, and view it as wondrous, scary, and alien, but most of all, a place not for them. Their world is the rumbling and bustling city streets. Their secret havens, hideouts and lairs are the shadowy dark places that other city dwellers have forgotten about or fear to enter. 
-    City Rats love the acrid mix of smells that is the living city: machine oil, vehicle exhaust, booze, and perspiration of the thronging multitudes. They are not afraid of the city's dark comers or its vermin. They know the back streets and, often, the alleys, sewer systems, and access tunnels in the belly of the beast that is the city. And they know them better than the average citizen knows the highways and avenues. 
-    City Rats pride themselves on their knowledge of the streets and the movers and shakers who work them and the predators that prowl them. That means City Rats know where to find contraband, cybernetics, drugs, pawnshops, fences, Body-Chop-Shops, Black Market hangouts and hoods, the best food, the cheapest women, all night hot spots, and other places, resources and commodities on the streets. If you know where to look, you can find most anything you could need or want, and City Rats know all the ins and outs of their city. 
-    The career of a City Rat is a way of life rather than an occupation. A lifestyle glamorized (and lived) as a sort of swashbuckling streetwise hacker and petty crook who travels the undercurrents of the city streets and the electronic super-highway with equal ease. It is a life of self-made intrigue, exploration, spying and thievery (of data if nothing else). City Rats are usually young men and women in their teens or twenties who walk on the wild side. They crave adventure and find it by bucking the system and dodging the law. A City Rat may be an idealistic rebel who seeks reform and justice in a corrupt and unjust society, or a simple thrill seeker who finds excitement and romance in the dark underbelly of the city and the subculture of the street scene. Many City Rats are computer hackers and information brokers, while others are little more than beggars and thieves, all surviving by the seat of their pants. The individual 's exact orientation and skills typically reflect his alignment, ideals, ethics, and goals.`;
-        this.image = 'assets/images/occ/CityRat.jpg';
-        this.raceDesc = `None, a third to half are D-Bees.`;
-        this.recommendedAttributes = `Generally the City Rat is fast, clever and agile, but there are no real requirements other than an I.Q. 10 or higher to be a hacker, P.P. of 10 or higher to be a thief, I.Q. 10 and P.P. 14 or higher to be an assassin, P. S. of 14 or higher to be a hero or thug/muscle man.`;
-        this.spdBonus = { sides: 6, amount: 1, bonus: 1 };
-        this.perceptionBonus = { bonus: 3 };
-        this.ppe = { sides: 10, amount: 1, bonus: 4 };
-        this.sdc = { sides: 4, amount: 2 };
-        this.credits = { sides: 6, amount: 6, multiplier: 100 };
-        this.blackMarketItems = { sides: 4, amount: 3, multiplier: 1000 };
+        this.occQuote = `    "Unskilled? Are you kidding? I'm a student of the world. I know a little bit about everything. Well . . . at least the things that interest me most"`;
+        this.description = `    Not everybody who gets involved in adventure is a specialist in combat or some other area of training. Some are just ordinary people who get swept up in the flow of events or decide that it is time they make a change in their Jives. Others are individuals who possess some natural power (psionics or racial ability), but do not have great training or education other than in the use of their powers. These folks tend to take low-end jobs or drift from place to place, and job to job. Vagabonds are the ultimate Bohemians of this group. They actually like the freedom of not being tied down and drifting along from one adventure to the next. They put their trust in fate and make the best of every situation. Vagabonds are laid-back, easygoing and friendly. They like to travel, like meeting new people, like trying new things (even if it's baling hay or chopping wood), and like not having to worry about supporting a family or answering to anybody but themselves. For a Vagabond, each new face is a welcomed encounter, each new place an opportunity for adventure, even if it's on a small, personal scale. "See, I didn't know that," and "oh, how interesting," are words anyone traveling with a Vagabond is likely to hear over and over again. 
+Those who choose the life of a Vagabond are usually spirited individuals full of life and curiosity, but rarely very educated in any formal sense, nor literate, and seldom seek higher education. They tend to live by the seat of their pants and rely on their wits, luck, and the kindness of strangers. Many nomads, wilderness folk, peasants, farmers, Major psychics and mutants are Vagabonds.`;
+        this.image = 'assets/images/occ/Vagabond.jpg';
+        this.raceDesc = `None.`;
+        this.maBonus = { sides: 4, amount: 1 };
+        this.psBonus = { bonus: 1 };
+        this.peBonus = { bonus: 2 };
+        this.perceptionBonus = { bonus: 4 };
+        this.sdc = { sides: 6, amount: 2, bonus: 10 };
+        this.possessionBonus = { bonus: 1 };
+        this.psionicBonus = { bonus: 1 };
+        this.horrorBonus = { bonus: 2 };
+        this.credits = { sides: 6, amount: 2, multiplier: 100 };
+        this.blackMarketItems = { sides: 6, amount: 2, multiplier: 100 };
 
-        this.occSkillsList = `Literate in Native Language (+15%).
-Language: Native Tongue at 92%.
-Language: Other: One of choice (+10%).
-Barter (+15%)
-Computer Operation (+15%)
-Streetwise (+20%)
-Tailing (+20%)
-Pilot: Automobile (+10%)
-Pilot: Bicycle (+20%)
-Pilot: Motorcycle (+15%) or Hovercycle (+10%)
-Math: Basic (+10%)
-Running
-W.P.: One of choice.
-Hand to Hand: Basic, which can be changed to Hand to Hand: Expert at the cost of one "O.C.C. Related Skill," or Martial Arts (or Assassin, if an evil alignment) for the cost of two O. C. C. Related Skills.`;
-        this.occRelatedSkillsList = `Select 10 other skills, but at least three must be selected from Physical or Rogue skills, + 1 additional skill at levels 2, 4, 6, 9 and 1 2. All new skills start at level one proficiency.
-Communications: Any (+ 1 0%).
-Cowboy: None.
-Domestic: Any (+5%).
-Electrical: Basic and Computer Repair only (+5%).
-Espionage: None.
-Horsemanship: None.
-Mechanical: Automotive and Basic Mechanics only (+ 10%).
-Medical: First Aid or Paramedic (+ 10%), but the Paramedic skill
-counts as two skill selections.
-Military: None.
-Physical: Any (+5% where applicable), except Fencing, Forced
-March, Outdoorsmanship, and SCUBA.
-Pilot: Any ground vehicles, Jet Pack, or Robot Combat Basic
-(+ 10%), but no aircraft, boats, power armor, robots, or military vehicles.
-Pilot Related: None.
-Rogue: Any (+ 15%).
-Science: Math: Basic and Advanced and Chemistry only.
-Technical: Any (+ 10%).
-W.P.: Any, except any Heavy Energy Weapons and military W.P.s.
-Wilderness: None.`;
-        this.secondarySkillsList = `Eight Secondary skills from the Secondary Skills List in the Skill Section, + 1 additional at levels 3, 6, 10 and 15. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
-        this.cyberneticsDesc = `The City Rat Archetype starts with 1D4+2 basic cybernetic implants. It is entirely up to the player to decide whether his or her character has any implants, and if so, which ones. This initial implant selection is restricted to common, Commercial, and Black Market cybernetics. Exactly how much cybernetics a City Rat may acquire depends on the individual and his success on the street (i.e., what can he afford). See Rifts® Bionic Sourcebook for a large selection of cybernetics and Black Market offerings.`;
-        this.equipmentDesc = `Two sets of "working colors," one set that is either gang colors or what is considered to be a fashion statement, and one set used for casual wear or disguise. Most City Rats tend toward the color black and leather, chains, high boots, gloves, and sometimes a cape or cloak. He or she also has a fashionable wardrobe of other clothing for play and entertainment located at home or in a tiny apartment in the worst part of town. Mega-Damage body armor can be of any "common" type of light suit, such as M.D.C. homemade armor, Urban Warrior, Plastic Man or Dog Boy riot armor (probably stolen or traded for on the Black Market).
-Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. D. C. damage), an M.D. energy pistol (typically does 2D6 or 3D6 M . D . ) and two E-Clips, plus a flashlight, 900 pound (405 kg) test strength nylon cord/rope, a grappling hook, RMK/Robot Medical Kit ("Stitcher"), PDD/Pocket Digital Disc player and recorder, personal items such as wallet, comb, hat, bandanna, and similar. The vehicle is a bicycle and a motorcycle ill: a junker of a hovercycle (half M. D. C. and maximum speed is 30% less) as per the applicable Pilot skill.`;
-        this.abilitiesDesc = `None`;
-        this.alignment = `Any, but typically Unprincipled, Anarchist, Miscreant or Aberrant.`;
+        this.occSkillsList = `Language: Native Tongue at 88%. 
+Language: Other: Two of choice (+15%). 
+Barter (+16%) 
+Begging (10%) 
+Cook (+15%)
+Domestic: Two skills of choice (+15%) on a professional level.
+I.D. Undercover Agent (+10%)
+Pilot: Automobile (+10%) or Motorcycle (+12%) 
+General Repair (+10%) or Horsemanship: General (+5%) 
+Radio: Basic (+5%)
+Streetwise (+10%) 
+W.P. Ancient: One of choice. 
+W.P. Energy Pistol or Energy Rifle.
+Hand to Hand: Basic, but can be changed to Hand to Hand: Expert at the cost of one "O.C.C. Related Skill," or Martial Arts (or Assassin, if an evil alignment) for the cost of two.`;
+        this.occRelatedSkillsList = `Select five skills at level one, + 1 at levels 3, 6, 9, and 12. All new skills start at level one proficiency. These selections get the benefit of any bonuses that may be noted below. 
+Communications: Any, except Cryptography, Laser Communication, Optic Systems, and Surveillance.
+Cowboy: Branding, Breaking Horses, or Herding Cattle only. 
+Domestic: Any (+10%).
+Electrical: Basic Electronics (+5%) only. 
+Espionage: None. 
+Horsemanship: General only. 
+Mechanical: Basic Mechanics and Automotive only (+5%).
+Medical: First Aid only (+5%).
+Military: None. 
+Physical: Any, except Acrobatics, Gymnastics and Wrestling. 
+Pilot: Any (+5%), except Jets, Ships, Power Armor, Robots and Military vehicles.
+Pilot Related: Any.
+Rogue: Any (+4%). 
+Science: Astronomy & Navigation, and Mathematics only (+5%). 
+Technical: Any (+5%). 
+W.P.: Any, except any Military or Heavy Weapons. 
+Wilderness: Any.`;
+        this.secondarySkillsList = `Eight Secondary Skills at first level, + 1 additional Secondary Skill at levels 3, 5, 7, 9, 11 and 13. Selections are made from the list of Secondary Skills in the Skill Section. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
+        this.cyberneticsDesc = `None to start. May purchase implants later, if desired.`
+        this.equipmentDesc = `Suit of light or medium M.D.C. body armor (looks beaten and battered), the clothes on his back and an extra set baseball cap, jacket or coat, knife, gun with one extra clip of ammo'. flashlight, backpack, sleeping bag, small duffle bag, wallet with 1.D., a couple bandages, pack of aspirin, comb, toothbrush and paste, a bar of soap, several pieces of candy, a sturdy plastic bag for extra stuff, canteen, a pair of sunglasses, and an old, rusty junker of a car or motorcycle or a basic horse.`;
+        this.abilitiesDesc = `Eyeball a Fella
+The character knows people so well that he casually size up a person just by observing him or her for a few minute r Can discern the following about the person: Educated or not, rich or poor, works hard or works at a desk for a living, from what part of the country the person originates, artist or skilled laborer or management, currently flush with money or operating on a budget, if the person is being honest and genuine or lying or putting on airs, happy or discontented, being genuinely friendly or looking to get something outta the exchange (e.g. looking for information, a good deal, a particular person, food, etc.).
+Base Skill: 56% +3% per level of experience. 
+Bonuses: Adds a bonus of +10% to the skills Barter, Cardsharp, Gambling, I.D. Undercover Agent, Research (by talking to people), and Seduction.`;
+        this.alignment = `Any, but 70% seem to be Unprincipled or Anarchist.`;
         this.startingHandToHand = 'handToHandBasic';
-        this.occRelatedNumber = 10;
+        this.occRelatedNumber = 5;
         this.secondaryNumber = 8;
-        this.languages = 1;
+        this.languages = 2;
         this.literacies = 0;
-        this.totalWP = 1;
         this.occSkills = {
             communication: {
                 number: 0,
                 free: [
                     {
                         name:'languageNativeTongue',
-                        base: 92
-                    },
-                    {
-                        name:'literacyNativeTongue',
-                        occBonus: 15
+                        base: 88
                     },
                     {
                         name:'barter',
-                        occBonus: 15
+                        occBonus: 16
+                    },
+                    {
+                        name:'radioBasic',
+                        occBonus: 5
                     }
                 ],
                 choice: [
                     {
-                        amount: 1,
+                        amount: 2,
                         available: [
                             {
                                 name:'languageOther',
-                                occBonus: 10
+                                occBonus: 15
                             }
                         ],
                         unavailable: [
@@ -142,10 +141,22 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [
                     {
                         name: 'Any',
-                        occBonus: 10
                     }
                 ],
-                unavailable: [],
+                unavailable: [
+                    {
+                        name: 'cryptography'
+                    },
+                    {
+                        name: 'laser'
+                    },
+                    {
+                        name: 'opticSystems'
+                    },
+                    {
+                        name: 'surveillance'
+                    }
+                ],
                 only:[]
             },
             cowboy: {
@@ -159,23 +170,52 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [],
                 unavailable: [
                     {
-                        name:'All',
+                        name: 'horsemanshipCowboyCowboy'
+                    },
+                    {
+                        name: 'horsemanshipExoticAnimalsCowboy'
+                    },
+                    {
+                        name: 'loreAmericanIndiansCowboy'
+                    },
+                    {
+                        name: 'loreCattleOrAnimals'
+                    },
+                    {
+                        name: 'roping'
+                    },
+                    {
+                        name: 'trickRiding'
+                    },
+                    {
+                        name: 'wPRopeCowboy'
                     }
                 ],
                 only:[]
             },
             domestic: {
                 number: 0,
-                free: [],
+                free: [
+                    {
+                        name: 'cook',
+                        occBonus: 15
+                    }
+                ],
                 choice: [
                     {
-                        amount: 0
+                        amount: 2,
+                        available: [
+                            {
+                                name: 'Any',
+                                occBonus: 15
+                            }
+                        ]
                     }
                 ],
                 available: [
                     {
                     name: 'Any',
-                    occBonus: 5
+                    occBonus: 10
                     }
                 ],
                 unavailable: [],
@@ -189,28 +229,14 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                         amount: 0
                     }
                 ],
-                available: [
+                available: [],
+                unavailable: [],
+                only:[
                     {
                         name: 'basicElectronics',
                         occBonus: 5
-                    },
-                    {
-                        name: 'computerRepair',
-                        occBonus: 5
                     }
-                ],
-                unavailable: [
-                    {
-                        name: 'electricalEngineer',
-                    },
-                    {
-                        name: 'electricityGeneration',
-                    },
-                    {
-                        name: 'robotElectronics',
-                    },
-                ],
-                only:[]
+                ]
             },
             espionage: {
                 number: 0,
@@ -230,7 +256,12 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
             },
             horsemanship: {
                 number: 0,
-                free: [],
+                free: [
+                    {
+                        name: 'horsemanshipGeneral',
+                        occBonus: 5
+                    }
+                ],
                 choice: [
                     {
                         amount: 0
@@ -255,11 +286,11 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [
                     {
                         name: 'automotiveMechanics',
-                        occBonus: 10
+                        occBonus: 5
                     },
                     {
                         name: 'basicMechanics',
-                        occBonus: 10
+                        occBonus: 5
                     }
                 ],
                 unavailable: [
@@ -295,59 +326,14 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                         amount: 0
                     }
                 ],
-                available: [
+                available: [],
+                unavailable: [],
+                only:[
                     {
                         name: 'firstAid',
-                        occBonus: 10
-                    },
-                    {
-                        name: 'paramedic',
-                        occBonus: 10,
-                        skillCost: 2
+                        occBonus: 5
                     }
-                ],
-                unavailable: [
-                    {
-                        name: 'animalHusbandry'
-                    },
-                    {
-                        name: 'brewingMedicinal'
-                    },
-                    {
-                        name: 'crimeSceneInvestigation'
-                    },
-                    {
-                        name: 'cyberneticMedicine'
-                    },
-                    {
-                        name: 'cyberneticMedicineMaster'
-                    },
-                    {
-                        name: 'entomologicalMedicine'
-                    },
-                    {
-                        name: 'fieldSurgery'
-                    },
-                    {
-                        name: 'forensics'
-                    },
-                    {
-                        name: 'holisticMedicine'
-                    },
-                    {
-                        name: 'medicalDoctor'
-                    },
-                    {
-                        name: 'pathology'
-                    },
-                    {
-                        name: 'psychology'
-                    },
-                    {
-                        name: 'veterinaryScience'
-                    }
-                ],
-                only:[]
+                ]
             },
             military: {
                 number: 0,
@@ -366,14 +352,11 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 only:[]
             },
             physical: {
-                number: 1,
+                number: 0,
                 free: [
                     {
                         name: 'handToHandBasic',
                         skillCost: 0
-                    },
-                    {
-                        name: 'running'
                     }
                 ],
                 choice: [
@@ -401,16 +384,13 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 ],
                 unavailable: [
                     {
-                        name: 'fencing',
+                        name: 'acrobatics',
                     },
                     {
-                        name: 'forcedMarch',
+                        name: 'gymnastics',
                     },
                     {
-                        name: 'outdoorsmanship',
-                    },
-                    {
-                        name: 'sCUBA',
+                        name: 'wrestling',
                     },
                     {
                         name: 'handToHandCommando',
@@ -423,26 +403,17 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
             },
             pilot: {
                 number: 0,
-                free: [
-                    {
-                        name: 'automobile',
-                        occBonus: 10
-                    },
-                    {
-                        name: 'bicycling',
-                        occBonus: 20
-                    }
-                ],
+                free: [],
                 choice: [
                     {
                         amount: 1,
                         or: [
                             {
                                 name: 'motorcyclesAndSnowmobiles',
-                                occBonus: 15
+                                occBonus: 12
                             },
                             {
-                                name: 'hovercyclesOrSkycyclesOrRocketBikes',
+                                name: 'automobile',
                                 occBonus: 10
                             }
                         ]
@@ -451,7 +422,7 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [
                     {
                         name: 'Any',
-                        occBonus: 10
+                        occBonus: 5
                     }
                 ],
                 unavailable: [
@@ -514,24 +485,24 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                         amount: 0
                     }
                 ],
-                available: [],
-                unavailable: [
+                available: [
                     {
-                        name: 'All'
+                        name: 'Any'
                     }
                 ],
+                unavailable: [],
                 only:[]
             },
             rogue: {
-                number: 2,
+                number: 0,
                 free: [
                     {
                         name: 'streetwise',
-                        occBonus: 20
+                        occBonus: 10
                     },
                     {
-                        name: 'tailing',
-                        occBonus: 20
+                        name: 'iDUndercoverAgents',
+                        occBonus: 10
                     }
                 ],
                 choice: [
@@ -542,7 +513,7 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [
                     {
                         name: 'Any',
-                        occBonus: 15
+                        occBonus: 4
                     }
                 ],
                 unavailable: [],
@@ -550,18 +521,27 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
             },
             science: {
                 number: 0,
-                free: [
-                    {
-                        name: 'mathematicsBasic',
-                        occBonus: 10
-                    }
-                ],
+                free: [],
                 choice: [
                     {
                         amount: 0
                     }
                 ],
-                available: [],
+                available: [
+
+                    {
+                        name: 'astronomyAndNavigation',
+                        occBonus: 5
+                    },
+                    {
+                        name: 'mathematicsBasic',
+                        occBonus: 5
+                    },
+                    {
+                        name: 'mathematicsAdvanced',
+                        occBonus: 5
+                    }
+                ],
                 unavailable: [
                     {
                         name: 'anthropology'
@@ -573,9 +553,6 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                         name: 'artificialIntelligence'
                     },
                     {
-                        name: 'astronomyAndNavigation'
-                    },
-                    {
                         name: 'astrophysics'
                     },
                     {
@@ -583,6 +560,9 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                     },
                     {
                         name: 'botany'
+                    },
+                    {
+                        name: 'chemistry'
                     },
                     {
                         name: 'chemistryAnalytical'
@@ -606,8 +586,8 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 number: 0,
                 free: [
                     {
-                        name: 'computerOperation',
-                        occBonus: 15
+                        name: 'generalRepairAndMaintenance',
+                        occBonus: 10
                     }
                 ],
                 choice: [
@@ -618,7 +598,7 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 available: [
                     {
                         name: 'Any',
-                        occBonus: 10
+                        occBonus: 5
                     }
                 ],
                 unavailable: [],
@@ -626,11 +606,7 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
             },
             weaponProficienciesAncient: {
                 number: 0,
-                free: [
-                    {
-                        name: 'wPKnife'
-                    }
-                ],
+                free: [],
                 choice: [
                     {
                         amount: 1,
@@ -655,22 +631,15 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 choice: [
                     {
                         amount: 1,
-                        available: [
+                        or: [
                             {
-                                name: 'Any'
+                                name: 'wPEnergyPistol'
+                            },
+                            {
+                                name: 'wPEnergyRifle'
                             }
                         ],
-                        unavailable: [
-                            {
-                                name: 'wPHeavyMD'
-                            },
-                            {
-                                name: 'wPHeavyMilitary'
-                            },
-                            {
-                                name: 'wPMilitaryFlamethrowers'
-                            }
-                        ]
+                        unavailable: []
                     }
                 ],
                 available: [],
@@ -695,24 +664,31 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                         amount: 0
                     }
                 ],
-                available: [],
-                unavailable: [
+                available: [
                     {
-                        name: 'All'
+                        name: 'Any'
                     }
                 ],
+                unavailable: [],
                 only:[]
             }
         };
-        this.occRelatedAtLevel = { levels: [2, 4, 6, 9, 12], amounts: 1 };
-        this.secondaryAtLevel = { levels: [3, 6, 9, 10, 15], amounts: 1 };
+        this.occRelatedAtLevel = { levels: [3, 6, 9, 12], amounts: 1 };
+        this.secondaryAtLevel = { levels: [3, 5, 7, 9, 11, 13], amounts: 1 };
     }
 
     rollSecondary(character) {
         // must choose between occ skills
         character.skills.choices = true;
-        character.abilities.ability = 'None';
+        character.abilities.eyeballAFella =
+            {
+                name: `Eyeball a Fella`,
+                description: `few minute r Can discern the following about the person: Educated or not, rich or poor, works hard or works at a desk for a living, from what part of the country the person originates, artist or skilled laborer or management, currently flush with money or operating on a budget, if the person is being honest and genuine or lying or putting on airs, happy or discontented, being genuinely friendly or looking to get something outta the exchange (e.g. looking for information, a good deal, a particular person, food, etc.).`,
+                note: `Adds a bonus of +10% to the skills Barter, Cardsharp, Gambling, I.D. Undercover Agent, Research (by talking to people), and Seduction.`,
+                type: 'Occupational',
+                baseSkill: "56% +3% per level of experience."
+            };
     }
 }
 
-module.exports = CityRat;
+module.exports = Vagabond;
