@@ -60,7 +60,7 @@ Wilderness: None.`;
 Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. D. C. damage), an M.D. energy pistol (typically does 2D6 or 3D6 M . D . ) and two E-Clips, plus a flashlight, 900 pound (405 kg) test strength nylon cord/rope, a grappling hook, RMK/Robot Medical Kit ("Stitcher"), PDD/Pocket Digital Disc player and recorder, personal items such as wallet, comb, hat, bandanna, and similar. The vehicle is a bicycle and a motorcycle ill: a junker of a hovercycle (half M. D. C. and maximum speed is 30% less) as per the applicable Pilot skill.`
         this.abilitiesDesc = `None`
         this.alignment = `Any, but typically Unprincipled, Anarchist, Miscreant or Aberrant.`
-        this.startingHandToHand = 'handToHandBasic',
+        this.startingHandToHand = 'handToHandBasic';
         this.occRelatedNumber = 10;
         this.secondaryNumber = 8;
         this.languages = 1;

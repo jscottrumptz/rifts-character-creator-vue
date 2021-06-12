@@ -85,7 +85,7 @@ Total Recall (2)
 Telemechanics (Super, I 0) 
 Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic Paralysis (Super, 20; counts as 2 selections).`;
         this.alignment = `Any.`
-        this.startingHandToHand = 'handToHandBasic',
+        this.startingHandToHand = 'handToHandBasic';
         this.occRelatedNumber = 8;
         this.secondaryNumber = 4;
         this.languages = 1;
