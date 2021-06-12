@@ -445,12 +445,6 @@
                               {{occ.criticalBonus.bonus}}%
                             </span>
                           </span>
-                    <!-- Death -->
-                    <span v-if="occ.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
-                            <span class="pr-2 text-sm font-normal text-gray-500">
-                              <span v-if="occ.deathBonus.bonus > 0">+</span>{{occ.deathBonus.bonus}}%
-                            </span>
-                          </span>
                     <!-- Body Flip -->
                     <span v-if="occ.bodyFlipBonus.bonus" class="inline-flex items-center px-1">Body Flip/Throw:
                             <span class="pr-2 text-sm font-normal text-gray-500">

@@ -576,7 +576,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
             name: `Recognize Scientific Authenticity and Quality`,
             description: `An exclusive skill that enables the Rogue Scientist to tell if scientific equipment is new or used, defective, low or high quality, and if a chemical, drug, specimen or sample is genuine, a fair price and if it is exactly what he needs or not. Reduce this skill by half when dealing with unknown alien items, bionics, electronics and mechanical items. Not applicable to magic items.`,
             type: 'Occupational',
-            baseSkill: "57% + 3% per lvl"
+            baseSkill: "57% + 3% per level of experience."
         };
     }
 }

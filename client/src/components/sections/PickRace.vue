@@ -347,12 +347,6 @@
                             {{race.criticalBonus.bonus}}%
                           </span>
                         </span>
-                  <!-- Death -->
-                  <span v-if="race.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="race.deathBonus.bonus > 0">+</span>{{race.deathBonus.bonus}}%
-                          </span>
-                        </span>
                   <!-- Body Flip -->
                   <span v-if="race.bodyFlipBonus.bonus" class="inline-flex items-center px-1">Body Flip/Throw:
                           <span class="pr-2 text-sm font-normal text-gray-500">

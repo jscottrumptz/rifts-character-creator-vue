@@ -5,6 +5,7 @@ const Operator = require('./Operator');
 const RogueScholar = require('./RogueScholar');
 const RogueScientist = require('./RogueScientist');
 const Vagabond = require('./Vagabond')
+const WildernessScout = require('./WildernessScout')
 
 class PickOCC {
     constructor(
@@ -14,7 +15,8 @@ class PickOCC {
         operator = new Operator,
         rogueScholar = new RogueScholar,
         rogueScientist = new RogueScientist,
-        vagabond = new Vagabond
+        vagabond = new Vagabond,
+        wildernessScout = new WildernessScout
     ) {
         this.bodyFixer = bodyFixer;
         this.cityRat = cityRat;
@@ -23,6 +25,7 @@ class PickOCC {
         this.rogueScholar = rogueScholar;
         this.rogueScientist = rogueScientist;
         this.vagabond = vagabond;
+        this.wildernessScout = wildernessScout;
     }
 }
 
