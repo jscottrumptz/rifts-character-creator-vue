@@ -38,496 +38,508 @@
               </tr>
               </thead>
               <tbody>
-              <!-- Attribute Requirements -->
-              <tr v-if="occ.reqIq || occ.reqMe || occ.reqMa || occ.reqPs || occ.reqPp|| occ.reqPe || occ.reqPb|| occ.reqSpd || occ.recommendedAttributes" class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Required
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- IQ -->
-                  <span  v-if="occ.reqIq" class="inline-flex items-center px-1">IQ:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqIq}} or higher.
+                <!-- Attribute Requirements -->
+                <tr v-if="occ.reqIq || occ.reqMe || occ.reqMa || occ.reqPs || occ.reqPp|| occ.reqPe || occ.reqPb|| occ.reqSpd || occ.recommendedAttributes" class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Required
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- IQ -->
+                    <span  v-if="occ.reqIq" class="inline-flex items-center px-1">IQ:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqIq}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- ME -->
-                  <span  v-if="occ.reqMe" class="inline-flex items-center px-1">ME:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqMe}} or higher.
+                    <!-- ME -->
+                    <span  v-if="occ.reqMe" class="inline-flex items-center px-1">ME:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqMe}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- MA -->
-                  <span  v-if="occ.reqMa" class="inline-flex items-center px-1">MA:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqMa}} or higher.
+                    <!-- MA -->
+                    <span  v-if="occ.reqMa" class="inline-flex items-center px-1">MA:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqMa}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- PS -->
-                  <span  v-if="occ.reqPs" class="inline-flex items-center px-1">PS:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqPs}} or higher.
+                    <!-- PS -->
+                    <span  v-if="occ.reqPs" class="inline-flex items-center px-1">PS:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqPs}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- PP -->
-                  <span  v-if="occ.reqPp" class="inline-flex items-center px-1">PP:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqPp}} or higher.
+                    <!-- PP -->
+                    <span  v-if="occ.reqPp" class="inline-flex items-center px-1">PP:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqPp}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- PE -->
-                  <span  v-if="occ.reqPe" class="inline-flex items-center px-1">PE:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqPe}} or higher.
+                    <!-- PE -->
+                    <span  v-if="occ.reqPe" class="inline-flex items-center px-1">PE:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqPe}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- PB -->
-                  <span  v-if="occ.reqPb" class="inline-flex items-center px-1">PB:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqPb}} or higher.
+                    <!-- PB -->
+                    <span  v-if="occ.reqPb" class="inline-flex items-center px-1">PB:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqPb}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- Spd -->
-                  <span  v-if="occ.reqSpd" class="inline-flex items-center px-1">Spd:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.reqSpd}} or higher.
+                    <!-- Spd -->
+                    <span  v-if="occ.reqSpd" class="inline-flex items-center px-1">Spd:
+                      <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                        {{occ.reqSpd}} or higher.
+                      </span>
                     </span>
-                  </span>
-                  <!-- Recommended -->
-                  <span  v-if="occ.recommendedAttributes" class="px-1 text-gray-500 italic"> Recommended:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      {{occ.recommendedAttributes}}
+                    <!-- Recommended -->
+                    <span  v-if="occ.recommendedAttributes" class="mr-2 text-gray-500 italic">
+                      <span class="text-sm font-normal text-gray-500">
+                        {{occ.recommendedAttributes}}
+                      </span>
                     </span>
-                  </span>
-                </td>
+                  </td>
 
-              </tr>
-              <!-- Attribute Rolls -->
-              <tr v-if="occ.iqBonus.bonus || occ.meBonus.bonus || occ.maBonus.bonus || occ.psBonus.bonus || occ.ppBonus.bonus || occ.peBonus.bonus || occ.pbBonus.bonus || occ.spdBonus.bonus" class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Attributes
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- IQ -->
-                  <span  v-if="occ.iqBonus.amount || occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.iqBonus.amount">{{occ.iqBonus.amount}}D{{occ.iqBonus.sides}}</span>
-                      <span v-if="occ.iqBonus.multiplier">x</span>{{occ.iqBonus.multiplier}}
-                      <span v-if="occ.iqBonus.bonus">+</span>{{occ.iqBonus.bonus}}
+                </tr>
+                <!-- Alignment -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Alignment
+                  </td>
+                  <td v-if="occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
+                    {{occ.alignment}}
+                  </td>
+                  <td v-if="!occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
+                    Any
+                  </td>
+                </tr>
+                <!-- Race -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Race
+                  </td>
+                  <td v-if="occ.raceDesc" class="py-2 pr-2 text-sm text-gray-700">
+                    {{occ.raceDesc}}
+                  </td>
+                  <td v-if="!occ.raceDesc" class="py-2 pr-2 text-sm text-gray-700">
+                    Any
+                  </td>
+                </tr>
+                <!-- Attribute Rolls -->
+                <tr v-if="occ.iqBonus.bonus || occ.meBonus.bonus || occ.maBonus.bonus || occ.psBonus.bonus || occ.ppBonus.bonus || occ.peBonus.bonus || occ.pbBonus.bonus || occ.spdBonus.bonus" class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Attributes
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- IQ -->
+                    <span  v-if="occ.iqBonus.amount || occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.iqBonus.amount">{{occ.iqBonus.amount}}D{{occ.iqBonus.sides}}</span>
+                        <span v-if="occ.iqBonus.multiplier">x</span>{{occ.iqBonus.multiplier}}
+                        <span v-if="occ.iqBonus.bonus">+</span>{{occ.iqBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- ME -->
-                  <span  v-if="occ.meBonus.amount || occ.meBonus.bonus" class="inline-flex items-center px-1">ME:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.meBonus.amount">{{occ.meBonus.amount}}D{{occ.meBonus.sides}}</span>
-                      <span v-if="occ.meBonus.multiplier">x</span>{{occ.meBonus.multiplier}}
-                      <span v-if="occ.meBonus.bonus">+</span>{{occ.meBonus.bonus}}
+                    <!-- ME -->
+                    <span  v-if="occ.meBonus.amount || occ.meBonus.bonus" class="inline-flex items-center px-1">ME:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.meBonus.amount">{{occ.meBonus.amount}}D{{occ.meBonus.sides}}</span>
+                        <span v-if="occ.meBonus.multiplier">x</span>{{occ.meBonus.multiplier}}
+                        <span v-if="occ.meBonus.bonus">+</span>{{occ.meBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- MA -->
-                  <span  v-if="occ.maBonus.amount || occ.maBonus.bonus" class="inline-flex items-center px-1">MA:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.maBonus.amount">{{occ.maBonus.amount}}D{{occ.maBonus.sides}}</span>
-                      <span v-if="occ.maBonus.multiplier">x</span>{{occ.maBonus.multiplier}}
-                      <span v-if="occ.maBonus.bonus">+</span>{{occ.maBonus.bonus}}
+                    <!-- MA -->
+                    <span  v-if="occ.maBonus.amount || occ.maBonus.bonus" class="inline-flex items-center px-1">MA:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.maBonus.amount">{{occ.maBonus.amount}}D{{occ.maBonus.sides}}</span>
+                        <span v-if="occ.maBonus.multiplier">x</span>{{occ.maBonus.multiplier}}
+                        <span v-if="occ.maBonus.bonus">+</span>{{occ.maBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- PS -->
-                  <span  v-if="occ.psBonus.amount || occ.psBonus.bonus" class="inline-flex items-center px-1">PS:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.psBonus.amount">{{occ.psBonus.amount}}D{{occ.psBonus.sides}}</span>
-                      <span v-if="occ.psBonus.multiplier">x</span>{{occ.psBonus.multiplier}}
-                      <span v-if="occ.psBonus.bonus">+</span>{{occ.psBonus.bonus}}
+                    <!-- PS -->
+                    <span  v-if="occ.psBonus.amount || occ.psBonus.bonus" class="inline-flex items-center px-1">PS:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.psBonus.amount">{{occ.psBonus.amount}}D{{occ.psBonus.sides}}</span>
+                        <span v-if="occ.psBonus.multiplier">x</span>{{occ.psBonus.multiplier}}
+                        <span v-if="occ.psBonus.bonus">+</span>{{occ.psBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- PP -->
-                  <span  v-if="occ.ppBonus.amount || occ.ppBonus.bonus" class="inline-flex items-center px-1">PP:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.ppBonus.amount">{{occ.ppBonus.amount}}D{{occ.ppBonus.sides}}</span>
-                      <span v-if="occ.ppBonus.multiplier">x</span>{{occ.ppBonus.multiplier}}
-                      <span v-if="occ.ppBonus.bonus">+</span>{{occ.ppBonus.bonus}}
+                    <!-- PP -->
+                    <span  v-if="occ.ppBonus.amount || occ.ppBonus.bonus" class="inline-flex items-center px-1">PP:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.ppBonus.amount">{{occ.ppBonus.amount}}D{{occ.ppBonus.sides}}</span>
+                        <span v-if="occ.ppBonus.multiplier">x</span>{{occ.ppBonus.multiplier}}
+                        <span v-if="occ.ppBonus.bonus">+</span>{{occ.ppBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- PE -->
-                  <span  v-if="occ.peBonus.amount || occ.peBonus.bonus" class="inline-flex items-center px-1">PE:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.peBonus.amount">{{occ.peBonus.amount}}D{{occ.peBonus.sides}}</span>
-                      <span v-if="occ.peBonus.multiplier">x</span>{{occ.peBonus.multiplier}}
-                      <span v-if="occ.peBonus.bonus">+</span>{{occ.peBonus.bonus}}
+                    <!-- PE -->
+                    <span  v-if="occ.peBonus.amount || occ.peBonus.bonus" class="inline-flex items-center px-1">PE:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.peBonus.amount">{{occ.peBonus.amount}}D{{occ.peBonus.sides}}</span>
+                        <span v-if="occ.peBonus.multiplier">x</span>{{occ.peBonus.multiplier}}
+                        <span v-if="occ.peBonus.bonus">+</span>{{occ.peBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- PB -->
-                  <span  v-if="occ.pbBonus.amount || occ.pbBonus.bonus" class="inline-flex items-center px-1">PB:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.pbBonus.amount">{{occ.pbBonus.amount}}D{{occ.pbBonus.sides}}</span>
-                      <span v-if="occ.pbBonus.multiplier">x</span>{{occ.pbBonus.multiplier}}
-                      <span v-if="occ.pbBonus.bonus">+</span>{{occ.pbBonus.bonus}}
+                    <!-- PB -->
+                    <span  v-if="occ.pbBonus.amount || occ.pbBonus.bonus" class="inline-flex items-center px-1">PB:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.pbBonus.amount">{{occ.pbBonus.amount}}D{{occ.pbBonus.sides}}</span>
+                        <span v-if="occ.pbBonus.multiplier">x</span>{{occ.pbBonus.multiplier}}
+                        <span v-if="occ.pbBonus.bonus">+</span>{{occ.pbBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- Spd -->
-                  <span  v-if="occ.spdBonus.amount || occ.spdBonus.bonus" class="inline-flex items-center px-1">Spd:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.spdBonus.amount">{{occ.spdBonus.amount}}D{{occ.spdBonus.sides}}</span>
-                      <span v-if="occ.spdBonus.multiplier">x</span>{{occ.spdBonus.multiplier}}
-                      <span v-if="occ.spdBonus.bonus">+</span>{{occ.spdBonus.bonus}}
+                    <!-- Spd -->
+                    <span  v-if="occ.spdBonus.amount || occ.spdBonus.bonus" class="inline-flex items-center px-1">Spd:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.spdBonus.amount">{{occ.spdBonus.amount}}D{{occ.spdBonus.sides}}</span>
+                        <span v-if="occ.spdBonus.multiplier">x</span>{{occ.spdBonus.multiplier}}
+                        <span v-if="occ.spdBonus.bonus">+</span>{{occ.spdBonus.bonus}}
+                      </span>
                     </span>
-                  </span>
-                </td>
+                  </td>
 
-              </tr>
-              <!-- Secondary Stats -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Secondary
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- HP -->
-                  <span  v-if="occ.hp.amount || occ.hp.bonus" class="inline-flex items-center px-1">HP:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.hp.amount">{{occ.hp.amount}}D{{occ.hp.sides}}</span>
-                      <span v-if="occ.hp.multiplier">x</span>{{occ.hp.multiplier}}
-                      <span v-if="occ.hp.bonus">+</span>{{occ.hp.bonus}}
+                </tr>
+                <!-- Secondary Stats -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Secondary
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- HP -->
+                    <span  v-if="occ.hp.amount || occ.hp.bonus" class="inline-flex items-center px-1">HP:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.hp.amount">{{occ.hp.amount}}D{{occ.hp.sides}}</span>
+                        <span v-if="occ.hp.multiplier">x</span>{{occ.hp.multiplier}}
+                        <span v-if="occ.hp.bonus">+</span>{{occ.hp.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- SDC -->
-                  <span  v-if="occ.sdc.amount || occ.sdc.bonus" class="inline-flex items-center px-1">SDC:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.sdc.amount">{{occ.sdc.amount}}D{{occ.sdc.sides}}</span>
-                      <span v-if="occ.sdc.multiplier">x</span>{{occ.sdc.multiplier}}
-                      <span v-if="occ.sdc.bonus">+</span>{{occ.sdc.bonus}}
+                    <!-- SDC -->
+                    <span  v-if="occ.sdc.amount || occ.sdc.bonus" class="inline-flex items-center px-1">SDC:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.sdc.amount">{{occ.sdc.amount}}D{{occ.sdc.sides}}</span>
+                        <span v-if="occ.sdc.multiplier">x</span>{{occ.sdc.multiplier}}
+                        <span v-if="occ.sdc.bonus">+</span>{{occ.sdc.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- MDC -->
-                  <span  v-if="occ.mdc.amount || occ.mdc.bonus" class="inline-flex items-center px-1">MDC:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.mdc.amount">{{occ.mdc.amount}}D{{occ.mdc.sides}}</span>
-                      <span v-if="occ.mdc.multiplier">x</span>{{occ.mdc.multiplier}}
-                      <span v-if="occ.mdc.bonus">+</span>{{occ.mdc.bonus}}
+                    <!-- MDC -->
+                    <span  v-if="occ.mdc.amount || occ.mdc.bonus" class="inline-flex items-center px-1">MDC:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.mdc.amount">{{occ.mdc.amount}}D{{occ.mdc.sides}}</span>
+                        <span v-if="occ.mdc.multiplier">x</span>{{occ.mdc.multiplier}}
+                        <span v-if="occ.mdc.bonus">+</span>{{occ.mdc.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- PPE -->
-                  <span  v-if="occ.ppe.amount || occ.ppe.bonus" class="inline-flex items-center px-1">PPE:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.ppe.amount">{{occ.ppe.amount}}D{{occ.ppe.sides}}</span>
-                      <span v-if="occ.ppe.multiplier">x</span>{{occ.ppe.multiplier}}
-                      <span v-if="occ.ppe.bonus">+</span>{{occ.ppe.bonus}}
+                    <!-- PPE -->
+                    <span  v-if="occ.ppe.amount || occ.ppe.bonus" class="inline-flex items-center px-1">PPE:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.ppe.amount">{{occ.ppe.amount}}D{{occ.ppe.sides}}</span>
+                        <span v-if="occ.ppe.multiplier">x</span>{{occ.ppe.multiplier}}
+                        <span v-if="occ.ppe.bonus">+</span>{{occ.ppe.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- ISP -->
-                  <span  v-if="occ.isp.amount || occ.isp.bonus" class="inline-flex items-center px-1">ISP:
-                    <span class="pr-2 text-sm font-normal text-gray-500">
-                      <span v-if="occ.isp.amount">{{occ.isp.amount}}D{{occ.isp.sides}}</span>
-                      <span v-if="occ.isp.multiplier">x</span>{{occ.isp.multiplier}}
-                      <span v-if="occ.isp.bonus">+</span>{{occ.isp.bonus}}
+                    <!-- ISP -->
+                    <span  v-if="occ.isp.amount || occ.isp.bonus" class="inline-flex items-center px-1">ISP:
+                      <span class="pr-2 text-sm font-normal text-gray-500">
+                        <span v-if="occ.isp.amount">{{occ.isp.amount}}D{{occ.isp.sides}}</span>
+                        <span v-if="occ.isp.multiplier">x</span>{{occ.isp.multiplier}}
+                        <span v-if="occ.isp.bonus">+</span>{{occ.isp.bonus}}
+                      </span>
                     </span>
-                  </span>
-                  <!-- Horror -->
-                  <span v-if="occ.horror.bonus" class="inline-flex items-center px-1">Horror:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.horror.bonus}}</span>
-                        </span>
+                    <!-- Horror -->
+                    <span v-if="occ.horror.bonus" class="inline-flex items-center px-1">Horror:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.horror.bonus}}</span>
+                          </span>
 
-                </td>
-              </tr>
-              <!-- Saves -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Saves
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- Poison -->
-                  <span v-if="occ.poisonBonus.bonus" class="inline-flex items-center px-1">vs Poison:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.poisonBonus.bonus > 0">+</span>{{occ.poisonBonus.bonus}}
+                  </td>
+                </tr>
+                <!-- Saves -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Saves
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- Poison -->
+                    <span v-if="occ.poisonBonus.bonus" class="inline-flex items-center px-1">vs Poison:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.poisonBonus.bonus > 0">+</span>{{occ.poisonBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Insanity -->
-                  <span v-if="occ.insanityBonus.bonus" class="inline-flex items-center px-1">vs Insanity:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.insanityBonus.bonus > 0">+</span>{{occ.insanityBonus.bonus}}
+                    <!-- Insanity -->
+                    <span v-if="occ.insanityBonus.bonus" class="inline-flex items-center px-1">vs Insanity:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.insanityBonus.bonus > 0">+</span>{{occ.insanityBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Spell -->
-                  <span v-if="occ.spellBonus.bonus" class="inline-flex items-center px-1">vs Spell:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.spellBonus.bonus > 0">+</span>{{occ.spellBonus.bonus}}
+                    <!-- Spell -->
+                    <span v-if="occ.spellBonus.bonus" class="inline-flex items-center px-1">vs Spell:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.spellBonus.bonus > 0">+</span>{{occ.spellBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Pain -->
-                  <span v-if="occ.painBonus.bonus" class="inline-flex items-center px-1">vs Pain:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.painBonus.bonus > 0">+</span>{{occ.painBonus.bonus}}
+                    <!-- Pain -->
+                    <span v-if="occ.painBonus.bonus" class="inline-flex items-center px-1">vs Pain:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.painBonus.bonus > 0">+</span>{{occ.painBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Disease -->
-                  <span v-if="occ.diseaseBonus.bonus" class="inline-flex items-center px-1">vs Disease:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.diseaseBonus.bonus > 0">+</span>{{occ.diseaseBonus.bonus}}
+                    <!-- Disease -->
+                    <span v-if="occ.diseaseBonus.bonus" class="inline-flex items-center px-1">vs Disease:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.diseaseBonus.bonus > 0">+</span>{{occ.diseaseBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Drugs -->
-                  <span v-if="occ.drugsBonus.bonus" class="inline-flex items-center px-1">vs Drugs:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.drugsBonus.bonus > 0">+</span>{{occ.drugsBonus.bonus}}
+                    <!-- Drugs -->
+                    <span v-if="occ.drugsBonus.bonus" class="inline-flex items-center px-1">vs Drugs:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.drugsBonus.bonus > 0">+</span>{{occ.drugsBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Ritual -->
-                  <span v-if="occ.ritualBonus.bonus" class="inline-flex items-center px-1">vs Ritual:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.ritualBonus.bonus > 0">+</span>{{occ.ritualBonus.bonus}}
+                    <!-- Ritual -->
+                    <span v-if="occ.ritualBonus.bonus" class="inline-flex items-center px-1">vs Ritual:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.ritualBonus.bonus > 0">+</span>{{occ.ritualBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Possession -->
-                  <span v-if="occ.possessionBonus.bonus" class="inline-flex items-center px-1">vs Possession:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.possessionBonus.bonus > 0">+</span>{{occ.possessionBonus.bonus}}
+                    <!-- Possession -->
+                    <span v-if="occ.possessionBonus.bonus" class="inline-flex items-center px-1">vs Possession:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.possessionBonus.bonus > 0">+</span>{{occ.possessionBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Psionic -->
-                  <span v-if="occ.psionicBonus.bonus" class="inline-flex items-center px-1">vs Psionic:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.psionicBonus.bonus > 0">+</span>{{occ.psionicBonus.bonus}}
+                    <!-- Psionic -->
+                    <span v-if="occ.psionicBonus.bonus" class="inline-flex items-center px-1">vs Psionic:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.psionicBonus.bonus > 0">+</span>{{occ.psionicBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Magic -->
-                  <span v-if="occ.magicBonus.bonus" class="inline-flex items-center px-1">vs Magic:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.magicBonus.bonus > 0">+</span>{{occ.magicBonus.bonus}}
+                    <!-- Magic -->
+                    <span v-if="occ.magicBonus.bonus" class="inline-flex items-center px-1">vs Magic:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.magicBonus.bonus > 0">+</span>{{occ.magicBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Toxin -->
-                  <span v-if="occ.toxinBonus.bonus" class="inline-flex items-center px-1">vs Toxin:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.toxinBonus.bonus > 0">+</span>{{occ.toxinBonus.bonus}}
+                    <!-- Toxin -->
+                    <span v-if="occ.toxinBonus.bonus" class="inline-flex items-center px-1">vs Toxin:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.toxinBonus.bonus > 0">+</span>{{occ.toxinBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Coma -->
-                  <span v-if="occ.comaBonus.bonus" class="inline-flex items-center px-1">vs Coma:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.comaBonus.bonus > 0">+</span>{{occ.comaBonus.bonus}}%
+                    <!-- Coma -->
+                    <span v-if="occ.comaBonus.bonus" class="inline-flex items-center px-1">vs Coma:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.comaBonus.bonus > 0">+</span>{{occ.comaBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Death -->
-                  <span v-if="occ.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.deathBonus.bonus > 0">+</span>{{occ.deathBonus.bonus}}%
+                    <!-- Death -->
+                    <span v-if="occ.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.deathBonus.bonus > 0">+</span>{{occ.deathBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Horror -->
-                  <span v-if="occ.horrorBonus.bonus" class="inline-flex items-center px-1">vs Horror:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.horrorBonus.bonus > 0">+</span>{{occ.horrorBonus.bonus}}
+                    <!-- Horror -->
+                    <span v-if="occ.horrorBonus.bonus" class="inline-flex items-center px-1">vs Horror:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.horrorBonus.bonus > 0">+</span>{{occ.horrorBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Illusion -->
-                  <span v-if="occ.illusionBonus.bonus" class="inline-flex items-center px-1">vs Illusion:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.illusionBonus.bonus > 0">+</span>{{occ.illusionBonus.bonus}}
+                    <!-- Illusion -->
+                    <span v-if="occ.illusionBonus.bonus" class="inline-flex items-center px-1">vs Illusion:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.illusionBonus.bonus > 0">+</span>{{occ.illusionBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Mind Control -->
-                  <span v-if="occ.mindControlBonus.bonus" class="inline-flex items-center px-1">vs Mind Control:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.mindControlBonus.bonus > 0">+</span>{{occ.mindControlBonus.bonus}}
+                    <!-- Mind Control -->
+                    <span v-if="occ.mindControlBonus.bonus" class="inline-flex items-center px-1">vs Mind Control:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.mindControlBonus.bonus > 0">+</span>{{occ.mindControlBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Fatigue -->
-                  <span v-if="occ.fatigueBonus.bonus" class="inline-flex items-center px-1">vs Fatigue:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.fatigueBonus.bonus > 0">+</span>{{occ.fatigueBonus.bonus}}
+                    <!-- Fatigue -->
+                    <span v-if="occ.fatigueBonus.bonus" class="inline-flex items-center px-1">vs Fatigue:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.fatigueBonus.bonus > 0">+</span>{{occ.fatigueBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                </td>
-              </tr>
-              <!-- Bonuses -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Bonuses
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- Perception -->
-                  <span v-if="occ.perceptionBonus.bonus" class="inline-flex items-center px-1">Perception:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.perceptionBonus.bonus > 0">+</span>{{occ.perceptionBonus.bonus}}
+                  </td>
+                </tr>
+                <!-- Bonuses -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Bonuses
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- Perception -->
+                    <span v-if="occ.perceptionBonus.bonus" class="inline-flex items-center px-1">Perception:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.perceptionBonus.bonus > 0">+</span>{{occ.perceptionBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Initiative -->
-                  <span v-if="occ.initiativeBonus.bonus" class="inline-flex items-center px-1">Initiative:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.initiativeBonus.bonus > 0">+</span>{{occ.initiativeBonus.bonus}}
+                    <!-- Initiative -->
+                    <span v-if="occ.initiativeBonus.bonus" class="inline-flex items-center px-1">Initiative:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.initiativeBonus.bonus > 0">+</span>{{occ.initiativeBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Strike -->
-                  <span v-if="occ.strikeBonus.bonus" class="inline-flex items-center px-1">Strike:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.strikeBonus.bonus > 0">+</span>{{occ.strikeBonus.bonus}}
+                    <!-- Strike -->
+                    <span v-if="occ.strikeBonus.bonus" class="inline-flex items-center px-1">Strike:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.strikeBonus.bonus > 0">+</span>{{occ.strikeBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Parry -->
-                  <span v-if="occ.parryBonus.bonus" class="inline-flex items-center px-1">Parry:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.parryBonus.bonus > 0">+</span>{{occ.parryBonus.bonus}}
+                    <!-- Parry -->
+                    <span v-if="occ.parryBonus.bonus" class="inline-flex items-center px-1">Parry:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.parryBonus.bonus > 0">+</span>{{occ.parryBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Dodge -->
-                  <span v-if="occ.dodgeBonus.bonus" class="inline-flex items-center px-1">Dodge:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.dodgeBonus.bonus > 0">+</span>{{occ.dodgeBonus.bonus}}
+                    <!-- Dodge -->
+                    <span v-if="occ.dodgeBonus.bonus" class="inline-flex items-center px-1">Dodge:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.dodgeBonus.bonus > 0">+</span>{{occ.dodgeBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Roll -->
-                  <span v-if="occ.rollBonus.bonus" class="inline-flex items-center px-1">Roll w' Punch/Fall:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.rollBonus.bonus > 0">+</span>{{occ.rollBonus.bonus}}
+                    <!-- Roll -->
+                    <span v-if="occ.rollBonus.bonus" class="inline-flex items-center px-1">Roll w' Punch/Fall:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.rollBonus.bonus > 0">+</span>{{occ.rollBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Pull Punch -->
-                  <span v-if="occ.pullBonus.bonus" class="inline-flex items-center px-1">Pull Punch:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.pullBonus.bonus > 0">+</span>{{occ.pullBonus.bonus}}
+                    <!-- Pull Punch -->
+                    <span v-if="occ.pullBonus.bonus" class="inline-flex items-center px-1">Pull Punch:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.pullBonus.bonus > 0">+</span>{{occ.pullBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Disarm -->
-                  <span v-if="occ.disarmBonus.bonus" class="inline-flex items-center px-1">Disarm:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.disarmBonus.bonus > 0">+</span>{{occ.disarmBonus.bonus}}
+                    <!-- Disarm -->
+                    <span v-if="occ.disarmBonus.bonus" class="inline-flex items-center px-1">Disarm:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.disarmBonus.bonus > 0">+</span>{{occ.disarmBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Attacks -->
-                  <span v-if="occ.attacksBonus.bonus" class="inline-flex items-center px-1">Attacks per Melee:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.attacksBonus.bonus > 0">+</span>{{occ.attacksBonus.bonus}}
+                    <!-- Attacks -->
+                    <span v-if="occ.attacksBonus.bonus" class="inline-flex items-center px-1">Attacks per Melee:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.attacksBonus.bonus > 0">+</span>{{occ.attacksBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Hand to Hand Damage -->
-                  <span v-if="occ.handDamageBonus.bonus" class="inline-flex items-center px-1">Hand-to-Hand Damage:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.handDamageBonus.bonus > 0">+</span>{{occ.handDamageBonus.bonus}}
+                    <!-- Hand to Hand Damage -->
+                    <span v-if="occ.handDamageBonus.bonus" class="inline-flex items-center px-1">Hand-to-Hand Damage:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.handDamageBonus.bonus > 0">+</span>{{occ.handDamageBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Knockout -->
-                  <span v-if="occ.knockoutBonus.bonus" class="inline-flex items-center px-1">Knockout/Stun:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            {{occ.knockoutBonus.bonus}}
+                    <!-- Knockout -->
+                    <span v-if="occ.knockoutBonus.bonus" class="inline-flex items-center px-1">Knockout/Stun:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              {{occ.knockoutBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Death Blow -->
-                  <span v-if="occ.deathBlowBonus.bonus" class="inline-flex items-center px-1">Death Blow:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            {{occ.deathBlowBonus.bonus}}
+                    <!-- Death Blow -->
+                    <span v-if="occ.deathBlowBonus.bonus" class="inline-flex items-center px-1">Death Blow:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              {{occ.deathBlowBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Critical -->
-                  <span v-if="occ.criticalBonus.bonus" class="inline-flex items-center px-1">Critical:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            {{occ.criticalBonus.bonus}}%
+                    <!-- Critical -->
+                    <span v-if="occ.criticalBonus.bonus" class="inline-flex items-center px-1">Critical:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              {{occ.criticalBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Death -->
-                  <span v-if="occ.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.deathBonus.bonus > 0">+</span>{{occ.deathBonus.bonus}}%
+                    <!-- Death -->
+                    <span v-if="occ.deathBonus.bonus" class="inline-flex items-center px-1">vs Death:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.deathBonus.bonus > 0">+</span>{{occ.deathBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Body Flip -->
-                  <span v-if="occ.bodyFlipBonus.bonus" class="inline-flex items-center px-1">Body Flip/Throw:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.bodyFlipBonus.bonus > 0">+</span>{{occ.bodyFlipBonus.bonus}}
+                    <!-- Body Flip -->
+                    <span v-if="occ.bodyFlipBonus.bonus" class="inline-flex items-center px-1">Body Flip/Throw:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.bodyFlipBonus.bonus > 0">+</span>{{occ.bodyFlipBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Entangle -->
-                  <span v-if="occ.entangleBonus.bonus" class="inline-flex items-center px-1">Entangle:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.entangleBonus.bonus > 0">+</span>{{occ.entangleBonus.bonus}}
+                    <!-- Entangle -->
+                    <span v-if="occ.entangleBonus.bonus" class="inline-flex items-center px-1">Entangle:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.entangleBonus.bonus > 0">+</span>{{occ.entangleBonus.bonus}}
+                            </span>
                           </span>
-                        </span>
-                </td>
-              </tr>
-              <!-- Other -->
-              <tr v-if="occ.trustBonus.bonus || occ.intimidateBonus.bonus || occ.charmBonus.bonus || occ.impressBonus.bonus" class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Other
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- Trust -->
-                  <span v-if="occ.trustBonus.bonus" class="inline-flex items-center px-1">Trust:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.trustBonus.bonus > 0">+</span>{{occ.trustBonus.bonus}}%
+                  </td>
+                </tr>
+                <!-- Other -->
+                <tr v-if="occ.trustBonus.bonus || occ.intimidateBonus.bonus || occ.charmBonus.bonus || occ.impressBonus.bonus" class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Other
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- Trust -->
+                    <span v-if="occ.trustBonus.bonus" class="inline-flex items-center px-1">Trust:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.trustBonus.bonus > 0">+</span>{{occ.trustBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Intimidate -->
-                  <span v-if="occ.intimidateBonus.bonus" class="inline-flex items-center px-1">Intimidate:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.intimidateBonus.bonus > 0">+</span>{{occ.intimidateBonus.bonus}}%
+                    <!-- Intimidate -->
+                    <span v-if="occ.intimidateBonus.bonus" class="inline-flex items-center px-1">Intimidate:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.intimidateBonus.bonus > 0">+</span>{{occ.intimidateBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Charm -->
-                  <span v-if="occ.charmBonus.bonus" class="inline-flex items-center px-1">Charm:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.charmBonus.bonus > 0">+</span>{{occ.charmBonus.bonus}}%
+                    <!-- Charm -->
+                    <span v-if="occ.charmBonus.bonus" class="inline-flex items-center px-1">Charm:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.charmBonus.bonus > 0">+</span>{{occ.charmBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                  <!-- Impress -->
-                  <span v-if="occ.impressBonus.bonus" class="inline-flex items-center px-1">Impress:
-                          <span class="pr-2 text-sm font-normal text-gray-500">
-                            <span v-if="occ.impressBonus.bonus > 0">+</span>{{occ.impressBonus.bonus}}%
+                    <!-- Impress -->
+                    <span v-if="occ.impressBonus.bonus" class="inline-flex items-center px-1">Impress:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.impressBonus.bonus > 0">+</span>{{occ.impressBonus.bonus}}%
+                            </span>
                           </span>
-                        </span>
-                </td>
-              </tr>
-              <!-- Money -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Money
-                </td>
-                <td class="py-2 text-sm font-medium text-gray-900">
-                  <!-- Credits -->
-                  <span v-if="occ.credits.amount" class="inline-flex items-center px-1">Credits:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.credits.amount}}D{{occ.credits.sides}}
-                            <span v-if="occ.credits.multiplier">x</span>{{occ.credits.multiplier}}
-                            <span v-if="occ.credits.bonus">+</span>{{occ.credits.bonus}}
+                  </td>
+                </tr>
+                <!-- Money -->
+                <tr class="bg-white border-t text-left border-gray-200">
+                  <td class="p-4 text-sm text-right font-medium text-gray-900">
+                    Money
+                  </td>
+                  <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- Credits -->
+                    <span v-if="occ.credits.amount" class="inline-flex items-center px-1">Credits:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.credits.amount}}D{{occ.credits.sides}}
+                              <span v-if="occ.credits.multiplier">x</span>{{occ.credits.multiplier}}
+                              <span v-if="occ.credits.bonus">+</span>{{occ.credits.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Black Market Items -->
-                  <span v-if="occ.blackMarketItems.amount" class="inline-flex items-center px-1">Black Market Items:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.blackMarketItems.amount}}D{{occ.blackMarketItems.sides}}
-                            <span v-if="occ.blackMarketItems.multiplier">x</span>{{occ.blackMarketItems.multiplier}}
-                            <span v-if="occ.blackMarketItems.bonus">+</span>{{occ.blackMarketItems.bonus}}
+                    <!-- Black Market Items -->
+                    <span v-if="occ.blackMarketItems.amount" class="inline-flex items-center px-1">Black Market Items:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.blackMarketItems.amount}}D{{occ.blackMarketItems.sides}}
+                              <span v-if="occ.blackMarketItems.multiplier">x</span>{{occ.blackMarketItems.multiplier}}
+                              <span v-if="occ.blackMarketItems.bonus">+</span>{{occ.blackMarketItems.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Gems -->
-                  <span v-if="occ.gems.amount" class="inline-flex items-center px-1">Gems:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.gems.amount}}D{{occ.gems.sides}}
-                            <span v-if="occ.gems.multiplier">x</span>{{occ.gems.multiplier}}
-                            <span v-if="occ.gems.bonus">+</span>{{occ.gems.bonus}}
+                    <!-- Gems -->
+                    <span v-if="occ.gems.amount" class="inline-flex items-center px-1">Gems:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.gems.amount}}D{{occ.gems.sides}}
+                              <span v-if="occ.gems.multiplier">x</span>{{occ.gems.multiplier}}
+                              <span v-if="occ.gems.bonus">+</span>{{occ.gems.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Gold -->
-                  <span v-if="occ.gold.amount" class="inline-flex items-center px-1">Gold:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.gold.amount}}D{{occ.gold.sides}}
-                            <span v-if="occ.gold.multiplier">x</span>{{occ.gold.multiplier}}
-                            <span v-if="occ.gold.bonus">+</span>{{occ.gold.bonus}}
+                    <!-- Gold -->
+                    <span v-if="occ.gold.amount" class="inline-flex items-center px-1">Gold:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.gold.amount}}D{{occ.gold.sides}}
+                              <span v-if="occ.gold.multiplier">x</span>{{occ.gold.multiplier}}
+                              <span v-if="occ.gold.bonus">+</span>{{occ.gold.bonus}}
+                            </span>
                           </span>
-                        </span>
-                  <!-- Tradable Items -->
-                  <span v-if="occ.tradableItems.amount" class="inline-flex items-center px-1">Tradable Items:
-                          <span class="pr-2 text-sm font-normal text-gray-500">{{occ.tradableItems.amount}}D{{occ.tradableItems.sides}}
-                            <span v-if="occ.tradableItems.multiplier">x</span>{{occ.tradableItems.multiplier}}
-                            <span v-if="occ.tradableItems.bonus">+</span>{{occ.tradableItems.bonus}}
+                    <!-- Tradable Items -->
+                    <span v-if="occ.tradableItems.amount" class="inline-flex items-center px-1">Tradable Items:
+                            <span class="pr-2 text-sm font-normal text-gray-500">{{occ.tradableItems.amount}}D{{occ.tradableItems.sides}}
+                              <span v-if="occ.tradableItems.multiplier">x</span>{{occ.tradableItems.multiplier}}
+                              <span v-if="occ.tradableItems.bonus">+</span>{{occ.tradableItems.bonus}}
+                            </span>
                           </span>
-                        </span>
-                </td>
-              </tr>
-              <!-- Alignment -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Alignment
-                </td>
-                <td v-if="occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
-                  {{occ.alignment}}
-                </td>
-                <td v-if="!occ.alignment" class="py-2 pr-2 text-sm text-gray-700">
-                  Any
-                </td>
-              </tr>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -565,8 +577,7 @@
 
       <!-- About Content -->
       <div v-show="toggle==='about' && aboutActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="text-gray-50 font-medium" v-if="occ.group">OCC Group: <span class="whitespace-pre-wrap font-normal text-gray-100">
-          {{occ.group}}</span></p>
+        <p class="whitespace-pre-wrap italic text-gray-300">{{occ.occQuote}}</p>
         <br/>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.description}}</p>
         <br v-if="occ.disposition"/>
@@ -597,6 +608,9 @@
       </div>
       <!-- Abilities, Skills, & Other Content -->
       <div v-show="toggle==='abilities' && abilitiesActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
+        <p class="text-gray-50 font-medium" v-if="occ.group">OCC Group: <span class="whitespace-pre-wrap font-normal text-gray-100">
+          {{occ.group}}</span></p>
+        <br/>
         <p class="text-gray-50 font-medium">OCC Abilities:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.abilitiesDesc}}</p>
         <br/>
@@ -666,7 +680,7 @@ export default {
       this.newCharacter.info.alignment = "Unprincipled";
       this.newCharacter.info.bio = `Mercenary soldier who is an expert at power armor and operated the Norther Gun version of the Troll armor.
   His company was folded after Northern Gun pulled their support.`
-      this.newCharacter.info.physicalDescription = `Siembieda is a tall, slender man with white hair. He is "singularly handsome" with a "bizarre quality" about his face. Siembieda has dark eyes with thick eyebrows, high cheekbones, a sharpcut nose, and a black mustache.`
+      this.newCharacter.info.physicalDescription = `Siembieda is a tall, slender man with white hair. He is "singularly handsome" with a "bizarre quality" about his face. Siembieda has dark eyes with thick eyebrows, high cheekbones, a sharp cut nose, and a black mustache.`
     }
   }
 }

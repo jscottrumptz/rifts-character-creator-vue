@@ -5,8 +5,8 @@ class BodyFixer extends OCC {
         super();
         this.name = 'Body Fixer';
         this.group = 'Adventurers & Scholars';
-        this.description = `    "I'm a healer. I fix people. I don't judge them or decide who should live and die based on their genetic makeup. That's for God . . or maybe Emperor Prasek and his goon squads. If that makes me a criminal, so be it " 
-    Saying that a Body Fixer is just a doctor does a disservice to these brave men and women of this noble profession, and only tells part of their story. "Body Fixer" is the slang term for a medical doctor (M.D.) in North America who performs medicine on anybody - human and nonhuman. That latter distinction makes the Body Fixers criminals, rogues and dissidents in the eyes of the Coalition States. Anybody caught "harboring, aiding and abetting a criminal of the State" - a dis-tinction given to all D-Bees for not having been born human - is punishable by death! And that includes providing them with medical aid. Better to let a D-Bee die in the gutter than give "it" comfort or aid. 
+        this.occQuote = `    "I'm a healer. I fix people. I don't judge them or decide who should live and die based on their genetic makeup. That's for God . . or maybe Emperor Prasek and his goon squads. If that makes me a criminal, so be it."`;
+        this.description = `    Saying that a Body Fixer is just a doctor does a disservice to these brave men and women of this noble profession, and only tells part of their story. "Body Fixer" is the slang term for a medical doctor (M.D.) in North America who performs medicine on anybody - human and nonhuman. That latter distinction makes the Body Fixers criminals, rogues and dissidents in the eyes of the Coalition States. Anybody caught "harboring, aiding and abetting a criminal of the State" - a dis-tinction given to all D-Bees for not having been born human - is punishable by death! And that includes providing them with medical aid. Better to let a D-Bee die in the gutter than give "it" comfort or aid. 
     Body Fixers are doctors who cannot tum their backs on the sick and injured based on their race. A choice that has branded them as "traitors to humanity" by the CS. 
     Conservative estimates suggest the D-Bee population among sentient (intelligent) life forms in North America is 34%. Less conservative numbers place the number at closer to 42%. Most Rogue Scholars and Scientists believe a more accurate number is probably 50-55%. Perhaps all the more reason for human supremacists like the leaders of the Coalition States to want D-Bees dead. Even in the Chi-Town 'Burbs, where being caught by CS Police, soldiers and undercover agents is death for D-Bees, they make up an estimated 16% to 22% of the population! In the New West, D-Bees make up at least 60% to 80% of the population, in the east and north into Canada that number is probably 40%-50%, possibly higher, and that does not include Psi-Stalkers, who the CS considers to be mutant humans. 
     It is difficult to determine exact numbers because most D-Bees live in poverty or low-tech communities in thousands of tiny villages, towns and tribes. Gathering in a large community, especially within view of the CS, is to invite a Coalition extermination squad to come knocking. Likewise, because humans are the dominant power in North America and D-Bees second class citizens at most places that accept them, pre-dominantly D-Bee communities are raided and attacked with impunity by other D-Bees and human meres, raiders, bandits and adventurers. D-Bees only have rights if they have the firepower to fight back, which many do not. And because the Coalition States have been so tenacious at breaking down and wiping out large gatherings of D-Bees before they can tum into full-fledged cities or kingdoms, most D-Bees have adopted the practice of trying to integrate (and lose) themselves into an established, predominantly human community where the CS is much less likely to attack. 
@@ -16,8 +16,9 @@ class BodyFixer extends OCC {
     Of course, not all Body Fixers are the soul of compassion. Some are quacks and brigands who charge an arm and a leg (sometimes, quite literally) for their services, and gouge those in need, especially D-Bees and fugitives wanted by the authorities. Burn outs, hacks and greedy, cold-hearted Fixers seem to be the embodiment of those employed at most Black Market Body-Chop-Shops. Some are downright evil. These callous and insensitive doctors are in it for the money. Only 1 in 10 Fixers at a Chop-Shop seem to genuinely care about their patients. If the money's right, they'll work on anybody. No questions asked. 
     Perhaps because they know and cherish the pure physical body so much, many Body Fixers refuse to use cybernetics on themselves, unless it is a lifesaving organ or prosthetic. They may also try to dissuade their patients from getting augmentation of any kind. On the other hand, about a third will get a handful of cybernetic enhancements, mainly optics and sensors. However, a solid 10% will get plenty of them, although again, limited mainly to optics, sensors and things that help them to be better doctors.`
         this.image = 'assets/images/occ/BodyFixer.jpg';
+        this.raceDesc = `None; half are D-Bees.`;
         this.reqIq = 10;
-        this.recommendedAttributes = `a high PP and MA are suggested but not mandatory.`;
+        this.recommendedAttributes = `*( a high PP and MA are suggested but not mandatory. )`;
         this.maBonus = { bonus: 1 };
         this.psBonus = { bonus: 1 };
         this.ppBonus = { bonus: 1 };
@@ -70,8 +71,8 @@ Technical: Any (+10%).
 W. P.: Any; except Heavy Military Weapons and Heavy Energy Weapons.
 Wilderness: Any (+5%, but the bonus counts only for country/adventuring Body Fixers, not city-docs).`;
         this.secondarySkillsList = `Six Secondary Skills from the Secondary Skill list in the Skills Section, + 1 additional Secondary Skill at levels 3, 6, 9, 12 and 15. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
-        this.cyberneticsDesc = `Starts with none. May or may not be opposed to cybernetics and bionics.`
-        this.equipmentDesc = `One suit of light M.D.C. body armor, Two surgical gowns, a dozen pair of disposable surgical gloves, one pair of reusable surgical gloves, surgical kit (includes scalpels, clamps, suture, needles, etc.), medical kit (first-aid kit, bandages, antiseptics, protein healing salve, aspirin, painkiller, antibiotics, hypodermic gun, stethoscope, pen flashlight), IRMSS/Internal Robot Micro-Surgeon System, RMK/Robot Medical Kit, hand-held computer, hand-held blood pressure machine (computerized), thermo-meter, six unbreakable vials, and other basic items, portable compu-drug dispenser, portable laboratory, backpack, medical bag or satchel, one weapon for each W.P. and two E-Clips for each, one Vibro-Knife (ID6 M.D.), two scalpels (ID4 S.D.C. damage), one Wilk's Laser Scalpel, flashlight, pen flashlight, a commercial vehicle (as per Pilot skill) or a horse (if he can ride), hat with a brim, hooded cape or poncho, canteen, a pair of sunglasses, air filter, a pocket note pad and two pens, and some personal items.`
+        this.cyberneticsDesc = `Starts with none. May or may not be opposed to cybernetics and bionics.`;
+        this.equipmentDesc = `One suit of light M.D.C. body armor, Two surgical gowns, a dozen pair of disposable surgical gloves, one pair of reusable surgical gloves, surgical kit (includes scalpels, clamps, suture, needles, etc.), medical kit (first-aid kit, bandages, antiseptics, protein healing salve, aspirin, painkiller, antibiotics, hypodermic gun, stethoscope, pen flashlight), IRMSS/Internal Robot Micro-Surgeon System, RMK/Robot Medical Kit, hand-held computer, hand-held blood pressure machine (computerized), thermo-meter, six unbreakable vials, and other basic items, portable compu-drug dispenser, portable laboratory, backpack, medical bag or satchel, one weapon for each W.P. and two E-Clips for each, one Vibro-Knife (ID6 M.D.), two scalpels (ID4 S.D.C. damage), one Wilk's Laser Scalpel, flashlight, pen flashlight, a commercial vehicle (as per Pilot skill) or a horse (if he can ride), hat with a brim, hooded cape or poncho, canteen, a pair of sunglasses, air filter, a pocket note pad and two pens, and some personal items.`;
         this.abilitiesDesc = `Familiarity with D-Bees
 No skill penalty when working on common/known D-Bees; only a -20% penalty when dealing with extremely alien physiology, rare or previously unknown D-Bees. 
 The Body Fixer is -20% whenever working on bionic modifications, and -30% when working on alien cybernetics, -50% on alien bionics. 
@@ -595,7 +596,7 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
                 unavailable: [],
                 only:[]
             }
-        }
+        };
         this.occRelatedAtLevel = { levels: [3, 6, 9, 12], amounts: 2 };
         this.secondaryAtLevel = { levels: [3, 6, 9, 12, 15], amounts: 1 };
     }
@@ -610,28 +611,28 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
             description: `No skill penalty when working on common/known D-Bees; only a -20% penalty when dealing with extremely alien physiology, rare or previously unknown D-Bees. 
 The Body Fixer is -20% whenever working on bionic modifications, and -30% when working on alien cybernetics, -50% on alien bionics. 
 `,
-            type: 'Occupational',
+            type: 'Occupational'
         };
 
         character.abilities.diseaseDiagnosticSpecialist =
         { 
             name: `Disease Diagnostic Specialist`,
             description: `Diagnose disease with extreme clarity and accuracy. Skill Bonuses: +20% to that percentile number of the Medical Doctor skill, and + 10% to Brewing and Holistic Medicine skills to whip up a cure. He is so good, that he can reduce the symptoms (i.e., the penalties and duration) by half. Can also recognize possession and magical illnesses and curses.`,
-            type: 'Occupational',
+            type: 'Occupational'
         };
 
         character.abilities.perceptionRolls =
         { 
             name: `Perception Rolls`,
             description: `Additional +2 when the Perception Roll involves making an observation about a medical condition, diagnosis/health or medical procedure, as well as when dealing with drugs/chemicals, and poison.`,
-            type: 'Occupational',
+            type: 'Occupational'
         };
 
         character.abilities.wPKnifeBonus =
             {
                 name: `W.P. Knife Bonus`,
                 description: `Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
     }
 }

@@ -5,8 +5,8 @@ class CyberDoc extends OCC {
         super();
         this.name = 'Cyber-Doc';
         this.group = 'Adventurers & Scholars';
-        this.description = `    "I can take your broken body and, not only restore it, but turn it into something exceptional. A beautiful work of art made of flesh and steel. Trust me, you'll love the new you." 
-    Thanks to bionics being illegal to the public in the Coalition 'Burbs and many other places, bionic augmentation has gone underground. It is often available only through underworld sources like the Black Market and independent entrepreneurs. In fact, the Black Market dominates the bionics and cybernetics markets, so there are seldom any industry standards for quality. The buyer gets whatever service and quality is available to him at the time. Horror stories abound about bionic Body-Chop-Shops that are more like butcher shops, and give the Cyber-Doc profession a bad reputation. 
+        this.occQuote = `    "I can take your broken body and, not only restore it, but turn it into something exceptional. A beautiful work of art made of flesh and steel. Trust me, you'll love the new you."`;
+        this.description = `    Thanks to bionics being illegal to the public in the Coalition 'Burbs and many other places, bionic augmentation has gone underground. It is often available only through underworld sources like the Black Market and independent entrepreneurs. In fact, the Black Market dominates the bionics and cybernetics markets, so there are seldom any industry standards for quality. The buyer gets whatever service and quality is available to him at the time. Horror stories abound about bionic Body-Chop-Shops that are more like butcher shops, and give the Cyber-Doc profession a bad reputation. 
     In the broadest sense of the word, a Cyber-Doc is any doctor, surgeon, or scientist who specializes in cybernetics and/or bionics. How-ever, the term "Cyber-Doc" has come to refer to the notorious underworld figure found in the Downside, 'Burbs and underworld of most cities and mercenary outposts. A character who is, all too often, a self-serving illegal doctor who works outside the law for his own profit.
     The Cyber-Doc is a cybernetics specialist who offers his illegal ser-vices on the Black Market, not unlike the old abortion clinics of 1950s and 60s America. The Doc can be well-trained, well-meaning, and professional, or he can be an opportunist and/or a butcher. Since the operations are illegal, the patient has little say about the success or failure of the surgery. Medical treatment and authorized bionics is generally re-served for the military, political leaders, and the wealthy. Comparable cybernetics and bionics for the underprivileged are available at Black Market clinics and are always seem to be in unbelievably high demand. This demand is what has spawned the cut-rate, Black Market clinics known as "Body-Chop-Shops." Filthy, crude facilities operated by the most nefarious underworld malefactors one can find. 
     The proprietors of these "Chop-Shops" pay fair prices (20% to 40% of list) for cybernetics and bionic "parts" and components - no questions asked. This has led to the creation of gruesome criminals known as Cyber-Snatchers. Fiends who attack, and steal bionics and cybernetics, pulling and chopping the artificial limbs or implants out of their victim for resale at a Body-Chop-Shop. Perhaps needless to say, the victim is usually maimed or killed in the process. 
@@ -14,9 +14,10 @@ class CyberDoc extends OCC {
     A Cyber-Doc is part mechanic, part surgeon and part medical doc-tor. Someone who can help the crippled to walk, the blind to see and maimed to feel whole again. Cyber-Docs who treat D-Bees are black-listed and marked for death as "traitors to humanity" by the Coalition States, just like the Body Fixer. Since he's already a wanted man, many Cyber-Docs deal in stolen Coalition bionics and encourage raids on CS facilities. However, more often than not, the bionics are secondhand (don't ask), acquired from a mere, bandit or adventurer, or as a deal at a Black Market Body-Chop-Shop. Reputable Cyber-Docs often offer their services to the Black Market in exchange for bionics and cybernetics at wholesale prices (50% below list price). 
     A Cyber-Doc may be an independent operative or hooked up with a medical team, mercenary outfit, adventure group, or freelance for a town or army. Like the Body-Fixer, the Cyber-Doc is usually considered a rogue, malcontent and outlaw by the CS. However, to those in the wastelands, the Cyber-Doc (or any man of medicine) is a miracle worker and a godsend. Note: In the aftermath of Tolkeen's fall, Cyber-Docs are in high demand to give the maimed and injured a new lease on life via cybernetic medicine. The Coalition Army knows this, and has made a point to track down rebel field hospitals and gun down all "criminals and rebels consorting with the enemy" along with the D-Bee enemy.`;
         this.image = 'assets/images/occ/CyberDoc.jpg';
+        this.raceDesc = `None; about 30% are D-Bees.`;
         this.reqIq = 11;
         this.reqPp = 12;
-        this.recommendedAttributes = `a high M.E. is also helpful but not mandatory. `;
+        this.recommendedAttributes = `*( a high M.E. is also helpful but not mandatory. )`;
         this.meBonus = { bonus: 1 };
         this.ppBonus = { bonus: 2 };
         this.painBonus = { bonus: 2 };
@@ -642,7 +643,8 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
             {
                 name: `Recognize Quality of Bionics & Cybernetics`,
                 description: `An exclusive skill that enables the Cyber-Doc to tell if an item is new or used, defective, low or high quality, and a fair price. He will automatically know the capability (damage, range, payload, etc.) of bionic weapons and prosthetics (M.D.C., P.S., Speed, etc.) and whether it's exactly what he needs or not. Base Skill: 60% + 3% per level of experience. `,
-                type: 'Occupational'
+                type: 'Occupational',
+                baseSkill: "60% + 3% per lvl"
             };
 
         character.abilities.repairAndSoupUpBionics =

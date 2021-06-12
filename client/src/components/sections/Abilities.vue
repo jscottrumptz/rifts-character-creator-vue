@@ -38,6 +38,7 @@
           <div v-bind:class="{ 'hidden': !extended }"  class="mt-1">
             <p class="whitespace-pre-line text-sm text-gray-600">
               {{abilities.description}}
+              <span v-if="abilities.note" class="italic"><br><br><span class="font-medium not-italic">Note:</span> {{abilities.note}}</span>
               <span v-if="abilities.gmNote" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{abilities.gmNote}}</span>
             </p>
           </div>

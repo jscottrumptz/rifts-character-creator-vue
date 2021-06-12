@@ -5,14 +5,15 @@ class Operator extends OCC {
         super();
         this.name = 'Operator';
         this.group = 'Adventurers & Scholars';
-        this.description = `    "What can I say, I like taking things apart to see how they tick. Nothin' like fixing or building something with your own hands." 
-The Operator is a super-mechanic and repairman. A mechanical and electrical whiz-kid who can fix just about anything that has gears and wires. As such, they are always a welcome sight in any community and are treated with respect and admiration. An Operator rarely has to pay for his own meals or a bed to lay on. Of course, the proprietor or town council may have some little repair job that they'd like him to do for a reasonable fee. There are no set fees for a particular job, so the fee and currency changes from place to place. Repairing an irrigation system at a wealthy town may mean 30,000 in credits, at a poor town payment may be a hot meal, a broken-down horse, and some basic supplies.
+        this.occQuote = `    "What can I say, I like taking things apart to see how they tick. Nothin' like fixing or building something with your own hands."`;
+        this.description = `    The Operator is a super-mechanic and repairman. A mechanical and electrical whiz-kid who can fix just about anything that has gears and wires. As such, they are always a welcome sight in any community and are treated with respect and admiration. An Operator rarely has to pay for his own meals or a bed to lay on. Of course, the proprietor or town council may have some little repair job that they'd like him to do for a reasonable fee. There are no set fees for a particular job, so the fee and currency changes from place to place. Repairing an irrigation system at a wealthy town may mean 30,000 in credits, at a poor town payment may be a hot meal, a broken-down horse, and some basic supplies.
 Remember, while pre-Rifts machines and technology are in use, there are few individuals who fully understand how they work. Consequently, they cannot successfully maintain and repair them. The Coalition charges highly for their services. Often the price includes an oath of fealty to a Coalition State, binding the community to it financially and obligating the town to perform certain services, or provide goods, or to support the CS. This is how the Coalition increases its power base and territory, slowly absorbing the smaller communities around them. The next step is official union with a Coalition State, usually in ex-change for military protection, economic support, even better technical aid, and forgiving one's previous debt. Of course, once this happens, the Coalition sends in its advisors and makes the town conform to its standards, rooting out magic users, seizing all books and historical documents, and eliminating dangerous dissidents. Consequently, the Operator represents the only means for many small communities to maintain their independence. They are also the only people outlaws and undesirables, like adventurers and men at arms, can consult to get their gear, 'bots and vehicles repaired, modified or improved. 
 Although the Operators have no formal organization or guild, they are an unofficial class within the civilized human societies of the Americas, similar to the Freemasons of old. They have no leader, no gathering place, nor doctrine to which all Operators adhere. Instead, they are a loose knit group of like-minded men and women who share a love and knowledge of machines and forgotten science. How Operators came to be is not exactly known. Most will tell you that some of those who survived the Coming of the Rifts also saved many of the old secrets. These secrets were handed down from father to son, generation to generation, until today. Indeed, if there is any common thread among Operators, it is secrecy. They will not share their knowledge with any-body except a fellow Operator, relative, or an apprentice. 
 As a rule, an Operator tends to disguise the extent of his knowledge with false modesty and cryptic talk about the Time of Man or Time Be-fore the Rifts, and ancient secrets. In reality, the character is as knowledgeable about modern, high-tech engineering as any Coalition engineer. Furthermore, their love of mechanics keeps them looking and learning more. These characters love their work and take fanatical pride in their craft. They are hard workers, inventive, and resourceful.`;
         this.image = 'assets/images/occ/Operator.jpg';
+        this.raceDesc = `None. At least 35% are D-Bees.`;
         this.reqIq = 9;
-        this.recommendedAttributes = `a high P.P. and P.S. are handy but not mandatory.`;
+        this.recommendedAttributes = `*( a high P.P. and P.S. are handy but not mandatory. )`;
         this.iqBonus = { bonus: 1 };
         this.psBonus = { bonus: 2 };
         this.ppBonus = { bonus: 1 };
@@ -55,8 +56,8 @@ Technical: Any (+10%).
 W.P.: Any. 
 Wilderness: Boat Building and Carpentry (+5%) only.`;
         this.secondarySkillsList = `Select four Secondary Skills at first level from the Secondary Skills list in the Skill Section, +1 Secondary Skill at levels 4, 8, 12 and 14. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high l.Q. All Secondary Skills start at the base level skill.`;
-        this.cyberneticsDesc = `The City Rat Archetype starts with 1D4+2 basic cybernetic implants. It is entirely up to the player to decide whether his or her character has any implants, and if so, which ones. This initial implant selection is restricted to common, Commercial, and Black Market cybernetics. Exactly how much cybernetics a City Rat may acquire depends on the individual and his success on the street (i.e., what can he afford). See Rifts® Bionic Sourcebook for a large selection of cybernetics and B lack Market offerings.`
-        this.equipmentDesc = `None to start. However, many Operators do acquire cybernetic optics, sensors and tools to help them in their work. The majority prefer to use machines in their work, not to become a machine themselves.`
+        this.cyberneticsDesc = `The City Rat Archetype starts with 1D4+2 basic cybernetic implants. It is entirely up to the player to decide whether his or her character has any implants, and if so, which ones. This initial implant selection is restricted to common, Commercial, and Black Market cybernetics. Exactly how much cybernetics a City Rat may acquire depends on the individual and his success on the street (i.e., what can he afford). See Rifts® Bionic Sourcebook for a large selection of cybernetics and B lack Market offerings.`;
+        this.equipmentDesc = `None to start. However, many Operators do acquire cybernetic optics, sensors and tools to help them in their work. The majority prefer to use machines in their work, not to become a machine themselves.`;
         this.abilitiesDesc = `Note: None of these abilities apply to bionics or cybernetics (can't do it), and there is a -20% skill penalty when working on robots and power armor (unless the character also has the Robot Mechanics and Electronics skills). 
 
 Jury-Rig Repairs
@@ -675,7 +676,7 @@ Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic 
                 ],
                 only:[]
             }
-        }
+        };
         this.occRelatedAtLevel = { levels: [3, 6, 9, 12], amounts: 2 };
         this.secondaryAtLevel = { levels: [4, 8, 12, 14], amounts: 1 };
     }
@@ -688,21 +689,21 @@ Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic 
             {
                 name: `Note:`,
                 description: `None of these abilities apply to bionics or cybernetics (can't do it), and there is a -20% skill penalty when working on robots and power armor (unless the character also has the Robot Mechanics and Electronics skills).`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
 
         character.abilities.juryRigRepairs =
             {
                 name: `Jury-Rig Repairs`,
                 description: `The Operator can slap together solid temporary repairs in half the time that last twice as long. See the Jury-Rig skill for details.`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
 
         character.abilities.findPartsAndComponents =
             {
                 name: `Find Parts and Components`,
                 description: `+20% to Find Contraband related to vehicular M.D. weapons, M.D.C. materials, power supplies, communications systems, electronics, generators, fuel, mechanical parts and components. This bonus is added to his normal Find Contraband skill whenever such items are involved. Gets these items at a discount -30% off as a professional courtesy from most other Operators and the Black Market, 50% discount from junkyards and salvage companies, and a 65% discount if he trades at least 12 hours of his time to work at a garage, machine shop, or factory for free. Every 12 hours he puts in, he can get up to I 00,000 credits worth of parts or materials at the dis-count (that's 35,000 credits, his cost).`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
 
         character.abilities.recognizeMachineQuality =
@@ -710,6 +711,7 @@ Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic 
                 name: `Recognize Machine Quality`,
                 description: `An exclusive skill that enables the Operator to tell if an item is new or used, defective, rebuilt, low or high quality, a fair price, and whether it's exactly what he needs or not. Skill applies to all most vehicles, machines, parts, tools, and electronics. Base Skill: 58% + 3% per level of experience.`,
                 type: 'Occupational',
+                baseSkill: "58% + 3% per lvl"
             };
 
         character.abilities.repairAndSoupUpMachinesAndVehicles =
@@ -722,7 +724,7 @@ Replace M.D.C.: on the main body and key sections at a cost of 1200 credits per 
 Add M.D.C.: to brand new vehicles and body armor. The percentage increase depends on the Operator's level of skill and experience; +5% at levels 2, 4, 6, 8, 10, 12, and 14. 
 
 Maximize Performance: Can tweak a vehicle or most any machine to perform better. Can increase Spd 20%, range (of weapons, radio signals, sensors, etc.) by 10%, reduce weight by 10%, and add one extra weapon or feature per each body area of a vehicle or standing fortification (front/nose, mid-section, rear section, top/roof, bottom/undercarriage, and wing).`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
 
         character.abilities.optional =
@@ -736,9 +738,9 @@ Sense Magic (3)
 Sense Time (2) 
 Speed Reading (2)
 Total Recall (2) 
-Telemechanics (Super, I 0) 
+Telemechanics (Super, 10) 
 Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic Paralysis (Super, 20; counts as 2 selections).`,
-                type: 'Occupational',
+                type: 'Occupational'
             };
     }
 }

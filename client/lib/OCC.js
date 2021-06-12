@@ -17,6 +17,8 @@ class OCC {
         magicDesc = `None, unless a Magic Race is chosen.`,
         cyberneticsDesc = `As per Race.`,
         equipmentDesc =  `None.`,
+        raceDesc = '',
+        occQuote = '',
 
         // REQUIREMENTS
         reqAlignment = [],
@@ -132,6 +134,8 @@ class OCC {
         this.magicDesc = magicDesc;
         this.cyberneticsDesc = cyberneticsDesc;
         this.equipmentDesc = equipmentDesc;
+        this.raceDesc = raceDesc;
+        this.occQuote = occQuote;
 
         // REQUIREMENTS
         this.reqAlignment = reqAlignment;
@@ -148,8 +152,8 @@ class OCC {
 
         // SKILLS
         this.occSkills = occSkills;
-        this.occRelatedNumber = occRelatedNumber,
-        this.secondaryNumber = secondaryNumber,
+        this.occRelatedNumber = occRelatedNumber;
+        this.secondaryNumber = secondaryNumber;
         this.occRelatedAtLevel = occRelatedAtLevel;
         this.secondaryAtLevel = secondaryAtLevel;
         this.languages = languages;
