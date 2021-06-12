@@ -783,6 +783,7 @@ The cartography skill also includes the rudiments of mathematics. A character wi
         character.abilities.savVsHorror =
             {
                 name: `Save vs Horror Factor`,
+                type: 'Occupational',
                 description: `+ 1 to save vs Horror Factor at levels 2, 4, 6, 9, 12 and 15.`
             };
     }
