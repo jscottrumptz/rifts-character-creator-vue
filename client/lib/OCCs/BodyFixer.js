@@ -375,6 +375,7 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
                 free: [
                     {
                         name: 'noHandToHandSkill',
+                        skillCost: 0
                     },
                     {
                         name: 'outdoorsmanship'
@@ -571,6 +572,9 @@ Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`
                     {
                         name: 'wPHeavyMilitary'
                     },
+                    {
+                        name: 'wPMilitaryFlamethrowers'
+                    }
                 ],
                 only:[]
             },
@@ -623,7 +627,7 @@ The Body Fixer is -20% whenever working on bionic modifications, and -30% when w
             type: 'Occupational',
         };
 
-        character.abilities.WPKnifeBonus =
+        character.abilities.wPKnifeBonus =
             {
                 name: `W.P. Knife Bonus`,
                 description: `Along with the standard W.P. Knife bonuses, receive an Additional +1 to Strike.`,

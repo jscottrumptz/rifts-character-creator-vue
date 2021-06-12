@@ -315,6 +315,7 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                 free: [
                     {
                         name: 'noHandToHandSkill',
+                        skillCost: 0
                     }
                 ],
                 choice: [
@@ -512,6 +513,9 @@ An exclusive skill that enables the Rogue Scientist to tell if scientific equipm
                     {
                         name: 'wPHeavyMilitary'
                     },
+                    {
+                        name: 'wPMilitaryFlamethrowers'
+                    }
                 ],
                 only:[]
             },

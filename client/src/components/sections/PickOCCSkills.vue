@@ -1101,7 +1101,9 @@ export default {
               this.newCharacter.skills.known[key].occBonus = skill.occBonus;
               this.newCharacter.skills.known[key].preq = [];
               this.newCharacter.skills.known[key].preqOr = [];
-              this.newCharacter.skills.known[key].skillCost = skill.skillCost;
+              if (skill.skillCost){
+                this.newCharacter.skills.known[key].skillCost = skill.skillCost;
+              }
               if (skill.base) {
                 this.newCharacter.skills.known[key].base = skill.base
               }
@@ -1111,6 +1113,9 @@ export default {
               this.newCharacter.skills.known[key].preq = [];
               this.newCharacter.skills.known[key].preqOr = [];
               this.newCharacter.skills.known[key].skillCost = skill.skillCost;
+              if (skill.skillCost){
+                this.newCharacter.skills.known[key].skillCost = skill.skillCost;
+              }
               if (skill.base) {
                 this.newCharacter.skills.known[key].base = skill.base
               }

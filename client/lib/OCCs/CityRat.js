@@ -680,6 +680,9 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                     },
                     {
                         name: 'wPHeavyMilitary'
+                    },
+                    {
+                        name: 'wPMilitaryFlamethrowers'
                     }
                 ],
                 only:[]
