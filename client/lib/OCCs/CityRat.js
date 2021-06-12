@@ -53,12 +53,11 @@ Rogue: Any (+ 15%).
 Science: Math: Basic and Advanced and Chemistry only.
 Technical: Any (+ 10%).
 W.P.: Any, except any Heavy Energy Weapons and military W.P.s.
-Wilderness: None.
-`;
-        this.secondarySkillsList = `Eight Secondary skills from the Secondary Skills List in the Skill Section, + I additional at levels 3, 6, 10 and 15. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
+Wilderness: None.`;
+        this.secondarySkillsList = `Eight Secondary skills from the Secondary Skills List in the Skill Section, + 1 additional at levels 3, 6, 10 and 15. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high I.Q. All Secondary Skills start at the base skill level.`;
         this.cyberneticsDesc = `The City Rat Archetype starts with 1D4+2 basic cybernetic implants. It is entirely up to the player to decide whether his or her character has any implants, and if so, which ones. This initial implant selection is restricted to common, Commercial, and Black Market cybernetics. Exactly how much cybernetics a City Rat may acquire depends on the individual and his success on the street (i.e., what can he afford). See Rifts® Bionic Sourcebook for a large selection of cybernetics and B lack Market offerings.`
         this.equipmentDesc = `Two sets of "working colors," one set that is either gang colors or what is considered to be a fashion statement, and one set used for casual wear or disguise. Most City Rats tend toward the color black and leather, chains, high boots, gloves, and sometimes a cape or cloak. He or she also has a fashionable wardrobe of other clothing for play and entertainment located at home or in a tiny apartment in the worst part of town. Mega-Damage body armor can be of any "common" type of light suit, such as M.D.C. homemade armor, Urban Warrior, Plastic Man or Dog Boy riot armor (probably stolen or traded for on the Black Market).
-Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. D. C. damage), an M.D. energy pistol (typically does 2D6 or 3D6 M . D . ) and two E-Clips, plus a flashlight, 900 pound (405 kg) test strength nylon cord/rope, a grappling hook, RMK/Robot Medical Kit ("Stitcher"), PDD/Pocket Digital Disc player and recorder, personal items such as wallet, comb, hat, bandana, and similar. The vehicle is a bicycle and a motorcycle ill: a junker of a hovercycle (half M. D. C. and maximum speed is 30% less) as per the applicable Pilot skill.`
+Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. D. C. damage), an M.D. energy pistol (typically does 2D6 or 3D6 M . D . ) and two E-Clips, plus a flashlight, 900 pound (405 kg) test strength nylon cord/rope, a grappling hook, RMK/Robot Medical Kit ("Stitcher"), PDD/Pocket Digital Disc player and recorder, personal items such as wallet, comb, hat, bandanna, and similar. The vehicle is a bicycle and a motorcycle ill: a junker of a hovercycle (half M. D. C. and maximum speed is 30% less) as per the applicable Pilot skill.`
         this.abilitiesDesc = `None`
         this.alignment = `Any, but typically Unprincipled, Anarchist, Miscreant or Aberrant.`
         this.startingHandToHand = 'handToHandBasic',
@@ -606,7 +605,7 @@ Other equipment includes an S.D.C. knife ( I D6 S.D.C.), handgun (3D6 or 4D6 S. 
                 number: 0,
                 free: [
                     {
-                        name: 'Computer Operation',
+                        name: 'computerOperation',
                         occBonus: 15
                     }
                 ],

@@ -105,6 +105,7 @@ class OCC {
         horrorBonus = new StatRoll,
         illusionBonus = new StatRoll,
         mindControlBonus = new StatRoll,
+        fatigueBonus = new StatRoll,
 
         // CHANCES
         trustBonus = new StatRoll,
@@ -218,6 +219,7 @@ class OCC {
         this.horrorBonus = horrorBonus;
         this.illusionBonus = illusionBonus;
         this.mindControlBonus = mindControlBonus;
+        this.fatigueBonus = fatigueBonus;
 
         // CHANCES
         this.trustBonus = trustBonus;
@@ -315,6 +317,7 @@ class OCC {
             character.saves.horror.occBonus = this.bonusRoll(this.horrorBonus);
             character.saves.illusion.occBonus = this.bonusRoll(this.illusionBonus);
             character.saves.mindControl.occBonus = this.bonusRoll(this.mindControlBonus);
+            character.saves.fatigue.occBonus = this.bonusRoll(this.fatigueBonus);
             // CHANCES
             character.chances.trust.occBonus = this.bonusRoll(this.trustBonus);
             character.chances.intimidate.occBonus = this.bonusRoll(this.intimidateBonus);

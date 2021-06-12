@@ -109,6 +109,7 @@ class Race {
         horrorBonus = new StatRoll,
         illusionBonus = new StatRoll,
         mindControlBonus = new StatRoll,
+        fatigueBonus = new StatRoll,
 
         // CHANCES
         trustBonus = new StatRoll,
@@ -227,6 +228,7 @@ class Race {
         this.horrorBonus = horrorBonus;
         this.illusionBonus = illusionBonus;
         this.mindControlBonus = mindControlBonus;
+        this.fatigueBonus = fatigueBonus;
 
         // CHANCES
         this.trustBonus = trustBonus;

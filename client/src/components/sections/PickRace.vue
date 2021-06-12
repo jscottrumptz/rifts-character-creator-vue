@@ -255,6 +255,12 @@
                             <span v-if="race.mindControlBonus.bonus > 0">+</span>{{race.mindControlBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Fatigue -->
+                  <span v-if="race.fatigueBonus.bonus" class="inline-flex items-center px-1">vs Fatigue:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="race.fatigueBonus.bonus > 0">+</span>{{race.fatigueBonus.bonus}}
+                          </span>
+                        </span>
                 </td>
               </tr>
               <!-- Bonuses -->

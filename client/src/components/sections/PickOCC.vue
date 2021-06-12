@@ -329,6 +329,12 @@
                             <span v-if="occ.mindControlBonus.bonus > 0">+</span>{{occ.mindControlBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Fatigue -->
+                  <span v-if="occ.fatigueBonus.bonus" class="inline-flex items-center px-1">vs Fatigue:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="occ.fatigueBonus.bonus > 0">+</span>{{occ.fatigueBonus.bonus}}
+                          </span>
+                        </span>
                 </td>
               </tr>
               <!-- Bonuses -->
