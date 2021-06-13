@@ -21,6 +21,10 @@ Level 9:
 +1 Non-combat melee action (for a total of 6 melee 'actions').`;
         this.skillCost = 0;
     }
+
+    rollSecondary(character) {
+        character.bonuses.attacks.initialValue = 1;
+    }
 }
 
 module.exports = NoHandToHandSkill;

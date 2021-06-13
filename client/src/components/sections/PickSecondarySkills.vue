@@ -752,6 +752,7 @@ export default {
         }
       }
       this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
+      this.newCharacter.race.getSecondary(this.newCharacter);
       // set a toggle to true so that the player can move on in the character creation process
       this.newCharacter.skills.secondary = true
     },

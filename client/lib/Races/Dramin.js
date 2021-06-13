@@ -43,7 +43,8 @@ class Dramin extends Race {
         this.peRoll = { sides: 6, amount: 3 };
         this.pbRoll = { sides: 6, amount: 3 };
         this.spdRoll = { sides: 6, amount: 3 };
-        this.hp = { sides: 6, amount: 1};
+        this.hpText = 'PE';
+        this.hpLvl = { sides: 6, amount: 1};
         this.sdc = { sides: 6, amount: 5, bonus: 2 };
         this.ppe = { sides: 6, amount: 5 };
         this.perceptionBonus = { bonus: 1 };
@@ -52,6 +53,10 @@ class Dramin extends Race {
 
     rollSecondary(character) {
         character.psionics.randomPsionics = true;
+    }
+
+    getSecondary(character) {
+        character.secondaryStats.hp.initialValue = character.attributes.pe.total;
     }
 }
 

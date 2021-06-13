@@ -45,6 +45,12 @@ Level 14:
 Level 15:
 +1 Additional attack/action per melee round.`;
     }
+
+    rollSecondary(character) {
+        character.bonuses.attacks.initialValue = 4;
+        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus + 2;
+        character.bonuses.pull.skillsBonus = character.bonuses.pull.skillsBonus + 2;
+    }
 }
 
 module.exports = HandToHandBasic;

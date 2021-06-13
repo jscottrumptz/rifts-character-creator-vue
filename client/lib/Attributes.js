@@ -137,8 +137,6 @@ class Attributes {
 
     // test current attribute totals to see if the qualify for attribute bonuses
     attributeBonusTest(character) {
-
-        character.secondaryStats.hp.raceBonus = this.pe.total;
         for (const attribute in this) {
             if (this[attribute].total > 15) {
                 switch (attribute) {

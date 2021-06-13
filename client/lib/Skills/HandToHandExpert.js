@@ -52,6 +52,12 @@ Level 15:
 Death Blow on roll of natural 20.`;
         this.skillCost = 1;
     }
+
+    rollSecondary(character) {
+        character.bonuses.attacks.initialValue = 4;
+        character.bonuses.roll.skillsBonus = character.bonuses.roll.skillsBonus + 2;
+        character.bonuses.pull.skillsBonus = character.bonuses.pull.skillsBonus + 2;
+    }
 }
 
 module.exports = HandToHandExpert;

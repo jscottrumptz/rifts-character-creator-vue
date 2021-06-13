@@ -73,6 +73,11 @@ Perform Holds.
 Level 15:
 Critical Strike on natural 17-20.`;
     }
+
+    rollSecondary(character) {
+        character.bonuses.attacks.initialValue = 4;
+        character.saves.horror.skillsBonus = character.bonuses.horror.skillsBonus + 2;
+    }
 }
 
 module.exports = HandToHandCommando;

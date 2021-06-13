@@ -51,8 +51,10 @@ Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess 
         this.peRoll = { sides: 6, amount: 3 };
         this.pbRoll = { sides: 6, amount: 2, bonus: 3 };
         this.spdRoll = { sides: 6, amount: 3 };
-        this.hp = { sides: 6, amount: 1, bonus: 2 };
+        this.hpText = 'PE'
+        this.hpLvl = { sides: 6, amount: 1, bonus: 2 };
         this.sdc = { bonus: 20 };
+        this.ppeText = `PE+6D6`
         this.horror = { bonus: 12 };
         this.perceptionBonus = { bonus: 4 };
         this.mindControlBonus = { bonus: 1 };
@@ -62,9 +64,14 @@ Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess 
         this.insanityBonus = { bonus: -1 };
     }
 
+    getSecondary(character) {
+        character.secondaryStats.hp.initialValue = character.attributes.pe.total;
+        character.secondaryStats.ppe.initialValue = character.attributes.pe.total;
+    }
+
     rollSecondary(character) {
         character.psionics.randomPsionics = false;
-        character.secondaryStats.ppe.raceBonus = character.attributes.pe.total + random.dice(6,6).reduce((a, b) => a + b, 0);
+        character.secondaryStats.ppe.raceBonus = random.dice(6,6).reduce((a, b) => a + b, 0);
 
         let ma = character.attributes.ma
         if (ma.raceTotal > 17) {

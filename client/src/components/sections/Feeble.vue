@@ -78,7 +78,8 @@ export default {
   name: "Feeble",
   props: {
     attributes: Object,
-    bonuses: Object
+    bonuses: Object,
+    newCharacter: Object
   },
   data: function(){
     return {
@@ -101,6 +102,7 @@ export default {
         this.bonusCount++
         this.feebleCount = 0
       }
+      this.newCharacter.race.getSecondary(this.newCharacter);
     },
     perceptionBonus() {
       this.bonuses.perception.attributeBonus = 2

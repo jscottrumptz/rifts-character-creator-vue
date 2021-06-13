@@ -64,6 +64,11 @@ Level 15:
         this.required = `Character must be an Evil alignment`;
         this.skillCost = 3;
     }
+
+    rollSecondary(character) {
+        character.bonuses.attacks.initialValue = 3;
+        character.bonuses.strike.skillsBonus = character.bonuses.strike.skillsBonus + 2;
+    }
 }
 
 module.exports = HandToHandAssassin;

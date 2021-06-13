@@ -22,6 +22,12 @@ class Human extends Race {
         this.pbRoll = { sides: 6, amount: 3 };
         this.spdRoll = { sides: 6, amount: 3 };
         this.sdc = { sides: 6, amount: 2, bonus: 12 };
+        this.hpText = 'PE';
+        this.hpLvl = { sides: 6, amount: 1};
+    }
+
+    getSecondary(character) {
+        character.secondaryStats.hp.initialValue = character.attributes.pe.total;
     }
 
     rollSecondary(character) {

@@ -61,18 +61,23 @@ class Race {
         hp = new StatRoll,
         hpLvl = new StatRoll,
         hpDay = new StatRoll,
+        hpText = '',
         sdc = new StatRoll,
         sdcLvl = new StatRoll,
         sdcDay = new StatRoll,
+        sdcText = '',
         mdc = new StatRoll,
         mdcLvl = new StatRoll,
         mdcDay = new StatRoll,
+        mdcText = '',
         ppe = new StatRoll,
         ppeLvl = new StatRoll,
         ppeDay = new StatRoll,
+        ppeText = '',
         isp = new StatRoll,
         ispLvl = new StatRoll,
         ispDay = new StatRoll,
+        ispText = '',
         horror = new StatRoll,
 
         // BONUSES
@@ -180,18 +185,23 @@ class Race {
         this.hp = hp;
         this.hpLvl = hpLvl;
         this.hpDay = hpDay;
+        this.hpText = hpText;
         this.sdc = sdc;
         this.sdcLvl = sdcLvl;
         this.sdcDay = sdcDay;
+        this.sdcText = sdcText;
         this.mdc = mdc;
         this.mdcLvl = mdcLvl;
         this.mdcDay = mdcDay;
+        this.mdcText = mdcText;
         this.ppe = ppe;
         this.ppeLvl = ppeLvl;
         this.ppeDay = ppeDay;
+        this.ppeText = ppeText;
         this.isp = isp;
         this.ispLvl = ispLvl;
         this.ispDay = ispDay;
+        this.ispText = ispText;
         this.horror = horror;
 
         // BONUSES
@@ -266,6 +276,10 @@ class Race {
     }
 
     rollSecondary() {
+
+    }
+
+    getSecondary() {
 
     }
 
