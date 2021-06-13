@@ -26,7 +26,12 @@ const server = new ApolloServer({
 });
 
 // integrate our apollo server with the Express application middleware
-server.applyMiddleware({ app });
+server.applyMiddleware({
+    app,
+    bodyParserConfig: {
+        limit: '4mb',
+    }
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

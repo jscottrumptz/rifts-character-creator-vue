@@ -34,7 +34,7 @@
                     <div class="sm:hidden">
                       <label for="tabs" class="sr-only">Select a tab</label>
                       <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-                        <option v-if="Object.keys(character.abilities).length !== 0" selected value="abilities">Abilities</option>
+                        <option v-if="character.abilities.ability !== 'None'"  selected value="abilities">Abilities</option>
                         <option v-if="character.psionics.ability !== 'None'" value="psionics">Psionics</option>
                         <option value="skills">Skills</option>
                         <option v-if="Object.keys(character.spells).length !== 0" value="magic">Magic</option>

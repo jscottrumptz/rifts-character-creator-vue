@@ -372,6 +372,12 @@
                   Other
                 </td>
                 <td class="py-2 text-sm font-medium text-gray-900">
+                  <!-- Other Bonus Text -->
+                  <span v-if="race.otherBonusText" class="inline-flex items-center px-1">
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            {{race.otherBonusText}}
+                          </span>
+                        </span>
                   <!-- Trust -->
                   <span v-if="race.trustBonus.bonus" class="inline-flex items-center px-1">Trust:
                           <span class="pr-2 text-sm font-normal text-gray-500">
@@ -438,7 +444,7 @@
                 <td class="p-4 text-sm text-right font-medium text-gray-900">
                   Psionics
                 </td>
-                <td class="py-2 pr-2 text-sm text-gray-700">
+                <td class="py-2 pr-2 text-sm whitespace-pre-line wrap text-gray-700">
                   {{race.psionicsDesc}}
                 </td>
               </tr>

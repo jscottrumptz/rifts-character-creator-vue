@@ -1,10 +1,13 @@
 const Race = require('../Race');
 const { Random } = require('random-js');
 const random = new Random;
-const Art = require('../Skills/Art');
-const Anthropology = require('../Skills/Anthropology');
-const MathematicsBasic = require('../Skills/MathematicsBasic');
-const MathematicsAdvanced = require('../Skills/MathematicsAdvanced');
+const AlterAura = require('../Psionics/AlterAura');
+const DeathTrance = require('../Psionics/DeathTrance');
+const MaskPPE = require('../Psionics/MaskPPE');
+const MaskISPandPsionics = require('../Psionics/MaskISPandPsionics');
+const MindBlockSensitive  = require('../Psionics/MindBlockSensitive');
+const Nightvision = require('../Psionics/Nightvision');
+const SummonInnerStrength = require('../Psionics/SummonInnerStrength');
 
 class AutoG extends Race {
     constructor() {
@@ -24,12 +27,30 @@ class AutoG extends Race {
 (see Rifts® World Book 30: D - Bees of North America pg. 27 for more information)`;
         this.image = 'assets/images/race/auto_g.jpg';
         this.availableOCCs = `    In theory, any, but Auto-Gs tend toward the following: Bounty Hunter (and any type of man-hunter), Master Assassin, Freelance Spy, Super-Spy, Professional Thief, Bandit, Highway Man, Smuggler, Con Artist, Gunfighter, Gunslinger, Sheriff, or Mere Soldier. The rare few who choose a less violent occupation may select any of the Scholar & Adventurer O.C.C.s. Note: Cannot select any O.C.C. that artificially augments the body, including Cyber-Knight and Headhunter, nor any Practitioner of Magic O.C.C. or Psychic O.C.C.`;
-        this.psionicsDesc = `Alter Aura (2), Death Trance (1), Mask P.P.E. (4), Mask I.S.P. & Psionics (7), Mind Block (4), Nightvision (4), and Summon Inner Strength (4). Considered a Major Psychic and needs a 12 or higher to save vs psionic attack. 
+        this.psionicsDesc = `Alter Aura (2), Death Trance (1), Mask P.P.E. (4), Mask I.S.P. & Psionics (7), Mind Block (4), Nightvision (4), and Summon Inner Strength (4).
+    Considered a Major Psychic and needs a 12 or higher to save vs psionic attack. 
     I.S.P.: M.E. attribute number plus a roll of 4D6, and an additional 1D6+ 1 per level of experience.`;
-        this.abilitiesDesc = ``;
+        this.abilitiesDesc = `Other than the ability to alter their physical structure on a genetic level and change their physical bodies, all other senses and capabilities are the same as humans. Heals three times faster than a human and is resistant to most diseases. When replicating an inhuman race, the character has all the natural abilities of that race, other than spell casting and specific learned skills and memories.
+
+True form
+The Auto-G can only assume one of two forms, the current person or race he is copying and the creature's (supposedly) natural human form. The human form is usually quite attractive, with a P.B. of 12 or higher. Most Auto-Gs have a healthy, youthful appearance and those between 90-110 look to be in their forties or early fifties. 
+An Auto-G has a definite male or female gender, but they can assume the "appearance" of the opposite sex when they transform into a different race. Assuming the opposite sex and acting the part can prove difficult as the shape-changer may be a male in a female body and vice versa, with all his normal male attitudes and instincts. Acting the part of a female (and vice versa) may be harder than one thinks. 
+When abandoning their false identity, the Auto-G can only revert back to his or her human-looking natural form. To change into another race, he must consume some DNA from that life form.
+
+DNA sample required to change
+To assume the identity of another race, be it Dog Boy, Psi-Stalker or D-Bee, the Auto-G must have something with that being's genetic signature. This requires the shape shifter to chew and/or swallow something with the subject's DNA; spit, sweat, blood, a piece of skin, nail or hair follicle, and so on. The DNA source material can be as little as a single hair follicle or a tiny drop of blood. One minute (four melee rounds) after consumption, the Auto-G is able to replicate the exact genetic structure of that race and transform itself into a convincing, physical copy down to the genetic level. Note: This only enables the Auto-G to turn into an identical member of that race, not an exact copy of a specific individual. Limitations: An Auto-G can copy any intelligent, humanoid creature pro-vided it is mortal, whether it is an S.D.C. or M.D.C. being, including its size, appearance, additional limbs (tail, wings, extra eyes or limbs, natural body armor, etc.). An Auto-G can NOT replicate a supernatural being, creature of magic, animal or a being who is extremely alien, such as an intelligent blob like the Amorph, and energy being like the Ecto-Man, or D-Bee made of stone or plant matter. In all cases, the Auto-G retains his own memories and skills, but he also has the natural abilities and instincts that come with the body he has assumed.
+
+To replicate a specific individual, the Auto-G must be able to thoroughly examine the subject (dead or alive) for at least 15 minutes (20-30 is better), consume a large DNA sample (one ounce minimum) and be within 12 feet (3.6 m) of said individual when the change takes place. After the ap-propriate amount of time, concentration and meditation, the Auto-G turns into an identical-looking twin down to the smallest detail and genetic composition. Fingerprints, voice, eye and skin color, hair, and natural moles, as well as scars and blemishes caused by injury or birth defect, are all replicated 99.7 percent. Bionic implants, tattoos and body piercings cannot be replicated and if the Auto-G is to complete the charade, he must be physically altered (i.e., get an identical tattoo, implant, etc.). Strangely, while the Auto-G cannot make a tattoo appear when it changes its form, the tat-too will disappear when he reverts back to his natural, human form. Likewise, any cybernetic implants or bionic limbs will be harmlessly expelled and the Auto-G will regenerate any missing limbs or organs. In fact, if a bionic arm or leg is required for the disguise (typically only necessary when replicating a specific individual), the Auto-G appears without that limb when he transforms into that individual awaiting the bionic supplement to be attached to complete the trans-formation. Upon returning to his normal form, all limbs are intact and bionic free. 
+When assuming the exact identity of a specific individual, it is not necessity to kill the genuine article. Auto-Gs who respect life or are engaged in a plot to frame an individual, usually work to get the subject sent off on a wild goose chase, or capture and imprison the person until there is no need for the charade. On the other hand, evil and ruthless Auto-Gs, many of whom are professional assassins and spies, kill those they impersonate and destroy the body (or at least dispose of it) to prevent accidental escape or discovery.
+
+Instant adaptation to new body
+The Auto-G is instantly comfortable with his new body and understands how it works on an intuitive level even if it is completely different than a human being; has additional appendages and inhuman powers (psionics, instincts, heightened senses, wings and flight, aquatic capabilities, M.D.C. body, superhuman P.S., special powers, and so forth). For example, if an Auto-G turns into a Simvan, he has the power to control and command animals. If he turns into a Lyn-Srial, the Auto-G has wings and can fly.
+
+Unusually high level of P.P.E.
+Auto-Gs have 2D4x10+P.E. attribute number in P.P.E., roughly 10-30 times more than the average human adult. Yet despite this, Auto-Gs can-not perform magic of any kind nor can their P.P.E. be syphoned away by sorcerers, Psi-Stalkers or other P.P.E. vampires. Additionally, the Auto-G's P.P.E. drops by 70%for 24 hours after a transformation into a nonhuman life form. Presumably, the expenditure of P.P.E. at the moment of transformation is necessary for the Auto-G to change his genetic structure and appearance. This may mean the trans-formation is magical in nature, though different than spell casting.`;
         this.magicDesc = `None; cannot practice magic of any kind.`;
         this.cyberneticsDesc = `Avoid it whenever possible. Never make more than 40% of their body cybernetic (any more will kill them).`;
-        this.skillsDesc = ``;
+
         this.heightMin = 5;
         this.heightMax = 6;
         this.weightMin = 120;
@@ -60,12 +81,13 @@ class AutoG extends Race {
         this.ispText = 'ME+2D6'
         this.ispLvl = { sides: 6, amount:1, bonus: 1 }
         this.horror = { bonus: 10 };
-        this.perceptionBonus = { bonus: 4 };
-        this.mindControlBonus = { bonus: 1 };
-        this.illusionBonus = { bonus: 1 };
-        this.possessionBonus = { bonus: 3 };
-        this.horrorBonus = { bonus: -1 };
-        this.insanityBonus = { bonus: -1 };
+        this.initiativeBonus = { bonus: 1 };
+        this.pullBonus = { bonus: 2 };
+        this.illusionBonus = { bonus: 2 };
+        this.magicBonus = { bonus: 2 };
+        this.horrorBonus = { bonus: 3 };
+        this.diseaseBonus = { bonus: 3 };
+        this.otherBonusText = 'Other bonuses and natural abilities may apply depending on the type of D-Bee the Auto-G has chosen for its body.'
     }
 
     getSecondary(character) {
@@ -87,17 +109,49 @@ class AutoG extends Race {
             me.raceTotal = me.attributeRoll.reduce((a, b) => a + b, 0) + me.bonus;
         }
 
-        character.skills.known.art = new Art;
-        character.skills.known.art.raceBonus = 20;
+        character.abilities.transformation =
+            {
+                name: 'Transformation',
+                description: `True form
+The Auto-G can only assume one of two forms, the current person or race he is copying and the creature's (supposedly) natural human form. The human form is usually quite attractive, with a P.B. of 12 or higher. Most Auto-Gs have a healthy, youthful appearance and those between 90-110 look to be in their forties or early fifties. 
+An Auto-G has a definite male or female gender, but they can assume the "appearance" of the opposite sex when they transform into a different race. Assuming the opposite sex and acting the part can prove difficult as the shape-changer may be a male in a female body and vice versa, with all his normal male attitudes and instincts. Acting the part of a female (and vice versa) may be harder than one thinks. 
+When abandoning their false identity, the Auto-G can only revert back to his or her human-looking natural form. To change into another race, he must consume some DNA from that life form.
 
-        character.skills.known.anthropology = new Anthropology;
-        character.skills.known.anthropology.raceBonus = 10;
+DNA sample required to change
+To assume the identity of another race, be it Dog Boy, Psi-Stalker or D-Bee, the Auto-G must have something with that being's genetic signature. This requires the shape shifter to chew and/or swallow something with the subject's DNA; spit, sweat, blood, a piece of skin, nail or hair follicle, and so on. The DNA source material can be as little as a single hair follicle or a tiny drop of blood. One minute (four melee rounds) after consumption, the Auto-G is able to replicate the exact genetic structure of that race and transform itself into a convincing, physical copy down to the genetic level. Note: This only enables the Auto-G to turn into an identical member of that race, not an exact copy of a specific individual. Limitations: An Auto-G can copy any intelligent, humanoid creature pro-vided it is mortal, whether it is an S.D.C. or M.D.C. being, including its size, appearance, additional limbs (tail, wings, extra eyes or limbs, natural body armor, etc.). An Auto-G can NOT replicate a supernatural being, creature of magic, animal or a being who is extremely alien, such as an intelligent blob like the Amorph, and energy being like the Ecto-Man, or D-Bee made of stone or plant matter. In all cases, the Auto-G retains his own memories and skills, but he also has the natural abilities and instincts that come with the body he has assumed.
 
-        character.skills.known.mathematicsBasic = new MathematicsBasic;
-        character.skills.known.mathematicsBasic.raceBonus = 15;
+To replicate a specific individual, the Auto-G must be able to thoroughly examine the subject (dead or alive) for at least 15 minutes (20-30 is better), consume a large DNA sample (one ounce minimum) and be within 12 feet (3.6 m) of said individual when the change takes place. After the ap-propriate amount of time, concentration and meditation, the Auto-G turns into an identical-looking twin down to the smallest detail and genetic composition. Fingerprints, voice, eye and skin color, hair, and natural moles, as well as scars and blemishes caused by injury or birth defect, are all replicated 99.7 percent. Bionic implants, tattoos and body piercings cannot be replicated and if the Auto-G is to complete the charade, he must be physically altered (i.e., get an identical tattoo, implant, etc.). Strangely, while the Auto-G cannot make a tattoo appear when it changes its form, the tat-too will disappear when he reverts back to his natural, human form. Likewise, any cybernetic implants or bionic limbs will be harmlessly expelled and the Auto-G will regenerate any missing limbs or organs. In fact, if a bionic arm or leg is required for the disguise (typically only necessary when replicating a specific individual), the Auto-G appears without that limb when he transforms into that individual awaiting the bionic supplement to be attached to complete the trans-formation. Upon returning to his normal form, all limbs are intact and bionic free. 
+When assuming the exact identity of a specific individual, it is not necessity to kill the genuine article. Auto-Gs who respect life or are engaged in a plot to frame an individual, usually work to get the subject sent off on a wild goose chase, or capture and imprison the person until there is no need for the charade. On the other hand, evil and ruthless Auto-Gs, many of whom are professional assassins and spies, kill those they impersonate and destroy the body (or at least dispose of it) to prevent accidental escape or discovery.
 
-        character.skills.known.mathematicsAdvanced = new MathematicsAdvanced;
-        character.skills.known.mathematicsAdvanced.raceBonus = 15;
+Instant adaptation to new body
+The Auto-G is instantly comfortable with his new body and understands how it works on an intuitive level even if it is completely different than a human being; has additional appendages and inhuman powers (psionics, instincts, heightened senses, wings and flight, aquatic capabilities, M.D.C. body, superhuman P.S., special powers, and so forth). For example, if an Auto-G turns into a Simvan, he has the power to control and command animals. If he turns into a Lyn-Srial, the Auto-G has wings and can fly.`,
+                type: `Racial`,
+                note: `Full bionic conversion is not possible for Auto-Gs and will kill them if attempted. In fact, the beings will die if more than 40% of their body is replaced with machine parts. Consequently, mostly to avoid cybernetics at all costs, even if it is only temporary.`
+            }
+
+        character.abilities.highPPE =
+            {
+                name: 'Unusually high level of P.P.E.',
+                description: `Auto-Gs have 2D4x10+P.E. attribute number in P.P.E., roughly 10-30 times more than the average human adult. Yet despite this, Auto-Gs can-not perform magic of any kind nor can their P.P.E. be syphoned away by sorcerers, Psi-Stalkers or other P.P.E. vampires. Additionally, the Auto-G's P.P.E. drops by 70%for 24 hours after a transformation into a nonhuman life form. Presumably, the expenditure of P.P.E. at the moment of transformation is necessary for the Auto-G to change his genetic structure and appearance. This may mean the trans-formation is magical in nature, though different than spell casting.`,
+                type: `Racial`
+            }
+
+        character.abilities.saveVsPossession =
+            {
+                name: 'Save vs Possession',
+                description: `+2 to save vs possession at levels 2, 4, 6, 8, 11 and 15.`,
+                type: `Racial`
+            }
+
+        character.psionics.known.alterAura = new AlterAura;
+        character.psionics.known.deathTrance = new DeathTrance;
+        character.psionics.known.maskPPE = new MaskPPE;
+        character.psionics.known.maskISPandPsionics = new MaskISPandPsionics;
+        character.psionics.known.mindBlockSensitive  = new MindBlockSensitive;
+        character.psionics.known.nightvision = new Nightvision;
+        character.psionics.known.summonInnerStrength = new SummonInnerStrength;
+        character.psionics.ability = 'Racial'
+        character.psionics.selected = true;
     }
 }
 

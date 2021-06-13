@@ -105,9 +105,9 @@
 </template>
 
 <script>
-const HealingPsionics = require('../../../lib/Psinoics/HealingPsionics');
-const PhysicalPsionics = require('../../../lib/Psinoics/PhysicalPsionics');
-const SensitivePsionics = require('../../../lib/Psinoics/SensitivePsionics');
+const HealingPsionics = require('../../../lib/Psionics/HealingPsionics');
+const PhysicalPsionics = require('../../../lib/Psionics/PhysicalPsionics');
+const SensitivePsionics = require('../../../lib/Psionics/SensitivePsionics');
 
 export default {
   name: "PickRandomPsionics",

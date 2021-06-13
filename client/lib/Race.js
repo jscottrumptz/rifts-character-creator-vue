@@ -29,6 +29,7 @@ class Race {
         lifespanDesc = 'years.',
         sizeDesc = 'feet tall.',
         weightDesc = 'lbs.',
+        otherBonusText = '',
 
         iqRoll = new StatRoll,
         meRoll = new StatRoll,
@@ -153,6 +154,7 @@ class Race {
         this.lifespanDesc = lifespanDesc;
         this.sizeDesc = sizeDesc;
         this.weightDesc = weightDesc;
+        this.otherBonusText = otherBonusText;
 
         this.iqRoll = iqRoll;
         this.meRoll = meRoll;
