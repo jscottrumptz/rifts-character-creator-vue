@@ -659,6 +659,38 @@ Save vs Horror Factor
                     {
                         name: 'ropeWorks',
                         occBonus: 15
+                    },
+                    {
+                        name: 'loreAmericanIndiansTechnical',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreCattleAndAnimals',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreDBee',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreDemonsAndMonsters',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreFaerieAndCreaturesOfMagic',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreJuicers',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'loreMagic',
+                        occBonus: 15
+                    },
+                    {
+                        name: 'lorePsychicsAndPsionics',
+                        occBonus: 15
                     }
                 ],
                 unavailable: [],

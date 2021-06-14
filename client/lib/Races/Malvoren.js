@@ -4,6 +4,7 @@ const random = new Random;
 const Telemechanics = require('../Psionics/Telemechanics');
 const TelemechanicParalysis = require('../Psionics/TelemechanicParalysis');
 const TelemechanicMentalOperation = require('../Psionics/TelemechanicMentalOperation');
+const MalvorenRCC = require('../RCCs/MalvorenRCC')
 
 class Malvoren extends Race {
     constructor() {
@@ -24,7 +25,45 @@ class Malvoren extends Race {
 
 (see Rifts® World Book 30: D - Bees of North America pg. 138 for more information)`;
         this.image = 'assets/images/race/malvoren.jpg';
-        this.availableOCCs = `    None; a Malvoren does not get to choose an O.C.C. and must instead rely on R.C.C. skills and natural abilities.`;
+        this.availableOCCs = `A Malvoren does not get to choose an O.C.C. and must instead rely on R.C.C. skills and natural abilities.
+
+R.C.C. Skills
+    Language: Native Tongue (Trade Four and Techno-Can at +30%)
+    Literacy: Native Tongue (Trade Four and Techno-Can at +20%)
+    Basic Electronics (+5%)
+    Bioware Mechanics
+    Mathematics: Basic at 98%.
+    Mathematics: Advanced (+20%)
+    Mechanical Engineering
+    Sensory Equipment (+5%)
+    Vehicle Armorer (+20%)
+    Weapon Systems (+15%)
+    Weapons Engineer (+50%)
+    Pilot: Two of choice.
+    W.P.: Six of choice.
+    Hand to Hand: Martial Arts or Assassin if evil, player's choice.
+
+R.C.C. Related
+Select four additional skills at level one, plus one additional skill at levels 4, 8, and 12. All new skills start at level one proficiency. 
+    Communications: Any. 
+    Cowboy: None. 
+    Domestic: None. 
+    Electrical: Electrical Generation and Robot Electronics only. 
+    Espionage: Any. 
+    Horsemanship: Any. 
+    Mechanical: Any (-5%; yes that is a minus). 
+    Medical: None. 
+    Military: Any. 
+    Physical: Any, except Acrobatics. 
+    Pilot: Any (+10% on combat vehicles). 
+    Pilot Related: Any. 
+    Rouge: Any. 
+    Science: Chemistry and Astrophysics only. 
+    Technical: Language, Literacy, Computer Operation, Computer Programming, and Jury-Rig only. 
+    W.P.: Any. Wilderness: Land Navigation only.
+
+Secondary Skills
+    Select four skills from the Secondary Skills List found on page 300 of Rifts® Ultimate Edition, plus two additional at levels 3 and 9. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high 1.Q. All Secondary Skills start at the base skill level.`;
         this.psionicsDesc = `Telemechanics (10 normal cost), Telemechanic Paralysis (20 normal), and Telemechanic Mental Operation (12 normal). These powers can only be used when melded with a weapon, armor or machine (see Natural Abilities). 
 
 Note: These powers only cost half the I.S.P. (as listed above) and have double the normal duration if they are being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If these powers are used on any non-combat machine, they require twice the normal I.SP. and the duration is reduced by one half. 
@@ -273,6 +312,10 @@ A strange side effect of damage from a weapon melded with and powered by the Mal
         character.psionics.known.telemechanicMentalOperation.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
         character.psionics.ability = 'Racial'
         character.psionics.selected = true;
+    }
+
+    pushRCC(character) {
+        character.occ = new MalvorenRCC;
     }
 }
 

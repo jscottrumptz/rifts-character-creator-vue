@@ -676,6 +676,38 @@ export default {
   His company was folded after Northern Gun pulled their support.`
       this.newCharacter.info.physicalDescription = `Siembieda is a tall, slender man with white hair. He is "singularly handsome" with a "bizarre quality" about his face. Siembieda has dark eyes with thick eyebrows, high cheekbones, a sharp cut nose, and a black mustache.`
     }
+  },
+  mounted: function () {
+    if(this.newCharacter.race.rcc) {
+      this.newCharacter.race.pushRCC(this.newCharacter);
+      this.newCharacter.occ.rollBonuses(this.newCharacter);
+      this.newCharacter.occ.rollSecondary(this.newCharacter);
+      this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
+
+      // filler information
+      this.newCharacter.info.randomAge();
+      this.newCharacter.info.randomHeightDescr();
+      this.newCharacter.info.randomWeightDescr();
+      this.newCharacter.info.randomBirthOrder();
+      this.newCharacter.info.randomDisposition();
+      this.newCharacter.info.randomEnvironment();
+      this.newCharacter.info.randomFamilyOrigin();
+      this.newCharacter.info.randomCoalition();
+      this.newCharacter.info.randomNonHumans();
+      this.newCharacter.info.randomInitialReason();
+      this.newCharacter.info.level = 1;
+      this.newCharacter.info.name = 'TestApp';
+      this.newCharacter.info.sex = 'Male';
+      this.newCharacter.info.weight = '180 lbs';
+      this.newCharacter.info.heightFt = 6;
+      this.newCharacter.info.heightIn = 1;
+      this.newCharacter.info.insanity = ['Death Wish', 'Paranoid'];
+      // this.newCharacter.info.age = 28;
+      this.newCharacter.info.alignment = "Unprincipled";
+      this.newCharacter.info.bio = `Mercenary soldier who is an expert at power armor and operated the Norther Gun version of the Troll armor.
+  His company was folded after Northern Gun pulled their support.`
+      this.newCharacter.info.physicalDescription = `Siembieda is a tall, slender man with white hair. He is "singularly handsome" with a "bizarre quality" about his face. Siembieda has dark eyes with thick eyebrows, high cheekbones, a sharp cut nose, and a black mustache.`
+    }
   }
 }
 </script>

@@ -202,9 +202,9 @@
           <span v-show="displaySkill[0].baseTwo">/ {{displaySkill[0].baseTwo}}%</span>
           <span v-show="displaySkill[0].perLvl"> + {{displaySkill[0].perLvl}}% per level<br></span></span>
           <span v-show="displaySkill[0].takeTwiceBonus" class="font-medium text-gray-200">Bonus for Selecting Twice: <span class="font-normal">{{displaySkill[0].takeTwiceBonus}}</span><br></span>
-          <span v-show="displaySkill[0].raceBonus" class="font-medium text-gray-200">Race Bonus: <span class="font-normal">+{{displaySkill[0].raceBonus}}%</span><br></span>
-          <span v-show="displaySkill[0].occBonus" class="font-medium text-gray-200">O.C.C. Bonus: <span class="font-normal">+{{displaySkill[0].occBonus}}%</span><br></span>
-          <span v-show="displaySkill[0].base && newCharacter.skills.bonus.attributeBonus" class="font-medium text-gray-200">I.Q. Bonus: <span class="font-normal">+{{newCharacter.skills.bonus.attributeBonus}}%</span><br></span>
+          <span v-show="displaySkill[0].raceBonus" class="font-medium text-gray-200">Race Bonus: <span class="font-normal"><span v-show="displaySkill[0].raceBonus > 0">+</span>{{displaySkill[0].raceBonus}}%</span><br></span>
+          <span v-show="displaySkill[0].occBonus" class="font-medium text-gray-200">O.C.C. Bonus: <span class="font-normal"><span v-show="displaySkill[0].occBonus > 0">+</span>{{displaySkill[0].occBonus}}%</span><br></span>
+          <span v-show="displaySkill[0].base && newCharacter.skills.bonus.attributeBonus" class="font-medium text-gray-200">I.Q. Bonus: <span class="font-normal"><span v-show="newCharacter.skills.bonus.attributeBonus > 0">+</span>{{newCharacter.skills.bonus.attributeBonus}}%</span><br></span>
           <br>
           <span class="font-medium text-gray-200">Description:</span>
           <div class="whitespace-pre-line overflow-y-auto max-h-96">
