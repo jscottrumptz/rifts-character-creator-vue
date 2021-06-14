@@ -30,6 +30,8 @@ class Race {
         sizeDesc = 'feet tall.',
         weightDesc = 'lbs.',
         otherBonusText = '',
+        // is this a racial character class (no occ)
+        rcc = false,
 
         iqRoll = new StatRoll,
         meRoll = new StatRoll,
@@ -155,6 +157,7 @@ class Race {
         this.sizeDesc = sizeDesc;
         this.weightDesc = weightDesc;
         this.otherBonusText = otherBonusText;
+        this.rcc = rcc;
 
         this.iqRoll = iqRoll;
         this.meRoll = meRoll;

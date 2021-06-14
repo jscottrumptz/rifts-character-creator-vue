@@ -31,7 +31,7 @@
               <thead class="bg-gray-700">
               <tr>
                 <th colspan="2" scope="col" class="px-6 py-3 text-center text-xs font-medium text-white tracking-wider">
-                  {{race.name}} Rolls, Bonuses, and Psionics
+                  {{race.name}} Rolls, Saves, and Bonuses
                 </th>
               </tr>
               </thead>
@@ -439,15 +439,6 @@
                         </span>
                 </td>
               </tr>
-              <!-- Psionics -->
-              <tr class="bg-white border-t text-left border-gray-200">
-                <td class="p-4 text-sm text-right font-medium text-gray-900">
-                  Psionics
-                </td>
-                <td class="py-2 pr-2 text-sm whitespace-pre-line wrap text-gray-700">
-                  {{race.psionicsDesc}}
-                </td>
-              </tr>
               </tbody>
             </table>
           </div>
@@ -485,7 +476,7 @@
 
       <!-- About Content -->
       <div v-show="toggle==='about' && aboutActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="text-gray-50 font-medium">Pronunciation: <span class="whitespace-pre-wrap font-normal text-gray-100">
+        <p class="text-gray-50 font-medium" v-if="race.pronunciation">Pronunciation: <span class="whitespace-pre-wrap font-normal text-gray-100">
           {{race.pronunciation}}</span></p>
         <p class="text-gray-50 font-medium" v-if="race.alias">Also known as <span class="whitespace-pre-wrap font-normal text-gray-100">
           {{race.alias}}</span></p>
@@ -524,6 +515,9 @@
         <br/>
         <p class="text-gray-50 font-medium">RCC Skills</p>
         <p class="whitespace-pre-wrap text-gray-100">{{race.skillsDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Psionics</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{race.psionicsDesc}}</p>
         <br/>
         <p class="text-gray-50 font-medium">Magic</p>
         <p class="whitespace-pre-wrap text-gray-100">{{race.magicDesc}}</p>

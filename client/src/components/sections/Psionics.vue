@@ -37,6 +37,7 @@
           <div v-bind:class="{ 'hidden': !extendPsionics }"  class="mt-1">
             <p class="whitespace-pre-wrap text-sm text-gray-600">
               {{psionics.description}}
+              <span v-if="psionics.note" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.note}}</span>
               <span v-if="psionics.gm_note" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.gm_note}}</span>
             </p>
           </div>
