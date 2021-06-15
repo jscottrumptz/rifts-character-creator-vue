@@ -1,9 +1,6 @@
 const Race = require('../Race');
 const { Random } = require('random-js');
 const random = new Random;
-const Telemechanics = require('../Psionics/Telemechanics');
-const TelemechanicParalysis = require('../Psionics/TelemechanicParalysis');
-const TelemechanicMentalOperation = require('../Psionics/TelemechanicMentalOperation');
 const MalvorenRCC = require('../RCCs/MalvorenRCC')
 
 class Malvoren extends Race {
@@ -303,16 +300,38 @@ A strange side effect of damage from a weapon melded with and powered by the Mal
                 type: `Racial`
             }
 
-        character.psionics.known.telemechanics = new Telemechanics;
-        character.psionics.known.telemechanics.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
-        character.psionics.known.telemechanicParalysis = new TelemechanicParalysis;
-        character.psionics.known.telemechanicParalysis.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
-        character.psionics.known.telemechanicMentalOperation = new TelemechanicMentalOperation;
-        character.psionics.known.telemechanicMentalOperation.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
         character.psionics.ability = 'Racial'
         character.psionics.selected = false;
         character.psionics.total = 3;
         character.psionics.type = 'Major';
+        character.psionics.superPsionics = {
+            free: [
+                {
+                    name: 'telemechanics',
+                    specialNote: `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`
+                },
+                {
+                    name: 'telemechanicParalysis',
+                    specialNote: `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`
+                },
+                {
+                    name: 'telemechanicMentalOperation',
+                    specialNote: `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`
+                }
+            ],
+            unavailable: [
+                {
+                    name: 'All'
+                }
+            ]
+        }
+        character.psionics.healingPsionics = {
+            unavailable: [
+                {
+                    name: 'All'
+                }
+            ]
+        }
     }
 
     pushRCC(character) {

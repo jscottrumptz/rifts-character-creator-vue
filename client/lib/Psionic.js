@@ -4,9 +4,14 @@ class Psionic {
         group = '',
         description = '',
         note = '',
+        // special notes added by race or occ
+        specialNote = '',
         gmNote = '',
+        // array of prerequisite psionics
         preq = [],
+        // prerequisite psionic type, ex. Master
         preqType = '',
+        // text identifying prerequisites
         required = '',
         range = '',
         duration = '',
@@ -20,14 +25,19 @@ class Psionic {
         recovers = '',
         penalties = '',
         bonuses = '',
+        // amount of picks needed to select psionic
         selectionCost = 1,
-        known = false
+        // used to determine if needed by preq
+        known = false,
+        // used to lock previously selected psionics
+        canRemove = true
     ) {
         this.name = name;
         this.group = group;
         this.description = description;
         this.note = note;
         this.gmNote = gmNote;
+        this.specialNote = specialNote;
         this.preq = preq;
         this.preqType = preqType;
         this.required = required;
@@ -45,6 +55,7 @@ class Psionic {
         this.bonuses = bonuses;
         this.selectionCost = selectionCost;
         this.known = known;
+        this.canRemove = canRemove;
     }
 }
 

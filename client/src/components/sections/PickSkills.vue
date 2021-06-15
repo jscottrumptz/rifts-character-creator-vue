@@ -856,7 +856,7 @@ export default {
           document.getElementById('communication-literacyNativeTongue').style.visibility = "visible"
         }
       }
-      console.log(this.wpRemaining)
+
       // check to see if skills are removable
       if(Object.keys(this.selectedSkills).length > 0){
         for (const [skillKey] of Object.entries(this.selectedSkills)) {

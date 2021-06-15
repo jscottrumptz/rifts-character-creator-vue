@@ -11,11 +11,11 @@
         // total psionic selections
         this.total = 0;
 
-        this.healingPsionics = { max: 0, min: 0 };
-        this.physicalPsionics = { max: 0, min: 0 };
-        this.sensitivePsionics = { max: 0, min: 0 };
-        this.superPsionics = { max: 0, min: 0 };
-        this.mindBleederPsionics = { max: 0, min: 0 };
+        this.healingPsionics = {};
+        this.physicalPsionics = {};
+        this.sensitivePsionics = {};
+        this.superPsionics = {};
+        this.mindBleederPsionics = {};
     }
 }
 

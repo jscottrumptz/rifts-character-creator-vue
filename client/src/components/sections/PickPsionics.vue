@@ -17,11 +17,11 @@
             <li v-for="(psionics,index) in selectedPsionics" v-bind:key="index" v-on:click="picked(index)" :id="'pick-'+ index" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }} <span class="text-gray-500">[{{ psionics.group }}]</span></li>
           </ul>
         </div>
-        <button v-if="this.pickedPsionic && !this.pickedPsionic.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3  m-7 px-3 py-2 text-xs text-white">Remove Selected</button>
-        <button v-if="!this.pickedPsionic" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Skill</button>
+        <!-- Determine what button is active depending on prerequisites and previously known skills-->
+        <button v-if="this.pickedPsionic && this.pickedPsionic.canRemove && !this.pickedPsionic.known" v-on:click="removePicked" class="bg-gray-700 font-medium rounded hover:bg-red-500 hover:text-gray-900 m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Remove Selected</button>
+        <button v-if="this.pickedPsionic && !this.pickedPsionic.canRemove && !this.pickedPsionic.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Required by Another Psionic</button>
+        <button v-if="!this.pickedPsionic" class="bg-gray-700 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-white">Select a Psionic</button>
         <button v-if="this.pickedPsionic && this.pickedPsionic.known" class="bg-yellow-500 font-medium rounded m-3 ml-7 mb-5 px-3 py-2 text-xs text-gray-900">Cannot Remove</button>
-        <p v-if="this.newCharacter.psionics.ability === 'Major'" class="text-white pl-5 pb-5" >Select a total of eight powers from any one category (Sensitive, Physical, or Healer) or a total of six powers with selections made from two or three of those categories.</p>
-        <p v-if="this.newCharacter.psionics.ability === 'Minor'" class="text-white pl-5 pb-5" >Select a total of two powers from any one category (Sensitive, Physical, or Healer).</p>
       </div>
 
       <!-- Finalize Selections -->
@@ -119,6 +119,8 @@
             {{displayPsionic[0].note}}
             <span v-show="displayPsionic[0].gmNote !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>GM Note:</span>
             {{displayPsionic[0].gmNote}}
+            <span v-show="displayPsionic[0].specialNote !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Special Note:</span>
+            {{displayPsionic[0].specialNote}}
             <span v-show="displayPsionic[0].penalties !== ''" class="whitespace-pre-wrap font-medium text-gray-200"><br><br>Penalties:</span>
             {{displayPsionic[0].penalties}}
           </div>
@@ -291,6 +293,7 @@ export default {
       if (psionic){
         // put it back in the group
         this[group][prop] = psionic;
+
         //update counts
         this[groupCount] = this[groupCount] - psionic.selectionCost
         this.psionicsPicked = this.psionicsPicked - psionic.selectionCost;
@@ -298,6 +301,16 @@ export default {
         delete this.selectedPsionics[prop]
         // remove from the character
         delete this.newCharacter.psionics.known[prop]
+
+        // check for prerequisites
+        this.pickedPsionic.preq.forEach(preq => {
+          // make prerequisites removable
+          for (const [key] of Object.entries(this.selectedPsionics)) {
+            if (key.includes(preq)) {
+              this.selectedPsionics[key].canRemove = true
+            }
+          }
+        })
         // clear selections
         this.pickedPsionic = null;
         this.pickedProperty = null
@@ -305,6 +318,8 @@ export default {
         // update everything
         this.init();
       }
+      // update everything
+      this.init();
     },
     init: function() {
       // see how many total picks are required
@@ -319,6 +334,7 @@ export default {
       this.sensitivePsionicsRemaining = Math.max(0, this.sensitivePsionicsRequired - this.sensitivePsionicsCount);
       this.superPsionicsRemaining = Math.max(0, this.superPsionicsRequired - this.superPsionicsCount);
 
+      // hide group if no picks remaining
       this.healingPsionicsRemaining === 0 && this.remaining === 0 ?
           this.healingPsionicsActive = false : this.healingPsionicsActive = true
       this.physicalPsionicsRemaining === 0 && this.remaining === 0 ?
@@ -328,8 +344,51 @@ export default {
       this.superPsionicsRemaining === 0 && this.remaining === 0 ?
           this.superPsionicsActive = false : this.superPsionicsActive = true
 
+      // hide group if empty
+      if (Object.keys(this.healingPsionics).length === 0) {
+        this.healingPsionicsActive = false
+      }
+      if (Object.keys(this.physicalPsionics).length === 0) {
+        this.physicalPsionicsActive = false
+      }
+      if (Object.keys(this.sensitivePsionics).length === 0) {
+        this.sensitivePsionicsActive = false
+      }
+      if (Object.keys(this.superPsionics).length === 0) {
+        this.superPsionicsActive = false
+      }
+
+      // set active group if default is inactive
+      if (!this.healingPsionicsActive) {
+        this.toggle = 'physical';
+        if (!this.physicalPsionicsActive) {
+          this.toggle = 'sensitive';
+          if (!this.sensitivePsionicsActive) {
+            this.toggle = 'super'
+          }
+        }
+      }
+
       // either show the finished button or the tabs
       this.tabsPsionicsActive = availablePicks !== 0;
+
+      // check to see if psionics are removable
+      if(Object.keys(this.selectedPsionics).length > 0){
+        for (const [psionicKey] of Object.entries(this.selectedPsionics)) {
+          // check for prerequisites
+          this.selectedPsionics[psionicKey].preq.forEach(preq => {
+            let preqFound = false;
+            // make prerequisites un-removable
+            for (const [preqKey] of Object.entries(this.selectedPsionics)) {
+              // check for skill property and exclude the picked skill
+              if (preqKey.includes(preq) && psionicKey !== preqKey && !preqFound) {
+                this.selectedPsionics[preqKey].canRemove = false
+                preqFound = true;
+              }
+            }
+          })
+        }
+      }
 
       // update remaining psionics PsionicsCounter
       this.remaining = availablePicks
@@ -351,10 +410,53 @@ export default {
       this.newCharacter.psionics.selected = true
     },
     // prepares psionic lists
-    psionicLoader: function (groupList) {
+    psionicLoader: function (groupList, availableList) {
+      // handle free psionics
+      if (availableList.free) {
+        availableList.free.forEach(psionic => {
+          for (const [key] of Object.entries(groupList)) {
+            // if the psionic isn't already known, create it and add the OCC bonus and base
+            if (key === psionic.name && !this.newCharacter.psionics.known[key]) {
+              this.newCharacter.psionics.known[key] = groupList[key];
+              if (psionic.selectionCost >= 0) {
+                this.newCharacter.psionics.known[key].selectionCost = psionic.selectionCost;
+              }
+              if (psionic.specialNote !== '') {
+                this.newCharacter.psionics.known[key].specialNote = psionic.specialNote;
+              }
+              // if the psionic is already known, just add the OCC bonus and base
+            } else if (key === psionic.name && this.newCharacter.psionics.known[key]) {
+              this.newCharacter.psionics.known[key].preq = [];
+              this.newCharacter.psionics.known[key].preqOr = [];
+              if (psionic.selectionCost >= 0) {
+                this.newCharacter.psionics.known[key].selectionCost = psionic.selectionCost;
+              }
+              if (psionic.specialNote !== '') {
+                this.newCharacter.psionics.known[key].specialNote = psionic.specialNote;
+              }
+            }
+          }
+        })
+      }
+      // handle unavailable psionics
+      if (availableList.unavailable) {
+        availableList.unavailable.forEach(psionic => {
+          for (const [key] of Object.entries(groupList)) {
+            if (psionic.name === 'All') {
+              delete groupList[key]
+            }
+            if (key === psionic.name) {
+              delete groupList[key]
+            }
+          }
+        })
+      }
+
       // remove already known psionics
       for (const [psionic] of Object.entries(this.newCharacter.psionics.known)) {
         this.newCharacter.psionics.known[psionic].known = true;
+        this.newCharacter.psionics.known[psionic].preq = [];
+        this.newCharacter.psionics.known[psionic].preqType = '';
         for (const [key] of Object.entries(groupList)) {
           if (groupList[key].name === this.newCharacter.psionics.known[psionic].name) {
             delete groupList[key]

@@ -38,7 +38,9 @@
             <p class="whitespace-pre-wrap text-sm text-gray-600">
               {{psionics.description}}
               <span v-if="psionics.note" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.note}}</span>
-              <span v-if="psionics.gm_note" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.gm_note}}</span>
+              <span v-if="psionics.gmNote" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.gmNote}}</span>
+              <span v-if="psionics.specialNote" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.specialNote}}</span>
+              <span v-if="psionics.penalties" class="italic"><br><br><span class="font-medium not-italic">G.M. Note:</span> {{psionics.penalties}}</span>
             </p>
           </div>
         </li>
