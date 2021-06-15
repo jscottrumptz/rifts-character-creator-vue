@@ -89,7 +89,7 @@ class SuperPsionics {
         this.telemechanicMentalOperation = telemechanicMentalOperation;
         this.telemechanicParalysis = telemechanicParalysis;
         this.telemechanicPossession = telemechanicPossession;
-    };
-};
+    }
+}
 
 module.exports = SuperPsionics;

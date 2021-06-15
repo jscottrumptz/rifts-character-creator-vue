@@ -358,12 +358,14 @@ class Race {
                 let chance = random.die(100)
             if (chance < 11) {
                 character.psionics.ability = 'Major'
+                character.psionics.type = 'Major';
                 character.secondaryStats.isp.initialValue = character.attributes.me.total + random.dice(6,4).reduce((a, b) => a + b, 0);
                 // 1d6 + 1
                 character.secondaryStats.ispLvl.initialValue = random.die(6) + 1
                 return 'Major'
             } else if (chance < 26) {
                 character.psionics.ability = 'Minor'
+                character.psionics.type = 'Minor';
                 character.secondaryStats.isp.initialValue = character.attributes.me.total + random.dice(6,2).reduce((a, b) => a + b, 0);
                 // 1d6 + 1
                 character.secondaryStats.ispLvl.initialValue = random.die(6)

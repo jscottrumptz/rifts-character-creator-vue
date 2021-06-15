@@ -56,17 +56,17 @@
           </ul>
         </div>
 
-      <div v-show="toggle==='physical' && physicalActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-        <ul class="text-gray-300 divide-y divide-gray-600">
-          <li v-for="(psionics,index) in physicalPsionics" v-bind:key="index" :id="'phys-'+ index" v-on:click="selected('physical',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
-        </ul>
-      </div>
+        <div v-show="toggle==='physical' && physicalActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+          <ul class="text-gray-300 divide-y divide-gray-600">
+            <li v-for="(psionics,index) in physicalPsionics" v-bind:key="index" :id="'phys-'+ index" v-on:click="selected('physical',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
+          </ul>
+        </div>
 
-      <div v-show="toggle==='sensitive' && sensitiveActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-        <ul class="text-gray-300 divide-y divide-gray-600">
-          <li v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" :id="'sense-'+ index" v-on:click="selected('sensitive',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
-        </ul>
-      </div>
+        <div v-show="toggle==='sensitive' && sensitiveActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
+          <ul class="text-gray-300 divide-y divide-gray-600">
+            <li v-for="(psionics,index) in sensitivePsionics" v-bind:key="index" :id="'sense-'+ index" v-on:click="selected('sensitive',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ psionics.name }}</li>
+          </ul>
+        </div>
         <button v-on:click="addSelected" class="bg-gray-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 m-7 text-xs px-3 py-2 text-white">Add Selected</button>
       </div>
 
@@ -108,7 +108,6 @@
 const HealingPsionics = require('../../../lib/Psionics/HealingPsionics');
 const PhysicalPsionics = require('../../../lib/Psionics/PhysicalPsionics');
 const SensitivePsionics = require('../../../lib/Psionics/SensitivePsionics');
-
 export default {
   name: "PickRandomPsionics",
   props: {
@@ -219,19 +218,15 @@ export default {
       let psionicHealing = this.healingCount
       let psionicPhysical = this.physicalCount
       let psionicSensitive = this.sensitiveCount
-
       if(this.newCharacter.psionics.ability === 'Minor') {
         psionicStart = 2
       }
-
       // determine how many picks are left
       let availablePicks = psionicStart - psionicPicked
-
       // see if the character is spreading it's picks over multiple groups, if so deduct 2 picks from the available total
       if ((psionicHealing > 0 && psionicPhysical > 0) || (psionicHealing > 0 && psionicSensitive > 0) || (psionicSensitive > 0 && psionicPhysical > 0)) {
         availablePicks = availablePicks - 2;
       }
-
       // determine what tabs are available
       if ((psionicHealing > 0 && psionicStart === 2) || (psionicHealing > 5 && psionicStart === 8)) {
         this.physicalActive = false;
@@ -250,10 +245,8 @@ export default {
       // reset tab to default if the skill group is no longer active
       let tabValue = document.getElementById('tabs').value
       this[tabValue + 'Active'] === false ? this.toggle = 'default' : this.toggle = tabValue
-
       // either show the finished button or the tabs
       this.tabsActive = availablePicks !== 0;
-
       // update remaining psionics counter
       this.remaining = availablePicks;
     },
@@ -277,5 +270,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

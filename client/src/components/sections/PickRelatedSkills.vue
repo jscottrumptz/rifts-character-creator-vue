@@ -304,8 +304,6 @@ export default {
       weaponProficienciesModern: new WeaponProficienciesModern,
       wilderness: new Wilderness,
       //
-      // how many skill that are already known by the character before the user starts picking skills
-      startingSkills: 0,
       // list of the characters currently selected skills
       selectedSkills: {},
       // current skill being displayed in the information section
@@ -423,7 +421,7 @@ export default {
       // check the skill cost to be sure there are enough picks remaining
       if(skillGroup[index].skillCost > this.remaining)
       {
-        skillGroup[index].skillCost <= this[groupRemaining] ? this.enoughPicks = true : this.enoughPicks = false
+        skillGroup[index].skillCost <= (this[groupRemaining] + this.remaining) ? this.enoughPicks = true : this.enoughPicks = false
       } else {
         this.enoughPicks = true
       }
@@ -727,10 +725,6 @@ export default {
     },
     // called to update skill counts, group counts, prerequisites and other data
     init: function() {
-      // current count of total skills selected
-      // let skillPicked = Object.keys(this.selectedSkills).length;
-      // count of skills given to the character at no cost by race or OCC
-      // let noCostSkills = this.startingSkills;
       // OCC or RCC related skills to be picked by user
       const skillStart = this.newCharacter.occ.occRelatedNumber;
 
@@ -1081,8 +1075,6 @@ export default {
 
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
-      // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
-      this.startingSkills = Object.keys(this.newCharacter.skills.known).length
     }
   },
   mounted: function () {

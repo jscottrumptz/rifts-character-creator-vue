@@ -8,6 +8,7 @@ class BioRegenerationSuper extends Psionic {
         this.range = 'Self.';
         this.duration = 'Permanent.';
         this.cost = '20 I.S.P.';
+        this.selectionCost = 2;
     }
 }
 

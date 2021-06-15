@@ -27,6 +27,7 @@
       <div class="sm:-mx-6 lg:-mx-8 my-auto">
         <div class="align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
+            <p v-if="race.rcc" class="text-yellow-400 text-center m-5">A {{race.name}} does not get to choose an O.C.C. and must instead rely on R.C.C. skills and natural abilities.</p>
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-700">
               <tr>
@@ -453,7 +454,8 @@
         <label for="tabs" class="sr-only">Select a tab</label>
         <select id="tabs" v-model="toggle" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
           <option v-if="aboutActive" value="about" >About {{race.name}}<span v-if="race.name !== `D'norr Devilmen`">s</span></option>
-          <option v-if="statsActive" value="stats">Available {{race.name}} OCCs</option>
+          <option v-if="statsActive && !race.rcc " value="stats">Available {{race.name}} OCCs</option>
+          <option v-if="statsActive && race.rcc " value="stats">{{race.name}} RCC</option>
           <option v-if="abilitiesActive" value="abilities">Other Notes, Abilities, and Skills</option>
         </select>
       </div>
@@ -463,9 +465,13 @@
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'about', 'bg-gray-100 text-gray-700': toggle === 'about'}" href="#" onclick="return false;">
             About {{race.name}}<span v-if="race.name !== `D'norr Devilmen`">s</span>
           </a>
-          <a v-if="statsActive" v-on:click="toggle='stats'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
+          <a v-if="statsActive && !race.rcc" v-on:click="toggle='stats'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'stats', 'bg-gray-100 text-gray-700': toggle === 'stats'}" href="#" onclick="return false;">
             Available {{race.name}} OCCs
+          </a>
+          <a v-if="statsActive && race.rcc" v-on:click="toggle='stats'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
+             v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'stats', 'bg-gray-100 text-gray-700': toggle === 'stats'}" href="#" onclick="return false;">
+            {{race.name}} RCC
           </a>
           <a v-if="abilitiesActive" v-on:click="toggle='abilities'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-xs rounded-md"
              v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'abilities', 'bg-gray-100 text-gray-700': toggle === 'abilities'}" href="#" onclick="return false;">

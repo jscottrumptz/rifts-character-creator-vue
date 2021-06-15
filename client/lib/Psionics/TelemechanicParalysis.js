@@ -11,6 +11,8 @@ class TelemechanicParalysis extends Psionic {
         this.duration = 'One minute per level of experience.';
         this.cost = '20 I.S.P.';
         this.savingThrow = `Special. Regular, non-intelligent machines cannot save vs Telemechanic Paralysis. Cybernetics and bionics attached to living flesh, sentient machines and magic items and devices are impervious.`;
+        this.required = `Telemechanics [Super Psionics]`
+        this.preq = ['telemechanics']
     }
 }
 

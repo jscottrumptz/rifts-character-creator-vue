@@ -145,7 +145,7 @@ One of the biggest limitations of the melding powers is that whenever a Malvoren
         this.allies = `Anyone, regardless of O.C.C. or race, who exhibits courage, honesty, and honor. That would include Cyber-Knights, Blucies, Kraks, and Lynn-Srial. As a dimensional traveler, they know other dimension-spanning beings, including Naruni, True Atlanteans, Temporal Raiders, Minions of Splugorth and many, many others.`;
         this.rivals = `The Splugorth, Sunaj, and other Minions of Splugorth are despised above all others. They also dislike Dirari Ecto-Men, Ganka, Lanotaur Hunters, Loaks, and those without a strong sense of honor. As guns for hire, their employer's enemies become their enemies, but as a matter of business Malvoren don't hate them on a personal level.`;
         this.alignment = `Any, but typically Aberrant (40%), Scrupulous (30%), or Principled (10%), and even those of other alignments tend to display some measure of honor.`;
-        this.abilities = ['No Psionics']
+        this.skillsDesc = 'See Malvoren RCC info';
         this.iqRoll = { sides: 6, amount: 3 };
         this.meRoll = { sides: 6, amount: 3, bonus: 2 };
         this.maRoll = { sides: 6, amount: 2 };
@@ -303,7 +303,6 @@ A strange side effect of damage from a weapon melded with and powered by the Mal
                 type: `Racial`
             }
 
-
         character.psionics.known.telemechanics = new Telemechanics;
         character.psionics.known.telemechanics.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
         character.psionics.known.telemechanicParalysis = new TelemechanicParalysis;
@@ -311,7 +310,9 @@ A strange side effect of damage from a weapon melded with and powered by the Mal
         character.psionics.known.telemechanicMentalOperation = new TelemechanicMentalOperation;
         character.psionics.known.telemechanicMentalOperation.note = `This power only cost half the I.S.P. (as listed above) and has double the normal duration if it is being used on a weapon, suit of armor, or sensors and power systems connected to a weapon, or some form of combat computer. If this power is used on any non-combat machine, it requires twice the normal I.S.P. and the duration is reduced by one half.`;
         character.psionics.ability = 'Racial'
-        character.psionics.selected = true;
+        character.psionics.selected = false;
+        character.psionics.total = 3;
+        character.psionics.type = 'Major';
     }
 
     pushRCC(character) {

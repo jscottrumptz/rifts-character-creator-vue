@@ -26,8 +26,9 @@
     </form>
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <Feeble v-if="newCharacter.race.name !== '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses" :newCharacter="newCharacter"/>
-    <PickRandomPsionics v-if="newCharacter.psionics.ability !== 'None' && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
+    <PickRandomPsionics v-if="(newCharacter.psionics.ability === 'Major' || newCharacter.psionics.ability === 'Minor') && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
     <PickOCC v-if="newCharacter.race.name !== '' && newCharacter.occ.name === '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
+    <PickPsionics v-if="newCharacter.attributes.confirmAttributes && (newCharacter.psionics.ability === 'Racial' || newCharacter.psionics.ability === 'OCC') && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
     <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices " :newCharacter="newCharacter"/>
     <PickRelatedSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && !newCharacter.skills.choices" :newCharacter="newCharacter"/>
     <PickSecondarySkills v-if="newCharacter.skills.selected && !newCharacter.skills.secondary" :newCharacter="newCharacter"/>
@@ -43,11 +44,12 @@ import PickOCC from "./sections/PickOCC";
 import PickRelatedSkills from "./sections/PickRelatedSkills";
 import PickSkills from "./sections/PickSkills";
 import PickSecondarySkills from "./sections/PickSecondarySkills";
+import PickPsionics from "./sections/PickPsionics";
 
 const Character = require('../../lib/Character');
 
 export default {
-  components: {PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics},
+  components: { PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
   name: 'CharacterCreator',
   data: function(){
     return {

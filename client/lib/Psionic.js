@@ -5,9 +5,9 @@ class Psionic {
         description = '',
         note = '',
         gmNote = '',
-        preq = '',
-        preqOther = '',
+        preq = [],
         preqType = '',
+        required = '',
         range = '',
         duration = '',
         cost = '',
@@ -19,7 +19,9 @@ class Psionic {
         attacksPerMelee = '',
         recovers = '',
         penalties = '',
-        bonuses = ''
+        bonuses = '',
+        selectionCost = 1,
+        known = false
     ) {
         this.name = name;
         this.group = group;
@@ -27,8 +29,8 @@ class Psionic {
         this.note = note;
         this.gmNote = gmNote;
         this.preq = preq;
-        this.preqOther = preqOther;
         this.preqType = preqType;
+        this.required = required;
         this.range = range;
         this.duration = duration;
         this.cost = cost;
@@ -41,6 +43,8 @@ class Psionic {
         this.recovers = recovers;
         this.penalties = penalties;
         this.bonuses = bonuses;
+        this.selectionCost = selectionCost;
+        this.known = known;
     }
 }
 

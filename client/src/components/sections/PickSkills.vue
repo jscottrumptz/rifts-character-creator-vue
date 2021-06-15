@@ -305,8 +305,6 @@ export default {
       weaponProficienciesModern: new WeaponProficienciesModern,
       wilderness: new Wilderness,
       //
-      // how many skill that are already known by the character before the user starts picking skills
-      startingSkills: 0,
       // list of the characters currently selected skills
       selectedSkills: {},
       // current skill being displayed in the information section
@@ -1208,8 +1206,6 @@ export default {
 
       // populates selectedSkills with skills granted by RCC or OCC so the player doesn't select them again
       this.selectedSkills = this.newCharacter.skills.known
-      // gets a count of the known skills so they can be added later and will not count against the calculated remaining totals
-      this.startingSkills = Object.keys(this.newCharacter.skills.known).length
     }
   },
   mounted: function () {
