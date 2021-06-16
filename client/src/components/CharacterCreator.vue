@@ -29,7 +29,7 @@
     <PickRandomPsionics v-if="(newCharacter.psionics.ability === 'Major' || newCharacter.psionics.ability === 'Minor') && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
     <PickOCC v-if="newCharacter.race.name !== '' && newCharacter.occ.name === '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
     <PickPsionics v-if="newCharacter.attributes.confirmAttributes && (newCharacter.psionics.ability === 'Racial' || newCharacter.psionics.ability === 'OCC') && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
-    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && newCharacter.psionics.selected" :newCharacter="newCharacter"/>
+    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
     <PickRelatedSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && !newCharacter.skills.choices" :newCharacter="newCharacter"/>
     <PickSecondarySkills v-if="newCharacter.skills.selected && !newCharacter.skills.secondary" :newCharacter="newCharacter"/>
   </div>
