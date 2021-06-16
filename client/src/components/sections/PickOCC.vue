@@ -205,45 +205,50 @@
                   </td>
                   <td class="py-2 text-sm font-medium text-gray-900">
                     <!-- HP -->
-                    <span  v-if="occ.hp.amount || occ.hp.bonus" class="inline-flex items-center px-1">HP:
-                      <span class="pr-2 text-sm font-normal text-gray-500">
-                        <span v-if="occ.hp.amount">+{{occ.hp.amount}}D{{occ.hp.sides}}</span>
-                        <span v-if="occ.hp.multiplier">x</span>{{occ.hp.multiplier}}
-                        <span v-if="occ.hp.bonus">+</span>{{occ.hp.bonus}}
-                      </span>
+                    <span  v-if="occ.hp.amount || occ.hp.bonus || occ.hpText !== ''" class="inline-flex items-center px-1">HP:
+                    <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.hpText !== ''">{{occ.hpText}}</span>
+                      <span v-if="occ.hp.amount && occ.hpText === ''">{{occ.hp.amount}}D{{occ.hp.sides}}</span>
+                      <span v-if="occ.hp.multiplier && occ.hpText === ''">x{{occ.hp.multiplier}}</span>
+                      <span v-if="occ.hp.bonus && occ.hpText === ''">+{{occ.hp.bonus}}</span>
                     </span>
+                  </span>
                     <!-- SDC -->
-                    <span  v-if="occ.sdc.amount || occ.sdc.bonus" class="inline-flex items-center px-1">SDC:
-                      <span class="pr-2 text-sm font-normal text-gray-500">
-                        <span v-if="occ.sdc.amount">+{{occ.sdc.amount}}D{{occ.sdc.sides}}</span>
-                        <span v-if="occ.sdc.multiplier">x</span>{{occ.sdc.multiplier}}
-                        <span v-if="occ.sdc.bonus">+</span>{{occ.sdc.bonus}}
-                      </span>
+                    <span  v-if="occ.sdc.amount || occ.sdc.bonus || occ.sdcText !== ''" class="inline-flex items-center px-1">SDC:
+                    <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.sdcText !== ''">{{occ.sdcText}}</span>
+                      <span v-if="occ.sdc.amount && occ.sdcText === ''">{{occ.sdc.amount}}D{{occ.sdc.sides}}</span>
+                      <span v-if="occ.sdc.multiplier && occ.sdcText === ''">x{{occ.sdc.multiplier}}</span>
+                      <span v-if="occ.sdc.bonus && occ.sdcText === ''">+{{occ.sdc.bonus}}</span>
                     </span>
+                  </span>
                     <!-- MDC -->
-                    <span  v-if="occ.mdc.amount || occ.mdc.bonus" class="inline-flex items-center px-1">MDC:
-                      <span class="pr-2 text-sm font-normal text-gray-500">
-                        <span v-if="occ.mdc.amount">+{{occ.mdc.amount}}D{{occ.mdc.sides}}</span>
-                        <span v-if="occ.mdc.multiplier">x</span>{{occ.mdc.multiplier}}
-                        <span v-if="occ.mdc.bonus">+</span>{{occ.mdc.bonus}}
-                      </span>
+                    <span  v-if="occ.mdc.amount || occ.mdc.bonus || occ.mdcText !== ''" class="inline-flex items-center px-1">MDC:
+                    <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.mdcText !== ''">{{occ.mdcText}}</span>
+                      <span v-if="occ.mdc.amount && occ.mdcText === ''">{{occ.mdc.amount}}D{{occ.mdc.sides}}</span>
+                      <span v-if="occ.mdc.multiplier && occ.mdcText === ''">x{{occ.mdc.multiplier}}</span>
+                      <span v-if="occ.mdc.bonus && occ.mdcText === ''">+{{occ.mdc.bonus}}</span>
                     </span>
+                  </span>
                     <!-- PPE -->
-                    <span  v-if="occ.ppe.amount || occ.ppe.bonus" class="inline-flex items-center px-1">PPE:
-                      <span class="pr-2 text-sm font-normal text-gray-500">
-                        <span v-if="occ.ppe.amount">+{{occ.ppe.amount}}D{{occ.ppe.sides}}</span>
-                        <span v-if="occ.ppe.multiplier">x</span>{{occ.ppe.multiplier}}
-                        <span v-if="occ.ppe.bonus">+</span>{{occ.ppe.bonus}}
-                      </span>
+                    <span  v-if="occ.ppe.amount || occ.ppe.bonus || occ.ppeText" class="inline-flex items-center px-1">PPE:
+                    <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.ppeText !== ''">{{occ.ppeText}}</span>
+                      <span v-if="occ.ppe.amount && occ.ppeText === ''">{{occ.ppe.amount}}D{{occ.ppe.sides}}</span>
+                      <span v-if="occ.ppe.multiplier && occ.ppeText === ''">x{{occ.ppe.multiplier}}</span>
+                      <span v-if="occ.ppe.bonus && occ.ppeText === ''">+{{occ.ppe.bonus}}</span>
                     </span>
+                  </span>
                     <!-- ISP -->
-                    <span  v-if="occ.isp.amount || occ.isp.bonus" class="inline-flex items-center px-1">ISP:
-                      <span class="pr-2 text-sm font-normal text-gray-500">
-                        <span v-if="occ.isp.amount">+{{occ.isp.amount}}D{{occ.isp.sides}}</span>
-                        <span v-if="occ.isp.multiplier">x</span>{{occ.isp.multiplier}}
-                        <span v-if="occ.isp.bonus">+</span>{{occ.isp.bonus}}
-                      </span>
+                    <span  v-if="occ.isp.amount || occ.isp.bonus || occ.ispText !== ''" class="inline-flex items-center px-1">ISP:
+                    <span class="pl-1 pr-2 text-sm font-normal text-gray-500">
+                      <span v-if="occ.ispText !== ''">{{occ.ispText}}</span>
+                      <span v-if="occ.isp.amount && occ.ispText === ''">{{occ.isp.amount}}D{{occ.isp.sides}}</span>
+                      <span v-if="occ.isp.multiplier && occ.ispText === ''">x{{occ.isp.multiplier}}</span>
+                      <span v-if="occ.isp.bonus && occ.ispText === ''">+{{occ.isp.bonus}}</span>
                     </span>
+                  </span>
                     <!-- Horror -->
                     <span v-if="occ.horror.bonus" class="inline-flex items-center px-1">Horror:
                             <span class="pr-2 text-sm font-normal text-gray-500">{{occ.horror.bonus}}</span>
@@ -571,8 +576,10 @@
 
       <!-- About Content -->
       <div v-show="toggle==='about' && aboutActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
-        <p class="whitespace-pre-wrap italic text-gray-300">{{occ.occQuote}}</p>
-        <br/>
+       <span v-if="occ.occQuote">
+         <p class="whitespace-pre-wrap italic text-gray-300">{{occ.occQuote}}</p>
+         <br/>
+       </span>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.description}}</p>
         <br v-if="occ.disposition"/>
         <p v-if="occ.disposition" class="text-gray-50 font-medium">Disposition</p>
@@ -610,6 +617,9 @@
         <br/>
         <p class="text-gray-50 font-medium">Magic:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.magicDesc}}</p>
+        <br/>
+        <p class="text-gray-50 font-medium">Psionics:</p>
+        <p class="whitespace-pre-wrap text-gray-100">{{occ.psionicsDesc}}</p>
         <br/>
         <p class="text-gray-50 font-medium">Cybernetics and Bionics:</p>
         <p class="whitespace-pre-wrap text-gray-100">{{occ.cyberneticsDesc}}</p>
@@ -650,6 +660,7 @@ export default {
       this.newCharacter.occ = this.occ;
       this.newCharacter.occ.rollBonuses(this.newCharacter);
       this.newCharacter.occ.rollSecondary(this.newCharacter);
+      this.newCharacter.occ.getSecondary(this.newCharacter);
       this.newCharacter.attributes.attributeBonusTest(this.newCharacter);
 
       // filler information

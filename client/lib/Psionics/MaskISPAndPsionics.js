@@ -1,6 +1,6 @@
 const Psionic = require('../Psionic');
 
-class MaskISPandPsionics extends Psionic {
+class MaskISPAndPsionics extends Psionic {
     constructor() {
         super();
         this.name = 'Mask I.S.P. & Psionics';
@@ -12,4 +12,4 @@ class MaskISPandPsionics extends Psionic {
     }
 }
 
-module.exports = MaskISPandPsionics;
+module.exports = MaskISPAndPsionics;

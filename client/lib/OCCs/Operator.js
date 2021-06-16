@@ -58,6 +58,17 @@ Technical: Any (+10%).
 W.P.: Any. 
 Wilderness: Boat Building and Carpentry (+5%) only.`;
         this.secondarySkillsList = `Select four Secondary Skills at first level from the Secondary Skills list in the Skill Section, +1 Secondary Skill at levels 4, 8, 12 and 14. These are additional areas of knowledge that do not get any bonuses, other than any possible bonus for having a high l.Q. All Secondary Skills start at the base level skill.`;
+        this.psionicsDesc = `Optional - Psi-Operator (special)
+It has recently come to light that some Operators have developed a degree of psychic power that helps them in their work. Approximately 15% to 20% are psychic. The focus of their psychic abilities is mechanics. Note that all Psi-Operators are considered to be Major psychics. Pick three abilities from the following, plus one additional at levels 4, 8, and 12. Note: Reduce the number of available O.C.C. Related Skills by half.
+Electrokinesis (Super, varies; counts as 2 selections). 
+Machine Ghost (12) 
+Object Read (6; limited to the history and operation of the device). Resist Fatigue (4) 
+Sense Magic (3) 
+Sense Time (2) 
+Speed Reading (2)
+Total Recall (2) 
+Telemechanics (Super, 10) 
+Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic Paralysis (Super, 20; counts as 2 selections).`;
         this.cyberneticsDesc = `The City Rat Archetype starts with 1D4+2 basic cybernetic implants. It is entirely up to the player to decide whether his or her character has any implants, and if so, which ones. This initial implant selection is restricted to common, Commercial, and Black Market cybernetics. Exactly how much cybernetics a City Rat may acquire depends on the individual and his success on the street (i.e., what can he afford). See Rifts® Bionic Sourcebook for a large selection of cybernetics and B lack Market offerings.`;
         this.equipmentDesc = `None to start. However, many Operators do acquire cybernetic optics, sensors and tools to help them in their work. The majority prefer to use machines in their work, not to become a machine themselves.`;
         this.abilitiesDesc = `Note: None of these abilities apply to bionics or cybernetics (can't do it), and there is a -20% skill penalty when working on robots and power armor (unless the character also has the Robot Mechanics and Electronics skills). 
@@ -75,18 +86,7 @@ Repair and Soup-Up Machines & Vehicles
 Repairs for Cheap: Can completely repair most parts, machines and vehicles at a cost of 25% of its original list price (plus his time if he's charging for it; typically another 30% to 50%). Requires the right parts and time to make the repair. 
 Replace M.D.C.: on the main body and key sections at a cost of 1200 credits per every one M.D.C. point restored. Cannot exceed the original M.D.C. amount.
 Add M.D.C.: to brand new vehicles and body armor. The percentage increase depends on the Operator's level of skill and experience; +5% at levels 2, 4, 6, 8, 10, 12, and 14. 
-Maximize Performance: Can tweak a vehicle or most any machine to perform better. Can increase Spd 20%, range (of weapons, radio signals, sensors, etc.) by 10%, reduce weight by 10%, and add one extra weapon or feature per each body area of a vehicle or standing fortification (front/nose, mid-section, rear section, top/roof, bottom/undercarriage, and wing).
-
-Optional: Psi-Operator (special): It has recently come to light that some Operators have developed a degree of psychic power that helps them in their work. Approximately 15% to 20% are psychic. The focus of their psychic abilities is mechanics. Note that all Psi-Operators are considered to be Major psychics. Pick three abilities from the following, plus one additional at levels 4, 8, and 12. Note: Reduce the number of available O.C.C. Related Skills by half.
-Electrokinesis (Super, varies; counts as 2 selections). 
-Machine Ghost (12) 
-Object Read (6; limited to the history and operation of the device). Resist Fatigue (4) 
-Sense Magic (3) 
-Sense Time (2) 
-Speed Reading (2)
-Total Recall (2) 
-Telemechanics (Super, I 0) 
-Telemechanic Mental Operation (Super, 12; counts as 2 selections). Telemechanic Paralysis (Super, 20; counts as 2 selections).`;
+Maximize Performance: Can tweak a vehicle or most any machine to perform better. Can increase Spd 20%, range (of weapons, radio signals, sensors, etc.) by 10%, reduce weight by 10%, and add one extra weapon or feature per each body area of a vehicle or standing fortification (front/nose, mid-section, rear section, top/roof, bottom/undercarriage, and wing).`;
         this.alignment = `Any.`
         this.startingHandToHand = 'handToHandBasic';
         this.occRelatedNumber = 8;

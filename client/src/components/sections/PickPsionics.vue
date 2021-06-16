@@ -438,6 +438,31 @@ export default {
           }
         })
       }
+
+      // handle available psionics
+      if (availableList.available) {
+        availableList.available.forEach(psionic => {
+          for (const [key] of Object.entries(groupList)) {
+            if (psionic.name === 'Any') {
+              if (psionic.selectionCost >= 0) {
+                groupList[key].selectionCost = psionic.selectionCost;
+              }
+              if (psionic.specialNote !== '') {
+                groupList[key].specialNote = psionic.specialNote;
+              }
+            }
+            if (key === psionic.name) {
+              if (psionic.selectionCost >= 0) {
+                groupList[key].selectionCost = psionic.selectionCost;
+              }
+              if (psionic.specialNote !== '') {
+                groupList[key].specialNote = psionic.specialNote;
+              }
+            }
+          }
+        })
+      }
+
       // handle unavailable psionics
       if (availableList.unavailable) {
         availableList.unavailable.forEach(psionic => {

@@ -4,7 +4,7 @@ const CommuneWithSpirits = require('./CommuneWithSpirits');
 const Empathy = require('./Empathy');
 const IntuitiveCombat = require('./IntuitiveCombat');
 const MachineGhost = require('./MachineGhost');
-const MaskISPandPsionics = require('./MaskISPandPsionics');
+const MaskISPAndPsionics = require('./MaskISPAndPsionics');
 const MaskPPE = require('./MaskPPE');
 const MeditationSensitive = require('./MeditationSensitive');
 const MindBlockSensitive = require('./MindBlockSensitive');
@@ -31,7 +31,7 @@ class SensitivePsionics {
         empathy = new Empathy,
         intuitiveCombat = new IntuitiveCombat,
         machineGhost = new MachineGhost,
-        maskISPandPsionics = new MaskISPandPsionics,
+        maskISPAndPsionics = new MaskISPAndPsionics,
         maskPPE = new MaskPPE,
         meditationSensitive = new MeditationSensitive,
         mindBlockSensitive = new MindBlockSensitive,
@@ -56,7 +56,7 @@ class SensitivePsionics {
         this.empathy = empathy;
         this.intuitiveCombat = intuitiveCombat;
         this.machineGhost = machineGhost;
-        this.maskISPandPsionics = maskISPandPsionics;
+        this.maskISPAndPsionics = maskISPAndPsionics;
         this.maskPPE = maskPPE;
         this.meditationSensitive = meditationSensitive;
         this.mindBlockSensitive = mindBlockSensitive;

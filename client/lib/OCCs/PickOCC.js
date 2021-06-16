@@ -1,4 +1,5 @@
 const BodyFixer = require('./BodyFixer');
+const Burster = require('./Burster')
 const CityRat = require('./CityRat');
 const CyberDoc = require('./CyberDoc');
 const Operator = require('./Operator');
@@ -10,6 +11,7 @@ const WildernessScout = require('./WildernessScout')
 class PickOCC {
     constructor(
         bodyFixer = new BodyFixer,
+        burster = new Burster,
         cityRat = new CityRat,
         cyberDoc = new CyberDoc,
         operator = new Operator,
@@ -19,6 +21,7 @@ class PickOCC {
         wildernessScout = new WildernessScout
     ) {
         this.bodyFixer = bodyFixer;
+        this.burster = burster;
         this.cityRat = cityRat;
         this.cyberDoc = cyberDoc;
         this.operator = operator;

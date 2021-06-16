@@ -24,12 +24,16 @@
               <p v-if="abilities.baseSkill || abilities.cost || abilities.range || abilities.duration || abilities.damage" class="text-sm p-2 bg-gray-200 font-medium text-gray-700">
                 <span v-if="abilities.cost" class="text-xs">Cost: <span class="font-normal"> {{abilities.cost}} </span><br></span>
                 <span v-if="abilities.range" class="text-xs">Range: <span class="font-normal"> {{abilities.range}} </span><br></span>
+                <span v-if="abilities.radius" class="text-xs">Radius: <span class="font-normal"> {{abilities.radius}} </span><br></span>
                 <span v-if="abilities.duration" class="text-xs">Duration: <span class="font-normal"> {{abilities.duration}} </span><br></span>
                 <span v-if="abilities.damage" class="text-xs">Damage: <span class="font-normal"> {{abilities.damage}} </span><br></span>
+                <span v-if="abilities.sdcDamage" class="text-xs">S.D.C. Damage: <span class="font-normal"> {{abilities.sdcDamage}} </span><br></span>
+                <span v-if="abilities.megaDamage" class="text-xs">Mega-Damage: <span class="font-normal"> {{abilities.megaDamage}} </span><br></span>
                 <span v-if="abilities.savingThrow" class="text-xs">Saving Throw: <span class="font-normal"> {{abilities.savingThrow}} </span><br></span>
-                <span v-if="abilities.tranceLength" class="text-xs">Trance Length: <span class="font-normal"> {{abilities.tranceLength}} </span><br></span>
+                <span v-if="abilities.bonus" class="text-xs">Bonuses: <span class="font-normal"> {{abilities.bonus}} </span><br></span>
                 <span v-if="abilities.baseSkill" class="text-xs">Base Skill: <span class="font-normal"> {{abilities.baseSkill}} </span><br></span>
                 <span v-if="abilities.limitations" class="text-xs">Limitations: <span class="font-normal"> {{abilities.limitations}} </span><br></span>
+                <span v-if="abilities.penalties" class="text-xs">Penalties: <span class="font-normal"> {{abilities.penalties}} </span><br></span>
                 <span v-if="abilities.attacksPerMelee" class="text-xs">Attacks per Melee: <span class="font-normal"> {{abilities.attacksPerMelee}} </span><br></span>
               </p>
             </div>

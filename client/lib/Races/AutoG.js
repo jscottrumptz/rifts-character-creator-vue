@@ -1,13 +1,6 @@
 const Race = require('../Race');
 const { Random } = require('random-js');
 const random = new Random;
-const AlterAura = require('../Psionics/AlterAura');
-const DeathTrance = require('../Psionics/DeathTrance');
-const MaskPPE = require('../Psionics/MaskPPE');
-const MaskISPandPsionics = require('../Psionics/MaskISPandPsionics');
-const MindBlockSensitive  = require('../Psionics/MindBlockSensitive');
-const Nightvision = require('../Psionics/Nightvision');
-const SummonInnerStrength = require('../Psionics/SummonInnerStrength');
 
 class AutoG extends Race {
     constructor() {
@@ -143,15 +136,42 @@ The Auto-G is instantly comfortable with his new body and understands how it wor
                 type: `Racial`
             }
 
-        character.psionics.known.alterAura = new AlterAura;
-        character.psionics.known.deathTrance = new DeathTrance;
-        character.psionics.known.maskPPE = new MaskPPE;
-        character.psionics.known.maskISPandPsionics = new MaskISPandPsionics;
-        character.psionics.known.mindBlockSensitive  = new MindBlockSensitive;
-        character.psionics.known.nightvision = new Nightvision;
-        character.psionics.known.summonInnerStrength = new SummonInnerStrength;
-        character.psionics.ability = 'Racial'
-        character.psionics.selected = true;
+        character.psionics.ability = 'Racial';
+        character.psionics.type = 'Minor';
+        character.psionics.selected = false;
+        character.psionics.total = 0;
+
+        character.psionics.physicalPsionics = {
+            free: [
+                {
+                    name: 'alterAura',
+                    specialNote: 'test'
+                },
+                {
+                    name: 'deathTrance'
+                },
+                {
+                    name: 'mindBlockPhysical'
+                },
+                {
+                    name: 'nightvision'
+                },
+                {
+                    name: 'summonInnerStrength'
+                }
+            ]
+        }
+
+        character.psionics.sensitivePsionics = {
+            free: [
+                {
+                    name: 'maskPPE'
+                },
+                {
+                    name: 'maskISPAndPsionics'
+                }
+            ]
+        }
     }
 }
 
