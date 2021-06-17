@@ -1,0 +1,93 @@
+const Apparition = require('./Apparition');
+const Barrage = require('./Barrage');
+const CallLightning = require('./CallLightning');
+const Compulsion = require('./Compulsion');
+const CreateWater = require('./CreateWater');
+const CrushingFist = require('./CrushingFist');
+const CureIllness = require('./CureIllness');
+const EnergizeSpell = require('./EnergizeSpell');
+const FireBall = require('./FireBall');
+const FireBlossom = require('./FireBlossom');
+const FortifyAgainstDisease = require('./FortifyAgainstDisease');
+const FrequencyJamming = require('./FrequencyJamming');
+const Frostblade = require('./Frostblade');
+const Ice = require('./Ice');
+const IllusionBooster = require('./IllusionBooster');
+const IllusoryWall = require('./IllusoryWall');
+const ImperviousToEnergy = require('./ImperviousToEnergy');
+const MagicPigeon = require('./MagicPigeon');
+const MaskOfDeceit = require('./MaskOfDeceit');
+const MemoryBank = require('./MemoryBank');
+const PowerBolt = require('./PowerBolt');
+const ReduceSelf = require('./ReduceSelf');
+const ShelteringForce = require('./ShelteringForce');
+const TargetedDeflection = require('./TargetedDeflection');
+const TeleportLesser = require('./TeleportLesser');
+const TimeSlip = require('./TimeSlip');
+const Tongues = require('./Tongues');
+const WordsOfTruth = require('./WordsOfTruth');
+
+class InvocationSix {
+    constructor(
+        apparition = new Apparition,
+        barrage = new Barrage,
+        callLightning = new CallLightning,
+        compulsion = new Compulsion,
+        createWater = new CreateWater,
+        crushingFist = new CrushingFist,
+        cureIllness = new CureIllness,
+        energizeSpell = new EnergizeSpell,
+        fireBall = new FireBall,
+        fireBlossom = new FireBlossom,
+        fortifyAgainstDisease = new FortifyAgainstDisease,
+        frequencyJamming = new FrequencyJamming,
+        frostblade = new Frostblade,
+        ice = new Ice,
+        illusionBooster = new IllusionBooster,
+        illusoryWall = new IllusoryWall,
+        imperviousToEnergy = new ImperviousToEnergy,
+        magicPigeon = new MagicPigeon,
+        maskOfDeceit = new MaskOfDeceit,
+        memoryBank = new MemoryBank,
+        powerBolt = new PowerBolt,
+        reduceSelf = new ReduceSelf,
+        shelteringForce = new ShelteringForce,
+        targetedDeflection = new TargetedDeflection,
+        teleportLesser = new TeleportLesser,
+        timeSlip = new TimeSlip,
+        tongues = new Tongues,
+        wordsOfTruth = new WordsOfTruth
+    ) {
+        this.apparition = apparition;
+        this.barrage = barrage;
+        this.callLightning = callLightning;
+        this.compulsion = compulsion;
+        this.createWater = createWater;
+        this.crushingFist = crushingFist;
+        this.cureIllness = cureIllness;
+        this.energizeSpell = energizeSpell;
+        this.fireBall = fireBall;
+        this.fireBlossom = fireBlossom;
+        this.fortifyAgainstDisease = fortifyAgainstDisease;
+        this.frequencyJamming = frequencyJamming;
+        this.frostblade = frostblade;
+        this.ice = ice;
+        this.illusionBooster = illusionBooster;
+        this.illusoryWall = illusoryWall;
+        this.imperviousToEnergy = imperviousToEnergy;
+        this.magicPigeon = magicPigeon;
+        this.maskOfDeceit = maskOfDeceit;
+        this.memoryBank = memoryBank;
+        this.powerBolt = powerBolt;
+        this.reduceSelf = reduceSelf;
+        this.shelteringForce = shelteringForce;
+        this.targetedDeflection = targetedDeflection;
+        this.teleportLesser = teleportLesser;
+        this.timeSlip = timeSlip;
+        this.tongues = tongues;
+        this.wordsOfTruth = wordsOfTruth;
+    }
+}
+
+module.exports = InvocationSix
+;

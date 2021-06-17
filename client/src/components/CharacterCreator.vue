@@ -1,5 +1,6 @@
 <template>
   <div>
+    <PickMagic v-if="newCharacter" :newCharacter="newCharacter"/>
     <h2 class="text-xl font-bold text-center text-gray-600">Current Attributes</h2>
     <p class="text-lg font-medium text-center text-gray-400">
       IQ: <span class="text-gray-50">{{newCharacter.attributes.iq.total}}</span> ||
@@ -45,11 +46,12 @@ import PickRelatedSkills from "./sections/PickRelatedSkills";
 import PickSkills from "./sections/PickSkills";
 import PickSecondarySkills from "./sections/PickSecondarySkills";
 import PickPsionics from "./sections/PickPsionics";
+import PickMagic from "./sections/PickMagic";
 
 const Character = require('../../lib/Character');
 
 export default {
-  components: { PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
+  components: {PickMagic, PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
   name: 'CharacterCreator',
   data: function(){
     return {

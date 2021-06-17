@@ -1,0 +1,96 @@
+const ArmorBizarre = require('./ArmorBizarre');
+const AuraOfDeath = require('./AuraOfDeath');
+const Calling = require('./Calling');
+const Charm = require('./Charm');
+const CircleOfFlame = require('./CircleOfFlame');
+const DeathCurseSpecial = require('./DeathCurseSpecial');
+const DistantVoice = require('./DistantVoice');
+const Domination = require('./Domination');
+const EnergyDisruption = require('./EnergyDisruption');
+const Escape = require('./Escape');
+const EyesOfThoth = require('./EyesOfThoth');
+const Featherlight = require('./Featherlight');
+const Fly = require('./Fly');
+const HealWounds = require('./HealWounds');
+const HorrificIllusion = require('./HorrificIllusion');
+const Horror = require('./Horror');
+const HouseOfGlass = require('./HouseOfGlass');
+const ImplosionNeutralizer = require('./ImplosionNeutralizer');
+const InfluenceTheBeast = require('./InfluenceTheBeast');
+const InstillKnowledge = require('./InstillKnowledge');
+const Lifeblast = require('./Lifeblast');
+const MendTheBroken = require('./MendTheBroken');
+const MentalBlast = require('./MentalBlast');
+const Sleep = require('./Sleep');
+const SuperhumanEndurance = require('./SuperhumanEndurance');
+const SuperhumanStrength = require('./SuperhumanStrength');
+const SuperhumanSpeed = require('./SuperhumanSpeed');
+const Sustain = require('./Sustain');
+const SwimAsAFishSuperior = require('./SwimAsAFishSuperior');
+
+class InvocationFive {
+    constructor(
+        armorBizarre = new ArmorBizarre,
+        auraOfDeath = new AuraOfDeath,
+        calling = new Calling,
+        charm = new Charm,
+        circleOfFlame = new CircleOfFlame,
+        deathCurseSpecial = new DeathCurseSpecial,
+        distantVoice = new DistantVoice,
+        domination = new Domination,
+        energyDisruption = new EnergyDisruption,
+        escape = new Escape,
+        eyesOfThoth = new EyesOfThoth,
+        featherlight = new Featherlight,
+        fly = new Fly,
+        healWounds = new HealWounds,
+        horrificIllusion = new HorrificIllusion,
+        horror = new Horror,
+        houseOfGlass = new HouseOfGlass,
+        implosionNeutralizer = new ImplosionNeutralizer,
+        influenceTheBeast = new InfluenceTheBeast,
+        instillKnowledge = new InstillKnowledge,
+        lifeblast = new Lifeblast,
+        mendTheBroken = new MendTheBroken,
+        mentalBlast = new MentalBlast,
+        sleep = new Sleep,
+        superhumanEndurance = new SuperhumanEndurance,
+        superhumanStrength = new SuperhumanStrength,
+        superhumanSpeed = new SuperhumanSpeed,
+        sustain = new Sustain,
+        swimAsAFishSuperior = new SwimAsAFishSuperior
+    ) {
+        this.armorBizarre = armorBizarre;
+        this.auraOfDeath = auraOfDeath;
+        this.calling = calling;
+        this.charm = charm;
+        this.circleOfFlame = circleOfFlame;
+        this.deathCurseSpecial = deathCurseSpecial;
+        this.distantVoice = distantVoice;
+        this.domination = domination;
+        this.energyDisruption = energyDisruption;
+        this.escape = escape;
+        this.eyesOfThoth = eyesOfThoth;
+        this.featherlight = featherlight;
+        this.fly = fly;
+        this.healWounds = healWounds;
+        this.horrificIllusion = horrificIllusion;
+        this.horror = horror;
+        this.houseOfGlass = houseOfGlass;
+        this.implosionNeutralizer = implosionNeutralizer;
+        this.influenceTheBeast = influenceTheBeast;
+        this.instillKnowledge = instillKnowledge;
+        this.lifeblast = lifeblast;
+        this.mendTheBroken = mendTheBroken;
+        this.mentalBlast = mentalBlast;
+        this.sleep = sleep;
+        this.superhumanEndurance = superhumanEndurance;
+        this.superhumanStrength = superhumanStrength;
+        this.superhumanSpeed = superhumanSpeed;
+        this.sustain = sustain;
+        this.swimAsAFishSuperior = swimAsAFishSuperior;
+    }
+}
+
+module.exports = InvocationFive
+;

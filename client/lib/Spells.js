@@ -1,24 +1,19 @@
 class Spells {
     constructor() {
+        // where the character derives its ability (Major, Minor, Racial, or OCC)
         this.ability = 'None';
-        this.total = 0;
-        this.rccSpells = { max: 0, min: 0, known: [] };
-        this.occSpells = { max: 0, min: 0, known: [] };
-        this.levelOne = { max: 0, min: 0, known: [] };
-        this.levelTwo = { max: 0, min: 0, known: [] };
-        this.levelThree = { max: 0, min: 0, known: [] };
-        this.levelFour = { max: 0, min: 0, known: [] };
-        this.levelFive = { max: 0, min: 0, known: [] };
-        this.levelSix = { max: 0, min: 0, known: [] };
-        this.levelSeven = { max: 0, min: 0, known: [] };
-        this.levelEight = { max: 0, min: 0, known: [] };
-        this.levelNine = { max: 0, min: 0, known: [] };
-        this.levelTen= { max: 0, min: 0, known: [] };
-        this.levelEleven = { max: 0, min: 0, known: [] };
-        this.levelTwelve = { max: 0, min: 0, known: [] };
-        this.levelThirteen = { max: 0, min: 0, known: [] };
-        this.levelFourteen = { max: 0, min: 0, known: [] };
-        this.levelFifteen = { max: 0, min: 0, known: [] };
+        // level of psionic power used to determine preqs and other stats (Minor, Major, or Master)
+        this.type = 'None'
+        // character's known psionics
+        this.known = {};
+        // has the character made its psionic selections yet
+        this.selected = false;
+        // total spell selections
+        this.total = 3;
+
+        this.invocation = {
+            requiredAmount:1
+        };
     }
 }
 
