@@ -57,6 +57,8 @@
             <option v-if="this[toggle][toggle + 'Thirteen']" value="Thirteen">Level Thirteen</option>
             <option v-if="this[toggle][toggle + 'Fourteen']" value="Fourteen">Level Fourteen</option>
             <option v-if="this[toggle][toggle + 'Fifteen']" value="Fifteen">Level Fifteen</option>
+            <option v-if="this[toggle][toggle + 'A']" value="A">Group A</option>
+            <option v-if="this[toggle][toggle + 'B']" value="B">Group B</option>
           </select>
         </div>
 
@@ -147,10 +149,70 @@ export default {
       tabsSpellsActive: true,
       // number of spells picked from a group
       invocationCount: 0,
-      // number of required spell picks
+      // number of spells picked by level
+      oneCount: 0,
+      twoCount: 0,
+      threeCount: 0,
+      fourCount: 0,
+      fiveCount: 0,
+      sixCount: 0,
+      sevenCount: 0,
+      eightCount: 0,
+      nineCount: 0,
+      tenCount: 0,
+      elevenCount: 0,
+      twelveCount: 0,
+      thirteenCount: 0,
+      fourteenCount: 0,
+      fifteenCount: 0,
+      // a/b counts
+      aCount: 0,
+      bCount: 0,
+
+      // number of required group spell picks
       invocationRequired: 0,
-      // number of required spell picks remaining
+      // number of required level spell picks
+      oneRequired: 0,
+      twoRequired: 0,
+      threeRequired: 0,
+      fourRequired: 0,
+      fiveRequired: 0,
+      sixRequired: 0,
+      sevenRequired: 0,
+      eightRequired: 0,
+      nineRequired: 0,
+      tenRequired: 0,
+      elevenRequired: 0,
+      twelveRequired: 0,
+      thirteenRequired: 0,
+      fourteenRequired: 0,
+      fifteenRequired: 0,
+      // number of required a/b spell picks
+      aRequired: 0,
+      bRequired: 0,
+
+      // number of required group spell picks remaining
       invocationRemaining: 0,
+      // number of required level spell picks remaining
+      oneRemaining: 0,
+      twoRemaining: 0,
+      threeRemaining: 0,
+      fourRemaining: 0,
+      fiveRemaining: 0,
+      sixRemaining: 0,
+      sevenRemaining: 0,
+      eightRemaining: 0,
+      nineRemaining: 0,
+      tenRemaining: 0,
+      elevenRemaining: 0,
+      twelveRemaining: 0,
+      thirteenRemaining: 0,
+      fourteenRemaining: 0,
+      fifteenRemaining: 0,
+      // number of required a/b spell picks remaining
+      aRemaining: 0,
+      bRemaining: 0,
+
 
       selectedId: null
     }
@@ -161,7 +223,6 @@ export default {
       const spellGroup = this[group][this.toggle + this.toggleLevel]
       const listId = this.toggle + this.toggleLevel + '-' +[index]
       const groupRemaining = group + 'Remaining'
-      console.log(spellGroup)
       // check the selection cost to be sure there are enough picks remaining
       if(spellGroup[index].selectionCost > this.remaining)
       {
@@ -176,7 +237,6 @@ export default {
       this.selectedBg(listId)
       // set pickedSpell to null since the user is now in the spell group list
       this.pickedSpell = null;
-      console.log(this.canAdd)
     },
     picked: function (index){
       // set picked group name and index
@@ -193,7 +253,8 @@ export default {
       const spell = this.selectedSpell
       // get group property from group name
       const group = spell.group.charAt(0).toLowerCase() + spell.group.slice(1).replace(/\s+/g, '');
-      const groupCount = group + 'Count'
+      const groupCount = group + 'Count';
+      const levelCount = this.toggleLevel.toLowerCase() + 'Count';
       // make sure something is selected
       if (spell){
         // create the same object property in selectedSpells and copy the selected object to it
@@ -204,10 +265,12 @@ export default {
         delete this[group][this.toggle + this.toggleLevel][prop]
         // increase the group count
         this[groupCount] = this[groupCount] + spell.selectionCost
+        this[levelCount] = this[levelCount] + spell.selectionCost
         this.spellsPicked = this.spellsPicked + spell.selectionCost;
         this.selectedSpell = null;
         this.selectedProperty = null;
         this.selectedId = null;
+        console.log(this[levelCount])
         this.init();
       }
       this.init();
@@ -218,13 +281,15 @@ export default {
       // get group property from group name
       const group = spell.group.charAt(0).toLowerCase() + spell.group.slice(1).replace(/\s+/g, '');
       const groupCount = group + 'Count'
+      const levelCount = spell.level.toLowerCase() + 'Count';
       // make sure something is selected
       if (spell){
         // put it back in the group
         this[group][group + spell.level ][prop] = spell;
 
         //update counts
-        this[groupCount] = this[groupCount] - spell.selectionCost
+        this[groupCount] = this[groupCount] - spell.selectionCost;
+        this[levelCount] = this[levelCount] - spell.selectionCost;
         this.spellsPicked = this.spellsPicked - spell.selectionCost;
         // remove from the list
         delete this.selectedSpells[prop]
@@ -234,6 +299,7 @@ export default {
         this.pickedSpell = null;
         this.pickedProperty = null
         this.selectedId = null;
+        console.log(this[levelCount])
         // update everything
         this.init();
       }
