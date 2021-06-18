@@ -126,11 +126,15 @@
                   </td>
                 </tr>
                 <!-- Attribute Rolls -->
-                <tr v-if="occ.iqBonus.bonus || occ.meBonus.bonus || occ.maBonus.bonus || occ.psBonus.bonus || occ.ppBonus.bonus || occ.peBonus.bonus || occ.pbBonus.bonus || occ.spdBonus.bonus" class="bg-white border-t text-left border-gray-200">
+                <tr v-if="occ.iqBonus.bonus || occ.meBonus.bonus || occ.maBonus.bonus || occ.psBonus.bonus || occ.ppBonus.bonus || occ.peBonus.bonus || occ.pbBonus.bonus || occ.spdBonus.bonus || occ.attributesText !== ''" class="bg-white border-t text-left border-gray-200">
                   <td class="p-4 text-sm text-right font-medium text-gray-900">
                     Attributes
                   </td>
                   <td class="py-2 text-sm font-medium text-gray-900">
+                    <!-- Attributes Text -->
+                    <span  v-if="occ.attributesText !== ''" class="pr-2 text-sm font-normal text-gray-500">
+                        {{occ.attributesText}}
+                    </span>
                     <!-- IQ -->
                     <span  v-if="occ.iqBonus.amount || occ.iqBonus.bonus" class="inline-flex items-center px-1">IQ:
                       <span class="pr-2 text-sm font-normal text-gray-500">
@@ -362,6 +366,12 @@
                     <span v-if="occ.fatigueBonus.bonus" class="inline-flex items-center px-1">vs Fatigue:
                             <span class="pr-2 text-sm font-normal text-gray-500">
                               <span v-if="occ.fatigueBonus.bonus > 0">+</span>{{occ.fatigueBonus.bonus}}
+                            </span>
+                          </span>
+                    <!-- Curse -->
+                    <span v-if="occ.curseBonus.bonus" class="inline-flex items-center px-1">vs Curses:
+                            <span class="pr-2 text-sm font-normal text-gray-500">
+                              <span v-if="occ.curseBonus.bonus > 0">+</span>{{occ.curseBonus.bonus}}
                             </span>
                           </span>
                   </td>

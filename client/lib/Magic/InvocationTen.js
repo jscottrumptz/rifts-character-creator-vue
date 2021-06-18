@@ -1,0 +1,83 @@
+const Armorbane = require('./Armorbane');
+const Banishment = require('./Banishment');
+const ControllenslaveEntity = require('./ControllenslaveEntity');
+const Deathword = require('./Deathword');
+const EnemyMind = require('./EnemyMind');
+const Giant = require('./Giant');
+const Havoc = require('./Havoc');
+const IllusoryForest = require('./IllusoryForest');
+const LeyLineGhost = require('./LeyLineGhost');
+const MagicWarrior = require('./MagicWarrior');
+const MetamorphosisSuperior = require('./MetamorphosisSuperior');
+const Meteor = require('./Meteor');
+const MysticPortal = require('./MysticPortal');
+const PlaneSkip = require('./PlaneSkip');
+const PurgeOther = require('./PurgeOther');
+const RealityFlux = require('./RealityFlux');
+const RestoreLimb = require('./RestoreLimb');
+const SpeedWeapon = require('./SpeedWeapon');
+const SummonControlRodents = require('./SummonControlRodents');
+const SummonGreaterFamiliar = require('./SummonGreaterFamiliar');
+const SummonShadowBeast = require('./SummonShadowBeast');
+const SuperHealing = require('./SuperHealing');
+const WallOfNot = require('./WallOfNot');
+const Wards = require('./Wards');
+const WarpedSpace = require('./WarpedSpace');
+
+class InvocationTen{
+    constructor(
+        armorbane = new Armorbane,
+        banishment = new Banishment,
+        controllenslaveEntity = new ControllenslaveEntity,
+        deathword = new Deathword,
+        enemyMind = new EnemyMind,
+        giant = new Giant,
+        havoc = new Havoc,
+        illusoryForest = new IllusoryForest,
+        leyLineGhost = new LeyLineGhost,
+        magicWarrior = new MagicWarrior,
+        metamorphosisSuperior = new MetamorphosisSuperior,
+        meteor = new Meteor,
+        mysticPortal = new MysticPortal,
+        planeSkip = new PlaneSkip,
+        purgeOther = new PurgeOther,
+        realityFlux = new RealityFlux,
+        restoreLimb = new RestoreLimb,
+        speedWeapon = new SpeedWeapon,
+        summonControlRodents = new SummonControlRodents,
+        summonGreaterFamiliar = new SummonGreaterFamiliar,
+        summonShadowBeast = new SummonShadowBeast,
+        superHealing = new SuperHealing,
+        wallOfNot = new WallOfNot,
+        wards = new Wards,
+        warpedSpace = new WarpedSpace
+    ) {
+        this.armorbane = armorbane;
+        this.banishment = banishment;
+        this.controllenslaveEntity = controllenslaveEntity;
+        this.deathword = deathword;
+        this.enemyMind = enemyMind;
+        this.giant = giant;
+        this.havoc = havoc;
+        this.illusoryForest = illusoryForest;
+        this.leyLineGhost = leyLineGhost;
+        this.magicWarrior = magicWarrior;
+        this.metamorphosisSuperior = metamorphosisSuperior;
+        this.meteor = meteor;
+        this.mysticPortal = mysticPortal;
+        this.planeSkip = planeSkip;
+        this.purgeOther = purgeOther;
+        this.realityFlux = realityFlux;
+        this.restoreLimb = restoreLimb;
+        this.speedWeapon = speedWeapon;
+        this.summonControlRodents = summonControlRodents;
+        this.summonGreaterFamiliar = summonGreaterFamiliar;
+        this.summonShadowBeast = summonShadowBeast;
+        this.superHealing = superHealing;
+        this.wallOfNot = wallOfNot;
+        this.wards = wards;
+        this.warpedSpace = warpedSpace;
+    }
+}
+
+module.exports = InvocationTen;

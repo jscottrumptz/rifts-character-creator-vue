@@ -2,11 +2,13 @@ const BodyFixer = require('./BodyFixer');
 const Burster = require('./Burster')
 const CityRat = require('./CityRat');
 const CyberDoc = require('./CyberDoc');
+const LeyLineRifter = require('./LeyLineRifter')
+const LeyLineWalker = require('./LeyLineWalker')
 const Operator = require('./Operator');
 const RogueScholar = require('./RogueScholar');
 const RogueScientist = require('./RogueScientist');
-const Vagabond = require('./Vagabond')
-const WildernessScout = require('./WildernessScout')
+const Vagabond = require('./Vagabond');
+const WildernessScout = require('./WildernessScout');
 
 class PickOCC {
     constructor(
@@ -14,6 +16,8 @@ class PickOCC {
         burster = new Burster,
         cityRat = new CityRat,
         cyberDoc = new CyberDoc,
+        leyLineRifter = new LeyLineRifter,
+        leyLineWalker = new LeyLineWalker,
         operator = new Operator,
         rogueScholar = new RogueScholar,
         rogueScientist = new RogueScientist,
@@ -24,6 +28,8 @@ class PickOCC {
         this.burster = burster;
         this.cityRat = cityRat;
         this.cyberDoc = cyberDoc;
+        this.leyLineRifter = leyLineRifter;
+        this.leyLineWalker = leyLineWalker;
         this.operator = operator;
         this.rogueScholar = rogueScholar;
         this.rogueScientist = rogueScientist;

@@ -19,7 +19,8 @@ class Saves {
         horror = new StatValue,
         illusion = new StatValue,
         mindControl = new StatValue,
-        fatigue = new StatValue
+        fatigue = new StatValue,
+        curse = new StatValue
     ) {
         this.poison = poison;
         this.poison.name = 'Poison';
@@ -55,6 +56,8 @@ class Saves {
         this.mindControl.name = 'Mind Control';
         this.fatigue = fatigue;
         this.fatigue.name = 'Fatigue';
+        this.curse = curse;
+        this.curse.name = 'Curses';
     }
 
     getPoison() {

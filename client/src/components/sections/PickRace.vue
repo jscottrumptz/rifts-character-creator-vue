@@ -267,6 +267,12 @@
                             <span v-if="race.fatigueBonus.bonus > 0">+</span>{{race.fatigueBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Curse -->
+                  <span v-if="race.curseBonus.bonus" class="inline-flex items-center px-1">vs Curses:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="race.curseBonus.bonus > 0">+</span>{{race.curseBonus.bonus}}
+                          </span>
+                        </span>
                 </td>
               </tr>
               <!-- Bonuses -->

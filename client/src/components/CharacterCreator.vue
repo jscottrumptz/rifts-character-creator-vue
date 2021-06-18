@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PickMagic v-if="newCharacter" :newCharacter="newCharacter"/>
     <h2 class="text-xl font-bold text-center text-gray-600">Current Attributes</h2>
     <p class="text-lg font-medium text-center text-gray-400">
       IQ: <span class="text-gray-50">{{newCharacter.attributes.iq.total}}</span> ||
@@ -30,7 +29,8 @@
     <PickRandomPsionics v-if="(newCharacter.psionics.ability === 'Major' || newCharacter.psionics.ability === 'Minor') && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
     <PickOCC v-if="newCharacter.race.name !== '' && newCharacter.occ.name === '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
     <PickPsionics v-if="newCharacter.attributes.confirmAttributes && (newCharacter.psionics.ability === 'Racial' || newCharacter.psionics.ability === 'OCC') && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
-    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
+    <PickMagic v-if="newCharacter && (newCharacter.spells.ability === 'Racial' || newCharacter.spells.ability === 'OCC') && !newCharacter.spells.selected" :newCharacter="newCharacter"/>
+    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None') && (newCharacter.spells.selected || newCharacter.spells.ability === 'None')" :newCharacter="newCharacter"/>
     <PickRelatedSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && !newCharacter.skills.choices" :newCharacter="newCharacter"/>
     <PickSecondarySkills v-if="newCharacter.skills.selected && !newCharacter.skills.secondary" :newCharacter="newCharacter"/>
   </div>

@@ -359,18 +359,25 @@ export default {
       }
 
       // set active group if default is inactive
-      if (!this.healingPsionicsActive) {
+      if (!this.healingPsionicsActive && this.toggle === 'healing') {
         this.toggle = 'physical';
-        if (!this.physicalPsionicsActive) {
+      }
+      if (!this.physicalPsionicsActive && this.toggle === 'physical') {
           this.toggle = 'sensitive';
-          if (!this.sensitivePsionicsActive) {
+      }
+      if (!this.sensitivePsionicsActive && this.toggle === 'sensitive') {
             this.toggle = 'super'
-          }
-        }
+      }
+      if (!this.superPsionicsActive && this.toggle === 'super') {
+        this.toggle = 'healing'
       }
 
       // either show the finished button or the tabs
       this.tabsPsionicsActive = availablePicks !== 0;
+
+      if (!this.tabsPsionicsActive) {
+        this.toggle = 'default'
+      }
 
       // check to see if psionics are removable
       if(Object.keys(this.selectedPsionics).length > 0){

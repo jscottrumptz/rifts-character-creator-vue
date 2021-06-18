@@ -19,6 +19,7 @@ class OCC {
         equipmentDesc =  `None.`,
         raceDesc = '',
         occQuote = '',
+        attributesText = '',
 
         // REQUIREMENTS
         reqAlignment = [],
@@ -47,13 +48,21 @@ class OCC {
 
         // ATTRIBUTES
         iqBonus = new StatRoll,
+        iqText = '',
         meBonus = new StatRoll,
+        meText = '',
         maBonus = new StatRoll,
+        maText = '',
         psBonus = new StatRoll,
+        psText = '',
         ppBonus = new StatRoll,
+        ppText = '',
         peBonus = new StatRoll,
+        peText = '',
         pbBonus = new StatRoll,
+        pbText = '',
         spdBonus = new StatRoll,
+        spdText = '',
 
         // SECONDARY STATS
         hp = new StatRoll,
@@ -113,6 +122,7 @@ class OCC {
         illusionBonus = new StatRoll,
         mindControlBonus = new StatRoll,
         fatigueBonus = new StatRoll,
+        curseBonus = new StatRoll,
 
         // CHANCES
         trustBonus = new StatRoll,
@@ -141,6 +151,7 @@ class OCC {
         this.equipmentDesc = equipmentDesc;
         this.raceDesc = raceDesc;
         this.occQuote = occQuote;
+        this.attributesText = attributesText;
 
         // REQUIREMENTS
         this.reqAlignment = reqAlignment;
@@ -168,13 +179,21 @@ class OCC {
 
         // ATTRIBUTES
         this.iqBonus = iqBonus;
+        this.iqText = iqText;
         this.meBonus = meBonus;
+        this.meText = meText;
         this.maBonus = maBonus;
+        this.maText = maText;
         this.psBonus = psBonus;
+        this.psText = psText;
         this.ppBonus = ppBonus;
+        this.ppText = ppText;
         this.peBonus = peBonus;
+        this.peText = peText;
         this.pbBonus = pbBonus;
+        this.pbText = pbText;
         this.spdBonus = spdBonus;
+        this.spdText = spdText;
 
         // SECONDARY STATS
         this.hp = hp;
@@ -234,6 +253,7 @@ class OCC {
         this.illusionBonus = illusionBonus;
         this.mindControlBonus = mindControlBonus;
         this.fatigueBonus = fatigueBonus;
+        this.curseBonus = curseBonus;
 
         // CHANCES
         this.trustBonus = trustBonus;
@@ -332,6 +352,7 @@ class OCC {
             character.saves.illusion.occBonus = this.bonusRoll(this.illusionBonus);
             character.saves.mindControl.occBonus = this.bonusRoll(this.mindControlBonus);
             character.saves.fatigue.occBonus = this.bonusRoll(this.fatigueBonus);
+            character.saves.curse.occBonus = this.bonusRoll(this.curseBonus);
             // CHANCES
             character.chances.trust.occBonus = this.bonusRoll(this.trustBonus);
             character.chances.intimidate.occBonus = this.bonusRoll(this.intimidateBonus);

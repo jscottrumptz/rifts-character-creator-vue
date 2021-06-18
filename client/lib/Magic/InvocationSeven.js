@@ -1,0 +1,80 @@
+const Agony = require('./Agony');
+const AnimateControlDead = require('./AnimateControlDead');
+const BallisticFire = require('./BallisticFire');
+const ConstrainBeing = require('./ConstrainBeing');
+const DispelMagicBarriers = require('./DispelMagicBarriers');
+const FireGout = require('./FireGout');
+const FlyAsTheEagle = require('./FlyAsTheEagle');
+const GlobeOfSilence = require('./GlobeOfSilence');
+const HealSelf = require('./HealSelf');
+const InvisibilitySuperior = require('./InvisibilitySuperior');
+const Invulnerability = require('./Invulnerability');
+const LeyLineFade = require('./LeyLineFade');
+const LifeDrain = require('./LifeDrain');
+const Lightblade = require('./Lightblade');
+const MentalShock = require('./MentalShock');
+const MetamorphosisAnimal = require('./MetamorphosisAnimal');
+const NegateMechanics = require('./NegateMechanics');
+const PurificationFoodWater = require('./PurificationFoodWater');
+const SecondSight = require('./SecondSight');
+const SeeWards = require('./SeeWards');
+const SonicBlast = require('./SonicBlast');
+const SpinningBlades = require('./SpinningBlades');
+const SubParticleAcceleration = require('./SubParticleAcceleration');
+const WindRush = require('./WindRush');
+
+class InvocationSeven {
+    constructor(
+        agony = new Agony,
+        animateControlDead = new AnimateControlDead,
+        ballisticFire = new BallisticFire,
+        constrainBeing = new ConstrainBeing,
+        dispelMagicBarriers = new DispelMagicBarriers,
+        fireGout = new FireGout,
+        flyAsTheEagle = new FlyAsTheEagle,
+        globeOfSilence = new GlobeOfSilence,
+        healSelf = new HealSelf,
+        invisibilitySuperior = new InvisibilitySuperior,
+        invulnerability = new Invulnerability,
+        leyLineFade = new LeyLineFade,
+        lifeDrain = new LifeDrain,
+        lightblade = new Lightblade,
+        mentalShock = new MentalShock,
+        metamorphosisAnimal = new MetamorphosisAnimal,
+        negateMechanics = new NegateMechanics,
+        purificationFoodWater = new PurificationFoodWater,
+        secondSight = new SecondSight,
+        seeWards = new SeeWards,
+        sonicBlast = new SonicBlast,
+        spinningBlades = new SpinningBlades,
+        subParticleAcceleration = new SubParticleAcceleration,
+        windRush = new WindRush
+    ) {
+        this.agony = agony;
+        this.animateControlDead = animateControlDead;
+        this.ballisticFire = ballisticFire;
+        this.constrainBeing = constrainBeing;
+        this.dispelMagicBarriers = dispelMagicBarriers;
+        this.fireGout = fireGout;
+        this.flyAsTheEagle = flyAsTheEagle;
+        this.globeOfSilence = globeOfSilence;
+        this.healSelf = healSelf;
+        this.invisibilitySuperior = invisibilitySuperior;
+        this.invulnerability = invulnerability;
+        this.leyLineFade = leyLineFade;
+        this.lifeDrain = lifeDrain;
+        this.lightblade = lightblade;
+        this.mentalShock = mentalShock;
+        this.metamorphosisAnimal = metamorphosisAnimal;
+        this.negateMechanics = negateMechanics;
+        this.purificationFoodWater = purificationFoodWater;
+        this.secondSight = secondSight;
+        this.seeWards = seeWards;
+        this.sonicBlast = sonicBlast;
+        this.spinningBlades = spinningBlades;
+        this.subParticleAcceleration = subParticleAcceleration;
+        this.windRush = windRush;
+    }
+}
+
+module.exports = InvocationSeven;

@@ -56,7 +56,7 @@
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'skills', 'bg-gray-100 text-gray-700': toggle === 'skills'}" href="#" onclick="return false;">
                           Skills
                         </a>
-                        <a v-if="Object.keys(character.spells).length !== 0" v-on:click="toggle='magic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
+                        <a v-if="character.spells.ability !== 'None'" v-on:click="toggle='magic'" class="text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-md"
                            v-bind:class="{ 'text-gray-500 hover:text-gray-700': toggle !== 'magic', 'bg-gray-100 text-gray-700': toggle === 'magic'}" href="#" onclick="return false;">
                           Magic
                         </a>
@@ -74,7 +74,7 @@
                   <!-- TABS End-->
                   <Abilities :abilities="character.abilities" v-if="toggle==='abilities' && character.abilities.ability !== 'None'" />
                   <Psionics :psionics="character.psionics" v-if="toggle==='psionics' && character.psionics.ability !== 'None'"/>
-                  <Magic :magic="character.spells" v-if="toggle==='magic' && Object.keys(character.spells).length !== 0"/>
+                  <Magic :spells="character.spells" v-if="toggle==='magic' && character.spells.ability !== 'None'"/>
                   <Skills :skills="character.skills" v-if="toggle==='skills'"/>
                   <Inventory :inventory="character.inventory" v-if="toggle==='inventory'"/>
                 </div>

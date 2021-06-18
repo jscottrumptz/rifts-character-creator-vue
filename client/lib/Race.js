@@ -118,6 +118,7 @@ class Race {
         illusionBonus = new StatRoll,
         mindControlBonus = new StatRoll,
         fatigueBonus = new StatRoll,
+        curseBonus = new StatRoll,
 
         // CHANCES
         trustBonus = new StatRoll,
@@ -244,6 +245,7 @@ class Race {
         this.illusionBonus = illusionBonus;
         this.mindControlBonus = mindControlBonus;
         this.fatigueBonus = fatigueBonus;
+        this.curseBonus = curseBonus;
 
         // CHANCES
         this.trustBonus = trustBonus;
@@ -339,6 +341,8 @@ class Race {
         character.saves.horror.raceBonus = this.bonusRoll(this.horrorBonus);
         character.saves.illusion.raceBonus = this.bonusRoll(this.illusionBonus);
         character.saves.mindControl.raceBonus = this.bonusRoll(this.mindControlBonus);
+        character.saves.fatigue.raceBonus = this.bonusRoll(this.fatigueBonus);
+        character.saves.curse.raceBonus = this.bonusRoll(this.curseBonus);
         // CHANCES
         character.chances.trust.raceBonus = this.bonusRoll(this.trustBonus);
         character.chances.intimidate.raceBonus = this.bonusRoll(this.intimidateBonus);

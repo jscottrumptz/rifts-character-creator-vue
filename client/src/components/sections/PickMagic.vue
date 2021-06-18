@@ -4,10 +4,28 @@
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <h2 class="text-white pl-5 pt-5">Other Spell Picks Remaining: {{remaining}}</h2>
-        <p v-if="invocationRemaining > 0" class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements...</p>
+        <h2 class="text-white pl-5 pt-5 font-medium">Pick a total of {{this.newCharacter.spells.total}} spells</h2>
+        <h2 v-if="invocationRemaining > 0" class="text-white pl-5 pt-5">Invocation Picks Needed: {{invocationRemaining}}</h2>
+        <p v-if="this.newCharacter.spells.levelRequirements" class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements...</p>
         <div class="pl-10 pb-5">
-          <h2 v-if="invocationRemaining > 0" class="text-white">Invocation Picks Needed: {{invocationRemaining}}</h2>
+          <h2 v-if="oneRemaining > 0" class="text-white">Level One Picks Needed: {{oneRemaining}}</h2>
+          <h2 v-if="twoRemaining > 0" class="text-white">Level Two Picks Needed: {{twoRemaining}}</h2>
+          <h2 v-if="threeRemaining > 0" class="text-white">Level Three Picks Needed: {{threeRemaining}}</h2>
+          <h2 v-if="fourRemaining > 0" class="text-white">Level Four Picks Needed: {{fourRemaining}}</h2>
+          <h2 v-if="fiveRemaining > 0" class="text-white">Level Five Picks Needed: {{fiveRemaining}}</h2>
+          <h2 v-if="sixRemaining > 0" class="text-white">Level Six Picks Needed: {{sixRemaining}}</h2>
+          <h2 v-if="sevenRemaining > 0" class="text-white">Level Seven Picks Needed: {{sevenRemaining}}</h2>
+          <h2 v-if="eightRemaining > 0" class="text-white">Level Eight Picks Needed: {{eightRemaining}}</h2>
+          <h2 v-if="nineRemaining > 0" class="text-white">Level Nine Picks Needed: {{nineRemaining}}</h2>
+          <h2 v-if="tenRemaining > 0" class="text-white">Level Ten Picks Needed: {{tenRemaining}}</h2>
+          <h2 v-if="elevenRemaining > 0" class="text-white">Level Eleven Picks Needed: {{elevenRemaining}}</h2>
+          <h2 v-if="twelveRemaining > 0" class="text-white">Level Twelve Picks Needed: {{twelveRemaining}}</h2>
+          <h2 v-if="thirteenRemaining > 0" class="text-white">Level Thirteen Picks Needed: {{thirteenRemaining}}</h2>
+          <h2 v-if="fourteenRemaining > 0" class="text-white">Level Fourteen Picks Needed: {{fourteenRemaining}}</h2>
+          <h2 v-if="fifteenRemaining > 0" class="text-white">Level Fifteen Picks Needed: {{fifteenRemaining}}</h2>
+          <h2 v-if="legendRemaining > 0" class="text-white">Spells of Legend Picks Needed: {{legendRemaining}}</h2>
+          <h2 v-if="aRemaining > 0" class="text-white">Group A Picks Needed: {{aRemaining}}</h2>
+          <h2 v-if="bRemaining > 0" class="text-white">Group B Picks Needed: {{bRemaining}}</h2>
         </div>
         <div class="p-5 bg-gray-900 shadow overflow-hidden rounded-md">
           <ul class="text-gray-300 divide-y divide-gray-600 ">
@@ -41,30 +59,31 @@
         <div v-if="this[toggle + 'Active']" class="m-3">
           <label for="tabsLevel" class="sr-only">Select a tab</label>
           <select id="tabsLevel" v-model="toggleLevel" name="tabsLevel" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
-            <option selected disabled> Select a Level... </option>
-            <option v-if="this[toggle][toggle + 'One']" value="One">Level One</option>
-            <option v-if="this[toggle][toggle + 'Two']" value="Two">Level Two</option>
-            <option v-if="this[toggle][toggle + 'Three']" value="Three">Level Three</option>
-            <option v-if="this[toggle][toggle + 'Four']" value="Four">Level Four</option>
-            <option v-if="this[toggle][toggle + 'Five']" value="Five">Level Five</option>
-            <option v-if="this[toggle][toggle + 'Six']" value="Six">Level Six</option>
-            <option v-if="this[toggle][toggle + 'Seven']" value="Seven">Level Seven</option>
-            <option v-if="this[toggle][toggle + 'Eight']" value="Eight">Level Eight</option>
-            <option v-if="this[toggle][toggle + 'Nine']" value="Nine">Level Nine</option>
-            <option v-if="this[toggle][toggle + 'Ten']" value="Ten">Level Ten</option>
-            <option v-if="this[toggle][toggle + 'Eleven']" value="Eleven">Level Eleven</option>
-            <option v-if="this[toggle][toggle + 'Twelve']" value="Twelve">Level Twelve</option>
-            <option v-if="this[toggle][toggle + 'Thirteen']" value="Thirteen">Level Thirteen</option>
-            <option v-if="this[toggle][toggle + 'Fourteen']" value="Fourteen">Level Fourteen</option>
-            <option v-if="this[toggle][toggle + 'Fifteen']" value="Fifteen">Level Fifteen</option>
-            <option v-if="this[toggle][toggle + 'A']" value="A">Group A</option>
-            <option v-if="this[toggle][toggle + 'B']" value="B">Group B</option>
+            <option value="default" selected disabled> Select a Level... </option>
+            <option v-if="this[toggle][toggle + 'One'] && oneActive" value="One">Level One</option>
+            <option v-if="this[toggle][toggle + 'Two'] && twoActive" value="Two">Level Two</option>
+            <option v-if="this[toggle][toggle + 'Three'] && threeActive" value="Three">Level Three</option>
+            <option v-if="this[toggle][toggle + 'Four'] && fourActive" value="Four">Level Four</option>
+            <option v-if="this[toggle][toggle + 'Five'] && fiveActive" value="Five">Level Five</option>
+            <option v-if="this[toggle][toggle + 'Six'] && sixActive" value="Six">Level Six</option>
+            <option v-if="this[toggle][toggle + 'Seven'] && sevenActive" value="Seven">Level Seven</option>
+            <option v-if="this[toggle][toggle + 'Eight'] && eightActive" value="Eight">Level Eight</option>
+            <option v-if="this[toggle][toggle + 'Nine'] && nineActive" value="Nine">Level Nine</option>
+            <option v-if="this[toggle][toggle + 'Ten'] && tenActive" value="Ten">Level Ten</option>
+            <option v-if="this[toggle][toggle + 'Eleven'] && elevenActive" value="Eleven">Level Eleven</option>
+            <option v-if="this[toggle][toggle + 'Twelve'] && twelveActive" value="Twelve">Level Twelve</option>
+            <option v-if="this[toggle][toggle + 'Thirteen'] && thirteenActive" value="Thirteen">Level Thirteen</option>
+            <option v-if="this[toggle][toggle + 'Fourteen'] && fourteenActive" value="Fourteen">Level Fourteen</option>
+            <option v-if="this[toggle][toggle + 'Fifteen'] && fifteenActive" value="Fifteen">Level Fifteen</option>
+            <option v-if="this[toggle][toggle + 'Legend'] && legendActive" value="Legend">Spells of Legend</option>
+            <option v-if="this[toggle][toggle + 'A'] && aActive" value="A">Group A</option>
+            <option v-if="this[toggle][toggle + 'B'] && bActive" value="B">Group B</option>
           </select>
         </div>
 
         <!-- Toggle Level Spell List -->
         <div class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 shadow overflow-hidden rounded-md">
-          <ul class="text-gray-300 divide-y divide-gray-600 ">
+          <ul v-if="this[toggleLevel.toLowerCase() + 'Active']" class="text-gray-300 divide-y divide-gray-600 ">
             <li v-for="(spells,index) in this[toggle][toggle + toggleLevel]" v-bind:key="index"  :id="toggle + toggleLevel + '-'+ index" v-on:click="selected('invocation',index)" class="cursor-pointer hover:bg-indigo-300 hover:text-gray-900 px-6 py-2">{{ spells.name }}</li>
           </ul>
         </div>
@@ -145,6 +164,27 @@ export default {
       enoughPicks: true,
       // toggle to control if a group list is available
       invocationActive: true,
+      // toggle to see if level list is active
+      oneActive: true,
+      twoActive: true,
+      threeActive: true,
+      fourActive: true,
+      fiveActive: true,
+      sixActive: true,
+      sevenActive: true,
+      eightActive: true,
+      nineActive: true,
+      tenActive: true,
+      elevenActive: true,
+      twelveActive: true,
+      thirteenActive: true,
+      fourteenActive: true,
+      fifteenActive: true,
+      legendActive: true,
+      aActive: true,
+      bActive: true,
+      defaultActive: true,
+
       // sre the spell tabs active
       tabsSpellsActive: true,
       // number of spells picked from a group
@@ -165,6 +205,7 @@ export default {
       thirteenCount: 0,
       fourteenCount: 0,
       fifteenCount: 0,
+      legendCount: 0,
       // a/b counts
       aCount: 0,
       bCount: 0,
@@ -187,6 +228,7 @@ export default {
       thirteenRequired: 0,
       fourteenRequired: 0,
       fifteenRequired: 0,
+      legendRequired: 0,
       // number of required a/b spell picks
       aRequired: 0,
       bRequired: 0,
@@ -209,6 +251,7 @@ export default {
       thirteenRemaining: 0,
       fourteenRemaining: 0,
       fifteenRemaining: 0,
+      legendRemaining: 0,
       // number of required a/b spell picks remaining
       aRemaining: 0,
       bRemaining: 0,
@@ -223,13 +266,22 @@ export default {
       const spellGroup = this[group][this.toggle + this.toggleLevel]
       const listId = this.toggle + this.toggleLevel + '-' +[index]
       const groupRemaining = group + 'Remaining'
+      const levelRemaining = this.toggleLevel.toLowerCase() + 'Remaining'
       // check the selection cost to be sure there are enough picks remaining
       if(spellGroup[index].selectionCost > this.remaining)
       {
-        spellGroup[index].selectionCost <= (this[groupRemaining] + this.remaining) ? this.enoughPicks = true : this.enoughPicks = false
+        (spellGroup[index].selectionCost <= (this[groupRemaining] + this.remaining)) ? this.enoughPicks = true : this.enoughPicks = false
       } else {
         this.enoughPicks = true
       }
+
+      if(spellGroup[index].selectionCost > this.remaining)
+      {
+        (spellGroup[index].selectionCost <= (this[levelRemaining] + this.remaining)) ? this.enoughPicks = true : this.enoughPicks = false
+      } else {
+        this.enoughPicks = true
+      }
+
       this.selectedSpell = spellGroup[index];
       this.selectedProperty = index;
       this.displaySpell = [];
@@ -257,6 +309,7 @@ export default {
       const levelCount = this.toggleLevel.toLowerCase() + 'Count';
       // make sure something is selected
       if (spell){
+        spell.pickLevel = this.toggleLevel
         // create the same object property in selectedSpells and copy the selected object to it
         this.selectedSpells[prop] = spell
         // create the same object property in newCharacter's known spells and copy the selected object to it
@@ -270,7 +323,9 @@ export default {
         this.selectedSpell = null;
         this.selectedProperty = null;
         this.selectedId = null;
-        console.log(this[levelCount])
+        console.log('LevelCount: ' + this[levelCount])
+        console.log('GroupCount: ' + this[groupCount])
+
         this.init();
       }
       this.init();
@@ -281,11 +336,11 @@ export default {
       // get group property from group name
       const group = spell.group.charAt(0).toLowerCase() + spell.group.slice(1).replace(/\s+/g, '');
       const groupCount = group + 'Count'
-      const levelCount = spell.level.toLowerCase() + 'Count';
+      const levelCount = spell.pickLevel.toLowerCase() + 'Count';
       // make sure something is selected
       if (spell){
         // put it back in the group
-        this[group][group + spell.level ][prop] = spell;
+        this[group][group + spell.pickLevel ][prop] = spell;
 
         //update counts
         this[groupCount] = this[groupCount] - spell.selectionCost;
@@ -299,10 +354,10 @@ export default {
         this.pickedSpell = null;
         this.pickedProperty = null
         this.selectedId = null;
-        console.log(this[levelCount])
-        // update everything
-        this.init();
       }
+      console.log('LevelCount: ' + this[levelCount])
+      console.log('GroupCount: ' + this[groupCount])
+
       // update everything
       this.init();
     },
@@ -316,8 +371,47 @@ export default {
       // determine group picks remaining
       this.invocationRemaining = Math.max(0, this.invocationRequired - this.invocationCount);
 
+      // determine level picks remaining
+      for (const [key] of Object.entries(this.invocation)) {
+        let level = key.replace('invocation','').toLowerCase()
+        this[level + 'Remaining'] = Math.max(0, this[level + 'Required'] - this[level + 'Count']);
+      }
+
+      // either show the finished button or the tabs
+      this.tabsSpellsActive = availablePicks !== 0;
+
+      // update remaining spells SpellsCounter
+      this.remaining = availablePicks + this.invocationRemaining
+          - this.invocationRemaining
+          - this.oneRemaining
+          - this.twoRemaining
+          - this.threeRemaining
+          - this.fourRemaining
+          - this.fiveRemaining
+          - this.sixRemaining
+          - this.sevenRemaining
+          - this.eightRemaining
+          - this.nineRemaining
+          - this.tenRemaining
+          - this.elevenRemaining
+          - this.twelveRemaining
+          - this.thirteenRemaining
+          - this.fourteenRemaining
+          - this.fifteenRemaining
+          - this.aRemaining
+          - this.bRemaining
+          -this.legendRemaining
+
+      console.log('Remaining: ' + this.remaining)
+      console.log('One Remaining: ' + this.oneRemaining)
+      console.log('Invocation Remaining: ' + this.invocationRemaining)
+
       // hide group if no picks remaining
-      this.invocationRemaining === 0 && this.remaining === 0 ?
+      !this.newCharacter.spells.invocation.available || (this.invocationRemaining === 0 && this.remaining === 0 && this.oneRemaining === 0 && this.twoRemaining === 0
+          && this.threeRemaining === 0 && this.fourRemaining === 0 && this.fiveRemaining === 0 && this.sixRemaining === 0
+          && this.sevenRemaining === 0 && this.eightRemaining === 0 && this.nineRemaining === 0 && this.tenRemaining === 0
+          && this.elevenRemaining === 0 && this.twelveRemaining === 0 && this.thirteenRemaining === 0 && this.fourteenRemaining === 0
+          && this.fifteenRemaining === 0 && this.aRemaining === 0 && this.bRemaining === 0 && this.legendRemaining === 0)?
           this.invocationActive = false : this.invocationActive = true
 
       // hide group if empty
@@ -325,41 +419,26 @@ export default {
         this.invocationActive = false
       }
 
-      // set active group if default is inactive
-      // if (!this.invocationActive) {
-      //   this.toggle = 'airElemental';
-      //   if (!this.airElementalActive) {
-      //     this.toggle = 'sensitive';
-      //     if (!this.earthElementalsActive) {
-      //       this.toggle = 'super'
-      //     }
-      //  }
-      // }
-
-      // either show the finished button or the tabs
-      this.tabsSpellsActive = availablePicks !== 0;
-
-      // check to see if spells are removable
-      if(Object.keys(this.selectedSpells).length > 0){
-        for (const [spellKey] of Object.entries(this.selectedSpells)) {
-          // check for prerequisites
-          this.selectedSpells[spellKey].preq.forEach(preq => {
-            let preqFound = false;
-            // make prerequisites un-removable
-            for (const [preqKey] of Object.entries(this.selectedSpells)) {
-              // check for skill property and exclude the picked skill
-              if (preqKey.includes(preq) && spellKey !== preqKey && !preqFound) {
-                this.selectedSpells[preqKey].canRemove = false
-                preqFound = true;
-              }
-            }
-          })
-        }
+      // hide level if empty or out of picks
+      for (const [key] of Object.entries(this.invocation)) {
+        let level = key.replace('invocation','').toLowerCase()
+        if (Object.keys(this.invocation[key]).length > 0 && this.remaining === 0) {
+          this[level + 'Remaining']  === 0 ?
+              this[level + 'Active'] = false : this[level + 'Active'] = true
+        } else
+          Object.keys(this.invocation[key]).length > 0 && this.remaining !== 0 ?
+              this[level + 'Active'] = true : this[level + 'Active'] = false
       }
 
-      // update remaining spells SpellsCounter
-      this.remaining = availablePicks
-          - this.invocationRemaining
+      // hide group if empty
+      if (Object.keys(this.invocation).length === 0) {
+        this.invocationActive = false
+      }
+      // set active level if default is inactive
+      if (!this[this.toggleLevel.toLowerCase() + 'Active']) {
+        this.toggleLevel = 'default';
+      }
+
     },
     selectedBg: function (newId){
       if (this.selectedId != null) {
@@ -375,9 +454,6 @@ export default {
     },
     // prepares spell lists
     spellLoader: function (groupList, availableList) {
-      //get required
-      this.invocationRequired = this.newCharacter.spells.invocation.requiredAmount;
-
       // handle free spells
       if (availableList.free) {
         availableList.free.forEach(spell => {
@@ -458,15 +534,30 @@ export default {
     },
     // gathers the necessary initial spell data
     onLoad: function () {
-      //
+      //get required
+      this.invocationRequired = this.newCharacter.spells.invocation.requiredAmount;
+      for (const [key] of Object.entries(this.newCharacter.spells.invocation)) {
+        if (key !== 'available' && key !== 'requiredAmount') {
+          this[key + 'Required'] = this.newCharacter.spells.invocation[key].requiredAmount;
+          this[key + 'Count'] = 0;
+          this[key + 'Remaining'] = Math.max(0, this[key + 'Required'] - this[key + 'Count']);
+          this[key + 'Active'] = true;
+        }
+      }
+
       // loads spell group selections
-      this.spellLoader(this.invocation, this.newCharacter.spells.invocation)
+      for (const [key] of Object.entries(this.newCharacter.spells.invocation)) {
+        if (key !== 'available' && key !== 'requiredAmount') {
+          let level = key.charAt(0).toUpperCase() + key.slice(1);
+          this.spellLoader(this.invocation['invocation' + level], this.newCharacter.spells.invocation[key]);
+        }
+      }
 
       // populates selectedSpells with already known spells so the player doesn't select them again
-      this.selectedSpells = this.newCharacter.spells.known
+      this.selectedSpells = this.newCharacter.spells.known;
 
       // gets a count of the known spells so they can be added later and will not count against the calculated remaining totals
-      this.startingSpells = Object.keys(this.newCharacter.skills.known).length
+      this.startingSpells = Object.keys(this.newCharacter.skills.known).length;
     }
   },
   mounted: function () {

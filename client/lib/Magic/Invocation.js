@@ -4,7 +4,7 @@ const InvocationThree = require('./InvocationThree');
 const InvocationFour = require('./InvocationFour');
 const InvocationFive = require('./InvocationFive');
 const InvocationSix = require('./InvocationSix');
-/*const InvocationSeven = require('./InvocationSeven');
+const InvocationSeven = require('./InvocationSeven');
 const InvocationEight = require('./InvocationEight');
 const InvocationNine = require('./InvocationNine');
 const InvocationTen = require('./InvocationTen');
@@ -12,7 +12,10 @@ const InvocationEleven = require('./InvocationEleven');
 const InvocationTwelve = require('./InvocationTwelve');
 const InvocationThirteen = require('./InvocationThirteen');
 const InvocationFourteen = require('./InvocationFourteen');
-const InvocationFifteen = require('./InvocationFifteen');*/
+const InvocationFifteen = require('./InvocationFifteen');
+const InvocationA = require('./InvocationA');
+const InvocationB = require('./InvocationB');
+const InvocationLegend = require('./InvocationLegend')
 
 class Invocation {
     constructor(
@@ -22,7 +25,7 @@ class Invocation {
         invocationFour = new InvocationFour,
         invocationFive = new InvocationFive,
         invocationSix = new InvocationSix,
-/*        invocationSeven = new InvocationSeven,
+        invocationSeven = new InvocationSeven,
         invocationEight = new InvocationEight,
         invocationNine = new InvocationNine,
         invocationTen = new InvocationTen,
@@ -30,7 +33,10 @@ class Invocation {
         invocationTwelve = new InvocationTwelve,
         invocationThirteen = new InvocationThirteen,
         invocationFourteen = new InvocationFourteen,
-        invocationFifteen = new InvocationFifteen*/
+        invocationFifteen = new InvocationFifteen,
+        invocationA = new InvocationA,
+        invocationB = new InvocationB,
+        invocationLegend = new InvocationLegend
     ) {
         this.invocationOne = invocationOne;
         this.invocationTwo = invocationTwo;
@@ -38,7 +44,7 @@ class Invocation {
         this.invocationFour = invocationFour;
         this.invocationFive = invocationFive;
         this.invocationSix = invocationSix;
-/*        this.invocationSeven = invocationSeven;
+        this.invocationSeven = invocationSeven;
         this.invocationEight = invocationEight;
         this.invocationNine = invocationNine;
         this.invocationTen = invocationTen;
@@ -46,7 +52,10 @@ class Invocation {
         this.invocationTwelve = invocationTwelve;
         this.invocationThirteen = invocationThirteen;
         this.invocationFourteen = invocationFourteen;
-        this.invocationFifteen = invocationFifteen;*/
+        this.invocationFifteen = invocationFifteen;
+        this.invocationA = invocationA;
+        this.invocationB = invocationB;
+        this.invocationLegend = invocationLegend;
     }
 }
 

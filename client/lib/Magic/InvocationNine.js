@@ -1,0 +1,80 @@
+const AuraOfDoom = require('./AuraOfDoom');
+const BeatInsurmountableOdds = require('./BeatInsurmountableOdds');
+const CreateSteel = require('./CreateSteel');
+const CursePhobia = require('./CursePhobia');
+const DStep = require('./DStep');
+const DesiccateTheSupernatural = require('./DesiccateTheSupernatural');
+const DragonFire = require('./DragonFire');
+const FamiliarLink = require('./FamiliarLink');
+const IllusionManipulation = require('./IllusionManipulation');
+const LeyLinePhantom = require('./LeyLinePhantom');
+const LeyLineTimeFlux = require('./LeyLineTimeFlux');
+const MetamorphosisInsect = require('./MetamorphosisInsect');
+const Mute = require('./Mute');
+const PhantomMount = require('./PhantomMount');
+const ProtectionCircleSimple = require('./ProtectionCircleSimple');
+const PurgeSelf = require('./PurgeSelf');
+const RealmOfChaos = require('./RealmOfChaos');
+const SpeedOfTheSnail = require('./SpeedOfTheSnail');
+const SummonAndControlCanine = require('./SummonAndControlCanine');
+const SwordsToSnakes = require('./SwordsToSnakes');
+const TameBeast = require('./TameBeast');
+const Transferal = require('./Transferal');
+const WallOfDefense = require('./WallOfDefense');
+const WaterToWine = require('./WaterToWine');
+
+class InvocationNine{
+    constructor(
+        auraOfDoom = new AuraOfDoom,
+        beatInsurmountableOdds = new BeatInsurmountableOdds,
+        createSteel = new CreateSteel,
+        cursePhobia = new CursePhobia,
+        dStep = new DStep,
+        desiccateTheSupernatural = new DesiccateTheSupernatural,
+        dragonFire = new DragonFire,
+        familiarLink = new FamiliarLink,
+        illusionManipulation = new IllusionManipulation,
+        leyLinePhantom = new LeyLinePhantom,
+        leyLineTimeFlux = new LeyLineTimeFlux,
+        metamorphosisInsect = new MetamorphosisInsect,
+        mute = new Mute,
+        phantomMount = new PhantomMount,
+        protectionCircleSimple = new ProtectionCircleSimple,
+        purgeSelf = new PurgeSelf,
+        realmOfChaos = new RealmOfChaos,
+        speedOfTheSnail = new SpeedOfTheSnail,
+        summonAndControlCanine = new SummonAndControlCanine,
+        swordsToSnakes = new SwordsToSnakes,
+        tameBeast = new TameBeast,
+        transferal = new Transferal,
+        wallOfDefense = new WallOfDefense,
+        waterToWine = new WaterToWine
+    ) {
+        this.auraOfDoom = auraOfDoom;
+        this.beatInsurmountableOdds = beatInsurmountableOdds;
+        this.createSteel = createSteel;
+        this.cursePhobia = cursePhobia;
+        this.dStep = dStep;
+        this.desiccateTheSupernatural = desiccateTheSupernatural;
+        this.dragonFire = dragonFire;
+        this.familiarLink = familiarLink;
+        this.illusionManipulation = illusionManipulation;
+        this.leyLinePhantom = leyLinePhantom;
+        this.leyLineTimeFlux = leyLineTimeFlux;
+        this.metamorphosisInsect = metamorphosisInsect;
+        this.mute = mute;
+        this.phantomMount = phantomMount;
+        this.protectionCircleSimple = protectionCircleSimple;
+        this.purgeSelf = purgeSelf;
+        this.realmOfChaos = realmOfChaos;
+        this.speedOfTheSnail = speedOfTheSnail;
+        this.summonAndControlCanine = summonAndControlCanine;
+        this.swordsToSnakes = swordsToSnakes;
+        this.tameBeast = tameBeast;
+        this.transferal = transferal;
+        this.wallOfDefense = wallOfDefense;
+        this.waterToWine = waterToWine;
+    }
+}
+
+module.exports = InvocationNine;
