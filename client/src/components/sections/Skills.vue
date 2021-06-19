@@ -33,6 +33,7 @@
                 <span v-if="skill.takenTwice && skill.takeTwiceBonus" class="text-xs">Taken Twice Bonus: <span class="font-normal">{{skill.takeTwiceBonus}} </span><br></span>
                 <span v-if="skill.base && skills.bonus.attributeBonus" class="text-xs">IQ Bonus: <span class="font-normal"><span v-show="skills.bonus.attributeBonus > 0">+</span>{{skills.bonus.attributeBonus}}% </span><br></span>
                 <span v-if="skill.base && skill.skillBonus" class="text-xs">Bonus from Other Skills: <span class="font-normal">+{{skill.skillBonus}}% </span><br></span>
+                <span v-if="skill.base && skill.attributeBonus" class="text-xs">Bonus from Attributes: <span class="font-normal">+{{skill.attributeBonus}}% </span><br></span>
               </p>
             </div>
           </div>
