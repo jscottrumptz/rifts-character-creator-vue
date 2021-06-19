@@ -15,8 +15,11 @@
                 <th scope="col" class="px-1 py-3 text-xs font-medium text-white uppercase tracking-wider">
 
                 </th>
-                <th scope="col" class="px-1 py-3 text-xs font-medium text-white tracking-wider">
+                <th v-if="bonusCount === 0" scope="col" class="px-1 py-3 text-xs font-medium text-white tracking-wider">
                   Current Value
+                </th>
+                <th v-if="bonusCount > 0" scope="col" class="px-1 py-3 text-xs font-medium text-white tracking-wider">
+                  Original Value
                 </th>
                 <th v-if="bonusCount === 0" scope="col" class="px-2 py-3 text-xs font-medium text-white tracking-wider">
                   Pick Bonus
@@ -35,8 +38,11 @@
               <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                 {{newCharacter.attributes[bonusChoices].name}}
               </td>
-              <td v-if="newCharacter.attributes[bonusChoices].total" class="px-1 py-2 whitespace-nowrap text-center text-xl font-medium text-gray-800">
+              <td v-if="newCharacter.attributes[bonusChoices].total && bonusCount === 0" class="px-1 py-2 whitespace-nowrap text-center text-xl font-medium text-gray-800">
                 {{newCharacter.attributes[bonusChoices].total}}
+              </td>
+              <td v-if="newCharacter.attributes[bonusChoices].total && bonusCount > 0" class="px-1 py-2 whitespace-nowrap text-center text-xl font-medium text-gray-800">
+                {{newCharacter.attributes[bonusChoices].total - newCharacter.attributes[bonusChoices].occBonus}}
               </td>
               <td v-if="newCharacter.attributes[bonusChoices].name && bonusCount === 0" class="px-3 py-2 mx-auto">
                 <button v-if="bonusCount === 0 && newCharacter.attributes[bonusChoices].occBonus === 0" :id="bonusChoices" v-on:click="select(bonusChoices)" class="px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Roll Bonus</button>
@@ -77,7 +83,7 @@ export default {
   },
   methods: {
     select: function (index) {
-      this.newCharacter.attributes[index].occBonus = 2;
+      this.newCharacter.attributes[index].occBonus = this.newCharacter.occ.bonusRoll(this.bonusRoll);
       this.bonusCount++
       this.newCharacter.occ.getSecondary(this.newCharacter);
     },
