@@ -371,6 +371,12 @@
                             <span v-if="race.entangleBonus.bonus > 0">+</span>{{race.entangleBonus.bonus}}
                           </span>
                         </span>
+                  <!-- Automatic Dodge -->
+                  <span v-if="race.autoDodgeBonus.bonus" class="inline-flex items-center px-1">Automatic Dodge:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="race.autoDodgeBonus.bonus > 0">+</span>{{race.autoDodgeBonus.bonus}}
+                          </span>
+                        </span>
                 </td>
               </tr>
               <!-- Other -->
@@ -519,6 +525,12 @@
       <div v-show="toggle==='stats' && statsActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">
         <!-- Available OCCs -->
         <p class="whitespace-pre-wrap text-gray-50">{{race.availableOCCs}}</p>
+        <br/>
+        <span v-if="race.vulnerabilities !== ''" >
+          <p class="text-gray-50 font-medium">Vulnerabilities</p>
+          <p class="whitespace-pre-wrap text-gray-100">{{race.vulnerabilities}}</p>
+          <br/>
+        </span>
       </div>
       <!-- Abilities, Skills, & Other Content -->
       <div v-show="toggle==='abilities' && abilitiesActive" class="mx-2 max-h-96 overflow-y-auto p-5 bg-gray-900 overflow-hidden rounded-md">

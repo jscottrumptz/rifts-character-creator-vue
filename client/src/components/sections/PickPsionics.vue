@@ -1,10 +1,11 @@
 <template>
   <div class="px-5">
-    <p class="text-white text-xl font-medium p-5" >Pick Psionics</p>
+    <p v-if="tabsPsionicsActive" class="text-white text-xl font-medium p-5" >Pick Psionics</p>
+    <p v-if="!tabsPsionicsActive" class="text-white text-xl font-medium p-5" >Confirm Psionics</p>
     <div class="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5">
       <!-- Selected List -->
       <div class="col-span-1 border border-gray-700 rounded-lg hover:border-indigo-300">
-        <h2 class="text-white pl-5 pt-5">Other Psionic Picks Remaining: {{remaining}}</h2>
+        <h2 v-if="remaining > 0" class="text-white pl-5 pt-5">Other Psionic Picks Remaining: {{remaining}}</h2>
         <p v-if="healingPsionicsRemaining > 0 || physicalPsionicsRemaining > 0 || sensitivePsionicsRemaining > 0 || superPsionicsRemaining > 0" class="text-white pl-5 pt-5 font-medium" >Fulfill the following requirements...</p>
         <div class="pl-10 pb-5">
           <h2 v-if="healingPsionicsRemaining > 0" class="text-white">Healing Picks Needed: {{healingPsionicsRemaining}}</h2>

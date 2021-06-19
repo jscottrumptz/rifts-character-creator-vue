@@ -34,6 +34,7 @@ class Race {
         rcc = false,
         excludedOCCGroups = [],
         excludedOCCs = [],
+        vulnerabilities = '',
 
         iqRoll = new StatRoll,
         meRoll = new StatRoll,
@@ -101,6 +102,7 @@ class Race {
         bodyFlipBonus = new StatRoll,
         criticalBonus = new StatRoll,
         entangleBonus = new StatRoll,
+        autoDodgeBonus = new StatRoll,
 
         // SAVES
         poisonBonus = new StatRoll,
@@ -163,6 +165,7 @@ class Race {
         this.rcc = rcc;
         this.excludedOCCGroups = excludedOCCGroups;
         this.excludedOCCs = excludedOCCs;
+        this.vulnerabilities = vulnerabilities;
 
         this.iqRoll = iqRoll;
         this.meRoll = meRoll;
@@ -230,6 +233,7 @@ class Race {
         this.bodyFlipBonus = bodyFlipBonus;
         this.criticalBonus = criticalBonus;
         this.entangleBonus = entangleBonus;
+        this.autoDodgeBonus = autoDodgeBonus;
 
         // SAVES
         this.poisonBonus = poisonBonus;
@@ -328,6 +332,7 @@ class Race {
         character.bonuses.bodyFlip.raceBonus = this.bonusRoll(this.bodyFlipBonus);
         character.bonuses.critical.raceBonus = this.bonusRoll(this.criticalBonus);
         character.bonuses.entangle.raceBonus = this.bonusRoll(this.entangleBonus);
+        character.bonuses.autoDodge.raceBonus = this.bonusRoll(this.autoDodgeBonus);
         // SAVES
         character.saves.poison.raceBonus = this.bonusRoll(this.poisonBonus);
         character.saves.insanity.raceBonus = this.bonusRoll(this.insanityBonus);

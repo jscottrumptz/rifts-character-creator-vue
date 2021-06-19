@@ -472,6 +472,12 @@
                               <span v-if="occ.entangleBonus.bonus > 0">+</span>{{occ.entangleBonus.bonus}}
                             </span>
                           </span>
+                    <!-- Automatic Dodge -->
+                    <span v-if="occ.autoDodgeBonus.bonus" class="inline-flex items-center px-1">Automatic Dodge:
+                          <span class="pr-2 text-sm font-normal text-gray-500">
+                            <span v-if="occ.autoDodgeBonus.bonus > 0">+</span>{{occ.autoDodgeBonus.bonus}}
+                          </span>
+                        </span>
                   </td>
                 </tr>
                 <!-- Other -->

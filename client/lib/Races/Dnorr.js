@@ -10,10 +10,8 @@ class Dnorr extends Race {
     constructor() {
         super();
         this.name = `D'norr Devilmen`;
-        this.description = `    The D'norr are more commonly known as "Devilmen" because of their appearance. They are bipedal humanoids with a light reddish-tan skin, and a darker red (for males) or purple (for females) back and top portion of the head. The backs of their heads are rather gourd shaped, not unlike a squash or pumpkin, and dotted with tiny red spines. In addition to the color of their skin, the D'norr's devilish appearance comes from their red complexion accented by dark blue eyes, gnarled, pointed ears, and a pair of horns that protrude from the forehead. Four small spines run along the top of each eyebrow and males have 4-6 protruding from their chins. Female D'norr have breasts (they are mammals), a smaller frame and feminine shape. 
-
+        this.description = `    The D'norr are more commonly known as "Devilmen" because of their appearance. They are bipedal humanoids with a light reddish-tan skin, and a darker red (for males) or purple (for females) back and top portion of the head. The backs of their heads are rather gourd shaped, not unlike a squash or pumpkin, and dotted with tiny red spines. In addition to the color of their skin, the D'norr's devilish appearance comes from their red complexion accented by dark blue eyes, gnarled, pointed ears, and a pair of horns that protrude from the forehead. Four small spines run along the top of each eyebrow and males have 4-6 protruding from their chins. Female D'norr have breasts (they are mammals), a smaller frame and feminine shape.
     Despite their name and demonic appearance, Devilmen are actually highly intelligent, thoughtful, and compassionate. Most study social behavior, philosophy, the arts, and scholastic pursuits. As a result, many find the sciences and the pursuit of magic to their liking. Moreover, they are much less aggressive than humans and prefer to find a peaceful resolution to problems. This makes these peace-loving D-Bees natural team players and trustworthy teachers, negotiators and diplomats. 
-
     The Devilmen thrive on social interaction, and accept most intelligent beings until they are proven unworthy of their trust. Rifts Earth is a social and cultural paradise for the D'norr, filled with scores of alien beings with whom they can share their knowledge, philosophies and ideas, as well as learn many new things themselves. They welcome new people and new ideas like hungry children seeking to satisfy a hunger they can never quite quell. Devilmen are especially aware and respectful of the customs and beliefs of other people, which has made them welcomed among Native Americans, Fennodi, Lyn-Srial, Psi-Stalkers, and even Simvan. Most D'norr detest violence and a third are devout pacifists who fight only to defend themselves or to protect the innocent, and even then only long enough to es-cape. This admirable sentiment and lifestyle has made the Devilmen known and respected by Cyber-Knights, the Justice Rangers, Tundra Rangers, and lawmen throughout the New West, as well as at Lazio and New Lazio. Many supported Tolkeen the best they could and perished by the thousands for their effort.
 
 (see Rifts® World Book 30: D - Bees of North America pg. 71 for more information)`;
@@ -47,7 +45,7 @@ Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess 
         this.pronunciation = `Duh nor.`;
         this.alias = `"Melonheads" by Coalition soldiers, "Devils," and "Horned Red Brother" by many Native Americans.`;
         this.alignment = `Any, but the majority are Principled (30%), Scrupulous (30%), Unprincipled (15%) or Anarchist (15%).`;
-        this.abilities = ['No Psionics']
+        // this.abilities = ['No Psionics']
         this.iqRoll = { sides: 6, amount: 2, bonus: 6 };
         this.meRoll = { sides: 6, amount: 2, bonus: 4 };
         this.maRoll = { sides: 6, amount: 2, bonus: 12 };

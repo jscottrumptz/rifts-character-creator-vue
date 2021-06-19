@@ -106,6 +106,7 @@ class OCC {
         bodyFlipBonus = new StatRoll,
         criticalBonus = new StatRoll,
         entangleBonus = new StatRoll,
+        autoDodgeBonus = new StatRoll,
 
         // SAVES
         poisonBonus = new StatRoll,
@@ -240,6 +241,7 @@ class OCC {
         this.bodyFlipBonus = bodyFlipBonus;
         this.criticalBonus = criticalBonus;
         this.entangleBonus = entangleBonus;
+        this.autoDodgeBonus = autoDodgeBonus;
 
         // SAVES
         this.poisonBonus = poisonBonus;
@@ -340,6 +342,7 @@ class OCC {
             character.bonuses.bodyFlip.occBonus = this.bonusRoll(this.bodyFlipBonus);
             character.bonuses.critical.occBonus = this.bonusRoll(this.criticalBonus);
             character.bonuses.entangle.occBonus = this.bonusRoll(this.entangleBonus);
+            character.bonuses.autoDodge.occBonus = this.bonusRoll(this.autoDodgeBonus);
             // SAVES
             character.saves.poison.occBonus = this.bonusRoll(this.poisonBonus);
             character.saves.insanity.occBonus = this.bonusRoll(this.insanityBonus);

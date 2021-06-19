@@ -18,6 +18,7 @@ class Bonuses {
         bodyFlip = new StatValue,
         critical = new StatValue,
         entangle = new StatValue,
+        autoDodge = new StatValue
     ) {
         this.perception = perception;
         this.perception.name = 'Perception';
@@ -49,6 +50,9 @@ class Bonuses {
         this.critical.name = 'Critical';
         this.entangle = entangle;
         this.entangle.name = 'Entangle';
+        this.autoDodge = autoDodge;
+        this.autoDodge.name = 'Automatic Dodge';
+
     }
 
     getPerception() {
