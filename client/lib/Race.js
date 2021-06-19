@@ -32,6 +32,8 @@ class Race {
         otherBonusText = '',
         // is this a racial character class (no occ)
         rcc = false,
+        excludedOCCGroups = [],
+        excludedOCCs = [],
 
         iqRoll = new StatRoll,
         meRoll = new StatRoll,
@@ -159,6 +161,8 @@ class Race {
         this.weightDesc = weightDesc;
         this.otherBonusText = otherBonusText;
         this.rcc = rcc;
+        this.excludedOCCGroups = excludedOCCGroups;
+        this.excludedOCCs = excludedOCCs;
 
         this.iqRoll = iqRoll;
         this.meRoll = meRoll;

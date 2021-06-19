@@ -23,11 +23,16 @@ class Dnorr extends Race {
 Note: On the D'norr home world, there was no magic, so D'norr are fascinated by the very concept. As a result, a full half of all Devilmen are practitioners of magic, typically Ley line Walker, Conjurer, Techno-Wizard or Warlock, but other disciplines as well. Only Witchery and all forms of demon worship are completely avoided.
 
 Cannot select psionic O.C.C.s including the Mystic because D'norr don't possess any psychic abilities.`
+        this.excludedOCCGroups = ['Psychics'];
+        this.excludedOCCs = ['Mystic'];
         this.psionicsDesc = `None. Devilmen have no psychic capabilities, making it a phenomenon that fascinates them.`
         this.abilitiesDesc = `Their high I.Q. and M.A. automatically make them smart, affable and "devilish charmers" and, sometimes, even con-artists. Physical abilities are on par with humans.`;
         this.magicDesc = `By O.C.C. only. D'norr possess a natural high amount of P.P.E., 6D6 points +P.E. attribute number to start, whether a practitioner of magic or not. This amount is in addition to those gained in the pursuit of magic.`;
         this.cyberneticsDesc = `Most Devilmen avoid even minor implants, especially if they are practitioners of magic. D'norr scholars and adventurers sometimes get a few implants or minor bionic augmentation (typically the minimum for that O.C.C.). They also consider cybernetic prosthetics for medical reasons.`;
-        this.skillsDesc = `All D'norr Devilmen have the following skills regardless of what O.C.C. they select. Anthropology (+10%), Art (+20%), and Mathematics: Basic and Advanced(+ 15%).`;
+        this.skillsDesc = `All D'norr Devilmen have the following skills regardless of what O.C.C. they select. 
+    Anthropology (+10%)
+    Art (+20%)
+    Mathematics: Basic and Advanced(+ 15%).`;
         this.heightMin = 5;
         this.heightMax = 6;
         this.weightMin = 120;

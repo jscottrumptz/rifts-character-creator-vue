@@ -33,6 +33,7 @@ class OCC {
         reqPe = 0,
         reqPb = 0,
         reqSpd = 0,
+        excludedRaces = [],
 
         // SKILLS
         occSkills = new SkillGroups,
@@ -167,6 +168,7 @@ class OCC {
         this.reqPe = reqPe;
         this.reqPb = reqPb;
         this.reqSpd = reqSpd;
+        this.excludedRaces = excludedRaces;
 
         // SKILLS
         this.occSkills = occSkills;
@@ -388,7 +390,13 @@ class OCC {
             return false
         } else if (this.reqSpd > character.attributes.spd.total) {
             return false
-        } else {
+        } else if (this.excludedRaces.includes(character.race.name)) {
+            return false
+        } else if (character.race.excludedOCCGroups.includes(this.group)) {
+            return false
+        } else if (character.race.excludedOCCs.includes(this.name)) {
+            return false
+        }  else {
             return true
         }
     }
@@ -410,6 +418,12 @@ class OCC {
             return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqPb} PB needed.`
         } else if (this.reqSpd > character.attributes.spd.total) {
             return `This character does not qualify to be a ${this.name}. There is a minimum of ${this.reqSpd} Spd needed.`
+        } else if (this.excludedRaces.includes(character.race.name)) {
+            return `${character.race.name}s are forbidden from becoming ${this.name}s`
+        } else if (character.race.excludedOCCGroups.includes(this.group)) {
+            return `${character.race.name}s are forbidden from becoming ${this.group}`
+        } else if (character.race.excludedOCCs.includes(this.name)) {
+            return `${character.race.name}s are forbidden from becoming ${this.name}s`
         } else {
             return `This character would make a great ${this.name}.`
         }

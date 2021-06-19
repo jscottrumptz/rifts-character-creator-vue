@@ -19,7 +19,11 @@ class AutoG extends Race {
 
 (see Rifts® World Book 30: D - Bees of North America pg. 27 for more information)`;
         this.image = 'assets/images/race/auto_g.jpg';
-        this.availableOCCs = `    In theory, any, but Auto-Gs tend toward the following: Bounty Hunter (and any type of man-hunter), Master Assassin, Freelance Spy, Super-Spy, Professional Thief, Bandit, Highway Man, Smuggler, Con Artist, Gunfighter, Gunslinger, Sheriff, or Mere Soldier. The rare few who choose a less violent occupation may select any of the Scholar & Adventurer O.C.C.s. Note: Cannot select any O.C.C. that artificially augments the body, including Cyber-Knight and Headhunter, nor any Practitioner of Magic O.C.C. or Psychic O.C.C.`;
+        this.availableOCCs = `    In theory, any, but Auto-Gs tend toward the following: Bounty Hunter (and any type of man-hunter), Master Assassin, Freelance Spy, Super-Spy, Professional Thief, Bandit, Highway Man, Smuggler, Con Artist, Gunfighter, Gunslinger, Sheriff, or Mere Soldier. The rare few who choose a less violent occupation may select any of the Scholar & Adventurer O.C.C.s. 
+        
+Note: Cannot select any O.C.C. that artificially augments the body, including Cyber-Knight and Headhunter, nor any Practitioner of Magic O.C.C. or Psychic O.C.C.`;
+        this.excludedOCCGroups = ['Psychics', 'Practitioners of Magic'];
+        this.excludedOCCs = ['Cyber-Knight', 'Headhunter', 'Combat Cyborg'];
         this.psionicsDesc = `Alter Aura (2), Death Trance (1), Mask P.P.E. (4), Mask I.S.P. & Psionics (7), Mind Block (4), Nightvision (4), and Summon Inner Strength (4).
     Considered a Major Psychic and needs a 12 or higher to save vs psionic attack. 
     I.S.P.: M.E. attribute number plus a roll of 4D6, and an additional 1D6+ 1 per level of experience.`;

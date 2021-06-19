@@ -6,7 +6,7 @@ class LeyLineRifter extends OCC {
     constructor() {
         super();
         this.name = 'Ley Line Rifter';
-        this.group = 'Practitioner of Magic';
+        this.group = 'Practitioners of Magic';
         this.description = `    A Ley Line Rifter is a Ley Line Walker who specializes in Rift and Ley Line Magic. He is identical to the Line Walker in almost every way, except for this focus on a specific subset of dimensional spell magic and his ability to hitch a ride on other teleporters and dimensional travelers.
     As noted under the Ley Line Walker description, Rifters believe Rift and Ley Line Magic is of significant and overriding value and should be studied and mastered above all others. They consider them-selves to be the elite with unique and superior insight about ley lines and Rifting. Although they focus on learning a range of spells, they are the undisputed masters of Rift and Ley Line Magic.
     
