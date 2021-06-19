@@ -28,9 +28,10 @@
     <Feeble v-if="newCharacter.race.name !== '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses" :newCharacter="newCharacter"/>
     <PickRandomPsionics v-if="(newCharacter.psionics.ability === 'Major' || newCharacter.psionics.ability === 'Minor') && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
     <PickOCC v-if="newCharacter.race.name !== '' && newCharacter.occ.name === '' && newCharacter.attributes.confirmAttributes && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None')" :newCharacter="newCharacter"/>
-    <PickPsionics v-if="newCharacter.attributes.confirmAttributes && (newCharacter.psionics.ability === 'Racial' || newCharacter.psionics.ability === 'OCC') && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
-    <PickMagic v-if="newCharacter && (newCharacter.spells.ability === 'Racial' || newCharacter.spells.ability === 'OCC') && !newCharacter.spells.selected" :newCharacter="newCharacter"/>
-    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None') && (newCharacter.spells.selected || newCharacter.spells.ability === 'None')" :newCharacter="newCharacter"/>
+    <PickOccAttributeBonus  v-if="newCharacter && newCharacter.occ.attributeBonusChoice" :newCharacter="newCharacter"/>
+    <PickPsionics v-if="newCharacter.attributes.confirmAttributes && (newCharacter.psionics.ability === 'Racial' || newCharacter.psionics.ability === 'OCC')  && !newCharacter.occ.attributeBonusChoice && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
+    <PickMagic v-if="newCharacter && (newCharacter.spells.ability === 'Racial' || newCharacter.spells.ability === 'OCC')  && !newCharacter.occ.attributeBonusChoice && !newCharacter.spells.selected" :newCharacter="newCharacter"/>
+    <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None') && (newCharacter.spells.selected || newCharacter.spells.ability === 'None')  && !newCharacter.occ.attributeBonusChoice" :newCharacter="newCharacter"/>
     <PickRelatedSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && !newCharacter.skills.choices" :newCharacter="newCharacter"/>
     <PickSecondarySkills v-if="newCharacter.skills.selected && !newCharacter.skills.secondary" :newCharacter="newCharacter"/>
   </div>
@@ -47,11 +48,14 @@ import PickSkills from "./sections/PickSkills";
 import PickSecondarySkills from "./sections/PickSecondarySkills";
 import PickPsionics from "./sections/PickPsionics";
 import PickMagic from "./sections/PickMagic";
+import PickOccAttributeBonus from "./sections/PickOccAttributeBonus";
 
 const Character = require('../../lib/Character');
 
 export default {
-  components: {PickMagic, PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
+  components: {
+    PickOccAttributeBonus,
+    PickMagic, PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
   name: 'CharacterCreator',
   data: function(){
     return {

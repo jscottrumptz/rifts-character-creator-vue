@@ -22,6 +22,11 @@ class LeyLineWalker extends OCC {
         this.possessionBonus = { bonus: 2 };
         this.mindControlBonus = { bonus: 2 };
         this.attributesText = `+1D4 on any one Mental attribute (I.Q., M.E. or MA.)`;
+        this.attributeBonusChoice = true;
+        this.attributeBonusChoices = {
+            stats: [ 'iq', 'me', 'ma' ],
+            bonusRoll: { sides: 4, amount: 1 }
+        };
         this.curseBonus = { bonus: 2 };
         this.ppeText = 'PE+3D6x10+20';
         this.ppeLvl = { sides: 6, amount: 3 };

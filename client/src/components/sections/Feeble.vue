@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <h2 v-if="feebleCount > 0" class="text-yellow-400 text-lg font-medium text-center px-5 pt-10">
-      Bonus to Compensate for a Low Attribute<span>s</span>
+      Bonus to Compensate for one or more Low Attributes
     </h2>
     <p v-if="feebleCount === 1 && bonusCount === 0" class="text-yellow-200 text-center max-w-2xl mx-auto">
       Because the character has an attribute below seven, add 1d4+3 to any of its other attributes.

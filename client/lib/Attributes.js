@@ -4,7 +4,18 @@ const { Random } = require('random-js');
 const random = new Random();
 
 class Attributes {
-    constructor(iq = new Attribute, me = new Attribute, ma = new Attribute, ps = new Attribute, pp = new Attribute, pe = new Attribute, pb = new Attribute, spd = new Attribute, strType = 'Standard', confirmAttributes = false) {
+    constructor(
+        iq = new Attribute,
+        me = new Attribute,
+        ma = new Attribute,
+        ps = new Attribute,
+        pp = new Attribute,
+        pe = new Attribute,
+        pb = new Attribute,
+        spd = new Attribute,
+        strType = 'Standard',
+        confirmAttributes = false
+    ) {
         this.iq = iq;
         this.me = me;
         this.ma = ma;

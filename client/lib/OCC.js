@@ -63,6 +63,8 @@ class OCC {
         pbText = '',
         spdBonus = new StatRoll,
         spdText = '',
+        attributeBonusChoice = false,
+        attributeBonusChoices = {},
 
         // SECONDARY STATS
         hp = new StatRoll,
@@ -194,6 +196,8 @@ class OCC {
         this.pbText = pbText;
         this.spdBonus = spdBonus;
         this.spdText = spdText;
+        this.attributeBonusChoice = attributeBonusChoice;
+        this.attributeBonusChoices = attributeBonusChoices;
 
         // SECONDARY STATS
         this.hp = hp;

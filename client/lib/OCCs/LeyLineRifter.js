@@ -25,6 +25,11 @@ The focus on the dimensional aspect of ley lines gives the Ley Line Rifter the i
         this.mindControlBonus = { bonus: 2 };
         this.perceptionBonus = { bonus: 2 };
         this.attributesText = `+2 on any one Physical attribute (P.S., P.P., P.E., P.B. or Spd.)`;
+        this.attributeBonusChoice = true;
+        this.attributeBonusChoices = {
+            stats: [ 'ps', 'pp', 'pe', 'pb', 'spd' ],
+            bonusRoll: { bonus: 2 }
+        };
         this.curseBonus = { bonus: 2 };
         this.ppeText = 'PE+3D6x10+20';
         this.ppeLvl = { sides: 6, amount: 3 };
