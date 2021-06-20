@@ -1,6 +1,10 @@
 const Race = require('../Race');
 const { Random } = require('random-js');
 const random = new Random;
+const Cook = require('../Skills/Cook');
+const LandNavigation = require('../Skills/LandNavigation');
+const WildernessSurvivalWilderness = require('../Skills/WildernessSurvivalWilderness');
+const WPBlunt = require('../Skills/WPBlunt');
 
 class Larmac extends Race {
     constructor() {
@@ -21,7 +25,11 @@ class Larmac extends Race {
         this.availableOCCs = `  These underachievers are typically one of the following Adventurer or Men at Arms O.C.C.s (pick one): Bandit, Thief Gambler, Highway Man, Sailor, Pirate, Grunt (or thug/musclemen), Saloon Bum, Barmaid (if female), Saddle Tramp, Stoolie or Vagabond. Only the most ambitious will consider becoming a Wilderness Scout, Trapper-Woodman, Professional Gambler, Pecos Raider, Mere Soldier or Sheriff's Deputy. And only the most fortunate possess any psionics. Note: Can NOT select most Men at Arms or psionic O.C.C.s, including the Mystic.`;
         this.excludedOCCGroups = ['Practitioners of Magic', 'Psychics', 'Men at Arms'];
         this.excludedOCCs = ['Rogue Scholar', 'Rogue Scientist', 'Body Fixer', 'Cyber-Doc', 'Operator'];
-        this.skillsDesc = `Cook, Land Navigation, and Wilderness Survival all at +20%, and W.P. Blunt, in addition to skills from an O.C.C. `;
+        this.skillsDesc = `    Cook (+20%)
+    Land Navigation (+20%)
+    and Wilderness Survival (+20%)
+    W.P. Blunt
+in addition to skills from an O.C.C. `;
         this.psionicsDesc = `Psionics: Larmac love psionic powers. Unfortunately, psychic abilities are rare among their race. To determine if a character has psionics, roll percentile on the following table:
     01-02% Master Psionics (select a Psionic O.C.C.) 
     03-07% Major Psionics. 
@@ -85,23 +93,35 @@ Thousands lived and died in the Kingdom of Tolkeen. Surprisingly, the tragedy of
         character.abilities.ironStomach =
             {
                 name: 'Iron Stomach',
-                range: `Larmac have voracious appetites in many areas, food and libations being two of them. However, although the D-Bees seem to be constantly eating they can go without food for as long as a week (7 days) without any debilitating physical side affects and without water for four days before starting to feel the effects of dehydration.`,
+                description: `Larmac have voracious appetites in many areas, food and libations being two of them. However, although the D-Bees seem to be constantly eating they can go without food for as long as a week (7 days) without any debilitating physical side affects and without water for four days before starting to feel the effects of dehydration.`,
                 type: `Racial`
             }
 
         character.abilities.thickHide =
             {
                 name: 'Thick Hide',
-                range: `Their thick, tan, Mega-Damage hide also provides protection in the sun, enabling them to trek through a desert at day-time without suffering from heat exhaustion or dehydration. Likewise, their hide and the layer of blubber underneath helps insulate them from cold temperatures as low as 40 degrees Fahrenheit below zero (can play buck-naked in arctic snow without any ill effect; not that anyone would want to be witness to such an event). Despite their natural resistance to the forces of nature, Larmac usually avoid extreme environments, mainly because nobody lives there and there's no fun to be had.`,
+                description: `Their thick, tan, Mega-Damage hide also provides protection in the sun, enabling them to trek through a desert at day-time without suffering from heat exhaustion or dehydration. Likewise, their hide and the layer of blubber underneath helps insulate them from cold temperatures as low as 40 degrees Fahrenheit below zero (can play buck-naked in arctic snow without any ill effect; not that anyone would want to be witness to such an event). Despite their natural resistance to the forces of nature, Larmac usually avoid extreme environments, mainly because nobody lives there and there's no fun to be had.`,
                 type: `Racial`
             }
 
         character.abilities.selfPreservation =
             {
                 name: 'Self Preservation',
-                range: `When highly motivated or fighting to save his own life, the Larmac gets +1 melee action/attack, +1 on initiative and +1 to parry or dodge.`,
+                description: `When highly motivated or fighting to save his own life, the Larmac gets +1 melee action/attack, +1 on initiative and +1 to parry or dodge.`,
                 type: `Racial`
             }
+
+
+        character.skills.known.cook = new Cook;
+        character.skills.known.cook.raceBonus = 20;
+
+        character.skills.known.wildernessSurvivalWilderness = new WildernessSurvivalWilderness;
+        character.skills.known.wildernessSurvivalWilderness.raceBonus = 20;
+
+        character.skills.known.landNavigation = new LandNavigation;
+        character.skills.known.landNavigation.raceBonus = 20;
+
+        character.skills.known.wPBlunt= new WPBlunt;
     }
 
     getSecondary(character) {

@@ -1,4 +1,8 @@
 const Race = require('../Race');
+const EscapeArtist = require('../Skills/EscapeArtist');
+const WPPairedWeapons = require('../Skills/WPPairedWeapons');
+const WPQuickDraw = require('../Skills/WPQuickDraw');
+const WPTargeting = require('../Skills/WPTargeting');
 
 class QuickFlexAlien extends Race {
     constructor() {
@@ -76,6 +80,12 @@ Skill Penalty
                 description: `+1 to strike using modern weapons/guns or any type of bow and arrow even if the character doesn't have a W.P. in that weapon.`,
                 type: `Racial`
             }
+
+        character.skills.known.escapeArtist = new EscapeArtist;
+        character.skills.known.escapeArtist.raceBonus = 20;
+        character.skills.known.wPPairedWeapons= new WPPairedWeapons;
+        character.skills.known.wPQuickDraw= new WPQuickDraw;
+        character.skills.known.wPTargeting= new WPTargeting;
     }
 
     getSecondary(character) {
