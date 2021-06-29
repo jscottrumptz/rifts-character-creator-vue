@@ -1,18 +1,20 @@
 <template>
   <div>
     <Login v-if="!loggedIn"/>
+    <Welcome v-if="loggedIn"/>
   </div>
 </template>
 
 <script>
 import Login from "./sections/Login";
+import Welcome from "./sections/Welcome";
 
 export default {
   name: 'Home',
   props: {
     loggedIn: Boolean
   },
-  components: { Login }
+  components: {Welcome, Login }
 }
 </script>
 
