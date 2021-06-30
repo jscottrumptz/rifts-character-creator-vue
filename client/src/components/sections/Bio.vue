@@ -64,7 +64,7 @@
                   Sex
                 </label>
                 <div class="mt-1 flex rounded-md shadow-sm">
-                  <input type="text" name="sex" id="sex"
+                  <input type="text" v-model="sex" name="sex" id="sex"
                          class="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-md sm:text-sm border-gray-300"
                   /></div>
               </div>
@@ -86,7 +86,7 @@
                   Insanities
                 </label>
                 <div class="mt-1 flex rounded-md shadow-sm">
-                  <input type="text" name="insanities" id="insanities"
+                  <input type="text" v-model="insanities" name="insanities" id="insanities"
                          class="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-md sm:text-sm border-gray-300"
                          value="None">
                 </div>
@@ -266,6 +266,7 @@ export default {
       bio: '',
       alignment: '',
       sex: '',
+      insanities: ''
     }
   },
   methods: {
@@ -275,6 +276,7 @@ export default {
       this.newCharacter.info.bio = this.bio;
       this.newCharacter.info.alignment = this.alignment;
       this.newCharacter.info.sex = this.sex;
+      this.newCharacter.info.insanity = this.insanities;
       try {
         await this.$apollo.mutate({
           mutation: gql`mutation addCharacter($characterData: JSON) {

@@ -62,7 +62,7 @@
         </div>
         <!-- Physical Description -->
         <div v-if="info.physicalDescription !== ''" class="col-span-4 sm:col-span-6">
-          <dt class="whitespace-pre-wrap text-sm font-medium text-gray-300">
+          <dt class="whitespace-pre-line text-sm font-medium text-gray-300">
             Physical Description
           </dt>
           <dd class="mt-1 text-sm text-white">
@@ -74,7 +74,7 @@
           <dt class="text-sm font-medium text-gray-300">
             Bio
           </dt>
-          <dd class="whitespace-pre-wrap mt-1 text-sm text-white">
+          <dd class="whitespace-pre-line mt-1 text-sm text-white">
             {{ info.bio }}
           </dd>
         </div>
