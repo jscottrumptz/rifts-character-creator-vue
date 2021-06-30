@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- CHARACTER STATS -->
 <!--    <h2 class="text-xl font-bold text-center text-gray-600">Current Attributes</h2>
     <p class="text-lg font-medium text-center text-gray-400">
       IQ: <span class="text-gray-50">{{newCharacter.attributes.iq.total}}</span>
@@ -19,11 +20,14 @@
       PPE: <span class="text-gray-50">{{newCharacter.secondaryStats.ppe.total}}</span>
       ISP: <span class="text-gray-50">{{newCharacter.secondaryStats.isp.total}}</span>
     </p>-->
-    <form v-if="newCharacter.race.name !== ''" class="inline-flex">
+
+    <!-- SAVE CHARACTER -->
+<!--    <form v-if="newCharacter.race.name !== ''" class="inline-flex">
       <input type="text" v-model="charName" id="charName" name="charName" placeholder="character name" class="ml-10 max-h-10 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md" >
       <p class="ml-2 my-auto text-white text-lg font-medium"> | {{newCharacter.race.name}}<span v-if="newCharacter.occ.name !== ''"> | {{newCharacter.occ.name}}</span></p>
       <button v-on:click="saveCharacter" class="ml-6 bg-green-700 font-medium rounded hover:bg-green-500 hover:text-gray-900 text-xs px-5 py-3 text-white">Save Character</button>
-    </form>
+    </form>-->
+
     <PickRace v-if="newCharacter.race.name === ''" :newCharacter="newCharacter"/>
     <Feeble v-if="newCharacter.race.name !== '' && !newCharacter.attributes.confirmAttributes" :attributes="newCharacter.attributes" :bonuses="newCharacter.bonuses" :newCharacter="newCharacter"/>
     <PickRandomPsionics v-if="(newCharacter.psionics.ability === 'Major' || newCharacter.psionics.ability === 'Minor') && newCharacter.attributes.confirmAttributes && !newCharacter.psionics.selected" :newCharacter="newCharacter"/>
@@ -34,6 +38,7 @@
     <PickSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && newCharacter.skills.choices && (newCharacter.psionics.selected || newCharacter.psionics.ability === 'None') && (newCharacter.spells.selected || newCharacter.spells.ability === 'None')  && !newCharacter.occ.attributeBonusChoice" :newCharacter="newCharacter"/>
     <PickRelatedSkills v-if="newCharacter.occ.name !== '' && !newCharacter.skills.selected && !newCharacter.skills.choices" :newCharacter="newCharacter"/>
     <PickSecondarySkills v-if="newCharacter.skills.selected && !newCharacter.skills.secondary" :newCharacter="newCharacter"/>
+    <Bio v-if="newCharacter.skills.selected && newCharacter.skills.secondary" :newCharacter="newCharacter"/>
   </div>
 </template>
 
@@ -49,11 +54,13 @@ import PickSecondarySkills from "./sections/PickSecondarySkills";
 import PickPsionics from "./sections/PickPsionics";
 import PickMagic from "./sections/PickMagic";
 import PickOccAttributeBonus from "./sections/PickOccAttributeBonus";
+import Bio from "./sections/Bio";
 
 const Character = require('../../lib/Character');
 
 export default {
   components: {
+    Bio,
     PickOccAttributeBonus,
     PickMagic, PickPsionics, PickSecondarySkills, PickSkills, PickRelatedSkills, PickOCC, Feeble, PickRace, PickRandomPsionics },
   name: 'CharacterCreator',

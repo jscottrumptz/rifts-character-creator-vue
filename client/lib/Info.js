@@ -22,7 +22,8 @@ class Info {
         familyOrigin = '',
         coalition = '',
         nonHumans = '',
-        initialReason = ''
+        initialReason = '',
+        isEvil = false
     ) {
         this.name = name;
         this.level = level;
@@ -44,6 +45,7 @@ class Info {
         this.coalition = coalition;
         this.nonHumans = nonHumans;
         this.initialReason = initialReason;
+        this.isEvil = isEvil;
     }
 
     getName() {

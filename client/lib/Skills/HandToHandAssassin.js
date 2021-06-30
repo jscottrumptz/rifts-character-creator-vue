@@ -68,6 +68,7 @@ Level 15:
     rollSecondary(character) {
         character.bonuses.attacks.initialValue = 3;
         character.bonuses.strike.skillsBonus = character.bonuses.strike.skillsBonus + 2;
+        character.info.isEvil = true;
     }
 }
 

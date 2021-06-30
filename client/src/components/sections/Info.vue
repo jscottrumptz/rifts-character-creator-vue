@@ -21,7 +21,7 @@
             Height
           </dt>
           <dd class="mt-1 text-sm text-center sm:text-left text-white">
-            {{ info.heightFt }}' {{ info.heightIn }}"
+            {{ info.heightDescr }}
           </dd>
         </div>
         <!-- Weight -->
@@ -30,7 +30,7 @@
             Weight
           </dt>
           <dd class="mt-1 text-sm text-center text-white">
-            {{ info.weight }}
+            {{ info.weightDescr }}
           </dd>
         </div>
         <!-- Sex -->
