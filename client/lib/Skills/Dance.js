@@ -20,9 +20,6 @@ class Dance extends Skill {
                 this.skillBonus = this.skillBonus + 5;
             }
         })
-        if (this.takenTwice) {
-            this.skillBonus = this.skillBonus + 10;
-        }
     }
 }
 

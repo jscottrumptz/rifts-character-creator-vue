@@ -25,9 +25,6 @@ The first percentile indicates the chance of success (a failed roll means an und
                 this.skillBonus = this.skillBonus + 10;
             }
         })
-        if (this.takenTwice) {
-            this.skillBonus = this.skillBonus + 10;
-        }
     }
 }
 

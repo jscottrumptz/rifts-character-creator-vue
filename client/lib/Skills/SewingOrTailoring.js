@@ -22,10 +22,6 @@ This is not a tailoring ability, but can become tailoring if this skill is selec
                 this.skillBonus = this.skillBonus + 5;
             }
         })
-
-        if (this.takenTwice) {
-            this.skillBonus = this.skillBonus + 10;
-        }
     }
 }
 

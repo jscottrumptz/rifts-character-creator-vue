@@ -13,12 +13,6 @@ class RecycleTechnical extends Skill {
         this.takeTwiceBonus = `+10%`;
         this.takeTwice = true;
     }
-
-    rollSecondary() {
-        if (this.takenTwice) {
-            this.skillBonus = this.skillBonus + 10;
-        }
-    }
 }
 
 module.exports = RecycleTechnical;

@@ -15,12 +15,6 @@ class PlayMusicalInstrument extends Skill {
         this.textEntry = 'Enter Instrument Type';
         this.removePostPick = false;
     }
-
-    rollSecondary() {
-        if (this.takenTwice) {
-            this.skillBonus = this.skillBonus + 10;
-        }
-    }
 }
 
 module.exports = PlayMusicalInstrument;
